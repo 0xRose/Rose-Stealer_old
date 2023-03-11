@@ -24,5 +24,5 @@ echo Ready to install requirements.
 pause
 cd tools
 python -m pip install -r requirements.txt
-python new_builder.py
+python rose_builder.py
 goto :EOF
