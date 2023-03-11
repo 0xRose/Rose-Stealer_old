@@ -14,7 +14,7 @@ echo DONT FORGET TO ADD IT TO PATH. OPENED IMAGE IN YOUR BROWSER.
 start https://imgur.com/a/KSG2G88
 pause
 cd tools
-python-3.10.10-amd64.exe
+python-3.11.2-amd64.exe
 goto :EOF
 
 :PYTHON_DOES_EXIST
