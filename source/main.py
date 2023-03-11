@@ -27,7 +27,7 @@ else:
     quit()
 
 hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
-hook = "WEBHOOK HERE"
+hook = "WEBHOOK_HERE"
 debug_mode = False
 
 if hwid == "5A25762A-89E6-8A18-A523-00D861C74757":
