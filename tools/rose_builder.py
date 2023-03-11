@@ -82,6 +82,9 @@ class Ui_MainWindow_vailB(object):
         self.progressBar.setProperty("value", 0)
         self.progressBar.setTextVisible(False)
         self.progressBar.setObjectName("progressBar")
+        self.B_clearconsole = QtWidgets.QPushButton(self.groupBox_6)
+        self.B_clearconsole.setGeometry(QtCore.QRect(140, 60, 81, 31))
+        self.B_clearconsole.setObjectName("B_clearconsole")
         self.B_ghubupdates = QtWidgets.QPushButton(self.tab_builder)
         self.B_ghubupdates.setGeometry(QtCore.QRect(590, 343, 111, 20))
         self.B_ghubupdates.setObjectName("B_ghubupdates")
@@ -148,6 +151,7 @@ class Ui_MainWindow_vailB(object):
         self.B_github_gumb.clicked.connect(self.gumghub)
         self.B_ghubupdates.clicked.connect(self.github)
         self.B_github_suvan.clicked.connect(self.svnghub)
+        self.B_clearconsole.clicked.connect(self.clearconsole)
         self.B_vail_repo.clicked.connect(self.github)
         self.B_build.clicked.connect(self.pb_build) # connect a function to the push button by doing this so (All push buttons are described as B_.. then the identifier.)
         QtCore.QMetaObject.connectSlotsByName(MainWindow_vailB)
@@ -169,6 +173,7 @@ class Ui_MainWindow_vailB(object):
         self.comboBox.setItemText(0, _translate("MainWindow_vailB", "everyone"))
         self.comboBox.setItemText(1, _translate("MainWindow_vailB", "here"))
         self.ping.setText(_translate("MainWindow_vailB", "Ping"))
+        self.B_clearconsole.setText(_translate("MainWindow_vailB", "Clear Console"))
         self.B_ghubupdates.setText(_translate("MainWindow_vailB", "Github For Updates"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_builder), _translate("MainWindow_vailB", "Builder"))
         self.groupBox_4.setTitle(_translate("MainWindow_vailB", "Credits"))
@@ -224,6 +229,8 @@ class Ui_MainWindow_vailB(object):
         elif mode==0:
             self.prorsload()
             self.prorsunload()
+    def clearconsole(self):
+        self.console_0.clear()
 
     # The main function when the Build button gets pushed.
     def pb_build(self):
