@@ -5,3 +5,4 @@ psutil
 wmi
 discord
 pypiwin32
+PyQt5
