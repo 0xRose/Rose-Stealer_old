@@ -20,7 +20,7 @@
     <strong>by <a href="https://github.com/ICExFS">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-### A multipurpose advanced injectioner and graber using a beautiful UI
+### A multipurpose advanced injectioner and grabber using a beautiful UI
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
 
@@ -67,7 +67,7 @@
 
 ### <a id="setup"></a> ⚙️ Setup
 
-FOR NOW, THE PROJECT IS NOT RELEASED AND IS ONLY IN DEVELOPER MODE
+FOR NOW, THE PROJECT IS NOT RELEASED AND IS ONLY UNDER A DEVELOPMENT RELEASE
 
 ## <a id="preview"></a> 📷 〢 Preview
 
