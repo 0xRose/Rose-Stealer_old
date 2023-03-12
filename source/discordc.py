@@ -11,7 +11,6 @@ ifx = Info()
 class DiscordX(): #Updating soon
     def __init__(self):
         self.webhook = cc.get_webhook()
-        print(self.webhook)
         if cc.get_debug_mode:
             print("Discord Init")
 
@@ -337,5 +336,3 @@ class DiscordX(): #Updating soon
             "attachments": [],
         }
         urlopen(Request(self.webhook, data=dumps(data).encode(), headers=headers))
-        """r = requests.post("https://canary.discord.com/api/webhooks/1084159527227773099/jyo1mFXijM_78V1F5GLgbIbxhjVeZM5XUzqM0Oa8ZR-5VDXoBHnbls-HtsAsQrvk4aBb", data=dumps(data).encode(), headers=headers)
-        print(r.text)"""
