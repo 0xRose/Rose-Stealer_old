@@ -10,4 +10,6 @@ class Info():
         ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
         return ip
     
+    #Gonna be updated soon !!
+    
     
