@@ -41,7 +41,7 @@
 - `Logs Token, Pc Info, Account Info and IP`🟢
 - `Logs passwords`🟢
 - `Logs cookies`🟢
-- `Logs Screenshot`🟢
+- `Logs Screenshot and locations info`🟢
 - `Start up integration`🟡
 - `JS Injector on startup/actions`🟢
 - `Discord RAT`🟡
