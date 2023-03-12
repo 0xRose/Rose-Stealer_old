@@ -7,3 +7,4 @@ discord
 pypiwin32
 PyQt5
 encrypt_encode
+dhooks
