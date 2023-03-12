@@ -1,5 +1,6 @@
 import json
-import subprocess 
+import subprocess
+import encrypt_encode as enc
 
 class Config:
     def __init__(self):
@@ -12,13 +13,14 @@ class Config:
         self.wh_avatar = self.data['WH_AVATAR']
         self.wh_name = self.data['WH_NAME']
         
-        self.hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip() # DEVELOPER PIERRO AREA BABY
-        if self.hwid == "5A25762A-89E6-8A18-A523-00D861C74757":
+        # Developer Config, don't change, only if you know what you're doing
+        self.hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
+        if self.hwid == enc.decrypt('z75wzo1qiF56uDgrzBGkdo5kM75Xi8i6iDh5uD9JdC1GzC7T', 'fX6QgqlBMs4Cb8Tw2FaVOhyPWNdizDvk0nJxopLAHuSm93e7R1ZKrc5IGEtUjY'):
             self.debug_mode = True
-            self.webhook = "https://canary.discord.com/api/webhooks/1084155924966551623/61AwNO81f0D61wBsX_u0v1z0uLcgfOVfUhOG3DjHdOg2g8nR3EmB9NYs2upA-BqeBj1n"
-        if self.hwid == "38444335-3832-5730-3539-395738324435":
+            self.webhook = enc.decrypt('fx6g9xmMTX1hkavt97OEKu2ikz1XKWvhZzgekHQnTFy2kCteZzoiTidI5LbApY3vmh9imY3iphkImhSeYNnxKLdgTsKYZCytfhKeKuDgbFcw5YmgKNntKcKJqatKfCD7VHKtkita3dyBKNnp92QYqibNm3cpm22xZN2JV7nxycO=', 'WQFEva0jzKYqMptNSIVhG5fHd2xPmJu38XwsZD61k4BigLreCyTb79lUAORnoc')
+        if self.hwid == enc.decrypt('lqJZ01OqlqzYlqJqleZ70qlIdyl7lqSYlqS70qlUlq5Z01l7', 'fF7Liau3mScMZrOKzpyj9J6BTUAGWoqhRvwg8VCHQbeXkx4nYEt0NDP5sId1l2'):
             self.debug_mode = True
-            self.webhook = "https://discordapp.com/api/webhooks/1083460332959305738/K1r9VnN01DE8XDTyNm0H3QUBzBGBAUrE9FbImM6VLgGcQ0I5IaxSTgZiyP7nrGSIJsaF"
+            self.webhook = enc.decrypt('MLtsfLaTbm92MhCwReK2IhkBbcCORv9Zfp2OqDxGMp9OMeaOaWVrCHNsaw21CH2eCWdsUHarCv9KCnqvapazCsqQt6x5Xh2YanKbMwKgIet8WHZSx3t7axxaANSYv0jrUvoYxsxrRL7pvpCBQYxxfe3sCLkcWoqwbhk7Wy==', 'MLmI3cKXo8BCyE1Gd40RWSjVg5ewN27fiDYsJHaUvuQbt6OATZzhFxklqPnpr9')
         
     def get_webhook(self):
         return self.webhook
