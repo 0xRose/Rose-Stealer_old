@@ -17,7 +17,7 @@
     <h1>
         The best Discord Grabber and Injector 🔒
     </h1>
-    <strong>by pierro, Gumbobrot, svn, borfedn</strong>
+    <strong>by <a href="https://github.com/ICExFS">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 ### A multipurpose advanced injectioner and graber using a beautiful UI
