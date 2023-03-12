@@ -93,12 +93,3 @@ All Notable Changes will be noted soon
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
-
-
-Made by:
-
-[Gumbobrot](https://github.com/Gumbobrot)
-
-[ICExFS](https://github.com/ICExFS)
-
-[suegdu](https://github.com/suegdu)
