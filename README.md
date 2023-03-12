@@ -73,6 +73,7 @@ FOR NOW, THE PROJECT IS NOT RELEASED AND IS ONLY UNDER A DEVELOPMENT RELEASE
 
 ![Grabber](readme/grabber.png)
 ![Injector](readme/injector.png)
+![Locations](readme/locationss.png)
 
 ## <a id="changelog"></a> 📚 〢 Changelog 
 
