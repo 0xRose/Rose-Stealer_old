@@ -3,7 +3,7 @@ import psutil
 import re 
 import os
 import subprocess
-import base64
+from base64 import b64decode
 
 class InjectionX:
     def __init__(self, webhook: str) -> None:
