@@ -1,6 +1,6 @@
 import json
 import subprocess
-import pybase64
+from base64 import b64decode
 
 class Config:
     def __init__(self):
