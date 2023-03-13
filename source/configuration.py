@@ -1,6 +1,5 @@
 import json
 import subprocess
-import encrypt_encode as enc
 import pybase64
 
 class Config:
