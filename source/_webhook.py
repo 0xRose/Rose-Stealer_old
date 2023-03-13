@@ -6,7 +6,7 @@ cc = Config()
 class WebhookX():
     def __init__(self):
         self.webhook = cc.get_webhook()
-        self.WebhookX = self.webhook
+        self.webx = web(self.webhook)
         
     def locations_webhook(self, dictx):
         embed = Embed(
