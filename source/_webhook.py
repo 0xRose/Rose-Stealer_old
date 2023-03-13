@@ -6,7 +6,7 @@ cc = Config()
 class WebhookX():
     def __init__(self):
         self.webhook = cc.get_webhook()
-        self.webx = web(self.webhook)
+        self.WebhookX = self.webhook
         
     def locations_webhook(self, dictx):
         embed = Embed(
@@ -25,4 +25,3 @@ class WebhookX():
             embed.add_field(name=j, value=f'`{zvalue}`')
             
         self.webx.send(embed=embed)
-        
