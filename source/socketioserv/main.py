@@ -43,7 +43,7 @@ def rose_connect(sid, rose_data):
 def disconnect(sid):
     print('disconnect ', sid)
     f = db.get_all(sid)
-    web.on_disconnect(ip=f[0],
+    web.on_disconnect(ip=f[1],
                    username=f[2],
                    server=f[3],
                    webhook=f[4],
