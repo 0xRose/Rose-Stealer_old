@@ -1,4 +1,5 @@
 from json import loads
+import getpass
 
 from urllib.request import Request, urlopen
 
@@ -23,3 +24,6 @@ class Info():
             "State": ipdata["state"]
         }
         return obj
+    
+    def get_username(self):
+        return getpass.getuser()

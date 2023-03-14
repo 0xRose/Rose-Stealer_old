@@ -85,7 +85,6 @@ response = requests.post(webhook, json=payload1)
 response = requests.post(webhook, json=payload2)
 response = requests.post(webhook, json=payload3)
 
-
 def GetData(blob_out):
     cbData = int(blob_out.cbData)
     pbData = blob_out.pbData

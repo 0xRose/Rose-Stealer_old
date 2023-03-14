@@ -1,9 +1,6 @@
-sdfljsl = {
-    "super": "duper",
-    "okay": "whatever",
-    "okayf": "whatever"
+aokjfok = {
+    "super": "OKSJDFLKSJ3,",
+    "SOEKF3": "LKDSJFLJK"
 }
 
-for j in sdfljsl:
-    print(j)
-    print(sdfljsl[j])
+print(aokjfok["super"])
