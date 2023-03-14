@@ -7,3 +7,4 @@ discord
 pypiwin32
 PyQt5
 dhooks
+pathlib==1.0.1
