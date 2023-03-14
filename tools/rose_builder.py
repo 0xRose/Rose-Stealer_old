@@ -3,12 +3,35 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QRunnable, Qt, QThreadPool
 import webbrowser
 import time
 
+from dhooks import Webhook, Embed
+
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
 
+class Runnable(QRunnable):
+    def __init__(self, n, webhook_url):
+        super().__init__()
+        self.n = n
+        self.webhook_url = webhook_url
+
+    def run(self):
+        try:
+            hook = Webhook(self.webhook_url)
+            embed = Embed(
+                description='Webhook is Working',
+                color=11795068,
+                timestamp='now' 
+            )
+            embed.set_author(name="Sucess", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
+            hook.send(embed=embed)
+        except Exception as e:
+            print(e)
 
 class Ui_MainWindow_vailB(object):
     # This is the final shape of builder's gui and it is not linked to any functions with builder's functionality. -suegdu
@@ -148,6 +171,7 @@ class Ui_MainWindow_vailB(object):
         self.tabWidget.setCurrentIndex(0)
         self.B_github_sue.clicked.connect(self.sueghub)
         self.B_github_ice.clicked.connect(self.iceghub)
+        self.B_testhook.clicked.connect(self.test_hook)
         self.B_github_gumb.clicked.connect(self.gumghub)
         self.B_ghubupdates.clicked.connect(self.github)
         self.B_github_suvan.clicked.connect(self.svnghub)
@@ -204,7 +228,7 @@ class Ui_MainWindow_vailB(object):
     def sueghub(self):
         webbrowser.open("https://github.com/suegdu")
     def iceghub(self):
-        webbrowser.open("https://github.com/ICExFS")
+        webbrowser.open("https://github.com/xpierroz")
     def gumghub(self):
         webbrowser.open("https://github.com/Gumbobrot")
     def svnghub(self):
@@ -231,6 +255,11 @@ class Ui_MainWindow_vailB(object):
             self.prorsunload()
     def clearconsole(self):
         self.console_0.clear()
+        
+    def test_hook(self):
+        pool = QThreadPool.globalInstance()
+        runnable = Runnable(1, self.LE_webhook_url.text())
+        pool.start(runnable)
 
     # The main function when the Build button gets pushed.
     def pb_build(self):
