@@ -29,8 +29,4 @@ def disconnect():
     print("disconnect")
     
 sio.connect(cc.get_discord_rat_link())
-
-
-while True: #Input and emit socket
-    message = input()
-    sio.emit('my_message', {'data': message})
+sio.wait()
