@@ -44,9 +44,9 @@
 - `Logs Screenshot and locations info`🟢
 - `Start up integration`🟡
 - `JS Injector on startup/actions`🟢
-- `Discord RAT`🟡
+- `Discord RAT`🟣
 - `UI with Qt5`🟢
-- `UI Integration`🟡
+- `UI Integration`🟣
 - `Compiler (.exe)`🟡
 - `Make An Embebed Version`🟢
 - `Auto Update`🟡
@@ -56,7 +56,7 @@
 - `CHANGELOD.md file`🟡
 - `Bypass VirusTotal`🟡
 
-🟢 = Working  | 🟡 = To Do  | 🔴 = Not Working
+🟢 = Working  | 🟡 = To Do  | 🟣 = Working on it | 🔴 = Not Working
 
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
 
