@@ -147,6 +147,10 @@ class Command():
         ]
 
     def is_valid(self, command):
+        try:
+            command = command.split(' ')[0] # Checking if the command has arguments, and get only the actual command if it does
+        except Exception:
+            pass
         for j in self.valid:
             if command == j:
                 return True 
