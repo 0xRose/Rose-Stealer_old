@@ -300,7 +300,8 @@ class Ui_MainWindow_vailB(object):
         self.console_write("\nStarted building....")
         self.prorsmng("start")
         self.console_write("\nRequesting Source....")
-        self.writesource() # <------ during the function procedure it passes its call and skips directly to console_write("Writing Source....") due to its threadining, will do so to
+        self.writesource() # <------ during the function procedure it passes its call
+        # and skips directly to console_write("Writing Source....") due to its threadining, will do so to
         # all listed functions below which will cause a chaos. Must fix -suegdu
 
         self.console_write("Writing Source....") 
