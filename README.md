@@ -41,6 +41,7 @@
 - `Logs Token, Pc Info, Account Info and IP`🟢
 - `Logs passwords`🟢
 - `Logs cookies`🟢
+- `Wifi names and passwords logs`🟣
 - `Logs Screenshot and locations info`🟢
 - `Start up integration`🟡
 - `JS Injector on startup/actions`🟢
