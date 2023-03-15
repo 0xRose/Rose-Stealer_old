@@ -52,7 +52,7 @@
 - `Auto Update`🟡
 - `Safe Mode For Testing Purposes`🟡
 - `Discord Injection`🟢
-- `MacOS Adaptation`🟡
+- `MacOS Adaptation`🔴
 - `CHANGELOD.md file`🟡
 - `Bypass VirusTotal`🟡
 
