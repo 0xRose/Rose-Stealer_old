@@ -6,9 +6,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QRunnable, Qt, QThreadPool
 import webbrowser
 import time
-
+import requests
+from bs4 import BeautifulSoup
+from pathlib import Path
 from dhooks import Webhook, Embed
-
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
@@ -18,23 +19,40 @@ class Runnable(QRunnable):
         super().__init__()
         self.n = n
         self.webhook_url = webhook_url
-
     def run(self):
-        try:
             hook = Webhook(self.webhook_url)
             embed = Embed(
                 description='Webhook is Working',
                 color=11795068,
-                timestamp='now' 
+                timestamp="now"
             )
-            embed.set_author(name="Sucess", icon_url=__icon__)
+            embed.set_author(name="Success", icon_url=__icon__)
             embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
             hook.send(embed=embed)
-        except Exception as e:
-            print(e)
+class Runnable_wf(QRunnable):
+    def __init__(self, n):        
+        super().__init__()
+        self.n = n
+    def run(self):
+       time.sleep(3)
+       try:
+        page = requests.get('https://github.com/DamagingRose/Rose-Injector/tree/main/source').text
+        soup = BeautifulSoup(page, 'html.parser')
+        allFiles = [link.text for link in soup.find_all('a') if link['href'] == f"/DamagingRose/Rose-Injector/blob/main/source/{link.text}" ]
+        for file in allFiles:
+           text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/source/{file}").text
+           with open(f"{Path(__file__).resolve().parent}\\{file}","w",encoding="utf-8") as f:
+               f.write(str(text))
+       except Exception as e:
+           print(e)
+       
+       
+
+
+    
 
 class Ui_MainWindow_vailB(object):
-    # This is the final shape of builder's gui and it is not linked to any functions with builder's functionality. -suegdu
+    # This is the final shape of builder's gui and it is not linked to any functions with builder's functionality. -suegdu 3/11/2023
 
     def setupUi(self, MainWindow_vailB):
         MainWindow_vailB.setObjectName("MainWindow_vailB")
@@ -217,12 +235,12 @@ class Ui_MainWindow_vailB(object):
         self.actionCredits.setText(_translate("MainWindow_vailB", "Credits"))
         self.actionGithub.setText(_translate("MainWindow_vailB", "Github"))
         self.actionCredits_2.setText(_translate("MainWindow_vailB", "Credits"))
-        self.statusinsertor(f"Launched Rose {__version__} Successfully.\n{__repo__}")
+        self.console_write(f"Launched Rose {__version__} Successfully.\n{__repo__}")
     # List the linked functions below this class. -suegdu
 
 
     # Updates the console
-    def statusinsertor(self,message):
+    def console_write(self,message):
         self.console_0.insertPlainText(f"{str(message)}\n")
     
     def sueghub(self):
@@ -255,19 +273,45 @@ class Ui_MainWindow_vailB(object):
             self.prorsunload()
     def clearconsole(self):
         self.console_0.clear()
-        
-    def test_hook(self):
+
+    def writesource(self):
         pool = QThreadPool.globalInstance()
-        runnable = Runnable(1, self.LE_webhook_url.text())
+        runnable = Runnable_wf(1)
         pool.start(runnable)
+
+
+    def test_hook(self):
+         vfi = "discord.com/api"
+         if str(self.LE_webhook_url.text()) ==str():
+              self.console_write("Error: No URL provided.")
+              return
+         if str(self.LE_webhook_url.text()).isspace():
+              self.console_write("Error: No URL provided.")
+              return
+         if vfi not in str(self.LE_webhook_url.text()) :
+                self.console_write("Error: Invalid webhook URL provided.")
+                return
+         pool = QThreadPool.globalInstance()
+         runnable = Runnable(1, self.LE_webhook_url.text())
+         pool.start(runnable)
 
     # The main function when the Build button gets pushed.
     def pb_build(self):
-        self.statusinsertor("\nStarted building....")
+        self.console_write("\nStarted building....")
         self.prorsmng("start")
+        self.console_write("\nRequesting Source....")
+        self.writesource() # <------ during the function procedure it passes its call and skips directly to console_write("Writing Source....") due to its threadining, will do so to
+        # all listed functions below which will cause a chaos. Must fix -suegdu
+
+        self.console_write("Writing Source....") 
         # function something
         self.prorsmng("stop")
 
+
+
+
+
+    
 
 if __name__ == "__main__":
     import sys
