@@ -20,9 +20,9 @@ goto :EOF
 :PYTHON_DOES_EXIST
 for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
-echo Ready to install requirements.
+echo Ready to start.
 pause
+echo CLOSING THIS WINDOW WILL ALSO EXIT THE BUILDER
 cd tools
-python -m pip install -r requirements.txt
 python rose_builder.py
 goto :EOF
