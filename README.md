@@ -15,7 +15,7 @@
 <div align="center">
     <br>
     <h1>
-        The best Discord Grabber and Injector 🔒
+        The best Discord Grabber and Injector and RAT🔒
     </h1>
     <strong>by <a href="https://github.com/ICExFS">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
