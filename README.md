@@ -26,6 +26,7 @@
 
 - **[📖 〢 Description](#description)**
 - **[🔰 〢 Features](#features)**
+- **[💀 〢 Rose RAT](#rose_rat)**
 - **[🔗 〢 Discord](https://discord.gg/CJpFKwSdyW)**
 - **[📥 〢 Install](#install)**
   - **[💻 〢 Prerequisites](#prerequisites)**
@@ -58,6 +59,10 @@
 - `Bypass VirusTotal`🟡
 
 🟢 = Working  | 🟡 = To Do  | 🟣 = Working on it | 🔴 = Not Working
+
+## <a id="rose_rat"></a> 💀 〢 Rose RAT
+
+The rat is still under development. Instructions to use will be explained later
 
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
 
