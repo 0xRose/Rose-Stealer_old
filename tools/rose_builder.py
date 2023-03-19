@@ -20,11 +20,6 @@ except:
     requirements = ["requests", "beautifulsoup4", "PyQt5", "pypiwin32"]
     for req in requirements:
         subprocess.run(f"python -m pip install {req}")
-
-if platform.system() != "Windows":
-    quit()
-
-
 class Runnable(QRunnable):
     def __init__(self, n, webhook_url):
         super().__init__()
