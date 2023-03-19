@@ -17,9 +17,9 @@ try:
     from PyQt5.QtCore import QRunnable, Qt, QThreadPool
 except:
     import subprocess
-    requirements = ["requests", "beautifulsoup4", "PyQt5", "pypiwin32"]
-    for req in requirements:
-        subprocess.run(f"python -m pip install {req}")
+    subprocess.run("python -m pip install requests && python -m pip install beautifulsoup4 && python -m pip install PyQt5 && python -m pip install pypiwin32")
+
+
 class Runnable(QRunnable):
     def __init__(self, n, webhook_url):
         super().__init__()
