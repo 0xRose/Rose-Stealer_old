@@ -5,7 +5,6 @@ __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
 
-
 try:
     import webbrowser
     import time
