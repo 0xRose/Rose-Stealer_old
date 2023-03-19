@@ -18,7 +18,8 @@ try:
 except:
     import subprocess
     requirements = ["requests", "beautifulsoup4", "PyQt5", "pypiwin32"]
-    subprocess.run(f"python -m pip install {requirements}")
+    for req in requirements:
+        subprocess.run(f"python -m pip install {req}")
 
 if platform.system() != "Windows":
     quit()
