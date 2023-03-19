@@ -68,7 +68,7 @@
 
 ## <a id="rose_rat"></a> 💀 〢 Rose RAT
 
-The rat is still under development. Instructions to use will be explained later
+The rat is still under development. Instructions to use will be explained later.
 You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
