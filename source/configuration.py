@@ -42,5 +42,8 @@ class Config:
     def get_name(self):
         return self.wh_name
     
+    def get_discord_rat(self):
+        return self.discord_rat
+    
     def get_discord_rat_link(self):
         return self.discord_rat_socket_link
