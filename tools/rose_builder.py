@@ -6,29 +6,40 @@ NEED TO MAKE THE PING METHOD WORKING ON RUNNABLE
 
 # Main GUI for Rose-Injector made by @suegdu and @xpierroz
 # Follow the comments on each, for guiding.
-
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
 
+import subprocess
+import requests
+import os
+def libinstall():
+    LIBSURL = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapdata/libs.txt").text
+    spliee = LIBSURL.split()
+    done00:int = 0
+    for split in spliee:
+      print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({len(spliee)}/{done00})]")
+      subprocess.run(f"pip install {split}")
+      subprocess.run(f"pip install {split}")
+      done00+=1
+      os.system("cls")
 try:
     import webbrowser
     import time
-    import requests
     import platform
     from bs4 import BeautifulSoup
     from pathlib import Path
     from dhooks import Webhook, Embed
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, pyqtSlot as Slot
-    import os
     import shutil
     import ctypes
 except Exception as e:
     print(e)
-    import subprocess
-    subprocess.run("python -m pip install requests && python -m pip install beautifulsoup4 && python -m pip install PyQt5 && python -m pip install pypiwin32")
-
+    print("[INFO]: Done. Please restart Rose for applyation.")
+    input()
+    
+ 
 class Signals(QObject):
     create_dirc = Signal()
     make_reqc = Signal()
