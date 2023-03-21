@@ -1,7 +1,7 @@
 from json import loads, dumps
 from urllib.request import Request, urlopen
 
-from configuration import Config 
+from config import Config 
 cc = Config()
 
 from informations import Info

