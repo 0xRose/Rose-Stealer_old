@@ -106,4 +106,4 @@ All Notable Changes will be noted soon
 ## 🧾 <a id="lisence"></a> License
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
-### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
+### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License 1980</a>
