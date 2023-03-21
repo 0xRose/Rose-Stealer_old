@@ -14,7 +14,7 @@ class Config:
         self.injection = False
         self.token_stealing = False
         self.cookie_stealing = False
-        self.password_stealing = True
+        self.password_stealing = False
         self.malicious_stealing = False
         self.location_stealing = False
         self.roblox_stealing = False
