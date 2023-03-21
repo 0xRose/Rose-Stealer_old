@@ -313,7 +313,7 @@ class Ui_MainWindow_vailB(object):
         self.B_github_gumb.setText(_translate("MainWindow_vailB", "Github"))
         self.groupBox.setTitle(_translate("MainWindow_vailB", "suegdu"))
         self.B_github_sue.setText(_translate("MainWindow_vailB", "Github"))
-        self.groupBox_3.setTitle(_translate("MainWindow_vailB", "ICExFS"))
+        self.groupBox_3.setTitle(_translate("MainWindow_vailB", "xpierroz"))
         self.B_github_ice.setText(_translate("MainWindow_vailB", "Github"))
         self.B_github_suvan.setText(_translate("MainWindow_vailB", "Github"))
         self.groupBox_9.setTitle(_translate("MainWindow_vailB", "suvan"))

@@ -1,12 +1,12 @@
-from configuration import Config 
+from config import Config 
 from dhooks import Webhook as web
 from dhooks import Embed
+from __webhook import _WebhookX
 cc = Config()
 
 class WebhookX():
     def __init__(self):
-        self.webhook = cc.get_webhook()
-        self.webx = web(self.webhook)
+        self.webx = _WebhookX().get_object()
         
     def locations_webhook(self, dictx):
         embed = Embed(

