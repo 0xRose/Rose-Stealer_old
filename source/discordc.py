@@ -13,7 +13,8 @@ class DiscordX(): #Updating soon
         if cc.get_debug_mode:
             print("Discord Init")
 
-    def GetUHQFriends(self, token):
+    @staticmethod
+    def GetUHQFriends(token):
         badgeList = [
             {
                 "Name": "Early_Verified_Bot_Developer",
@@ -98,7 +99,8 @@ class DiscordX(): #Updating soon
         return uhqlist
 
 
-    def GetBilling(self, token):
+    @staticmethod
+    def GetBilling(token):
         headers = {
             "Authorization":
             token,
@@ -131,7 +133,8 @@ class DiscordX(): #Updating soon
         return billing
 
 
-    def GetBadge(self, flags):
+    @staticmethod
+    def GetBadge(flags):
         if flags == 0:
             return ""
 
@@ -196,7 +199,8 @@ class DiscordX(): #Updating soon
         return OwnedBadges
 
 
-    def GetTokenInfo(self, token):
+    @staticmethod
+    def GetTokenInfo(token):
         headers = {
             "Authorization":
             token,
@@ -231,7 +235,8 @@ class DiscordX(): #Updating soon
         return username, hashtag, email, idd, pfp, flags, nitro, phone
 
 
-    def checkToken(self, token):
+    @staticmethod
+    def checkToken(token):
         headers = {
             "Authorization":
             token,

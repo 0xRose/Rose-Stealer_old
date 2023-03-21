@@ -40,7 +40,8 @@ class CommandHandler():
         self.webhook.send(file=file)
         os.remove(f"temp_{file_name}.png")
         
-    def messagebox(self, message):
+    @staticmethod
+    def messagebox(message):
         MB_YESNO = 0x04
         MB_HELP = 0x4000
         ICON_STOP = 0x10

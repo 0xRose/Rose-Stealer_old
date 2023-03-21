@@ -333,15 +333,20 @@ class Ui_MainWindow_vailB(object):
     def console_write(self,message):
         self.console_0.insertPlainText(f"{str(message)}\n")
     
-    def sueghub(self):
+    @staticmethod
+    def sueghub():
         webbrowser.open("https://github.com/suegdu")
-    def iceghub(self):
+    @staticmethod
+    def iceghub():
         webbrowser.open("https://github.com/xpierroz")
-    def gumghub(self):
+    @staticmethod
+    def gumghub():
         webbrowser.open("https://github.com/Gumbobrot")
-    def svnghub(self):
+    @staticmethod
+    def svnghub():
         webbrowser.open("https://github.com/suvan1911")
-    def github(self):
+    @staticmethod
+    def github():
         webbrowser.open(__repo__)
 
     def prorsload(self):
