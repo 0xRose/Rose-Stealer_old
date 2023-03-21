@@ -25,5 +25,6 @@ class Info():
         }
         return obj
     
-    def get_username(self):
+    @staticmethod
+    def get_username():
         return getpass.getuser()
