@@ -23,7 +23,7 @@
     <h1>
         The best Discord Grabber and Injector and RAT🔒
     </h1>
-    <strong>by <a href="https://github.com/ICExFS">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+    <strong><a href="https://discord.gg/GqfffnxYWc">Discord</a> | by <a href="https://github.com/ICExFS">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
