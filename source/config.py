@@ -3,7 +3,7 @@ class Config:
         self.eb_color = 16711680 # remove
         self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector/' # remove 
         self.debug_mode = True
-        self.webhook = 'https://canary.discord.com/api/webhooks/1085263125009412096/8EfRBw7DT-MbQ4BrJSKwZU9baDSE2C18i_F-10kDfU80pM-9A1YbIwFpMFjN2JFrNoSu'
+        self.webhook = 'HOOK'
         self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose0.jpg' # remove 
         self.wh_name = 'Rose-Injector' # remove
         self.discord_rat = False
