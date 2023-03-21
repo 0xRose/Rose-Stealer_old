@@ -1,0 +1,4 @@
+pypiwin32
+beautifulsoup4
+PyQt5
+requests
