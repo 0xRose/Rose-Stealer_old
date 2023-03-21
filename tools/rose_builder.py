@@ -478,10 +478,13 @@ class Ui_MainWindow_vailB(object):
             self.console_write("Error: No build name provided.")
             return
         
-        if self.CB_rat.isChecked() is True:
-            if self.LE_ratsserver.text() == str() or str(self.LE_ratsserver.text()).isspace():
-                self.console_write("Error: No RAT URL provided.")
-                return
+        if (
+            self.CB_rat.isChecked() is True
+            and self.LE_ratsserver.text() == str()
+            or str(self.LE_ratsserver.text()).isspace()
+        ):
+            self.console_write("Error: No RAT URL provided.")
+            return
         
         self.console_write("\nStarted building....\n")
         self.writesource()
