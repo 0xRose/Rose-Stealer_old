@@ -2,6 +2,7 @@ name: Trying workflow for Codecov
 on: [push]
 jobs:
   run:
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
