@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 import requests
 import codecs
@@ -11,7 +12,7 @@ if platform.system() == "Windows":
     pass
 else:
     # If not running on Windows, exit the program
-    quit()
+    sys.exit()
 
 subprocess.run("python -m pip install -r requirements.txt", shell=False)
 

