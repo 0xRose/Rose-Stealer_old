@@ -81,7 +81,7 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 -   PyPi requirements
 
 
-### <a id="setup"></a> ⚙️ Setup
+### <a id="setup"></a> ⚙️ 〢 Setup
 
 Don't forget that the project is still under development release and might contain bugs.
 
