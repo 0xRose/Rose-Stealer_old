@@ -62,12 +62,12 @@
 - `UI Integration`🟢
 - `Compiler (.exe)`🟢
 - `Make An Embebed Version`🟢
-- `Auto Update`🟡
+- `Auto Update`🟢
 - `Safe Mode For Testing Purposes`🔴
 - `Discord Injection`🟢
 - `MacOS Adaptation`🔴
-- `CHANGELOD.md file`🟡
-- `Bypass VirusTotal`🟡
+- `CHANGELOD.md file`🟢
+- `Bypass VirusTotal`🟣
 
 🟢 = Working  | 🟡 = To Do  | 🟣 = Working on it | 🔴 = Not Working
 

