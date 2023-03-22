@@ -12,10 +12,10 @@
     <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000"> 
     <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge"><img src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"></a>
     <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
+    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge"><img src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"></a>
 </div>
 <hr style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;" noshade="" size="20" width="100%">
 
