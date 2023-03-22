@@ -1,3 +1,4 @@
+<a id="top"></a>
 <h1 align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose0.jpg" width=300 weigth=400 alt="R"></a>
@@ -125,3 +126,5 @@ First Release
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
 
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
+
+<p align="center"><a href=#top>Back to Top</a></p>
