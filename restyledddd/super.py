@@ -2,12 +2,13 @@
 THIS IS A TEMP FILE THATS GONNA BE DELETED IN 10 MINUTES    
 """
 
+import os
+import subprocess
 import time
-from colorama import init, Fore
+
 import colorama
 import requests
-import subprocess
-import os
+from colorama import Fore, init
 
 os.system("cls")
 
