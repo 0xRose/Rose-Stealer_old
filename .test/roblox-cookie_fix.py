@@ -34,9 +34,8 @@ def LoadUrlib(hook, data="", files="", headers=""):
         if headers != "":
             r = urlopen(Request(hook, data=data, headers=headers))
             return r
-        else:
-            r = urlopen(Request(hook, data=data))
-            return r
+        r = urlopen(Request(hook, data=data))
+        return r
 
 
 def RobloxCookie(path, arg):
