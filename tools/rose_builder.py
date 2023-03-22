@@ -13,6 +13,7 @@ __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/to
 import subprocess
 import requests
 import os
+
 def libinstall():
     LIBSURL = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapdata/libs.txt").text
     spliee = LIBSURL.split()
@@ -23,6 +24,7 @@ def libinstall():
       subprocess.run(f"pip install {split}")
       done00+=1
       os.system("cls")
+      
 try:
     import webbrowser
     import time
@@ -34,10 +36,32 @@ try:
     from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, pyqtSlot as Slot
     import shutil
     import ctypes
-except Exception as e:
-    print(e)
+    
+except Exception:
+    libinstall()
     print("[INFO]: Done. Please restart Rose for applyation.")
     input()
+    
+def auto_update():
+    _code = (
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose_builder.py"
+    )
+    
+    code = requests.get(_code, timeout=10).text
+    with open(__file__, "r", encoding="utf-8") as f:
+        main_code = f.read()
+    if code != main_code:
+        f = ctypes.windll.user32.MessageBoxW(
+            0, 
+            "A new version has been detected.\nWould you like to automatically update?",
+            "Rose Injector",
+            4
+        )
+        if f == 6:
+            with open(__file__, "w", encoding="utf-8") as f:
+                f.write(code)
+            os.startfile(__file__)
+            os._exit(0)
     
  
 class Signals(QObject):
@@ -508,6 +532,7 @@ class Ui_MainWindow_vailB(object):
 
 if __name__ == "__main__":
     import sys
+    auto_update()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow_vailB = QtWidgets.QMainWindow()
     ui = Ui_MainWindow_vailB()
