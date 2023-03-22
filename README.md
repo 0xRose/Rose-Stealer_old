@@ -105,12 +105,12 @@ All Notable Changes will be noted soon
   <img src="https://contrib.rocks/image?repo=DamagingRose/Rose-Injector" />
 </a>
 
-## <a id="bugsorerrors"></a> ⚠️ Bugs Or Errors?
+## <a id="bugsorerrors"></a> ⚠️ 〢 Bugs Or Errors?
 
 -   To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 -   Or Join The **[Discord](https://discord.gg/CJpFKwSdyW)**
 
-## 🧾 <a id="lisence"></a> License
+## 🧾 <a id="lisence"></a> 〢 License
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
