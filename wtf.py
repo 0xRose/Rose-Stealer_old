@@ -1,11 +1,12 @@
-import sys
-import tkinter as tk
-import requests
 import codecs
 import os
-import subprocess
 import platform
+import subprocess
+import sys
+import tkinter as tk
 from tkinter import messagebox
+
+import requests
 
 if platform.system() == "Windows":
     # If running on Windows, do nothing and continue with the program
