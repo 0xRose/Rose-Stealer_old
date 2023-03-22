@@ -102,7 +102,7 @@ First Release
 
 * Created a UI compiler for the Rose Grabber
 * Made the first version of the RAT
-* 
+
 ## <a id="contributs"></a> 🥷 〢 Contributors 
 
 <a href="https://github.com/DamagingRose/Rose-Injector/graphs/contributors">
