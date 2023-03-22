@@ -98,7 +98,7 @@ Don't forget that the project is still under development release and might conta
 ## <a id="changelog"></a> 📚 〢 Changelog 
 
 ## [1.0.0] - 2023-03-21
-# First Release
+First Release
 
 * Created a UI compiler for the Rose Grabber
 * Made the first version of the RAT
