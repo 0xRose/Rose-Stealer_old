@@ -6,7 +6,8 @@ import __webhook
 import _file
 import requests
 from config import Config
-from dhooks import Embed, File
+from dhooks import Embed
+from dhooks import File
 
 cc = Config()
 
