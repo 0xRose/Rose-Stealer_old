@@ -485,10 +485,10 @@ def ZipThings(path, arg, procc):
         data = f.readlines()
         # print(data)
         found = False
-        for l in data:
-            if 'RememberPassword"\t\t"1"' in l:
+        for lp in data:
+            if 'RememberPassword"\t\t"1"' in lp:
                 found = True
-        if found == False:
+        if found is False:
             return
         name = arg
 
