@@ -12,7 +12,6 @@ from colorama import init
 
 os.system("cls")
 
-
 init(convert=True)
 
 
@@ -22,12 +21,8 @@ def program():
 
 def connect():
     URL = "Your Pastebin RAW URL here"
-    hwid = (
-        subprocess.check_output("wmic csproduct get uuid")
-        .decode()
-        .split("\n")[1]
-        .strip()
-    )
+    hwid = (subprocess.check_output("wmic csproduct get uuid").decode().split(
+        "\n")[1].strip())
 
     rq = requests.get(url)
 
