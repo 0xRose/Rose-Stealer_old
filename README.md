@@ -75,8 +75,10 @@ You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
 
 -   Windows 7/10/11
--   **[Python](https://www.python.org) (Is automatically being installed when running start.bat.)**
--   PyPi requirements **(Is automatically being installed when opening the builder through running start.bat.)**
+
+`Following requirements are being installed automatically.`
+-   **[Python](https://www.python.org)**
+-   PyPi requirements
 
 
 ### <a id="setup"></a> ⚙️ Setup
