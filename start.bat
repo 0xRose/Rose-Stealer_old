@@ -20,9 +20,5 @@ goto :EOF
 :PYTHON_DOES_EXIST
 for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
-echo Ready to start.
-pause
-echo CLOSING THIS WINDOW WILL ALSO EXIT THE BUILDER
-cd tools
-python rose_builder.py
+echo You can now run rose_builder.pyw from the tools folder.
 goto :EOF
