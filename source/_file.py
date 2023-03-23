@@ -1,8 +1,10 @@
-from tabulate import tabulate
-
+try:
+    from tabulate import tabulate
+except Exception:
+    import subprocess
+    subprocess.run('python -m pip install tabulate')
 
 class FileX:
-
     def table_wifi(self, data):
         listx = [["SSID", "Password"]]
 
