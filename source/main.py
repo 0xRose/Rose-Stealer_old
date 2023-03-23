@@ -46,7 +46,7 @@ except Exception:
         "discord",
         "dhooks",
         "browser_cookie3",
-        "socketio",
+        "python-socketio",
     ]
     command = " ".join([
         f"python -m pip install {requirement} &&"
