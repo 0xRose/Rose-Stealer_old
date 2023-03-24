@@ -10,7 +10,8 @@ import random
 import pyttsx3
 import string
 import ctypes
-import osfrom datetime import datetime
+import os
+from datetime import datetime
 import subprocess
 import io
 from dhooks import Webhook as web
