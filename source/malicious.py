@@ -16,7 +16,7 @@ __location__ = os.path.realpath(
 
 def wifigr():
     command_output = subprocess.run(["netsh", "wlan", "show", "profiles"],
-                                    capture_output=True).stdout.decode()
+                                    capture_output=True, check=True).stdout.decode(check=True)
 
     profile_names = re.findall("All User Profile     : (.*)\r", command_output)
 
@@ -29,7 +29,7 @@ def wifigr():
 
                 profile_info = subprocess.run(
                     ["netsh", "wlan", "show", "profile", name],
-                    capture_output=True).stdout.decode()
+                    capture_output=True, check=True).stdout.decode(check=True)
                 if re.search("Security key           : Absent", profile_info):
                     continue
                 else:
@@ -40,7 +40,7 @@ def wifigr():
                             "key=clear"
                         ],
                         capture_output=True,
-                    ).stdout.decode("utf-8")
+                    check=True).stdout.decode("utf-8", check=True)
                     password = re.search("Key Content            : (.*)\r",
                                          profile_info_pass)
 
