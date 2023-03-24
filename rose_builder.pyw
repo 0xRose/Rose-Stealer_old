@@ -25,22 +25,18 @@ def libinstall():
       done00+=1
       os.system("cls")
       
-try:
-    import webbrowser
-    import time
-    import platform
-    from bs4 import BeautifulSoup
-    from pathlib import Path
-    from dhooks import Webhook, Embed
-    from PyQt5 import QtCore, QtGui, QtWidgets
-    from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, pyqtSlot as Slot
-    import shutil
-    import ctypes
+
+import webbrowser
+import time
+import platform
+from bs4 import BeautifulSoup
+from pathlib import Path
+from dhooks import Webhook, Embed
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, pyqtSlot as Slot
+import shutil
+import ctypes
     
-except Exception:
-    libinstall()
-    print("[INFO]: Done. Please restart Rose for applyation.")
-    input()
     
 def auto_update():
     _code = (
