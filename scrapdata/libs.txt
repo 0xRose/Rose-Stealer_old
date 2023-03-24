@@ -9,3 +9,4 @@ python-socketio
 flaskwebgui
 nicegui
 datetime
+opencv-python
