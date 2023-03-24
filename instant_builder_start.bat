@@ -29,11 +29,11 @@ goto :CHOICE
 
 :NOW
 echo Starting the builder now...
-python3 Rose_builder.pyw
+python3 rose_builder.pyw
 echo WARNING | Closing this results that the Builder is also being exited.
 
 :MANUALLY
-echo Okay, the builder is called Rose_builder.pyw. Press ENTER to exit.
+echo Okay, the builder is called rose_builder.pyw. Press ENTER to exit.
 pause
 exit
 goto :EOF
