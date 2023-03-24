@@ -20,6 +20,20 @@ goto :EOF
 :PYTHON_DOES_EXIST
 for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
-echo You can now run rose_builder.pyw from the tools folder.
+
+:CHOICE
+set /P c=Do you want to start the Rose Builder NOW or run it MANUALLY from the current directory? [N/M]
+if /I "%c%" EQU "N" goto :NOW
+if /I "%c%" EQU "M" goto :MANUALLY
+goto :CHOICE
+
+:NOW
+echo Starting the builder now...
+python3 Rose_builder.pyw
+echo WARNING | Closing this results that the Builder is also being exited.
+
+:MANUALLY
+echo Okay, the builder is called Rose_builder.pyw. Press ENTER to exit.
 pause
+exit
 goto :EOF
