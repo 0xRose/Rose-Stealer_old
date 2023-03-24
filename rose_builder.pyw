@@ -186,7 +186,7 @@ class Ui_MainWindow_vailB(object):
         MainWindow_vailB.setObjectName("MainWindow_vailB")
         MainWindow_vailB.resize(741, 420)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./rose.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off) # Will check for the icon within the current running directory. If not then it will be the default Windows executable icon. -suegdu
+        icon.addPixmap(QtGui.QPixmap("./tools/rose.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off) # Will check for the icon within the current running directory. If not then it will be the default Windows executable icon. -suegdu
         MainWindow_vailB.setWindowIcon(icon)
         MainWindow_vailB.setStatusTip("")
         self.centralwidget = QtWidgets.QWidget(MainWindow_vailB)

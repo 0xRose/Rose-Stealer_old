@@ -5,3 +5,6 @@ requests
 rich
 dhooks
 pyinstaller
+python-socketio
+flaskwebgui
+nicegui

