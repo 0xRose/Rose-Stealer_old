@@ -10,7 +10,7 @@ goto :EOF
 :PYTHON_DOES_NOT_EXIST
 echo Python is not installed on your system.
 echo Running the installer now. Please install and then restart this terminal.
-echo DONT FORGET TO ADD IT TO PATH. OPENED IMAGE IN YOUR BROWSER.
+echo DONT FORGET TO ADD IT TO PATH. OPENED TUTORIAL IMAGE IN YOUR BROWSER.
 start https://imgur.com/a/KSG2G88
 pause
 cd tools
@@ -21,4 +21,5 @@ goto :EOF
 for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
 echo You can now run rose_builder.pyw from the tools folder.
+pause
 goto :EOF
