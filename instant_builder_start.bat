@@ -22,7 +22,7 @@ for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
 
 :CHOICE
-set /P c=Do you want to start the Rose Builder NOW or run it MANUALLY from the current directory? [N/Y]
+set /P c=Do you want to start the Rose Builder NOW or run it MANUALLY from the current directory? [N/M]
 if /I "%c%" EQU "N" goto :NOW
 if /I "%c%" EQU "M" goto :MANUALLY
 goto :CHOICE
