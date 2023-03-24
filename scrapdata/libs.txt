@@ -8,3 +8,4 @@ pyinstaller
 python-socketio
 flaskwebgui
 nicegui
+datetime
