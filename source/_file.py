@@ -2,7 +2,7 @@ try:
     from tabulate import tabulate
 except Exception:
     import subprocess
-    subprocess.run('python -m pip install tabulate')
+    subprocess.run('python -m pip install tabulate', check=True)
 
 class FileX:
     def table_wifi(self, data):
