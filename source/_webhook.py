@@ -7,7 +7,7 @@ cc = Config()
 class WebhookX():
     def __init__(self):
         self.webx = _WebhookX().get_object()
-        
+
     def locations_webhook(self, dictx):
         embed = Embed(
             description='Location Infos:',
@@ -18,10 +18,10 @@ class WebhookX():
 
         embed.set_author(name=cc.get_name(), icon_url=cc.get_avatar())
         embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
-        
+
         for j in dictx:
             print(j)
             zvalue = dictx[j]
             embed.add_field(name=j, value=f'`{zvalue}`')
-            
+
         self.webx.send(embed=embed)

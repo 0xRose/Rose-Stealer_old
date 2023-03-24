@@ -6,10 +6,10 @@ from urllib.request import Request, urlopen
 class Info():
     def __init__(self):
         self.ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
-        
+
     def get_ip(self):
         return self.ip
-        
+
     def global_info(self):
         ipdatanojson = (urlopen(Request(
             f"https://geolocation-db.com/jsonp/{self.ip}")).read().decode().replace(
@@ -24,7 +24,7 @@ class Info():
             "State": ipdata["state"]
         }
         return obj
-    
+
     @staticmethod
     def get_username():
         return getpass.getuser()
