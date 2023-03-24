@@ -1,6 +1,6 @@
 class Config:
     def __init__(self):
-        self.webhook = 'HOOK'
+        self.webhook = 'WEBHOOK_URL'
         self.vm_detect_webhook = 'VMHOOK'
         
         self.debug_mode = True
@@ -73,9 +73,6 @@ class Config:
     
     def get_discord_ping(self):
         return self.discord_ping
-    
-    def get_roblox_stealing(self):
-        return self.roblox_stealing
     
     def get_vm_detect_webhook(self):
         return self.vm_detect_webhook

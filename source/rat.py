@@ -21,6 +21,7 @@ try:
 except Exception:
     import subprocess
     subprocess.run("python -m pip install python-socketio && python -m pip install pynput && python -m pip install pyttsx3 && python -m pip install datetime", shell=True)
+
 sio = socketio.Client()
 
 

