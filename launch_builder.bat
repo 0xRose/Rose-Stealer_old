@@ -30,6 +30,10 @@ echo DONT FORGET TO ADD IT TO PATH. OPENED TUTORIAL IMAGE IN YOUR BROWSER.
 start https://imgur.com/a/KSG2G88
 pause
 python-installer.exe
+echo Deleting the installer now.
+echo WARNING | ONLY CONTINUE IF THE INSTALLATION IS COMPLETED.
+taskkill /f /im python-installer.exe
+del /P python-installer.exe
 goto :EOF
 
 :MANUALLY1
