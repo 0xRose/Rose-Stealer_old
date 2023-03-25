@@ -3,7 +3,6 @@ CREDITS TO EXUNYS
 """
 
 import threading 
-from urllib.request import Request, urlopen
 import requests
 import browser_cookie3
 from config import Config

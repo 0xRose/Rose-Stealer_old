@@ -14,3 +14,5 @@ pyttsx3
 pynput
 browser_cookie3
 crypto
+tabulate
+Pillow

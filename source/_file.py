@@ -1,8 +1,4 @@
-try:
-    from tabulate import tabulate
-except Exception:
-    import subprocess
-    subprocess.run('python -m pip install tabulate')
+from tabulate import tabulate
 
 class FileX:
     def table_wifi(self, data):

