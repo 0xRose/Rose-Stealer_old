@@ -216,11 +216,11 @@ def _makebuild():
 
 def _home():
     with ui.column():
-        with ui.expansion('Infos', icon='star_rate').classes('w-full'):
-            ui.input(label='WebHook URL', placeholder='Rose on top baby',
-                    on_change=lambda e: change_wehookurl(e.value)).props('inline color=pink-3')
-            ui.input(label='Build Name', placeholder='Rose on top baby',
-                    on_change=lambda e: change_buildname(e.value)).props('inline color=pink-3')
+        #with ui.expansion('Infos', icon='star_rate').classes('w-full'):
+        ui.input(label='WebHook URL', placeholder='Rose on top baby',
+                on_change=lambda e: change_wehookurl(e.value)).props('inline color=pink-3').classes('w-full')
+        ui.input(label='Build Name', placeholder='Rose on top baby',
+                on_change=lambda e: change_buildname(e.value)).props('inline color=pink-3').classes('w-full')
         ui.button('Test WebHook', on_click=_test_webhook).props("icon=code color=purple-11").classes('w-full')
         ui.button('Build', on_click=_makebuild).props("icon=build color=pink-3").classes('w-full')
         #ui.button('Testing', on_click=lambda e: s.visible(True)).props("icon=build color=amber-7").classes('w-full')
@@ -296,7 +296,7 @@ ui.colors(primary='#333')
 def superhome():
     ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png').style(
         'position: absolute; top: 3px; left: 575px; width: 90px;'
-        )
+        )        
 
 
 
