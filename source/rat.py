@@ -3,7 +3,6 @@ from __webhook import _WebhookX
 from informations import Info
 cc = Config()
 ii = Info()
-
 import socketio
 import cv2
 import random
@@ -18,7 +17,6 @@ from dhooks import Webhook as web
 from dhooks import Embed, File
 from PIL import ImageGrab
 from pynput.keyboard import Key, Controller
-
 sio = socketio.Client()
 
 
