@@ -155,7 +155,7 @@ class Runnable_wf(QRunnable):
                 f.write(new)
                 
     def compile(self):
-        os.system(f'pyinstaller --noconfirm --onefile --windowed  "{self.path}/main.py"')
+        os.system(f'pyinstaller --noconsole --onefile "{self.path}/main.py"')
         
     def move_dir(self): 
         shutil.move(f"dist\\main.exe", f"{self.dir_name}.exe")
