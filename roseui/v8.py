@@ -201,6 +201,8 @@ def _home():
                     on_change=lambda e: change_buildname(e.value)).props('inline color=pink-3')
         ui.button('Test WebHook', on_click=_test_webhook).props("icon=code color=purple-11").classes('w-full')
         ui.button('Build', on_click=_makebuild).props("icon=build color=pink-3").classes('w-full')
+        #ui.button('Testing', on_click=lambda e: s.visible(True)).props("icon=build color=amber-7").classes('w-full')
+        #s = ui.spinner(size='lg').props('visible=false')
 
 def _functions():
     with ui.column():
@@ -239,31 +241,31 @@ def _github():
                     ui.label("xpierroz").classes("text-h6")
                     ui.markdown('<em>- "GUMBO MAKE A FUCKING PR"</em>').classes("text-subtitle5")
                     with ui.row():
-                        ui.button("GitHub", on_click=psocials.open_xpierroz)
                         #ui.label(" ") # Because the button are so sticked together without (sex button) - xpierroz 03/24
-                        ui.button("Instagram", on_click=psocials.open_xpierroz_insta)
+                        ui.button(on_click=psocials.open_xpierroz).props("round icon=code color=blue-11")
+                        ui.button(on_click=psocials.open_xpierroz_insta).props("round icon=star_rate color=amber-8")
 
                 with ui.card_section():
                     ui.label("Gumbobrot").classes("text-h6")
                     ui.markdown('<em>- "buddy it\'s not my fault"</em>').classes("text-subtitle5")
-                    ui.button("GitHub", on_click=psocials.open_gumbobrot)
+                    ui.button(on_click=psocials.open_gumbobrot).props("round icon=code color=blue-11")
 
             with ui.row():               
                 with ui.card_section():
                     ui.label("suegdu").classes("text-h6")
                     ui.markdown('<em>- "bruh"</em>').classes("text-subtitle5")
-                    ui.button("GitHub", on_click=psocials.open_suegdu)
+                    ui.button(on_click=psocials.open_suegdu).props("round icon=code color=blue-11")
 
                 with ui.card_section():
                     ui.label("svn").classes("text-h6")
                     ui.markdown('<em>*svn died*</em>').classes("text-subtitle5")
-                    ui.button("GitHub", on_click=psocials.open_svn)
+                    ui.button(on_click=psocials.open_svn).props("round icon=code color=blue-11")
     with ui.card():
         with ui.card_section():
             with ui.row():
                 ui.label(f"Rose {__version__}").classes("text-h6")
-                ui.button("GitHub", on_click=psocials.open_rose_github)
-                ui.button("Discord", on_click=psocials.open_rose_discord)
+                ui.button(on_click=psocials.open_rose_github).props("round icon=code color=blue-11")
+                ui.button(on_click=psocials.open_rose_discord).props("round icon=unsubscribe color=indigo-12")
 
 
 ui.colors(primary='#333')
