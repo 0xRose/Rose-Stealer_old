@@ -80,8 +80,7 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 
 ## <a id="rose_rat"></a> 💀 〢 Rose RAT
 
-The rat is still under development. Instructions to use will be explained later.
-You can check [this](https://github.com/DamagingRose/Rose-RAT) for informations
+To use the rat, check [this](https://github.com/DamagingRose/Rose-RAT)
 
 ### <a id="prerequisites"></a> 💻 〢 Prerequisites
 
