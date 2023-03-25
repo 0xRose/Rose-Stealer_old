@@ -1,6 +1,5 @@
-from json import loads
 import getpass
-
+from json import loads
 from urllib.request import Request, urlopen
 
 class Info():
