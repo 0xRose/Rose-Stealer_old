@@ -2,7 +2,7 @@ import requests
 import time
 
 def uploadToAnonfiles(path):
-    for x in range(10): #Makes 10 tries to upload because gofile ratelimit is RAHHHHH
+    for x in range(10):
         try:
             rr = requests.post(
                 f'https://{requests.get("https://api.gofile.io/getServer").json()["data"]["server"]}.gofile.io/uploadFile',
@@ -14,4 +14,4 @@ def uploadToAnonfiles(path):
         except Exception as e:
             print(f'Advanced Eror: {e}')
             time.sleep(2)
-    return False #If nothing worked we'll just return false 
+    return False
