@@ -13,10 +13,12 @@ from bs4 import BeautifulSoup
 import shutil 
 from pathlib import Path
 import subprocess
+import ctypes
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png'
 __version__ = '1.0'
+__debugm__ = True
 
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/msg.txt").text.splitlines()[0].split(" - ")
 
@@ -36,6 +38,30 @@ xwehookurl = ""
 xbuildname = ""
 
 xprogressvalue = False
+
+def auto_update():
+    if __debugm__:
+        return 
+    
+    _code = (
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.py"
+    )
+    
+    code = requests.get(_code, timeout=10).text
+    with open(__file__, "r", encoding="utf-8") as f:
+        main_code = f.read()
+    if code != main_code:
+        f = ctypes.windll.user32.MessageBoxW(
+            0, 
+            "A new version has been detected.\nWould you like to automatically update?",
+            "Rose Injector",
+            4
+        )
+        if f == 6:
+            with open(__file__, "w", encoding="utf-8") as f:
+                f.write(code)
+            os.startfile(__file__)
+            os._exit(0)
 
 
 def change_startups():
@@ -188,10 +214,6 @@ def _makebuild():
     ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
     __build()
 
-class Demo:
-    def __init__(self):
-        self.number = xprogressvalue
-
 def _home():
     with ui.column():
         with ui.expansion('Infos', icon='star_rate').classes('w-full'):
@@ -304,6 +326,7 @@ def start_nicegui(**kwargs):
 if __name__ in {"__main__", "__mp_main__"}:
     DEBUG = False
 
+    auto_update()
     if DEBUG:
         ui.run()
     else:
