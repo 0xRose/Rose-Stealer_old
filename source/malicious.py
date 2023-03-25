@@ -16,7 +16,7 @@ __location__ = os.path.realpath(
 
 def wifigr():
     command_output = subprocess.run(["netsh", "wlan", "show", "profiles"],
-                                    capture_output=True, check=True).stdout.decode(check=True)
+                                    capture_output=True, check=True).stdout.decode("utf-8")
 
     profile_names = re.findall("All User Profile     : (.*)\r", command_output)
 
