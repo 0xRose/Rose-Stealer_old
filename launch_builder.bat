@@ -32,6 +32,7 @@ pause
 python-installer.exe
 echo Deleting the installer now.
 echo WARNING | ONLY CONTINUE IF THE INSTALLATION IS COMPLETED.
+pause
 taskkill /f /im python-installer.exe
 del /P python-installer.exe
 goto :EOF
@@ -53,7 +54,7 @@ goto :EOF
 echo Starting the builder now...
 cd tools
 python rose_builder.pyw
-echo WARNING | Closing this results that the builder is also being exited.
+echo WARNING | The result of closing this terminal is that the builder is also being exited.
 goto :EOF
 
 :MANUALLY2
