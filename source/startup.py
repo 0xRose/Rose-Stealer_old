@@ -23,5 +23,3 @@ class StartUp():
                 shutil.copy(argv[0], common_startup_loc)
             except Exception:
                 pass
-            
-StartUp
