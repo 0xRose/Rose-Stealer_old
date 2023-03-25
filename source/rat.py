@@ -44,7 +44,7 @@ class CommandHandler():
 
     def shell(self, instruction):
         def _shell():
-            output = subprocess.run(instruction, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE, check=True)
+            output = subprocess.run(instruction, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
             return output
 
         try:    
