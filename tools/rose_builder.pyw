@@ -19,7 +19,7 @@ def requirementsinstallation():
     spliee = requirementsurl.split()
     done00:int = 0
     for split in spliee:
-      print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({len(spliee)}/{done00})]")
+      print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({done00}/{len(spliee)})]")
       subprocess.run(f"python -m pip install {split}", shell=True, check=True)
       subprocess.run(f"python -m pip install {split}", shell=True, check=True)
       done00+=1
