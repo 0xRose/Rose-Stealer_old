@@ -13,12 +13,6 @@ goto :CHOICE1
 :PYTHON_DOES_EXIST
 for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
-goto :INSTALL_REQUIREMENTS
-
-:INSTALL_REQUIREMENTS
-echo Installing requirements...
-cd scrapedata
-python -m pip install -r requirements.txt
 goto :CHOICE2
 
 :CHOICE1
@@ -29,7 +23,7 @@ if /I "%c%" EQU "M" goto :MANUALLY1
 :NOW1
 cd tools
 curl -o python-installer.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
-echo Running the installer now. PLEASE INSTALL.
+echo Running the installer now. PLEASE INSTALL AND THEN RESTART THIS TERMINAL.
 echo DONT FORGET TO ADD IT TO PATH. OPENED TUTORIAL IMAGE IN YOUR BROWSER.
 start https://imgur.com/a/KSG2G88
 pause
@@ -39,8 +33,6 @@ echo WARNING | ONLY CONTINUE IF THE INSTALLATION IS COMPLETED.
 pause
 taskkill /f /im python-installer.exe
 del /P python-installer.exe
-cd ..
-goto :INSTALL_REQUIREMENTS
 
 :MANUALLY1
 echo Okay, the download link is being opened in your browser. [https://www.python.org/downloads] Press ENTER to exit.
