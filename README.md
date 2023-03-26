@@ -56,8 +56,7 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 
 ## <a id="features"></a> 🔰 〢 Features
 
-- `Logs Token`🟢
-- `Logs Account Info`🟢
+- `Logs Discord Token and Discord Account Info`🟢
 - `Logs PC Info and IP`🟢
 - `Logs Browser Passwords`🟢
 - `Logs Browser Cookies`🟢
