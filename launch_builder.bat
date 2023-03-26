@@ -13,6 +13,12 @@ goto :CHOICE1
 :PYTHON_DOES_EXIST
 for /f "delims=" %%V in ('python -V') do @set ver=%%V
 echo Looks good, %ver% is installed...
+goto :INSTALL_REQUIREMENTS
+
+:INSTALL_REQUIREMENTS
+echo Installing requirements...
+cd scrapedata
+python -m pip install -r requirements.txt
 goto :CHOICE2
 
 :CHOICE1
