@@ -10,19 +10,19 @@ def requirementsinstallation():
     try:
         import requests
         import os
+        import subprocess
     except Exception:
-        import os
-        os.system("python -m pip install requests")
+        import subprocess
+        subprocess.run("python -m pip install requests", shell=True)
     
     requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
     spliee = requirementsurl.split()
     done00:int = 0
     for split in spliee:
       print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({done00}/{len(spliee)})]")
-      os.system(f"python -m pip install {split}")
-      os.system(f"python -m pip install {split}")
+      subprocess.run(f"python -m pip install {split}", shell=True)
       done00+=1
-      os.system("cls")
+      subprocess.run("cls", shell=True)
 
 
 requirementsinstallation()
