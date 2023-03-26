@@ -68,9 +68,9 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 - `Discord RAT (We are still adding features and it is in Developer Mode but it can be used!)`🟣
 - `UI with Qt5`🟢
 - `UI Integration`🟢
-- `Compiler that creates an EXE File for you.`🟢
+- `Compiler that creates an EXE File for you`🟢
 - `Make An Embebed Version`🟢
-- `When we update our Code, yours will be automatically updated too.`🟢
+- `When we update our Code, your Code will be automatically updated too`🟢
 - `Safe Mode For Testing Purposes`🔴
 - `MacOS Adaptation`🔴
 - `CHANGELOG.md file`🟢
