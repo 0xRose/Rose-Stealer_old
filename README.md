@@ -56,25 +56,27 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 
 ## <a id="features"></a> 🔰 〢 Features
 
-- `Logs Token, Pc Info, Account Info and IP`🟢
-- `Logs passwords`🟢
-- `Logs cookies`🟢
-- `Wifi names and passwords logs`🟢
-- `Roblox logs`🟢
-- `Logs Screenshot and locations info`🟢
-- `Start up integration`🟣
-- `JS Injector on startup/actions`🟢
-- `Discord RAT`🟣 (still in development but can be used)
+- `Logs Token`🟢
+- `Logs Account Info`🟢
+- `Logs PC Info and IP`🟢
+- `Logs Browser Passwords`🟢
+- `Logs Browser Cookies`🟢
+- `Logs WiFi Names and WiFi Passwords`🟢
+- `Logs Roblox Account Data and Login Cookie`🟢
+- `Sends you the Victim's Location and Desktop Screenshot`🟢
+- `After running the stub the file will be copied to shell:startup (Start Up integration)`🟢
+- `JavaScript Injector that modifies the Discord data and new Discord Passwords, Names, Emails, Phone Numbers, successfully purchased Nitro Codes will be sent to your Webhook`🟢
+- `Discord RAT (We are still adding features and it is in Developer Mode but it can be used!)`🟣
 - `UI with Qt5`🟢
 - `UI Integration`🟢
-- `Compiler (.exe)`🟢
+- `Compiler that creates an EXE File for you.`🟢
 - `Make An Embebed Version`🟢
-- `Auto Update`🟢
+- `When we update our Code, yours will be automatically updated too.`🟢
 - `Safe Mode For Testing Purposes`🔴
-- `Discord Injection`🟢
 - `MacOS Adaptation`🔴
-- `CHANGELOD.md file`🟢
-- `Bypass VirusTotal`🟣
+- `CHANGELOG.md file`🟢
+- `VirusTotal/VM Bypass/Blacklist`🟣
+- `Bypass/Disable Windows Defender/Firewalls`🟣
 
 🟢 = Working | 🟡 = To Do | 🟣 = Working on it | 🔴 = Not Working
 
