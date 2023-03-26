@@ -1,14 +1,14 @@
-import os
-import re
-import subprocess
-
 import __webhook
 import _file
 from config import Config
 from dhooks import Embed
 from dhooks import File
-
 cc = Config()
+
+import os
+import re
+import subprocess
+
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))

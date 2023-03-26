@@ -1,7 +1,3 @@
-"""
-CREDITS TO EXUNYS
-"""
-
 import threading 
 import requests
 import browser_cookie3
