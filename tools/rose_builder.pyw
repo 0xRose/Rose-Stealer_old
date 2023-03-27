@@ -9,8 +9,8 @@ __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/to
 def requirementsinstallation():
     try:
         import requests
-        import subprocess
         import os
+        import subprocess
     except Exception:
         import subprocess
         subprocess.run("python -m pip install requests", shell=True, check=True)
@@ -21,9 +21,8 @@ def requirementsinstallation():
     for split in spliee:
       print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({done00}/{len(spliee)})]")
       subprocess.run(f"python -m pip install {split}", shell=True, check=True)
-      subprocess.run(f"python -m pip install {split}", shell=True, check=True)
       done00+=1
-      os.system("cls")
+      subprocess.run("cls", shell=True, check=True)
 
 
 requirementsinstallation()
