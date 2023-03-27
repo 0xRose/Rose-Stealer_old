@@ -1,4 +1,4 @@
-@echo off & title %~nx0 & color 0C
+@echo off & title %~nx0 & color 7c
 
 goto :DOES_PYTHON_EXIST
 
@@ -33,6 +33,17 @@ echo WARNING | ONLY CONTINUE IF THE INSTALLATION IS COMPLETED.
 pause
 taskkill /f /im python-installer.exe
 del /P python-installer.exe
+set /P c=Do you want to continue? Better restart this file to make sure every instance of Python will work correct. [R=RECOMMENDED/S=STILL CONTINUE]
+if /I "%c%" EQU "R" goto :CLOSE_RECOMMENDED
+if /I "%c%" EQU "S" goto :STILL_CONTINUE
+
+:CLOSE_RECOMMENDED
+echo Okay, we can close this. Restart this terminal to open up the builder.
+pause
+exit
+
+:STILL_CONTINUE
+goto :CHOICE2
 
 :MANUALLY1
 echo Okay, the download link is being opened in your browser. [https://www.python.org/downloads] Press ENTER to exit.
@@ -41,17 +52,28 @@ pause
 exit
 
 :CHOICE2
-set /P c=Do you want to start the Rose builder NOW or run it MANUALLY from the tools directory? [N/M] 
+set /P c=Do you want to start the Rose builder NOW or run it MANUALLY from the tools/roseui directory? [N/M] 
 if /I "%c%" EQU "N" goto :NOW2
 if /I "%c%" EQU "M" goto :MANUALLY2
 
 :NOW2
-echo Starting the builder now...
-cd tools
-python rose_builder.pyw
-echo WARNING | Closing this results that the builder is also being exited.
+set /P c=Do you want to start the NEW Rose builder or the OLD Rose builder? [N/O] 
+if /I "%c%" EQU "N" goto :NEW
+if /I "%c%" EQU "O" goto :OLD
 
 :MANUALLY2
-echo Okay, the builder is called rose_builder.pyw and is located in the tools folder. Press ENTER to exit.
+echo Okay, the old builder is called rose_builder__no_console__.pyw and is located in the current folder. The new builder is called v8__no_console__.pyw and is also located in the current folder. Press ENTER to exit.
 pause
 exit
+
+:NEW
+echo Starting the new builder now...
+echo WARNING | The result of closing this terminal is that the builder is also being exited.
+cd roseui
+python v8.py
+
+:OLD
+echo Starting the old builder now...
+echo WARNING | The result of closing this terminal is that the builder is also being exited.
+cd tools
+python rose_builder.py
