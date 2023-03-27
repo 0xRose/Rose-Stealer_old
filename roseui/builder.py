@@ -93,15 +93,13 @@ class _Builder():
                 f.write(new)
 
     def compile(self):
-        os.system(f'pyinstaller --noconfirm --onefile --windowed  "{self.path}/main.py"')
+        os.system(f'pyinstaller --noconsole --onefile "{self.path}/main.py"')
 
     def move_dir(self): 
         shutil.move("dist\\main.exe", f"{self.dir_name}.exe")
         shutil.rmtree('build')
         shutil.rmtree('dist')
         os.remove("main.spec")
-
-
 
     def run(self):
         try:
