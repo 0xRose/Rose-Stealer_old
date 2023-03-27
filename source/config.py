@@ -20,6 +20,7 @@ class Config:
         self.start_up = False
         self.fake_error = False
         self.nitro_auto_buy = False
+        self.disable_windows_defender = False
         
         self.eb_color = 16711680
         self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector'
@@ -88,3 +89,6 @@ class Config:
     
     def get_nitro_auto_buy(self):
         return self.nitro_auto_buy
+    
+    def get_disable_windows_defender(self):
+        return self.disable_windows_defender
