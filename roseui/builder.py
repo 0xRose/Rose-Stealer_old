@@ -93,7 +93,8 @@ class _Builder():
                 f.write(new)
 
     def compile(self):
-        os.system(f'pyinstaller --noconsole --onefile "{self.path}/main.py"')
+        cwd = os.getcwd()
+        os.system(f'pyinstaller "{self.path}/main.py" --upx-dir={cwd} --noconsole --onefile')
 
     def move_dir(self): 
         shutil.move("dist\\main.exe", f"{self.dir_name}.exe")
