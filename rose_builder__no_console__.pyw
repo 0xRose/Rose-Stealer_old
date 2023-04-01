@@ -134,8 +134,7 @@ class Runnable_wf(QRunnable):
                 f.write(new)
                 
     def compile(self):
-        cwd = os.getcwd()
-        os.system(f'pyinstaller "{self.path}/main.py" --upx-dir={cwd} --noconsole --onefile')
+        os.system(f'pyinstaller "{self.path}/main.py" --noconsole --onefile')
         
     def move_dir(self): 
         shutil.move(f"dist\\main.exe", f"{self.dir_name}.exe")
