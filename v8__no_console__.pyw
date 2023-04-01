@@ -1,26 +1,6 @@
 import tkinter
 from tkinter import messagebox
 
-tkinter.messagebox.showinfo(title="Requirements!", message="We are installing all the requirements/prerequisites in the background now. This can take a few minutes to complete.", )
-
-def requirementsinstallation():
-    try:
-        import requests
-    except Exception:
-        import subprocess
-        subprocess.run("python -m pip install requests", shell=True)
-
-    import requests
-    import subprocess
-    import os
-    
-    requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
-    spliee = requirementsurl.split()
-    for split in spliee:
-        subprocess.run(f"python -m pip install {split}", shell=True)
-
-requirementsinstallation()
-
 import sys, os
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
