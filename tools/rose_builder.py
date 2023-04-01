@@ -4,31 +4,6 @@
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
-
-
-def requirementsinstallation():
-    try:
-        import requests
-    except Exception:
-        import subprocess
-        subprocess.run("python -m pip install requests", shell=True)
-
-    import requests
-    import subprocess
-    import os
-    
-    requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
-    spliee = requirementsurl.split()
-    done00:int = 0
-    for split in spliee:
-        os.system("color 7c")
-        print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({done00}/{len(spliee)})]\n")
-        subprocess.run(f"python -m pip install {split}", shell=True)
-        done00+=1
-        subprocess.run("cls", shell=True)
-
-requirementsinstallation()
-
     
 import requests
 import os
@@ -156,7 +131,8 @@ class Runnable_wf(QRunnable):
                 f.write(new)
                 
     def compile(self):
-        os.system(f'pyinstaller --noconsole --onefile "{self.path}/main.py"')
+        cwd = os.getcwd()
+        os.system(f'pyinstaller "{self.path}/main.py" --upx-dir={cwd} --noconsole --onefile')
         
     def move_dir(self): 
         shutil.move(f"dist\\main.exe", f"{self.dir_name}.exe")
