@@ -21,7 +21,7 @@ from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, 
     
 def auto_update():
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose_builder.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose_builder.py"
     )
     
     code = requests.get(_code, timeout=10).text
