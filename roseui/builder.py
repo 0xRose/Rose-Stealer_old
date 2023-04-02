@@ -20,7 +20,7 @@ async def test_webhook(webhook_url):
                 timestamp="now"
             )
             embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, S1LKT0UCH, svn", icon_url=__icon__)
             await hook.send(embed=embed)
         return 0
     except Exception as e:
