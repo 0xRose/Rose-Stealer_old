@@ -7,7 +7,7 @@ def open_xpierroz_insta():
     webbrowser.open("https://www.instagram.com/_p.slm/")
 
 def open_gumbobrot():
-    webbrowser.open("https://github.com/gumbobrot")
+    webbrowser.open("https://github.com/S1LKT0UCH")
 
 def open_suegdu():
     webbrowser.open("https://github.com/suegdu")
