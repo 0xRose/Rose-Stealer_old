@@ -1,3 +1,6 @@
+# Modified by S1LKT0UCH#4888, but created by Smug246, so credits to him. :)
+# https://github.com/Smug246
+
 from config import Config
 cc = Config()
 import requests 
