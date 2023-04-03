@@ -126,6 +126,17 @@ First Release
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/CJpFKwSdyW)**
 
+## <a id="credits"></a> ⭐ 〢 Credits
+
+### They all worked with me but I got too annoying and I don't know how to code as a Team.. :(
+- [suegdu](https://github.com/suegdu)
+- [svn](https://github.com/suvan1911)
+- [pierro](https://github.com/xpierroz)
+### Other Credits:
+- [Smug246](https://github.com/Smug246) (Python Injector)
+- [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
+- [loTus04](https://github.com/loTus04) (W4SP Stealer)
+
 ## 🧾 <a id="lisence"></a> 〢 License
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
