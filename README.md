@@ -32,8 +32,8 @@
     <strong><a href="https://discord.gg/GqfffnxYWc">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
+### 19/04/2023 - Project is starting again by me, xpierroz. I'll not be able to help with the old ui, i'm only helping with the ui from the roseui folder
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
-### UI might not work for now, a new one will be released soon
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
 
