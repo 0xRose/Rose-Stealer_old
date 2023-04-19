@@ -104,6 +104,7 @@ Don't forget that the project is still under development release and might conta
 
 ## <a id="preview"></a> 📷 〢 Preview
 
+![V8](readme/v8.png)
 ![Grabber](readme/grabber.png)
 ![Injector](readme/injector.png)
 ![Locations](readme/locationss.png)
