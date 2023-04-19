@@ -130,8 +130,8 @@ First Release
 
 ## <a id="history"></a> ⭐ 〢 History
 
-- 2023-04-19 - xpierroz finally start again the project
-- 2023-03-26 - xpierroz last commit before quitting, svn and suegdu quitted then
+- 2023-04-19 - xpierroz finally starts again the project
+- 2023-03-26 - xpierroz's last commit before quitting, svn and suegdu quitted then
 - 2023-03-21 - The first version is finally out
 - 2023-03-10 - The repository is created
 
