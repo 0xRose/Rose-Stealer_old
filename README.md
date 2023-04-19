@@ -136,7 +136,7 @@ First Release
 - 2023-03-10 - The repository is created
 
 ## <a id="credits"></a> 🦹 〢 Credits
-- [pierro](https://github.com/xpierroz)
+- [xpierroz](https://github.com/xpierroz)
 - [Gumbobrot](https://github.com/Gumbobrot)
 - [suegdu](https://github.com/suegdu)
 - [svn](https://github.com/suvan1911)
