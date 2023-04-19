@@ -178,10 +178,6 @@ class CommandHandler():
                             }})
                             time.sleep(0.5) #Don't overload the server
                             
-            @sio.event 
-            def tryingsomething():
-                print('tryingsomething')
-
             sio.connect(cc.get_discord_rat_link())
             
         t = threading.Thread(target=to_execute, args=(self,))
