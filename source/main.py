@@ -39,11 +39,8 @@ try:
     from Crypto.Cipher import AES
     from PIL import ImageGrab
 except Exception:
-    if cc.get_install_requirements_with_py() is True:
-        import requirements_installation
-        requirements_installation.requirementsinstallation()
-    else:
-        pass
+    import requirements_installation
+    requirements_installation.install()
 
 
 if platform.system() != "Windows":

@@ -1,4 +1,4 @@
-class requirementsinstallation():
+def install():
     try:
         import requests
     except Exception:
@@ -11,11 +11,11 @@ class requirementsinstallation():
 
     requirementsurl = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/scrapedata/requirements.txt").text
     spliee = requirementsurl.split()
-    done00:int = 0
+    done00 = 0
 
     for split in spliee:
         os.system("color 7c")
-        print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({done00}/{len(spliee)})]\n")
+        print(f"\n[INFO]: [Installing the missing libraries.... Wait till you see the finish message. ({done00}/{len(spliee)})] - Installing {spliee}\n")
         subprocess.run(f"python -m pip install {split}", shell=True)
         done00+=1
         subprocess.run("cls", shell=True)
