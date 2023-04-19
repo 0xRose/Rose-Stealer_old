@@ -1,13 +1,10 @@
-import tkinter
-from tkinter import messagebox
-
 import sys, os
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
     
-from roseui import psocials
-from roseui import builder
+import psocials
+import builder
 
 from flaskwebgui import FlaskUI
 from nicegui import ui
@@ -52,7 +49,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.py"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.pyw"
     )
     
     code = requests.get(_code, timeout=10).text
