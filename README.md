@@ -32,8 +32,8 @@
     <strong><a href="https://discord.gg/GqfffnxYWc">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
+### 19/04/2023 - Project is starting again by me, xpierroz. I'll not be able to help with the old ui, i'm only helping with the ui from the roseui folder
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
-### UI might not work for now, a new one will be released soon
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
 
@@ -48,6 +48,8 @@
 - **[📚 〢 Changelog](#changelog)**
 - **[🥷 〢 Contributors](#contributs)**
 - **[⚠️ 〢 Bugs Or Errors](#bugsorerrors)**
+- **[⭐ 〢 History](#history)**
+- **[🦹 〢 Credits](#credits)**
 - **[🧾 〢 License](#lisence)**
 
 ## <a id="description"></a> 📖 〢 Description
@@ -102,6 +104,7 @@ Don't forget that the project is still under development release and might conta
 
 ## <a id="preview"></a> 📷 〢 Preview
 
+![V8](readme/v8.png)
 ![Grabber](readme/grabber.png)
 ![Injector](readme/injector.png)
 ![Locations](readme/locationss.png)
@@ -126,13 +129,20 @@ First Release
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/CJpFKwSdyW)**
 
-## <a id="credits"></a> ⭐ 〢 Credits
+## <a id="history"></a> ⭐ 〢 History
 
-### They all worked with me but I got too annoying and I don't know how to code as a Team.. :(
+- 2023-04-19 - xpierroz finally starts again the project
+- 2023-03-26 - xpierroz's last commit before quitting, svn and suegdu quitted then
+- 2023-03-21 - The first version is finally out
+- 2023-03-10 - The repository is created
+
+## <a id="credits"></a> 🦹 〢 Credits
+- [xpierroz](https://github.com/xpierroz)
+- [Gumbobrot](https://github.com/Gumbobrot)
 - [suegdu](https://github.com/suegdu)
 - [svn](https://github.com/suvan1911)
-- [pierro](https://github.com/xpierroz)
-### Other Credits:
+
+External credits:
 - [Smug246](https://github.com/Smug246) (Python Injector)
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
