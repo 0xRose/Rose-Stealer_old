@@ -23,7 +23,7 @@ import ctypes
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png'
 __version__ = '1.0'
-__debugm__ = True
+__debugm__ = False #Change if you would like to be in a debug mode, actually only skips auto-update func lol SIUUUUUU PSG > YALL
 
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/msg.txt").text.splitlines()[0].split(" - ")
 
