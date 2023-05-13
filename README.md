@@ -7,7 +7,7 @@
   <br>
 </h1>
 <div align="center">
-    <a href="https://discord.gg/GqfffnxYWc"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
+    <a href="https://discord.gg/GJRfqrHVVw"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
     <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector"><img src="https://www.codefactor.io/repository/github/damagingrose/rose-injector/badge" alt="CodeFactor" /></a>
@@ -29,7 +29,7 @@
     <h1>
         The best Discord Grabber, Injector and RAT🔒
     </h1>
-    <strong><a href="https://discord.gg/GqfffnxYWc">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+    <strong><a href="https://discord.gg/GJRfqrHVVw">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 ### 19/04/2023 - Project is starting again by me, xpierroz. I'll not be able to help with the old ui, i'm only helping with the ui from the roseui folder
@@ -40,7 +40,7 @@
 - **[📖 〢 Description](#description)**
 - **[🔰 〢 Features](#features)**
 - **[💀 〢 Rose RAT](#rose_rat)**
-- **[🔗 〢 Discord](https://discord.gg/CJpFKwSdyW)**
+- **[🔗 〢 Discord](https://discord.gg/GJRfqrHVVw)**
 - **[📥 〢 Install](#install)**
   - **[💻 〢 Prerequisites](#prerequisites)**
   - **[⚙ 〢 Setup](#setup)**
@@ -126,7 +126,7 @@ First Release
 ## <a id="bugsorerrors"></a> ⚠️ 〢 Bugs Or Errors?
 
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
-- Or Join The **[Discord](https://discord.gg/CJpFKwSdyW)**
+- Or Join The **[Discord](https://discord.gg/GJRfqrHVVw)**
 
 ## <a id="history"></a> ⭐ 〢 History
 
