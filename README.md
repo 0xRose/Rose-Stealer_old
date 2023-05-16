@@ -146,6 +146,10 @@ External credits:
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
+
 ## 🧾 <a id="lisence"></a> 〢 License
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
