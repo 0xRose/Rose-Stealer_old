@@ -71,12 +71,12 @@ exit
 
 :NEW
 echo Starting the new builder now...
-echo WARNING | The result of closing this terminal is that the builder is also being exited.
+echo WARNING The result of closing this terminal is that the builder is also being exited.
 cd roseui
 python v8.pyw
 
 :OLD
 echo Starting the old builder now...
-echo WARNING | The result of closing this terminal is that the builder is also being exited.
+echo WARNING The result of closing this terminal is that the builder is also being exited.
 cd tools
 python rose_builder.pyw
