@@ -65,17 +65,12 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 - `Logs WiFi Names and WiFi Passwords`🟢
 - `Logs Roblox Account Data and Login Cookie`🟢
 - `Sends you the Victim's Location and Desktop Screenshot`🟢
-- `After running the stub the file will be copied to shell:startup (Start Up integration)`🟢
-- `JavaScript Injector that modifies the Discord data and new Discord Passwords, Names, Emails, Phone Numbers, successfully purchased Nitro Codes will be sent to your Webhook`🟢
-- `Discord RAT (We are still adding features and it is in Developer Mode but it can be used!)`🟣
-- `UI with Qt5`🟢
+- `Start Up integration`🟢
+- `JavaScript Injector: Discord Passwords, Names, Emails, Phone Numbers, successfully purchased Nitro Codes will be sent to your Webhook`🟢
+- `Discord RAT`🟢
 - `UI Integration`🟢
 - `Compiler that creates an EXE File for you`🟢
-- `Make An Embebed Version`🟢
-- `When we update our Code, your Code will be automatically updated too`🟢
-- `Safe Mode For Testing Purposes`🔴
 - `MacOS Adaptation`🔴
-- `CHANGELOG.md file`🟢
 - `VirusTotal/VM Bypass/Blacklist`🟣
 - `Bypass/Disable Windows Defender/Firewalls`🟣
 
