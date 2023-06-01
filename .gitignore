@@ -130,3 +130,5 @@ dmypy.json
 
 test/
 run_rat.bat
+
+launch_vsc.bat
