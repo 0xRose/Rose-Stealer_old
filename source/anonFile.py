@@ -11,7 +11,6 @@ def uploadToAnonfiles(path):
                 },
             ).json()["data"]["downloadPage"]
             return rr
-        except Exception as e:
-            print(f'Advanced Eror: {e}')
+        except Exception:
             time.sleep(2)
     return False
