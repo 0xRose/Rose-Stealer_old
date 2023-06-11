@@ -32,7 +32,7 @@
     <strong><a href="https://discord.gg/GJRfqrHVVw">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-### currently studying for my exam, i'll try to fix every errors in 3 days
+### 11/06/2023 - Everything is working, however, to compile you MUST DISABLE WINDOWS DEFENDER (gonna fix it soon)
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
