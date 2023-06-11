@@ -1,3 +1,5 @@
+### CREDITS TO https://github.com/6nz/virustotal-vm-blacklist
+
 from config import Config
 cc = Config()
 
