@@ -195,6 +195,7 @@ def change_ratsurl(value):
 
 def change_pings():
     global xping
+    xping = not xping
     if xping:
         ui.notify("Ping has been enabled!", timeout=30, progress=True, avatar=__avatar__, color="yellow-7", position="top-right")
         return
