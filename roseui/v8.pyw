@@ -19,6 +19,9 @@ import ctypes
 import logging
 import subprocess
 
+import re
+import webbrowser
+
 from rich.traceback import install
 install(show_locals=True)
 
@@ -70,20 +73,20 @@ def auto_update():
     )
     
     code = requests.get(_code, timeout=10).text
-    with open(__file__, "r", encoding="utf-8") as f:
-        main_code = f.read()
-    if code != main_code:
-        f = ctypes.windll.user32.MessageBoxW(
-            0, 
-            "A new version has been detected.\nWould you like to automatically update?",
-            "Rose Injector",
-            4
-        )
-        if f == 6:
-            with open(__file__, "w", encoding="utf-8") as f:
-                f.write(code)
-            os.startfile(__file__)
-            os._exit(0)
+    pattern = r"__version__ = '([\d\.]+)'"
+    resultats = re.search(pattern, code)
+    if resultats:
+        version = resultats.group(1)
+        if version != __version__:
+            f = ctypes.windll.user32.MessageBoxW(
+                0, 
+                "A new version has been detected.\nWould you like to automatically update?",
+                "Rose Injector",
+                4
+            )
+            if f == 6:
+                webbrowser.open("https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip")
+                os._exit(0)
 
 def change_fakeerror():
     global xfakeerror
