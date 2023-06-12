@@ -1,4 +1,4 @@
-@echo off & title %~nx0 & color 7c
+@echo off & title %~nx0 & color c
 
 goto :DOES_PYTHON_EXIST
 
@@ -54,6 +54,7 @@ exit
 :CHOICE2
 cd scrapedata
 python -m pip install -r requirements.txt
+cls
 cd ..
 set /P c=Do you want to start the Rose builder NOW or run it MANUALLY from the tools/roseui directory? [N/M] 
 if /I "%c%" EQU "N" goto :NOW2
