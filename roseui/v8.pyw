@@ -19,6 +19,9 @@ import ctypes
 import logging
 import subprocess
 
+from rich.traceback import install
+install(show_locals=True)
+
 logging.basicConfig(
     level=logging.DEBUG,
     filename='roselog.log',
