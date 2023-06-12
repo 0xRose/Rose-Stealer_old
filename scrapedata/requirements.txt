@@ -4,7 +4,7 @@ PyQt5
 requests
 rich
 dhooks
-pyinstaller
+pyinstaller>=5.12
 python-socketio
 flaskwebgui
 nicegui
