@@ -117,8 +117,8 @@ class _Builder():
     def compile(self):
         try:
             logger.info("Entering compile process")
-            logger.info(f'Compile CMD Line: pyinstaller "{self.path}/main.py" --noconsole --onefile')
-            output = os.popen(f'pyinstaller "{self.path}/main.py" --noconsole --onefile').read()
+            logger.info(f'Compile CMD Line: pyinstaller "{self.path}\main.py" --noconsole --onefile')
+            output = os.popen(f'pyinstaller "{self.path}\main.py" --noconsole --onefile').read()
             logger.info(f"Output of compile process: {output}")
         except Exception as e:
             logger.error(f"Error in compile: {e}")
