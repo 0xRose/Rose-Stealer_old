@@ -33,6 +33,7 @@
 </div>
 
 ### 11/06/2023 - Everything is working, however, to compile you MUST DISABLE WINDOWS DEFENDER (gonna fix it soon)
+### Encoutered an error while building? Join our discord .gg/GJRfqrHVVw
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
