@@ -163,6 +163,5 @@ if len(sys.argv) > 1:
         sys.argv[15],
         sys.argv[16],
         sys.argv[17],
-        sys.argv[18],
-        sys.argv[19]
+        sys.argv[18]
     ).run()
