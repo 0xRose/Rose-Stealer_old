@@ -12,7 +12,7 @@ class Startup:
         embed = Embed(
             description='Error while copying to startup',
             color=16399677,
-            timestamp='now'  # sets the timestamp to current time
+            timestamp='now'
         )
 
         embed.set_author(name=cc.get_name(), icon_url=cc.get_avatar())
