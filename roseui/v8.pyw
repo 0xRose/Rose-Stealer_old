@@ -162,9 +162,6 @@ def _makebuild(q: Queue, data_builder) -> str:
         data_builder['vm_webhook_url'] = data_builder['webhook_url']
 
     ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
-
-    if data_builder["vm_webhook_url"] == "":
-        data_builder["vm_webhook_url"] = data_builder["webhook_url"]
         
     path = f"{Path(__file__).resolve().parent}\\{data_builder['build_name']}"
         
