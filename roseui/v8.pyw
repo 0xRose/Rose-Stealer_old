@@ -103,7 +103,7 @@ def auto_update():
         if version != __version__:
             f = ctypes.windll.user32.MessageBoxW(
                 0, 
-                "A new version has been detected.\nWould you like to automatically update?",
+                f"A new version has been detected.\nWould you like to download the new version?\nCurrent version: {str(__version__)} | New version {str(version)}",
                 "Rose Injector",
                 4
             )
