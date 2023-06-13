@@ -221,9 +221,9 @@ def _makebuild(q: Queue, data_builder) -> str:
     def compile():
         try:
             logger.info("Entering compile process")
-            logger.info(f'Compile CMD Line: pyinstaller "{path}\main.py" --noconsole --onefile')
+            logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\main.py" --noconsole --onefile')
             output_file = "rosecompile.log"
-            subprocess.call(f'pyinstaller "{path}\main.py" --noconsole --onefile', shell=True, stdout=open(output_file, 'w'), stderr=subprocess.STDOUT)
+            subprocess.call(f'python -m PyInstaller "{path}\main.py" --noconsole --onefile', shell=True, stdout=open(output_file, 'w'), stderr=subprocess.STDOUT)
             logger.info(f"Output of compile process saved in rosecompile.log")
         except Exception as e:
             logger.error(f"Error in compile: {e}")
