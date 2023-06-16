@@ -66,7 +66,7 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 
 <img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="300" height="320">
 
-## <a id="changelog"></a>Changelog
+## <a id="changelogs"></a>Changelogs
 ```
 [1.1] - 2023-06-12
 Repaired the project
