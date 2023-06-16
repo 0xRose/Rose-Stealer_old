@@ -1,8 +1,8 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119307926012702770/image.png" width="300" height="400" alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119307926012702770/image.png?width=585&height=580" width=300 weigth=400 alt="R"></a>
   <br>
-  Rose
+ Rose
   <br>
 </h1>
 <div align="center">
