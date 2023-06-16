@@ -1,26 +1,24 @@
-<a id="top"></a>
-
 <h1 align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119307926012702770/image.png?width=585&height=580" width=300 weigth=400 alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119307926012702770/image.png" width="300" height="400" alt="R"></a>
   <br>
- Rose
+  Rose
   <br>
 </h1>
 <div align="center">
-    <a href="https://discord.gg/GJRfqrHVVw"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
+    <a href="https://discord.gg/GJRfqrHVVw"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&amp;logo=discord&amp;logoColor=white"></a>
     <br>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
+    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&amp;show_trend=true&amp;token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
     <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector"><img src="https://www.codefactor.io/repository/github/damagingrose/rose-injector/badge" alt="CodeFactor" /></a>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=resolved+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
+    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=resolved+issues&amp;show_trend=true&amp;token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
     <br>
     <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
+    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&amp;logoColor=%23000000">
     <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000">
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
+    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&amp;logoColor=%23000000">
     <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
+    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&amp;logoColor=%23000000">
+    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&amp;logoColor=%23000000">
     <br>
 </div>
 <hr style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;" noshade="" size="20" width="100%">
@@ -35,26 +33,26 @@
 
 ### A multipurpose advanced injector and grabber using a beautiful UI
 
-## <a id="content"></a>🌐 〢 Table Of Contents
+## Table Of Contents 🌐 〢
 
-- **[Description](#description)**
-- **[Features](#features)**
-- **[Discord](https://discord.gg/GJRfqrHVVw)**
-- **[Install](#install)**
-  - **[Prerequisites](#prerequisites)**
-  - **[Setup](#setup)**
-- **[Preview](#preview)**
-- **[Changelog](#changelog)**
-- **[Contributors](#contributors)**
-- **[Credits](#credits)**
-- **[License](#license)**
-- **[Important](#Important)**
+- [Description](#description)
+- [Features](#features)
+- [Discord](https://discord.gg/GJRfqrHVVw)
+- [Install](#install)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+- [Preview](#preview)
+- [Changelog](#changelog)
+- [Contributors](#contributors)
+- [Credits](#credits)
+- [License](#license)
+- [Important](#important)
 
-## <a id="description"></a>Description
+## Description
 
 Rose is a powerful multipurpose grabber, injector & includes a [RAT](https://github.com/DamagingRose/Rose-RAT).
 
-## <a id="features"></a>Features
+## Features
 
 - Logs Discord Token and Discord Account Info
 - Logs PC Info and IP
@@ -71,11 +69,11 @@ Rose is a powerful multipurpose grabber, injector & includes a [RAT](https://git
 - VirusTotal/VM Bypass/Blacklist - WIP
 - Bypass/Disable Windows Defender/Firewalls - WIP
 
-### <a id="prerequisites"></a>Prerequisites
+### Prerequisites
 
 - Windows 7/10/11
 
-### <a id="setup"></a>Setup
+### Setup
 
 Don't forget that the project is still under development release and might contain bugs.
 
@@ -83,25 +81,23 @@ Don't forget that the project is still under development release and might conta
 - Run the `builder.bat` to open up the Rose builder/Python installer.
 - Enjoy!
 
-## <a id="preview"></a>Preview
+## Preview
 
 ![V8](readme/v8.png)
 ![Grabber](readme/grabber.png)
 ![Injector](readme/injector.png)
 ![Locations](readme/locationss.png)
 
-## <a id="contributors"></a>Contributors
+## Contributors
 
-<a href="https://github.com/DamagingRose/Rose-Injector/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=DamagingRose/Rose-Injector" />
-</a>
+[![Contributors](https://contrib.rocks/image?repo=DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/graphs/contributors)
 
-## <a id="bugs_or_errors"></a>Bugs Or Errors?
+## Bugs Or Errors?
 
-- To Report An Error, Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
-- Or Join The **[Discord](https://discord.gg/GJRfqrHVVw)**
-  
-## <a id="credits"></a>Credits
+- To Report An Error, Make An [Issue](https://github.com/DamagingRose/Rose-Injector/issues)
+- Or Join The [Discord](https://discord.gg/GJRfqrHVVw)
+
+## Credits
 
 - [xpierroz](https://github.com/xpierroz)
 - [Gumbobrot](https://github.com/Gumbobrot)
@@ -116,8 +112,8 @@ Don't forget that the project is still under development release and might conta
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
 
-## <a id="Important"></a>Important
+## Important
 
 ### This is for educational purposes only, use at your own risk. I am not responsible for any of your actions!
 
-<p align="center"><a href=#top>Back to Top</a></p>
+<p align="center"><a href="#top">Back to Top</a></p>
