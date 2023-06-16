@@ -5,14 +5,14 @@
 </h1>
 
 <div align="center">
-    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
+    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%16711807">
+    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%16711807&logoColor=%16711807">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000"> 
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
+    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%16711807"> 
+    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%16711807&logoColor=%16711807">
     <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
+    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%16711807&logoColor=%16711807">
+    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%16711807&logoColor=%16711807">
     <br>
 </div>
 
