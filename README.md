@@ -1,4 +1,5 @@
 <a id="top"></a>
+
 <h1 align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose.jpeg" width=300 weigth=400 alt="R"></a>
@@ -33,7 +34,9 @@
 </div>
 
 ### 11/06/2023 - Everything is working, however, to compile you MUST DISABLE WINDOWS DEFENDER (gonna fix it soon)
+
 ### Encoutered an error while building? Join our [Discord](https://discord.gg/GJRfqrHVVw)! (You will need to send us the .log file which will be created so that we can have a look on your errors.)
+
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
 
 ## <a id="content"></a>🌐 〢 Table Of Contents
@@ -106,6 +109,7 @@ Don't forget that the project is still under development release and might conta
 ![Locations](readme/locationss.png)
 
 ## <a id="changelog"></a> 📚 〢 Changelog
+
 ```
 [1.1] - 2023-06-12
 Repaired the project
@@ -121,6 +125,7 @@ First Release
 - Created a UI compiler for the Rose Grabber
 - Made the first version of the RAT
 ```
+
 ## <a id="contributs"></a> 🥷 〢 Contributors
 
 <a href="https://github.com/DamagingRose/Rose-Injector/graphs/contributors">
@@ -140,12 +145,14 @@ First Release
 - 2023-03-10 - The repository is created
 
 ## <a id="credits"></a> 🦹 〢 Credits
+
 - [xpierroz](https://github.com/xpierroz)
 - [Gumbobrot](https://github.com/Gumbobrot)
 - [suegdu](https://github.com/suegdu)
 - [svn](https://github.com/suvan1911)
 
 External credits:
+
 - [Smug246](https://github.com/Smug246) (Python Injector)
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
