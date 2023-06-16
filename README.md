@@ -29,8 +29,7 @@
 
 - [Description](#description)
 - [Features](#features)
-- [Install](#install)
-  - [Setup](#setup)
+- [Setup](#setup)
 - [Preview](#preview)
 - [Contributors](#contributors)
 - [Credits](#credits)
