@@ -1,4 +1,3 @@
-<a id="top"></a>
 <h1 align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119307926012702770/image.png?width=585&height=580" width=300 weigth=400 alt="R"></a>
@@ -92,5 +91,3 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 ## Important
 
 ### This is for educational purposes only. Use at your own risk. I am not responsible for any of your actions!
-
-<p align="center"><a href="#top">Back to Top</a></p>
