@@ -29,21 +29,15 @@
     <strong>by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-### A multipurpose advanced injector and grabber using a beautiful UI
-
 ## Table Of Contents
 
 - [Description](#description)
 - [Features](#features)
-- [Discord](https://discord.gg/GJRfqrHVVw)
 - [Install](#install)
-  - [Prerequisites](#prerequisites)
   - [Setup](#setup)
 - [Preview](#preview)
-- [Changelog](#changelog)
 - [Contributors](#contributors)
 - [Credits](#credits)
-- [License](#license)
 - [Important](#important)
 
 ## Description
@@ -66,10 +60,6 @@ Rose is a powerful multipurpose grabber, injector & includes a [RAT](https://git
 - Compiler that creates an EXE File for you
 - VirusTotal/VM Bypass/Blacklist - WIP
 - Bypass/Disable Windows Defender/Firewalls - WIP
-
-### Prerequisites
-
-- Windows 7/10/11
 
 ### Setup
 
@@ -105,10 +95,6 @@ Don't forget that the project is still under development release and might conta
 - [Smug246](https://github.com/Smug246) (Python Injector)
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
 
 ## Important
 
