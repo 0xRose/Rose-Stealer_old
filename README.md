@@ -1,10 +1,12 @@
+<a id="top"></a>
 <h1 align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119307926012702770/image.png"alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose.jpeg" width=300 weigth=400 alt="R"></a>
   <br>
-  Rose
+ Rose
   <br>
 </h1>
+
 <div align="center">
     <br>
     <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
