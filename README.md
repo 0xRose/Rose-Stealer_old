@@ -76,7 +76,6 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 ## Bugs Or Errors?
 
 - To Report An Error, Make An [Issue](https://github.com/DamagingRose/Rose-Injector/issues)
-- Or Join The [Discord](https://discord.gg/GJRfqrHVVw)
 
 ## Credits
 
@@ -91,6 +90,6 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 
 ## Important
 
-### This is for educational purposes only, use at your own risk. I am not responsible for any of your actions!
+### This is for educational purposes only. Use at your own risk. I am not responsible for any of your actions!
 
 <p align="center"><a href="#top">Back to Top</a></p>
