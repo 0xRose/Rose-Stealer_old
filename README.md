@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%16711807&logoColor=%16711807">
     <br>
     <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%16711807&logoColor=%16711807">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%black&logoColor=%16711807">
+    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%black&logoColor=%black">
     <br>
 </div>
 
