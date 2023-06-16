@@ -41,20 +41,20 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 
 ## Features
 
-- Logs Discord token and Discord account info
-- Logs PC info and IP
-- Logs browser passwords
-- Logs browser cookies
-- Logs Wi-Fi names and Wi-Fi passwords
-- Logs Roblox account data and login cookie
-- Sends you the victim's location and desktop screenshot
-- Startup integration
-- JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook
-- Discord RAT
-- UI integration
-- Compiler that creates an EXE file for you
-- VirusTotal/VM bypass/blacklist - WIP
-- Bypass/disable Windows Defender/Firewalls - WIP
+- `Logs Discord token and Discord account info`
+- `Logs PC info and IP`
+- `Logs browser passwords`
+- `Logs browser cookies`
+- `Logs Wi-Fi names and Wi-Fi passwords`
+- `Logs Roblox account data and login cookie`
+- `Sends you the victim's location and desktop screenshot`
+- `Startup integration`
+- `JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook`
+- `Discord RAT`
+- `UI integration`
+- `Compiler that creates an EXE file for you`
+- `VirusTotal/VM bypass/blacklist - WIP`
+- `Bypass/disable Windows Defender/Firewalls - WIP`
 
 ### Setup
 
