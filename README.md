@@ -26,7 +26,6 @@
     <h1>
         The best Discord Grabber, Injector, and RAT
     </h1>
-    <strong>by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 ## Table Of Contents
