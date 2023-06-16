@@ -65,9 +65,9 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 
 <img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="300" height="320">
 
-# Changelogs
-
-`[1.1] - 2023-06-12
+## <a id="changelog"></a>Changelog
+```
+[1.1] - 2023-06-12
 Repaired the project
 
 - Successfuly repaired the project
@@ -79,11 +79,8 @@ Repaired the project
 First Release
 
 - Created a UI compiler for the Rose Grabber
-- Made the first version of the RAT`
-
-## Contributors
-
-[![Contributors](https://contrib.rocks/image?repo=DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/graphs/contributors)
+- Made the first version of the RAT
+```
 
 ## Bugs Or Errors?
 
