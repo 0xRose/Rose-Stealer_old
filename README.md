@@ -31,6 +31,7 @@
 - [Features](#features)
 - [Setup](#setup)
 - [Preview](#preview)
+- [Changelogs](#changelogs)
 - [Contributors](#contributors)
 - [Credits](#credits)
 - [Important](#important)
