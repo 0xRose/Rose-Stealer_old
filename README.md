@@ -33,7 +33,7 @@
 
 ### A multipurpose advanced injector and grabber using a beautiful UI
 
-## Table Of Contents 🌐 〢
+## Table Of Contents
 
 - [Description](#description)
 - [Features](#features)
