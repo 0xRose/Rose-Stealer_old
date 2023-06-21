@@ -78,7 +78,7 @@ links = {
     "suegdu_github": "https://github.com/suegdu",
     "svn_github": "https://github.com/suvan1911",
     "rose_github": "https://github.com/DamagingRose/Rose-Injector",
-    "rose_discord": "https://discord.gg/D7Qpj8sKUF"
+    "rose_discord": "https://discord.gg/gz5fUCkw8p"
 }
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
@@ -257,7 +257,7 @@ def _home():
     with ui.dialog() as dialog, ui.card():
         ui.label('If everything went good, your compiled file should be in the folder, else join our discord')
         ui.button("Open Folder", on_click=lambda: os.startfile(Path(__file__).resolve().parent))
-        ui.button('Join Discord', on_click=lambda: webbrowser.open('https://discord.gg/D7Qpj8sKUF'))
+        ui.button('Join Discord', on_click=lambda: webbrowser.open('https://discord.gg/gz5fUCkw8p'))
         ui.button('Close', on_click=dialog.close)
         
     async def start_computation():
