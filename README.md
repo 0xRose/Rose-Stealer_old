@@ -150,6 +150,8 @@ External credits:
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
 
+[![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
