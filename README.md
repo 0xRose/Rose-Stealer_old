@@ -111,8 +111,6 @@ First Release
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/gz5fUCkw8p)**
 
-- To report an error, make an [issue](https://github.com/DamagingRose/Rose-Injector/issues).
-
 ## <a id="credits"></a> Credits
 
 - [xpierroz](https://github.com/xpierroz) (Current main developer)
