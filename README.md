@@ -40,17 +40,17 @@
 
 ## <a id="features"></a> Features
 
-- **[Description](#description)**
-- **[Features](#features)**
-- **[Discord](https://discord.gg/gz5fUCkw8p)**
-- **[Setup](#setup)**
-- **[Preview](#preview)**
-- **[Changelog](#changelog)**
-- **[Bugs Or Errors](#bugsorerrors)**
-- **[History](#history)**
-- **[Thanks!](#thanks)**
-- **[Credits](#credits)**
-- **[License](#lisence)**
+- [Description](#description)
+- [Features](#features)
+- [Discord](https://discord.gg/gz5fUCkw8p)
+- [Setup](#setup)
+- [Preview](#preview)
+- [Changelog](#changelog)
+- [Bugs Or Errors](#bugsorerrors)
+- [History](#history)
+- [Thanks!](#thanks)
+- [Credits](#credits)
+- [License](#lisence)
 
 ## <a id="description"></a> Description
 
@@ -131,4 +131,4 @@ The author of this program is not liable for any damage, harm, or legal conseque
 
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
 
-### This is for educational purposes only. Use at your own risk. I am not responsible for any of your actions!
+### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
