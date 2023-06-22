@@ -34,6 +34,7 @@
 <a href="https://discord.gg/gz5fUCkw8p">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
+**22/06/2023 - Even if all works fine, Rose is a little outdated and we consider you to wait for [Gumbobrot](https://github.com/Gumbobrot) to release the first version of Knight, an all-in-one tool, which contains a botnet, a (web) stealer and a Remote Adminstration Tool.** Join the [Discord](https://discord.gg/gz5fUCkw8p) for updates!
 ### 11/06/2023 - Everything is working, however, to compile you *must disable real time protection for windows defender*
 ### Encoutered an error while building? Join our [Discord](https://discord.gg/gz5fUCkw8p)! (You will need to send us the .log file which will be created so that we can have a look on your errors.)
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
