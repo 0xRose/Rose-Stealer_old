@@ -38,7 +38,7 @@
 ### Encoutered an error while building? Join our [Discord](https://discord.gg/gz5fUCkw8p)! (You will need to send us the .log file which will be created so that we can have a look on your errors.)
 ### A multipurpose advanced injectioner and grabber using a beautiful UI
 
-## <a id="content"></a> Table Of Contents
+## <a id="features"></a> Features
 
 - **[Description](#description)**
 - **[Features](#features)**
@@ -48,17 +48,9 @@
 - **[Changelog](#changelog)**
 - **[Bugs Or Errors](#bugsorerrors)**
 - **[History](#history)**
+- **[Thanks!](#thanks)**
 - **[Credits](#credits)**
 - **[License](#lisence)**
-
-## <a id="features"></a> Features
-
-- [Features](#features)
-- [Setup](#setup)
-- [Preview](#preview)
-- [Changelogs](#changelog)
-- [Credits](#credits)
-- [Important](#important)
 
 ## <a id="description"></a> Description
 
