@@ -57,6 +57,10 @@
 
 Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://github.com/DamagingRose/Rose-RAT). We spent months of work on this amazing project. You won't really find a better tool than Rose!
 
+[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) detects and collects user data from a PC and sends it to a Discord WebHook Api.
+
+[Rose-RAT](https://github.com/DamagingRose/Rose-RAT) allows the attacker to control a victims desktop and his windows client overall with a beatiful attacker-client where you are able to execute commands from.
+
 ## <a id="features"></a> Features
 
 - Logs Discord token and Discord account info
