@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center">
-    <a href="https://discord.gg/gz5fUCkw8p"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
+    <a href="https://discord.gg/rHdqqqYVzY"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
     <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector"><img src="https://www.codefactor.io/repository/github/damagingrose/rose-injector/badge" alt="CodeFactor" /></a>
@@ -31,7 +31,7 @@
     </h1>
 </div>
 
-<a href="https://discord.gg/gz5fUCkw8p">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+<a href="https://discord.gg/rHdqqqYVzY">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 **22/06/2023 - Even if all works fine, Rose is a little outdated and we consider you to wait for [Gumbobrot](https://github.com/Gumbobrot) to release the first version of Knight, an all-in-one tool, which contains a botnet, a (web) stealer and a Remote Adminstration Tool.** Join the [Discord](https://discord.gg/gz5fUCkw8p) for updates!
@@ -102,7 +102,7 @@ First Release
 
 ## <a id="bugsorerrors"></a> Bugs Or Errors?
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
-- Or Join The **[Discord](https://discord.gg/gz5fUCkw8p)**
+- Or Join The **[Discord](https://discord.gg/rHdqqqYVzY)**
 
 ## <a id="credits"></a> Credits
 
