@@ -1,12 +1,14 @@
-<div align="center">
-  <h1>PROJECT DISCONTINUED!!!</h1>
-</div>
-
 <h1 align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://i.imgur.com/X5MRNWl.png?width=581&height=580" width=300 weigth=400 alt="R"></a>
   <br>
 </h1>
+
+<div align="center">
+  <h1>PROJECT DISCONTINUED!!!</h1>
+  <h2>However, if you have discovered an error, it is still possible for me to correct it or to help you. ↓↓↓</h2>
+  <a href="https://discord.com/users/1121156877561122918"><img src="https://lanyard-profile-readme.vercel.app/api/1121156877561122918?theme=dark&bg=808080&animated=true&hideDiscrim=true&borderRadius=30px&idleMessage=Probably%20doing%20something%20else..." width=45%></a>
+</div>
 
 <div align="center">
     <a href="https://discord.gg"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
