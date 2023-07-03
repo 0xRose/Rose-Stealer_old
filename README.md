@@ -5,12 +5,6 @@
 </h1>
 
 <div align="center">
-  <h1>PROJECT DISCONTINUED!!!</h1>
-  <h2>However, if you have discovered an error, it is still possible for me to correct it or to help you. ↓↓↓</h2>
-  <a href="https://discord.com/users/1121156877561122918"><img src="https://lanyard-profile-readme.vercel.app/api/1121156877561122918?theme=dark&bg=808080&animated=true&hideDiscrim=true&borderRadius=30px&idleMessage=Probably%20doing%20something%20else..." width=45%></a>
-</div>
-
-<div align="center">
     <a href="https://discord.gg"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
@@ -26,6 +20,12 @@
     <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
     <br>
+</div>
+
+<div align="center">
+  <h1>PROJECT DISCONTINUED!!!</h1>
+  <h2>However, if you have discovered an error, it is still possible for me to correct it or to help you. ↓↓↓</h2>
+  <a href="https://discord.com/users/1121156877561122918"><img src="https://lanyard-profile-readme.vercel.app/api/1121156877561122918?theme=dark&bg=808080&animated=true&hideDiscrim=true&borderRadius=30px&idleMessage=Probably%20doing%20something%20else..." width=45%></a>
 </div>
 
 <hr style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;" noshade="" size="20" width="100%">
