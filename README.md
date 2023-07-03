@@ -1,3 +1,7 @@
+<div align="center">
+  <h1>PROJECT DISCONTINUED!!!</h1>
+</div>
+
 <h1 align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://i.imgur.com/X5MRNWl.png?width=581&height=580" width=300 weigth=400 alt="R"></a>
