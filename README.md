@@ -25,7 +25,6 @@
 <hr style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;" noshade="" size="20" width="100%">
 
 <div align="center">
-    <br>
     <h1>
         PROJECT DISCONTINUED!!!
         The Best Discord Grabber, Injector, and RAT
