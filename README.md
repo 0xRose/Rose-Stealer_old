@@ -75,8 +75,10 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 - Built-in Rose RAT
 - UI integration
 - Compiler that creates an EXE file for you
-- Obfuscation - WIP
+- Obfuscation which makes your file almost impossible to be read by humans - WIP
 - VirusTotal/VM bypass/blacklist
+- Small file size (UPX) - WIP
+- Diversity - Change the Icon, name and functions of your stub by yourself through the beautiful builder - WIP
 - Bypass/disable Windows Defender/Firewalls - WIP
 
 ### <a id="setup"></a> Setup
@@ -87,7 +89,14 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 
 ## <a id="preview"></a> Preview
 
+<img src="https://i.imgur.com/LjJy0JS.png">
+<img src="https://i.imgur.com/I1M8LUV.png">
+<img src="https://i.imgur.com/KRlMMV6.png">
+<img src="https://i.imgur.com/Itvo9SE.png">
+<img src="https://i.imgur.com/eqKbMHt.png">
 <img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="600" height="620">
+
+**+ way more!!** Adding pictures of cookie stealing, password stealing and the RAT's soon.
 
 ## <a id="changelog"></a> Changelog
 ```
