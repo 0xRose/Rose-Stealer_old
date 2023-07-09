@@ -89,11 +89,12 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 ## <a id="changelog"></a> Changelog
 ```
 [1.2] - 2023-07-09
-Fixed the windows defender detection while building and added knight rat
+Fixed the windows defender detection while building, added knight rat and disabling functions for windows defender and firewall
 
 - Added another RAT (type), which is hosted over discord called Knight-RAT
 - Made the source files not being scraped anymore because of windows defender detections
 - Better config file so nobody can skid our stuff
+- Added disable windows defender and disable windows firewall options (includes getadmin)
 
 [1.1] - 2023-06-12
 Repaired the project
@@ -101,7 +102,7 @@ Repaired the project
 - Successfuly repaired the project
 - Modified the UI so the backend is included in the same file
 - Added a logging method
-- Added new options (defender f*cker, VM detection, etc...)
+- Added new options (Disable defender (in progress), VM detection, etc...)
 
 [1.0] - 2023-03-21
 First Release
