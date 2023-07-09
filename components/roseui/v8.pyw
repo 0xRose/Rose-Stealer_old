@@ -153,10 +153,10 @@ def _makebuild(q: Queue, data_builder) -> str:
     if data_builder["build_name"] == "":
         ui.notify("Build Name is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
-    if data_builder["rose_rat"] and data_builder["rose_rat_url"] == "":
+    if data_builder["rose_discord_rat"] and data_builder["rose_rat_url"] == "":
         ui.notify("Rose-RAT URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
-    if data_builder["knight_rat"] and data_builder["knight_rat_bot_token"] == "":
+    if data_builder["knight_discord_rat"] and data_builder["knight_rat_bot_token"] == "":
         ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
