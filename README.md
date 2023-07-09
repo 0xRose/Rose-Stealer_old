@@ -76,7 +76,7 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 - UI integration
 - Compiler that creates an EXE file for you
 - Obfuscation - WIP
-- VirusTotal/VM bypass/blacklist - WIP
+- VirusTotal/VM bypass/blacklist
 - Bypass/disable Windows Defender/Firewalls - WIP
 
 ### <a id="setup"></a> Setup
