@@ -26,7 +26,6 @@
 
 <div align="center">
     <h1>
-        PROJECT DISCONTINUED!!!
         The Best Discord Grabber, Injector, and RAT
     </h1>
 </div>
