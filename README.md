@@ -33,7 +33,7 @@
 <a href="https://discord.gg/">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-### 10/07/2023 - Do **NOT** use the options under the `Get Admin` category. Also do not use `Knight RAT`. We are hardly working on solving the issues with these options.
+### 10/07/2023 - Do **NOT** use the options under the `Get Admin` category. Also do not use `Knight RAT`. We are working hard on solving the issues with these options.
 ### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
 ### Encoutered an error while building? Join our [Discord](https://discord.gg/rHdqqqYVzY)! (You will need to send us the .log file which will be created so that we can have a look on your errors.)
 ### A multipurpose advanced discord token stealer which is using a beautiful UI.
