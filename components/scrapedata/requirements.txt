@@ -20,3 +20,4 @@ WMI
 discord
 psutil
 pycryptodome
+mss

