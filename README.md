@@ -47,8 +47,8 @@
 - [Preview](#preview)
 - [Changelog](#changelog)
 - [Bugs Or Errors](#bugsorerrors)
-- [History](#history)
 - [Thanks!](#thanks)
+- [Star History](#history)
 - [Credits](#credits)
 - [License](#lisence)
 
@@ -71,9 +71,11 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 - Sends you the victim's location and desktop screenshot
 - Startup integration
 - JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook
-- Discord RAT
+- Built-in Knight RAT - WIP
+- Built-in Rose RAT
 - UI integration
 - Compiler that creates an EXE file for you
+- Obfuscation - WIP
 - VirusTotal/VM bypass/blacklist - WIP
 - Bypass/disable Windows Defender/Firewalls - WIP
 
@@ -118,10 +120,13 @@ First Release
 
 ## <a id="credits"></a> Credits
 
+**Main developers:**
 - [xpierroz](https://github.com/xpierroz) (Current main developer)
 - [Gumbobrot](https://github.com/Gumbobrot) (Current main developer)
 - [suegdu](https://github.com/suegdu) (Old developer of the first builder)
 - [svn](https://github.com/suvan1911) (Old developer)
+
+**External credits:**
 - [skid](https://github.com/I-Skid) (README.md improvements)
 - [Smug246](https://github.com/Smug246) (Python Injector, Roblox Cookie Stealer)
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
