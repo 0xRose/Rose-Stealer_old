@@ -92,7 +92,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/roseui/v8.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/v8.pyw"
     )
     
     code = requests.get(_code, timeout=10).text
