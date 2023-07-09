@@ -329,9 +329,9 @@ def _functions():
                 ).bind_visibility_from(_inj, 'value').props('inline color=pink')  
                 
             with ui.row():
-                _admin = ui.checkbox('Get admin', on_change=lambda e: change_data('get_admin', e.value)).props('inline color=black-2')
-                ui.checkbox('Disable Windows Defender', on_change=lambda e: change_data('disable_defender', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=black-2')
-                ui.checkbox('Disable Windows Firewalls', on_change=lambda e: change_data('disable_firewalls', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=black-2')
+                _admin = ui.checkbox('Get admin', on_change=lambda e: change_data('get_admin', e.value)).props('inline color=pink')
+                ui.checkbox('Disable Windows Defender', on_change=lambda e: change_data('disable_defender', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
+                ui.checkbox('Disable Windows Firewalls', on_change=lambda e: change_data('disable_firewalls', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
 
         with ui.expansion('Grabber', icon='work').classes('w-full'):
             with ui.row():
