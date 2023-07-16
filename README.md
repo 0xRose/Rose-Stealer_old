@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/rose--.png" width=300 weigth=400 alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png" width=400 weigth=400 alt="R"></a>
   <br>
 </h1>
 
@@ -94,7 +94,7 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 <img src="https://i.imgur.com/KRlMMV6.png">
 <img src="https://i.imgur.com/Itvo9SE.png">
 <img src="https://i.imgur.com/eqKbMHt.png">
-<img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="600" height="620">
+<img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="600" height="600">
 
 **+ way more!!** Adding pictures of cookie stealing, password stealing and the RAT's soon.
 
