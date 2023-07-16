@@ -1,4 +1,4 @@
-@echo off & title %~nx0 & color AF
+@echo off & title %~nx0 & color 04
 
 goto :DOES_PYTHON_EXIST
 
