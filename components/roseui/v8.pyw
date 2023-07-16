@@ -423,7 +423,7 @@ def superhome():
     with ui.tabs().classes('w-full center') as tabs:
         ui.tab('Home', icon='home')
         ui.tab('Functions', icon='fingerprint')
-        ui.tab('Socials', icon='face'):
+        ui.tab('Socials', icon='face')
 
     with ui.tab_panels(tabs, value='Home').classes('bg-transparent').classes('w-full center'):
         with ui.tab_panel('Home'):
