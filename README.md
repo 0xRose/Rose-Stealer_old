@@ -52,7 +52,7 @@
 **We will keep you updated and remove specific warnings if the problems are solved.**
 
 #### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
-#### 10/07/2023 - Following functions are not available at the moment: `getadmin`, `malicious` and `knightrat`. Our team is already working hard on solving these problems.
+#### 10/07/2023 - Following functions are not available at the moment: `getadmin` and `knightrat`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
 #### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer & injector.
