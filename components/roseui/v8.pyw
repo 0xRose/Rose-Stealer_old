@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png'
-__version__ = '1.1'
+__version__ = '1.3'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/tools/rose.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
@@ -423,8 +423,7 @@ def superhome():
     with ui.tabs().classes('w-full center') as tabs:
         ui.tab('Home', icon='home')
         ui.tab('Functions', icon='fingerprint')
-        with ui.tab('Socials', icon='face'):
-            ui.badge('0', color='purple-11').props('floating')
+        ui.tab('Socials', icon='face'):
 
     with ui.tab_panels(tabs, value='Home').classes('bg-transparent').classes('w-full center'):
         with ui.tab_panel('Home'):
