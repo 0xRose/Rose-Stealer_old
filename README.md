@@ -48,9 +48,9 @@
 - [Preview](#preview)
 - [Changelog](#changelog)
 - [Bugs Or Errors](#bugsorerrors)
+- [Credits](#credits)
 - [Thanks!](#thanks)
 - [Star History](#history)
-- [Credits](#credits)
 - [License](#lisence)
 
 ## <a id="description"></a> Little description
