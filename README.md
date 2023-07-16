@@ -39,7 +39,7 @@
 #### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer which is using a beautiful UI.
 
-## <a id="table"></a> Table of contents
+## <a class="table" id="table"></a> Table of contents
 
 - [description](#description)
 - [Features](#features)
