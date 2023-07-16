@@ -109,6 +109,7 @@
 [1.3] - 2023-07-17
 Force disabled unstable functions and added webcam grabbing
 
+- Fixed Startup
 - Disabled unstable functions and working on a hardfix
 - Added webcam grabbing option
 - Fixed wrong ordinary with roblox and screenshot grabbing in v8.pyw
