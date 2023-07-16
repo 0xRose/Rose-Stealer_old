@@ -30,6 +30,7 @@ class Config:
         self.disable_defender = False
         self.disable_firewalls = False
         self.vmdetection = False
+        self.webcam = False
         
         self.secr_eb_color = 'MTY3MTE2ODA='
         self.secr_eb_footer = 'Um9zZS1JbmplY3RvciB8IE1hZGUgYnkgR3VtYm9icm90LCBJQ0V4RlMsIHN1ZWdkdSBhbmQgeHBpZXJyb3ogfCBodHRwczovL2dpdGh1Yi5jb20vRGFtYWdpbmdSb3NlL1Jvc2UtSW5qZWN0b3I='
@@ -129,4 +130,7 @@ class Config:
 
     def get_vmdetection(self):
         return self.vmdetection
+    
+    def get_webcam(self):
+        return self.webcam
     
