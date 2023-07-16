@@ -107,7 +107,7 @@
 ## <a id="changelog"></a> Changelog
 ```
 [1.3] - 2023-07-17
-Force disabled unstable functions and added webcam grabbing
+Force disabled unstable functions and added webcam grabbing, also fixed screenshot and startup
 
 - Fixed Startup
 - Disabled unstable functions and working on a hardfix
