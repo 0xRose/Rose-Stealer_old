@@ -1,4 +1,4 @@
-<h1 align="center">
+<h1 id="top" align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png" width=400 weigth=400 alt="R"></a>
   <br>
@@ -162,5 +162,6 @@ The author of this program is not liable for any damage, harm, or legal conseque
 ### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
 
 <div align=center>
-    <a href=#table>Back to to table of contents</a>
+    <a href=#top>Back to top
+    <a href=#table>Back to to table of contents
 </div>
