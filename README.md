@@ -162,6 +162,5 @@ The author of this program is not liable for any damage, harm, or legal conseque
 ### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
 
 <div align=center>
-    <a href=#top>Back to top
-    <a href=#table>Back to to table of contents
+    <a href=#top>Back to top<br><a href=#table>Back to to table of contents
 </div>
