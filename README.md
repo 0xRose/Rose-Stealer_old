@@ -41,7 +41,7 @@
 
 ## <a class="table" id="table"></a> Table of contents
 
-- [description](#description)
+- [Description](#description)
 - [Features](#features)
 - [Discord](https://discord.gg/gz5fUCkw8p)
 - [Setup](#setup)
@@ -162,5 +162,5 @@ The author of this program is not liable for any damage, harm, or legal conseque
 ### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
 
 <div align=center>
-    <a href="table">Back to to table of contents</a>
+    <a href=#table>Back to to table of contents</a>
 </div>
