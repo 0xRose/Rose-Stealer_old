@@ -36,6 +36,7 @@
 ## <a id="table"></a> Table of contents
 
 - [Blog](#blog)
+- [Star goals and upcoming updates](#stars)
 - [What is this?](#whatisthis)
 - [Features](#features)
 - [Discord](https://discord.gg/)
@@ -56,6 +57,12 @@
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
 #### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer & injector.
+
+## <a id="stars"></a> Star collection and upcoming updates
+#### 55 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations
+#### 65 Stars = All bugs fixed. (hard asf real) 
+#### 75 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
+#### 150 Stars = Advanced stealer with web view written in C++ with frontend for the web. 
 
 ## <a id="whatisthis"></a> What is this?
 
