@@ -62,7 +62,7 @@
 ## <a id="stars"></a> Star collection and upcoming updates
 
 ##### 55 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations
-##### 65 Stars = All bugs fixed. (hard asf real) 
+##### 65 Stars = All bugs fixed (hard asf real) + better vm detection.
 ##### 75 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
 ##### 150 Stars = Advanced stealer with web view written in C++ & frontend langs. 
 
