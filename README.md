@@ -27,6 +27,7 @@
 <div align="center">
     <h1>
         The Best Discord Stealer which includes advanced remote access tools and injections
+        <br>If we reach more 🌟 = more <a href="stars">updates</a>
     </h1>
 </div>
 
