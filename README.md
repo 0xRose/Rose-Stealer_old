@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center">
-    <a href="https://discord.gg"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
+    <a href="https://discord.gg/Ts9RTFYvyt"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
     <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector"><img src="https://www.codefactor.io/repository/github/damagingrose/rose-injector/badge" alt="CodeFactor" /></a>
@@ -31,7 +31,7 @@
     </h1>
 </div>
 
-<a href="https://discord.gg/">Discord</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+<a href="https://discord.gg/Ts9RTFYvyt">Discord</a> | <a href="https://t.me/gumbobr0t">Telegram</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 ## <a id="table"></a> Table of contents
@@ -40,7 +40,7 @@
 - [Star goals & updates](#stars)
 - [What is this?](#whatisthis)
 - [Features](#features)
-- [Discord](https://discord.gg/)
+- [Discord](https://discord.gg/Ts9RTFYvyt)
 - [Setup](#setup)
 - [Preview](#preview)
 - [Changelog](#changelog)
@@ -56,7 +56,7 @@
 #### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
 #### 10/07/2023 - Following functions are not available at the moment: `getadmin` and `knightrat`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
-#### Encoutered an error while building? Join our [Discord](https://discord.gg/)! You will need to send us both .log files which are created while building.
+#### Encoutered an error while building? Join our [Discord](https://discord.gg/Ts9RTFYvyt)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer & injector.
 
 ## <a id="stars"></a> Star collection and upcoming updates
@@ -148,7 +148,8 @@ First Release
 
 ## <a id="bugsorerrors"></a> Bugs Or Errors?
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
-- Or Join The **[Discord](https://discord.gg/)**
+- Or Join The **[Discord](https://discord.gg/Ts9RTFYvyt)**
+- Message me on **[Telegram](https://t.me/gumbobr0t)**
 
 ## <a id="credits"></a> Credits
 
