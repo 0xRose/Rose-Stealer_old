@@ -31,7 +31,7 @@
     </h1>
 </div>
 
-<a href="https://discord.gg/Ts9RTFYvyt">Discord</a> | <a href="https://t.me/gumbobr0t">Telegram</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+<a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
 ## <a id="table"></a> Table of contents
@@ -40,7 +40,8 @@
 - [Star goals & updates](#stars)
 - [What is this?](#whatisthis)
 - [Features](#features)
-- [Discord](https://discord.gg/Ts9RTFYvyt)
+- [Discord Server](https://discord.gg/Ts9RTFYvyt)
+- [Telegram Group](https://t.me/+7MDF550ZlLVhYjUy)
 - [Setup](#setup)
 - [Preview](#preview)
 - [Changelog](#changelog)
@@ -53,6 +54,7 @@
 ## <a id="blog"></a> Blog
 **We will keep you updated and remove specific warnings if the problems are solved.**
 
+#### 02/08/2023 - Working on an improved version of Rose-Injector called Cat Moon.
 #### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
 #### 10/07/2023 - Following functions are not available at the moment: `getadmin` and `knightrat`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
@@ -61,6 +63,7 @@
 
 ## <a id="stars"></a> Star collection and upcoming updates
 
+##### Right now = Better and improved version of rose called cat moon
 ##### 55 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations
 ##### 65 Stars = All bugs fixed (hard asf real) + better vm detection.
 ##### 75 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
