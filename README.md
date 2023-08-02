@@ -152,8 +152,8 @@ First Release
 ## <a id="bugsorerrors"></a> Bugs Or Errors?
 - To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
 - Or Join The **[Discord](https://discord.gg/Ts9RTFYvyt)**
-- Message me on **[Telegram](https://t.me/gumbobr0t)**
-- Join our [Telegram group](https://t.me/+7MDF550ZlLVhYjUy) for the new stealer.
+- Message the developer on **[Telegram](https://t.me/gumbobr0t)**
+- Join our **[Telegram group](https://t.me/+7MDF550ZlLVhYjUy)** for the new stealer.
 
 ## <a id="credits"></a> Credits
 
