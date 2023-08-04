@@ -63,11 +63,11 @@
 
 ## <a id="stars"></a> Star collection and upcoming updates
 
-##### Right now = Better and improved version of rose called cat moon
-##### 55 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations
-##### 65 Stars = All bugs fixed (hard asf real) + better vm detection.
-##### 75 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
-##### 150 Stars = Advanced stealer with web view written in C++ & frontend langs. 
+##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation
+##### 60 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations
+##### 70 Stars = All bugs fixed (hard asf real) + better vm detection.
+##### 85 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
+##### 175 Stars = Advanced stealer with web view written in C++ & frontend langs. 
 
 ## <a id="whatisthis"></a> What is this?
 
