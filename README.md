@@ -26,8 +26,8 @@
 
 <div align="center">
     <h1>
-        The Best Discord Stealer which includes advanced remote access trojans and injections
-        <br><br>If we reach more 🌟 = more <a href=#stars>updates</a>
+        ADVANCED TROJAN | MULTIPLE REMOTE ACCESS TROJANS
+        <br><br>MORE 🌟 = <a href=#stars>UPDATES</a>
     </h1>
 </div>
 
