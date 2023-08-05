@@ -77,6 +77,8 @@
 
 [Rose-RAT](https://github.com/DamagingRose/Rose-RAT) is a remote access trojan with lots of features which allows the attacker to control a victims desktop with our application through different commands.
 
+[Knight-RAT](https://github.com/DamagingRose/Rose-Injector/blob/main/components/source/knight_rat.py) is the improved version of Rose-RAT with commands being executed over discord & more features at all.
+
 ## <a id="features"></a> Features
 
 - Logs Discord token and Discord account info
