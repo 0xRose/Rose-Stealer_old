@@ -54,7 +54,7 @@
 ## <a id="blog"></a> Blog
 **We will keep you updated and remove specific warnings if the problems are solved.**
 
-#### 02/08/2023 - Working on an improved version of Rose-Injector.
+#### 02/08/2023 - Working on an improved version of Rose-Injector & Rose-RAT but I have like 10 really difficult projects running at the same time, so expect the next bigger update to take some more time.
 #### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
 #### 10/07/2023 - Following functions are not available at the moment: `getadmin` and `knightrat`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
