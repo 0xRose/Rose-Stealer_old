@@ -1,4 +1,4 @@
-@echo off & title %~nx0 & color 04
+@echo off & title ROSE-BUILDER & color 04
 
 goto :DOES_PYTHON_EXIST
 
@@ -16,7 +16,7 @@ echo Looks good, %ver% is installed...
 goto :CHOICE2
 
 :CHOICE1
-set /P c=Do you want to download Python 3.11.2 NOW with Curl or download it MANUALLY? [N/M] 
+set /P c=Do you want to download Python 3.11.2 NOW with Curl or download it MANUALLY? [N=NOW/M=MANUALLY] 
 if /I "%c%" EQU "N" goto :NOW1
 if /I "%c%" EQU "M" goto :MANUALLY1
 
@@ -56,12 +56,12 @@ cd scrapedata
 python -m pip install -r requirements.txt
 cls
 cd ..
-set /P c=Do you want to start the Rose builder NOW or run it MANUALLY from the tools/roseui directory? [N/M] 
+set /P c=Do you want to start the Rose builder NOW or run it MANUALLY from the tools/roseui directory? [N=NOW/M=MANUALLY] 
 if /I "%c%" EQU "N" goto :NOW2
 if /I "%c%" EQU "M" goto :MANUALLY2
 
 :NOW2
-set /P c=Do you want to start the NEW Rose builder or the OLD Rose builder? [N/O] 
+set /P c=Do you want to start the NEW Rose builder or the OLD Rose builder? [N=NEW/O=OLD] [OLD IS NOT SUPPORTED ANYMORE ^& WON'T WORK WELL] 
 if /I "%c%" EQU "N" goto :NEW
 if /I "%c%" EQU "O" goto :OLD
 
