@@ -120,6 +120,15 @@
 
 ## <a id="changelog"></a> Changelog
 ```
+[1.4] - 2023-08-09
+Added raw crypto miner func without code, fixed general bugs in malicious, added file pumper & custom icon support
++ specify a specific icon path now with even basic path as original windows executable icon
++ successfully added file pumper to avoid ant1v1rus3s (ye ant1v1rus3s can be bypassed by simply having a file bigger than 650 mb)
+~ added crypt0 m1n3r function in the builder but not finished
+/ tried to fix some bugs lol (like in m@l1c10us)
+/ hopefully fixed knight r@t integration
++ added scr (screensaver) support for st@rt4p
+
 [1.3] - 2023-07-17
 Force disabled unstable functions and added webcam grabbing, also fixed screenshot and startup
 

