@@ -1,4 +1,4 @@
-@echo off & title ROSE-BUILDER & color 04
+@echo off & title ROSE-BUILDER & mode con: cols=150 lines=25 & color 04
 
 goto :DOES_PYTHON_EXIST
 
