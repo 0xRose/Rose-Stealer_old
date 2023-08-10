@@ -56,16 +56,16 @@
 
 #### 02/08/2023 - Working on an improved version of Rose-Injector & Rose-RAT but I have like 10 really difficult projects running at the same time, so expect the next bigger update to take some more time.
 #### 16/07/2023 - All Rose discord servers have been closed because of way too unethical decisions made by our community.
-#### 10/07/2023 - Following functions are not available at the moment: `getadmin` and `knightrat`. Our team is already working hard on solving these problems.
+#### 10/07/2023 - Following functions are not available at the moment: `getadmin | disable windows defender` and `obf src`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
 #### Encoutered an error while building? Join our [Discord server](https://discord.gg/Ts9RTFYvyt) or [Telegram group](https://t.me/+7MDF550ZlLVhYjUy)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer & injector.
 
 ## <a id="stars"></a> Star collection and upcoming updates
 
-##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation
-##### 60 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations
-##### 70 Stars = All bugs fixed (hard asf real) + better vm detection.
+##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation + general improvements + file appearance addons + additional fixes / features - WIP
+##### 60 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations - WIP
+##### 70 Stars = All bugs fixed (hard asf real) + better vm detection. - WIP
 ##### 85 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
 ##### 175 Stars = Advanced stealer with web view written in C++ & frontend langs. 
 
@@ -90,15 +90,17 @@
 - Sends you the victim's location and desktop screenshot
 - Startup integration
 - JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook
-- Built-in Knight RAT - WIP
+- Built-in Knight RAT
 - Built-in Rose RAT
 - UI integration
 - Compiler that creates an EXE file for you
 - Obfuscation which makes your file almost impossible to be read by humans - WIP
 - VirusTotal/VM bypass/blacklist
-- Small file size (UPX) - WIP
-- Diversity - Change the Icon, name and functions of your stub by yourself through the beautiful builder - WIP
+- Small file size (UPX)
+- File pumper
+- Diversity - Change the Icon, name and functions of your stub by yourself through the beautiful builder
 - Bypass/disable Windows Defender/Firewalls - WIP
+- Crypto miners (Bitcoin/Etherum) - WIP
 
 ## <a id="setup"></a> Setup
 **Due to our professional installation mechanism you won't need to install python manually, our batch script does it automated for you.**
@@ -120,6 +122,13 @@
 
 ## <a id="changelog"></a> Changelog
 ```
+[1.5] - 2023-08-10
+Fixed disable firewalls, added obfuscation (needs fix)
+~ Added obfuscation (needs to be fixed)
++ Added final file type selection (screensaver / executable)
++ Added log buttons
+/ Fixed disable firewalls
+
 [1.4] - 2023-08-09
 Added raw crypto miner func without code, fixed general bugs in malicious, added file pumper & custom icon support
 + specify a specific icon path now with even basic path as original windows executable icon
