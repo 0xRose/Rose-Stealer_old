@@ -65,7 +65,7 @@
 
 ## <a id="stars"></a> Star collection and upcoming updates
 
-##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation + general improvements + file appearance addons + additional fixes / features - WIP
+##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation + general improvements + file appearance addons + additional fixes / features + fix injection - WIP
 ##### 60 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations - WIP
 ##### 70 Stars = All bugs fixed (hard asf real) + better vm detection. - WIP
 ##### 85 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
