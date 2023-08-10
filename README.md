@@ -58,7 +58,7 @@
 
 #### 02/08/2023 - Working on an improved version of Rose-Injector & Rose-RAT but I have like 10 really difficult projects running at the same time, so expect the next bigger update to take some more time.
 #### 16/07/2023 - All official Rose discord servers have been closed because of way too unethical decisions made by our community.
-#### 10/07/2023 - Following functions are not available at the moment: `getadmin | disable windows defender` and `obf src`. Our team is already working hard on solving these problems.
+#### 10/07/2023 - Following functions are not available at the moment: `getadmin | disable windows defender`, `Injection` and `obf src`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
 #### Encoutered an error while building? Join our [Discord server](https://discord.gg/Ts9RTFYvyt) or [Telegram group](https://t.me/+7MDF550ZlLVhYjUy)! You will need to send us both .log files which are created while building.
 ### A multipurpose advanced discord token stealer & injector.
