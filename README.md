@@ -47,7 +47,7 @@
 - [Changelog](#changelog)
 - [Bugs Or Errors](#bugsorerrors)
 - [Credits](#credits)
-- [Thanks!](#thanks)
+- [Star Collection](#stcollection)
 - [Star History](#history)
 - [License](#lisence)
 
@@ -56,20 +56,18 @@
 
 #### 10/08/2023 - I'll be working more on actual fixes now, because I add more stuff with issues than i actually fix.
 
-#### 02/08/2023 - Working on an improved version of Rose-Injector & Rose-RAT but I have like 10 really difficult projects running at the same time, so expect the next bigger update to take some more time.
-#### 16/07/2023 - All official Rose discord servers have been closed because of way too unethical decisions made by our community.
-#### 10/07/2023 - Following functions are not available at the moment: `getadmin | disable windows defender`, `Injection` and `obf src`. Our team is already working hard on solving these problems.
+#### 02/08/2023 - Working on an improved version of Rose-Injector & Rose-RAT but I have like 5 really time-spending projects running at the same time, so expect the next bigger update to take some more time. :)
+#### 10/07/2023 - Following functions are not available at the moment: `getadmin | disable windows defender`, `injection`, `malicious` and `obf src`. Our team is already working hard on solving these problems.
 #### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
 #### Encoutered an error while building? Join our [Discord server](https://discord.gg/Ts9RTFYvyt) or [Telegram group](https://t.me/+7MDF550ZlLVhYjUy)! You will need to send us both .log files which are created while building.
-### A multipurpose advanced discord token stealer & injector.
 
-## <a id="stars"></a> Star collection and upcoming updates
+## <a id="stars"></a> Upcoming updates
 
 ##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation + general improvements + file appearance addons + additional fixes / features + fix injection - WIP
 ##### 60 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations - WIP
 ##### 70 Stars = All bugs fixed (hard asf real) + better vm detection. - WIP
-##### 85 Stars = Heavy Knight-RAT update + new functions like DM all friends for Rose Injector. 
-##### 175 Stars = Advanced stealer with web view written in C++ & frontend langs. 
+##### 85 Stars = Heavy Knight-RAT update + new functions like DM all friends, trigger bsod / freeze screen (on specific actions) for Rose Injector.
+##### 175 Stars = A more advanced stealer & rat both built in one with a web control panel + a professional multi tool. 
 
 ## <a id="whatisthis"></a> What is this?
 
@@ -103,6 +101,7 @@
 - Diversity - Change the Icon, name and functions of your stub by yourself through the beautiful builder
 - Bypass/disable Windows Defender/Firewalls - WIP
 - Crypto miners (Bitcoin/Etherum) - WIP
+- Way more...
 
 ## <a id="setup"></a> Setup
 **Due to our professional installation mechanism you won't need to install python manually, our batch script does it automated for you.**
@@ -191,7 +190,7 @@ First Release
 - [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
 - [loTus04](https://github.com/loTus04) (W4SP Stealer)
 
-## <a id="thanks"></a> Thanks!
+## <a id="stcollection"></a> Star collection
 [![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
 
 ## <a id="history"></a> Star History
