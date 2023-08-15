@@ -4,26 +4,26 @@
   <br>
 </h1>
 
-<div style="display": flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background-color: #da467d;">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background-color: #da467d;">
     <div align="center">
-      <a href="https://discord.gg/Ts9RTFYvyt">
-          <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=flat-square&logo=discord&logoColor=white" alt="Join our Discord">
-      </a>
-      <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
-          <img src="https://img.shields.io/badge/DeepSource-%23da467d.svg?style=flat-square&logo=deepsource" alt="DeepSource">
-      </a>
-      <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector">
-          <img src="https://img.shields.io/badge/CodeFactor-%23da467d.svg?style=flat-square" alt="CodeFactor">
-      </a>
-      <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
-          <img src="https://img.shields.io/badge/DeepSource-%23da467d.svg?style=flat-square&logo=deepsource" alt="DeepSource">
-      </a>
-      <img src="https://img.shields.io/badge/Top Language-%23da467d.svg?style=flat-square" alt="Top Language">
-      <img src="https://img.shields.io/badge/GitHub Stars-%23da467d.svg?style=flat-square&logo=github" alt="GitHub Stars">
-      <img src="https://img.shields.io/badge/Weekly Commits-%23da467d.svg?style=flat-square" alt="Weekly Commits">
-      <img src="https://img.shields.io/badge/Last Commit-%23da467d.svg?style=flat-square&logo=git" alt="Last Commit">
-      <img src="https://img.shields.io/badge/Open Issues-%23da467d.svg?style=flat-square" alt="Open Issues">
-      <img src="https://img.shields.io/badge/Closed Issues-%23da467d.svg?style=flat-square" alt="Closed Issues">
+        <a href="https://discord.gg/Ts9RTFYvyt">
+            <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=flat-square&logo=discord&logoColor=white" alt="Join our Discord">
+        </a>
+        <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
+            <img src="https://img.shields.io/badge/DeepSource-%23da467d.svg?style=flat-square&logo=deepsource" alt="DeepSource">
+        </a>
+        <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector">
+            <img src="https://img.shields.io/badge/CodeFactor-%23da467d.svg?style=flat-square" alt="CodeFactor">
+        </a>
+        <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
+            <img src="https://img.shields.io/badge/DeepSource-%23da467d.svg?style=flat-square&logo=deepsource" alt="DeepSource">
+        </a>
+        <img src="https://img.shields.io/badge/Top%20Language-%23da467d.svg?style=flat-square" alt="Top Language">
+        <img src="https://img.shields.io/badge/GitHub%20Stars-%23da467d.svg?style=flat-square&logo=github" alt="GitHub Stars">
+        <img src="https://img.shields.io/badge/Weekly%20Commits-%23da467d.svg?style=flat-square" alt="Weekly Commits">
+        <img src="https://img.shields.io/badge/Last%20Commit-%23da467d.svg?style=flat-square&logo=git" alt="Last Commit">
+        <img src="https://img.shields.io/badge/Open%20Issues-%23da467d.svg?style=flat-square" alt="Open Issues">
+        <img src="https://img.shields.io/badge/Closed%20Issues-%23da467d.svg?style=flat-square" alt="Closed Issues">
     </div>
 </div>
 
