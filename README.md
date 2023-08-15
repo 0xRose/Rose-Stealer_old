@@ -85,7 +85,6 @@
 | Freeze Screen                                | Freeze the user's screen.                | No        | No            | Yes    |
 | Spread Malware                               | Send malicious messages to friends on social media. | No          | Yes            | Yes    |
 | Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
-| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
 
 ## Disclaimer
 
