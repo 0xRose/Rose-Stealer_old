@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.gg/Ts9RTFYvyt">
+    <a href="https://discord.gg/2PraTxj5AA">
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <br>
@@ -39,7 +39,7 @@
 </div>
 
 <div align="center">
-  <a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a> and <a href="https://github.com/gumbobr0t">gumbobr0t</a></strong>
+  <a href="https://discord.gg/2PraTxj5AA">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a> and <a href="https://github.com/gumbobr0t">gumbobr0t</a></strong>
 </div>
 
 ## Features
@@ -116,7 +116,7 @@ This tool is intended for educational purposes only. Use responsibly and with ex
 
 ## Problems
 
-To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injector/issues) or join our [Discord](https://discord.gg/Ts9RTFYvyt). Reach out to the developer on [Telegram](https://t.me/gumbobr0t).
+To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injector/issues) or join our [Discord](https://discord.gg/2PraTxj5AA). Reach out to the developer on [Telegram](https://t.me/gumbobr0t).
 
 ## Credits
 
