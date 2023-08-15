@@ -1,6 +1,6 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/rose-banner.png" width=1000 weigth=1000 alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-br.png" width=1000 weigth=1000 alt="R"></a>
   <br>
 </h1>
 
