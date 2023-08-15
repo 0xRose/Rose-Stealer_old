@@ -1,11 +1,11 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-br.png" width=1000 weigth=1000 alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/opera_MDZbztqx5e.png" alt="R"></a>
   <br>
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.gg/Ts9RTFYvyt">
+    <a href="https://discord.gg/2PraTxj5AA">
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <br>
@@ -36,11 +36,21 @@
     <h1>
         ADVANCED SPYWARE BUILDER
     </h1>
+  
+  **[<kbd> <br> Discord Server <br> </kbd>][Discord Server]** 
+  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]** 
+  **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
+  **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
+  **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
+
+  ---
 </div>
 
-<div align="center">
-  <a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a> and <a href="https://github.com/gumbobr0t">gumbobr0t</a></strong>
-</div>
+[Discord Server]: https://discord.gg/2PraTxj5AA
+[Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
+[gumbobr0t's Telegram]: https://t.me/gumbobr0t
+[pierro on GitHub]: https://github.com/xpierroz
+[gumbobr0t on GitHub]: https://github.com/gumbobr0t
 
 ## Features
 
@@ -85,13 +95,15 @@
 | Freeze Screen                                | Freeze the user's screen.                | No        | No            | Yes    |
 | Spread Malware                               | Send malicious messages to friends on social media. | No          | Yes            | Yes    |
 | Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
-| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
 
 ## Disclaimer
 
 This tool is intended for educational purposes only. Use responsibly and with explicit permission from the system owner. The creators are not liable for misuse or illegal activity resulting from its usage.
 
 ## Preview
+<div align="center">
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/Discord_ZHPRdfPVY4.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/Discord_zzIPCogBKh.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/python_3J43aMXusq.png" width=600 height=600 alt="R">
+</div>
 
 ## Setup
 
@@ -112,10 +124,6 @@ This tool is intended for educational purposes only. Use responsibly and with ex
 
 - ...
 
-## Problems
-
-To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injector/issues) or join our [Discord](https://discord.gg/Ts9RTFYvyt). Reach out to the developer on [Telegram](https://t.me/gumbobr0t).
-
 ## Credits
 
 **Main Developers:**
@@ -130,5 +138,5 @@ To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injecto
 - [suvan1911](https://github.com/suvan1911)
 - [suegdu](https://github.com/suegdu)
 
-## Love to everyone
+## Love to everyone 💞
 [![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
