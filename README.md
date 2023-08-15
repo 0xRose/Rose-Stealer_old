@@ -36,11 +36,21 @@
     <h1>
         ADVANCED SPYWARE BUILDER
     </h1>
+  
+  **[<kbd> <br> Discord Server <br> </kbd>][Discord Server]** 
+  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]** 
+  **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
+  **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
+  **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
+
+  ---
 </div>
 
-<div align="center">
-  <a href="https://discord.gg/2PraTxj5AA">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a> and <a href="https://github.com/gumbobr0t">gumbobr0t</a></strong>
-</div>
+[Discord Server]: https://discord.gg/2PraTxj5AA
+[Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
+[gumbobr0t's Telegram]: https://t.me/gumbobr0t
+[pierro on GitHub]: https://github.com/xpierroz
+[gumbobr0t on GitHub]: https://github.com/gumbobr0t
 
 ## Features
 
@@ -113,10 +123,6 @@ This tool is intended for educational purposes only. Use responsibly and with ex
   - Fixed Windows Defender detection
 
 - ...
-
-## Problems
-
-To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injector/issues) or join our [Discord](https://discord.gg/2PraTxj5AA). Reach out to the developer on [Telegram](https://t.me/gumbobr0t).
 
 ## Credits
 
