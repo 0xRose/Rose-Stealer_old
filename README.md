@@ -1,6 +1,6 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-br.png" width=1000 weigth=1000 alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/opera_MDZbztqx5e.png" alt="R"></a>
   <br>
 </h1>
 
@@ -91,6 +91,9 @@
 This tool is intended for educational purposes only. Use responsibly and with explicit permission from the system owner. The creators are not liable for misuse or illegal activity resulting from its usage.
 
 ## Preview
+<div align="center">
+  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/Discord_ZHPRdfPVY4.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/Discord_zzIPCogBKh.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/python_3J43aMXusq.png" width=600 height=600 alt="R">
+</div>
 
 ## Setup
 
@@ -129,5 +132,5 @@ To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injecto
 - [suvan1911](https://github.com/suvan1911)
 - [suegdu](https://github.com/suegdu)
 
-## Love to everyone
+## Love to everyone 💞
 [![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
