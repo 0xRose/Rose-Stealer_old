@@ -3,7 +3,7 @@
 
 __version__ = 1.0
 __repo__ = "https://github.com/DamagingRose/Rose-Injector/"
-__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose.png"
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-wh.png"
     
 import requests
 import os
@@ -21,7 +21,7 @@ from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, 
     
 def auto_update():
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/tools/rose_builder.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/tools/rose_builder.pyw"
     )
     
     code = requests.get(_code, timeout=10).text
@@ -406,7 +406,7 @@ class Ui_MainWindow_vailB(object):
         webbrowser.open("https://github.com/xpierroz")
     @staticmethod
     def gumghub():
-        webbrowser.open("https://github.com/Gumbobrot")
+        webbrowser.open("https://github.com/gumbobr0t")
     @staticmethod
     def svnghub():
         webbrowser.open("https://github.com/suvan1911")
