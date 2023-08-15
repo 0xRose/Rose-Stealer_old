@@ -36,7 +36,7 @@
 </div>
 
 <div align="center">
-  <a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+  <a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a> and <a href="https://github.com/gumbobr0t">gumbobr0t</a></strong>
 </div>
 
 ## Features
