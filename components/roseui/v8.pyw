@@ -375,7 +375,7 @@ def _makebuild(q: Queue, data_builder) -> str:
     q.put_nowait(0.2)
     edit_config()
     q.put_nowait(0.3)
-    obfuscate()
+    #obfuscate()
     q.put_nowait(0.4)
     compile()
     q.put_nowait(0.6)
@@ -442,7 +442,7 @@ def _home():
         ).props("icon=build color=pink-3").classes('w-full')
 
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
-        might_take = ui.label("At 40% / 70%, compiling/file pumping might take a few minutes depending on your computer & the options you chose. You can look at the progress on both log files.")
+        might_take = ui.label("At 40% & 70%, compiling/file pumping might take a few minutes depending on your computer & the options you chose. You can look at the progress on both log files.")
         ui.button("Open Rose Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'roselog.log'))
         ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
         progressbar.visible = False
@@ -592,5 +592,6 @@ if __name__ in {"__main__", "__mp_main__"}:
         reload=False,
         show=False,
         port=2009,
-        window_size=(700, 700)
+        window_size=(700, 775),
+        title=__title__
     )
