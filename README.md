@@ -114,6 +114,12 @@ This tool is intended for educational purposes only. Use responsibly and with ex
 
 ## Changelog
 
+- **1.6 (2023-08-14)**
+  - Added Anti-VM
+  - Added UAC bypass
+  - Added better icon selection in builder
+  - Fixed browser stealing
+
 - **1.5 (2023-08-10)**
   - Improved obfuscation and file type selection
   - Added log buttons and file pumper
