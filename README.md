@@ -46,7 +46,7 @@
   ---
 </div>
 
-[Discord Server]: https://discord.gg/2PraTxj5AA
+[Discord Server]: https://discord.gg/SeVnkkVPrC
 [Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
