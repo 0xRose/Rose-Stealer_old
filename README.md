@@ -1,6 +1,6 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/opera_MDZbztqx5e.png" alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/opera_MDZbztqx5e.png" alt="R"></a>
   <br>
 </h1>
 
@@ -9,24 +9,24 @@
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <br>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
-        <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
+    <a href="https://deepsource.io/gh/DamagingRose/Rose-Grabber/?ref=repository-badge}" target="_blank">
+        <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Grabber.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
     </a>
-    <a href="https://www.codefactor.io/repository/github/damagingrose/rose-injector">
-        <img src="https://www.codefactor.io/repository/github/damagingrose/rose-injector/badge" alt="CodeFactor" />
+    <a href="https://www.codefactor.io/repository/github/damagingrose/rose-grabber">
+        <img src="https://www.codefactor.io/repository/github/damagingrose/rose-grabber/badge" alt="CodeFactor" />
     </a>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Injector/?ref=repository-badge}" target="_blank">
-        <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Injector.svg/?label=resolved+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
+    <a href="https://deepsource.io/gh/DamagingRose/Rose-Grabber/?ref=repository-badge}" target="_blank">
+        <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Grabber.svg/?label=resolved+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
     </a>
     <br>
-    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Injector?color=%23da467d&style=flat-square">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Injector?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Grabber?color=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Injector?color=%23da467d&style=flat-square"> 
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Injector?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Grabber?color=%23da467d&style=flat-square"> 
+    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
     <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Injector?color=%23da467d&logoColor=%23da467d&style=flat-square">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Injector?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
     <br>
 </div>
 
@@ -102,17 +102,23 @@ This tool is intended for educational purposes only. Use responsibly and with ex
 
 ## Preview
 <div align="center">
-  <a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/Discord_ZHPRdfPVY4.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/Discord_zzIPCogBKh.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Injector"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/components/readme/python_3J43aMXusq.png" width=600 height=600 alt="R">
+  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_ZHPRdfPVY4.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_zzIPCogBKh.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/python_3J43aMXusq.png" width=600 height=600 alt="R">
 </div>
 
 ## Setup
 
 **By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
-+ Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Injector/archive/refs/heads/main.zip).
++ Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 + Extract the ZIP folder which you just downloaded.
-+ Run the [`start.bat`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/builder.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Injector/blob/main/components/roseui/v8.pyw) open automatically.
++ Run the [`start.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/builder.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/roseui/v8.pyw) open automatically.
 
 ## Changelog
+
+- **1.6 (2023-08-14)**
+  - Added Anti-VM
+  - Added UAC bypass
+  - Added better icon selection in builder
+  - Fixed browser stealing
 
 - **1.5 (2023-08-10)**
   - Improved obfuscation and file type selection
@@ -139,4 +145,4 @@ This tool is intended for educational purposes only. Use responsibly and with ex
 - [suegdu](https://github.com/suegdu)
 
 ## Love to everyone 💞
-[![Stargazers repo roster for @DamagingRose/Rose-Injector](https://reporoster.com/stars/dark/DamagingRose/Rose-Injector)](https://github.com/DamagingRose/Rose-Injector/stargazers)
+[![Stargazers repo roster for @DamagingRose/Rose-Grabber](https://reporoster.com/stars/dark/DamagingRose/Rose-Grabber)](https://github.com/DamagingRose/Rose-Grabber/stargazers)

