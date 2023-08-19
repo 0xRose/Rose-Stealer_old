@@ -1,6 +1,6 @@
 from config import Config 
 from __webhook import _WebhookX
-from informations import Info
+from ipinf import Info
 cc = Config()
 ii = Info()
 import socketio
