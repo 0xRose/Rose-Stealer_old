@@ -135,10 +135,12 @@ This tool is intended for educational purposes only. Use responsibly and with ex
 **Main Developers:**
 - [xpierroz](https://github.com/xpierroz)
 - [gumbobr0t](https://github.com/gumbobr0t)
+- [killer](https://github.com/Minecraftkillir)
 
 **External Contributions:**
 - [yxvi](https://github.com/I-Skid)
 - [Smug246](https://github.com/Smug246)
+- [addi00000](https://github.com/addi00000)
 - [Rdimo](https://github.com/Rdimo)
 - [loTus04](https://github.com/loTus04)
 - [suvan1911](https://github.com/suvan1911)
