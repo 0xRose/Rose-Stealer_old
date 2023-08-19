@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.gg/2PraTxj5AA">
+    <a href="https://discord.gg/PaE8MBQz4K">
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <br>
@@ -46,7 +46,7 @@
   ---
 </div>
 
-[Discord Server]: https://discord.gg/SeVnkkVPrC
+[Discord Server]: https://discord.gg/PaE8MBQz4K
 [Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
