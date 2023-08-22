@@ -23,3 +23,5 @@ pycryptodome
 mss
 pygame
 keyboard
+pyperclip
+pyzipper
