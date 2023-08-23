@@ -142,7 +142,6 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 - [killer](https://github.com/Minecraftkillir)
 
 **External Contributions:**
-- [yxvi](https://github.com/I-Skid)
 - [Smug246](https://github.com/Smug246)
 - [addi00000](https://github.com/addi00000)
 - [Rdimo](https://github.com/Rdimo)
