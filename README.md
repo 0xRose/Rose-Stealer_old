@@ -38,7 +38,7 @@
     </h1>
   
   **[<kbd> <br> Discord Server <br> </kbd>][Discord Server]** 
-  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]** 
+  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]**
   **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
   **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
   **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
