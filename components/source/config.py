@@ -6,11 +6,17 @@ class Config:
 
         self.rose_discord_rat = False
         self.rose_discord_rat_socket_link = 'ROSE_DISCORD_RAT_SOCKET_LINK'
+        
         self.knight_discord_rat = False
         self.knight_discord_rat_bot_token = 'KNIGHT_DISCORD_RAT_BOT_TOKEN'
         self.knight_discord_rat_channel_id = 'KNIGHT_DISCORD_RAT_CHANNEL_ID'
         self.knight_discord_rat_listener_user_id = 'KNIGHT_DISCORD_RAT_LISTENER_USER_ID'
         self.knight_discord_rat_prefix = 'KNIGHT_DISCORD_RAT_PREFIX'
+
+        self.ransomware = False
+        self.ransomware_email = 'RANSOMWARE_EMAIL_'
+        self.ransomware_btc_adress = 'RANSOMWARE_BTC_ADRESS_'
+        self.ransomware_webhook_url = 'RANSOMWARE_WEBHOOKURL'
 
         self.discord_ping = False
         self.injection = False
@@ -125,3 +131,14 @@ class Config:
     def get_webcam(self):
         return self.webcam
     
+    def get_ransomware_email_adr(self):
+        return self.ransomware_email
+    
+    def get_ransomware_money_adr(self):
+        return self.ransomware_btc_adress
+    
+    def get_ransomware_discord_webhook(self):
+        return self.ransomware_webhook_url
+    
+    def get_ransomware(self):
+        return self.ransomware

