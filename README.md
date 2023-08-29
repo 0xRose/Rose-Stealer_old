@@ -34,16 +34,16 @@
 
 <div align="center">
     <h1>
-        ADVANCED SPYWARE BUILDER
+        DISCORD TOKEN LOGGER WITH LESS DETECTIONS & A BEAUTIFUL BUILDER
     </h1>
   
   **[<kbd> <br> Discord Server <br> </kbd>][Discord Server]** 
-  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]**
+  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]** 
   **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
   **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
   **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
   **[<kbd> <br> killer on GitHub <br> </kbd>][killer on GitHub]**
-  
+
   ---
 </div>
 
@@ -121,7 +121,7 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 ## Changelog
 
 - **1.7 (2023-08-14)**
-  - Added professional ransomwares
+  - Added professional ransomware
   - Fixed return zip file
 
 - **1.6 (2023-08-14)**
