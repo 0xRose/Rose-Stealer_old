@@ -70,7 +70,7 @@ if /I "%c%" EQU "N" goto :NEW
 if /I "%c%" EQU "O" goto :OLD
 
 :MANUALLY2
-echo Okay, the old builder is called rose_builder.pyw and is located in the tools folder. The new builder is called v8.pyw and is located in roseui folder. Press ENTER to exit.
+echo Okay, the old builder is called rose_builder.pyw and is located in the components/tools folder. The new builder is called v8.pyw and is located in components/roseui folder. Press ENTER to exit.
 pause
 exit
 
