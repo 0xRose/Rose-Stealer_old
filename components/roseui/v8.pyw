@@ -165,7 +165,7 @@ random.seed(0)
 characters = string.ascii_letters + string.digits
 
 gen = ''.join(random.choice(characters) for _ in range(10))
-zip_passw = ''.join(random.choice(characters) for _ in range(20))
+zip_passw = 'ROSEBABYONTOP'
 zip_name = f'Rose-Final-{gen}.zip'
 
 def _makebuild(q: Queue, data_builder) -> str:
@@ -480,16 +480,12 @@ def select_icon():
 
 def _home():
     with ui.dialog() as dialog, ui.card():
-        if bool(data_builder['return_zip']):
-            ui.label(f'If the compilation process completed successfully, you should find the password protected zip archive within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.\nThe name of the zip archive is: {zip_name}\nThe password for the zip archive is: {zip_passw}')
-        else:
-            ui.label('If the compilation process completed successfully, you should find the executable file within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.')
+        ui.label('If the compilation process completed successfully, you should find the executable file or the zip within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.')
         ui.button('Open Folder', on_click=lambda: os.startfile(Path(__file__).resolve().parent))
+        ui.button('Copy password', on_click=lambda: pyperclip.copy(zip_passw))
         ui.button('Join Discord', on_click=lambda: webbrowser.open(links["rose_discord"]))
-        if bool(data_builder["return_zip"]):
-            ui.button('Copy password', on_click=lambda: pyperclip.copy(zip_passw))
         ui.button('Close', on_click=dialog.close)
-        
+
     async def start_computation():
         progressbar.visible = True
         might_take.visible = True
