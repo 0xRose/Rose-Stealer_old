@@ -70,7 +70,7 @@
 | EXE Binder                                   | Combine multiple files into a single executable. | No | No            | Yes       |
 | File Pumper                                  | Inflate file sizes to hide malicious content. | Yes  | No            | Yes       |
 | Obfuscated Code                              | Use code obfuscation techniques for evasion. | No  | Yes            | Yes       |
-| Discord Injection                            | Inject code into Discord processes.         | No       | Yes            | Yes       |
+| Discord Injection                            | Inject code into Discord processes.         | Yes       | Yes            | Yes       |
 | Steals Discord Tokens                        | Extract user tokens from Discord.          | Yes       | No            | Yes       |
 | Steals Steam Session                         | Gather active Steam sessions.              | Yes       | No            | Yes       |
 | Steals Epic Session                          | Gather active Epic Games sessions.         | Yes       | No            | Yes       |
@@ -97,6 +97,7 @@
 | Freeze Screen                                | Freeze the user's screen.                | No        | No            | Yes    |
 | Spread Malware                               | Send malicious messages to friends on social media. | No          | Yes            | Yes    |
 | Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
+| Ransomware                                 | Forces the victim to pay you $50 in BTC or they will lose all their data. Decrypter can be found in components/source. | Yes         | Yes            | Yes    |
 
 ## Disclaimer
 
