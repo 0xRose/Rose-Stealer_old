@@ -121,6 +121,15 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 
 ## Changelog
 
+**Working on crypto miner, rose ransomware & spread malware now.**
+
+- **1.8 (2023-09-02)**
+  - Added spread malware on discord feature
+  - Added additional error handling
+  - Added other UPX compression
+  - Added extension spoofer
+  - Fixed builder not showing compile CMD
+
 - **1.7 (2023-08-14)**
   - Added professional ransomware
   - Fixed return zip file
