@@ -1,4 +1,4 @@
-@echo off & title ROSE-BUILDER & mode con: cols=150 lines=25 & color 04
+@echo off & title ROSE-BUILDER & mode con: cols=150 lines=25 & color FC
 
 goto :DOES_PYTHON_EXIST
 
@@ -16,7 +16,8 @@ echo Looks good, %ver% is installed...
 goto :CHOICE2
 
 :CHOICE1
-set /P c=Do you want to download Python 3.11.2 NOW with Curl or download it MANUALLY? [N=NOW/M=MANUALLY] 
+echo Do you want to download Python 3.11.2 NOW with Curl or download it MANUALLY? [N=NOW/M=MANUALLY]
+set /P c=_^> 
 if /I "%c%" EQU "N" goto :NOW1
 if /I "%c%" EQU "M" goto :MANUALLY1
 
@@ -33,7 +34,8 @@ echo WARNING | ONLY CONTINUE IF THE INSTALLATION IS COMPLETED.
 pause
 taskkill /f /im python-installer.exe
 del /P python-installer.exe
-set /P c=Do you want to continue? Better restart this file to make sure every instance of Python will work correct. [R=RECOMMENDED/S=STILL CONTINUE]
+echo Do you want to continue? Better restart this file to make sure every instance of Python will work correct. [R=RECOMMENDED/S=STILL CONTINUE]
+set /P c=_^> 
 if /I "%c%" EQU "R" goto :CLOSE_RECOMMENDED
 if /I "%c%" EQU "S" goto :STILL_CONTINUE
 
@@ -53,15 +55,17 @@ exit
 
 :CHOICE2
 cd scrapedata
-python -m pip install -r requirements.txt
+python -m pip install -U -r requirements.txt
 cls
 cd ..
-set /P c=Do you want to start the Rose builder NOW or run it MANUALLY from the tools/roseui directory? [N=NOW/M=MANUALLY] 
+echo Do you want to start the Rose builder NOW or run it MANUALLY from the tools/roseui directory? [N=NOW/M=MANUALLY]
+set /P c=_^> 
 if /I "%c%" EQU "N" goto :NOW2
 if /I "%c%" EQU "M" goto :MANUALLY2
 
 :NOW2
-set /P c=Do you want to start the NEW Rose builder or the OLD Rose builder? [N=NEW/O=OLD] [OLD IS NOT SUPPORTED ANYMORE ^& WON'T WORK WELL] 
+echo Do you want to start the NEW Rose builder or the OLD Rose builder? [N=NEW/O=OLD] [OLD IS NOT SUPPORTED ANYMORE ^& WON'T WORK WELL]
+set /P c=_^> 
 if /I "%c%" EQU "N" goto :NEW
 if /I "%c%" EQU "O" goto :OLD
 

