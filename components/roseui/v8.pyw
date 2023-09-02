@@ -355,7 +355,7 @@ def _makebuild(q: Queue, data_builder) -> str:
             logger.info(f'Compile CMD Line: python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile')
             output_file = "rosecompile.log"
             subprocess.call(
-                f'start cmd /k "python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile"',
+                f'python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "upx-4.1.0-win64")}" --noconsole --onefile',
                 shell=True,
                 stdout=open(output_file, 'w'),
                 stderr=subprocess.STDOUT
