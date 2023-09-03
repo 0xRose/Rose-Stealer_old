@@ -1,5 +1,4 @@
 import getpass
-import time
 import os
 import sys
 
@@ -10,12 +9,3 @@ def check_username():
         sys.exit(1)
     else:
         return
-
-#Checks for guest additions
-def check_vbox_guest_additions():
-    # Check if VBoxService.exe is running
-    if os.system('tasklist /fi "imagename eq VBoxService.exe"') == 0:
-        sys.exit(0)
-    else:
-        return
-

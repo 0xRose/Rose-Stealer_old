@@ -8,7 +8,13 @@ def protection_check():
         "C:\\windows\\system32\\vboxhook.dll",
         "C:\\windows\\system32\\vboxmrxnp.dll",
         "C:\\windows\\system32\\vmsrvc.dll",
-        "C:\\windows\\system32\\drivers\\vmsrvc.sys"
+        "C:\\windows\\system32\\drivers\\vmsrvc.sys",
+        "C:\\Program Files\\Oracle\\VirtualBox\\VBoxGuest.sys",
+        "C:\\Program Files\\Oracle\\VirtualBox\\VBoxSF.sys",
+        "C:\\Program Files\\Oracle\\VirtualBox\\VBoxVideo.sys",
+        "C:\\Program Files\\VMware\\VMware Tools\\vmhgfs.dll",
+        "C:\\Program Files\\VMware\\VMware Tools\\vmmouse.sys",
+        "C:\\Program Files\\VMware\\VMware Tools\\vmrawdsk.sys",
     ]
     blacklisted_processes = [
         'vmtoolsd.exe', 
@@ -21,8 +27,7 @@ def protection_check():
         'fiddler.exe', 
         'vboxservice.exe', 
         'df5serv.exe', 
-        'vboxtray.exe', 
-        'vmwaretray.exe', 
+        'vboxtray.exe',  
         'ida64.exe', 
         'ollydbg.exe', 
         'pestudio.exe', 
@@ -33,11 +38,15 @@ def protection_check():
         'prl_cc.exe', 
         'prl_tools.exe', 
         'xenservice.exe', 
-        'qemu-ga.exe', 
+        'qemu-ga.exe',
+        'hyper-V.exe',
+        'VBoxService.exe',
         'joeboxcontrol.exe', 
         'ksdumperclient.exe', 
-        'ksdumper.exe', 
-        'joeboxserver.exe', 
+        'ksdumper.exe',
+        'vmware-unity-helper.exe',
+        'joeboxserver.exe',
+
     ]
 
     for process in psutil.process_iter(['pid', 'name']):
