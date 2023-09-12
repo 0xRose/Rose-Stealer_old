@@ -56,48 +56,47 @@
 
 ## Features
 
-| Feature                                      | Description                                  | Supported | In Progress | Future |
-|----------------------------------------------|----------------------------------------------|-----------|-------------|--------|
-| GUI Builder                                  | Create user-friendly interfaces easily.      | Yes       | Yes            | Yes       |
-| UAC Bypass                                   | Bypass User Account Control for elevated privileges. | No | No            | Yes       |
-| Custom Icon                                  | Set a unique icon for your application.      | Yes       | Yes            | Yes       |
-| Runs On Startup                              | Automatically start with Windows.           | Yes       | No            | Yes       |
-| Disables Windows Defender                    | Disable built-in antivirus protection.      | No       | Yes            | Yes       |
-| Anti-VM                                      | Detect and evade virtual machine environments. | Yes    | Yes            | Yes       |
-| Blocks AV-Related Sites                      | Prevent access to antivirus websites.       | No       | No            | Yes       |
-| Melt Stub                                    | Make the malware difficult to detect by self-destructing. | No | No            | Yes       |
-| Fake Error                                   | Display fake error messages to deceive users. | Yes     | No            | Yes       |
-| EXE Binder                                   | Combine multiple files into a single executable. | No | No            | Yes       |
-| File Pumper                                  | Inflate file sizes to hide malicious content. | Yes  | No            | Yes       |
-| Obfuscated Code                              | Use code obfuscation techniques for evasion. | No  | Yes            | Yes       |
-| Discord Injection                            | Inject code into Discord processes.         | Yes       | Yes            | Yes       |
-| Steals Discord Tokens                        | Extract user tokens from Discord.          | Yes       | No            | Yes       |
-| Steals Steam Session                         | Gather active Steam sessions.              | Yes       | No            | Yes       |
-| Steals Epic Session                          | Gather active Epic Games sessions.         | Yes       | No            | Yes       |
-| Steals Uplay Session                         | Gather active Uplay sessions.              | No       | No            | Yes       |
-| Steals Battle.Net Session                    | Gather active Battle.Net sessions.         | No       | No            | Yes       |
-| Steals Passwords From Many Browsers          | Extract stored passwords.                 | Yes       | Yes            | Yes       |
-| Steals Cookies From Many Browsers            | Collect browser cookies.                  | Yes       | Yes            | Yes       |
-| Steals History From Many Browsers            | Access browsing history.                  | Yes       | Yes            | Yes       |
-| Steals Autofills From Many Browsers          | Extract autofill data.                    | No       | Yes            | Yes       |
-| Steals Minecraft Session Files               | Gather Minecraft session information.      | Yes       | No            | Yes       |
-| Steals Telegram Session Files                | Extract Telegram session data.            | No       | No            | Yes       |
-| Steals Crypto Wallets                        | Target cryptocurrency wallets.           | Yes       | No            | Yes       |
-| Steals Roblox Cookies                        | Gather Roblox-related data.               | Yes       | No            | Yes       |
-| Steals Growtopia Session                     | Extract Growtopia session info.           | No       | No            | Yes       |
-| Steals IP Information                        | Collect IP addresses.                     | Yes       | No            | Yes       |
-| Steals System Info                           | Gather system-specific details.          | Yes       | No            | Yes       |
-| Steals Saved Wifi Passwords                  | Extract saved Wi-Fi passwords.            | Yes       | No            | Yes       |
-| Steals Common Files                          | Collect files commonly used for attacks.  | No       | No            | Yes       |
-| Captures Screenshot                          | Take screenshots of the user's desktop.  | Yes       | No            | Yes       |
-| Captures Webcam Image                        | Access and capture webcam images.        | Yes       | No            | Yes       |
-| Sends All Data Through Discord Webhooks/Telegram Bot/Attacker Client | Send stolen data to specified destinations. | Yes | Yes            | Yes       |
-| File Type Selection Screensaver              | Choose between screensaver or executable. | Yes       | No         | Yes       |
-| Trigger BSOD                                 | Cause a Blue Screen of Death.            | No        | No            | Yes    |
-| Freeze Screen                                | Freeze the user's screen.                | No        | No            | Yes    |
-| Spread Malware                               | Send malicious messages to friends on social media. | No          | Yes            | Yes    |
-| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | No         | Yes            | Yes    |
-| Ransomware                                 | Forces the victim to pay you $50 in BTC or they will lose all their data. Decrypter can be found in components/source. | Yes         | Yes            | Yes    |
+| Feature                                      | Description                                  | Status  |
+|----------------------------------------------|----------------------------------------------|---------|
+| GUI Builder                                  | Create user-friendly interfaces easily.      | Done    |
+| UAC Bypass                                   | Bypass User Account Control for elevated privileges. | Later   |
+| Custom Icon                                  | Set a unique icon for your application.      | Done    |
+| Runs On Startup                              | Automatically start with Windows.           | Done   |
+| Disables Windows Defender                    | Disable built-in antivirus protection.      | Later   |
+| Anti-VM                                      | Detect and evade virtual machine environments. | Done    |
+| Blocks AV-Related Sites                      | Prevent access to antivirus websites.       | Later   |
+| Melt Stub                                    | Make the malware difficult to detect by self-destructing. | Done |
+| Fake Error                                   | Display fake error messages to deceive users. | Done |
+| EXE Binder                                   | Combine multiple files into a single executable. | Later |
+| File Pumper                                  | Inflate file sizes to hide malicious content. | Done |
+| Obfuscated Code                              | Use code obfuscation techniques for evasion. | Later |
+| Discord Injection                            | Inject code into Discord processes.         | Done    |
+| Steals Discord Tokens                        | Extract user tokens from Discord.          | Done   |
+| Steals Steam Session                         | Gather active Steam sessions.              | Later   |
+| Steals Epic Session                          | Gather active Epic Games sessions.         | Later   |
+| Steals Uplay Session                         | Gather active Uplay sessions.              | Later   |
+| Steals Battle.Net Session                    | Gather active Battle.Net sessions.         | Later   |
+| Steals Passwords From Many Browsers          | Extract stored passwords.                 | Done    |
+| Steals Cookies From Many Browsers            | Collect browser cookies.                  | Done    |
+| Steals History From Many Browsers            | Access browsing history.                  | Done    |
+| Steals Autofills From Many Browsers          | Extract autofill data.                    | Later   |
+| Steals Minecraft Session Files               | Gather Minecraft session information.      | Later   |
+| Steals Telegram Session Files                | Extract Telegram session data.            | Later   |
+| Steals Crypto Wallets                        | Target cryptocurrency wallets.           | Later   |
+| Steals Roblox Cookies                        | Gather Roblox-related data.               | Done   |
+| Steals IP Information                        | Collect IP addresses.                     | Done   |
+| Steals System Info                           | Gather system-specific details.          | Done   |
+| Steals Saved Wifi Passwords                  | Extract saved Wi-Fi passwords.            | Done   |
+| Steals Common Files                          | Collect files commonly used for attacks.  | Later   |
+| Captures Screenshot                          | Take screenshots of the user's desktop.  | Done   |
+| Captures Webcam Image                        | Access and capture webcam images.        | Done   |
+| Sends All Data Through Discord Webhook       | Send stolen data to specified destinations. | Done |
+| File Type Selection                          | Choose between screensaver or executable. | Done   |
+| Trigger BSOD                                 | Cause a Blue Screen of Death.            | Later   |
+| Freeze Screen                                | Freeze the user's screen.                | Later   |
+| Spread Malware                               | Send malicious messages to friends on social media. | Later |
+| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | WIP |
+| Ransomware                                  | Forces the victim to pay you a specific amount of USD in Monero or they will lose all their data. Decrypter can be found in [components/tools](https://github.com/DamagingRose/Rose-Grabber/tree/main/components/tools). | Done |
 
 ## Disclaimer
 
@@ -123,6 +122,13 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 
 **Working on crypto miner, rose ransomware & spread malware now.**
 
+- **1.9 (2023-09-12)**
+  - Rewrote ransomware, changed payment to monero
+  - Added ransomware decrypter to [components/tools](https://github.com/DamagingRose/Rose-Grabber/tree/main/components/tools)
+  - Fixed startup
+  - Fixed builder (cleanup, upx, returnzip)
+  - Rewrote/Fixed install and start script
+
 - **1.8 (2023-09-02)**
   - Added spread malware on discord feature
   - Added additional error handling
@@ -131,7 +137,7 @@ Please be cognizant of the fact that nestled within the intricate architecture o
   - Fixed builder not showing compile CMD
 
 - **1.7 (2023-08-14)**
-  - Added professional ransomware
+  - Added ransomware
   - Fixed return zip file
 
 - **1.6 (2023-08-14)**
