@@ -235,7 +235,7 @@ def _makebuild(q: Queue, data_builder) -> str:
             new_url = match.group(0).replace('discordapp.com', 'discord.com')
             return new_url
         else:
-            return None
+            return url
 
     def edit_config():
         try:
