@@ -26,3 +26,4 @@ keyboard
 pyperclip
 pyzipper
 cryptography
+pycryptodome
