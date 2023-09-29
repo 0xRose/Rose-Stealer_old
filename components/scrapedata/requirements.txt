@@ -12,8 +12,7 @@ datetime
 opencv-python
 pyttsx3
 pynput
-browser_cookie3
-crypto
+browser_cookie3
 tabulate
 Pillow
 WMI
