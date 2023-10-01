@@ -1,7 +1,6 @@
-from dhooks import Embed, File, Webhook 
+from dhooks import Webhook 
 from config import Config 
 import requests
-import os
 cc = Config()
 
 class _WebhookX():
