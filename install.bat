@@ -1,14 +1,13 @@
-@echo off & title ROSE-INSTALLER & color F
-
-setlocal EnableDelayedExpansion
+@echo off
+title ROSE-INSTALLER
 
 REM Check if Python is installed
-python --version 2>nul
+python --version >nul 2>nul
 if errorlevel 1 (
-    echo Python is not installed.
-    
+    echo Python is not installed. Installing Python...
+
     REM Download Python 3.10.13 installer
-    curl -o python-installer.exe https://www.python.org/ftp/python/3.10.13/python-3.10.13-amd64.exe
+    curl -o python-installer.exe https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe
 
     REM Install Python quietly with add to path, quiet, force, and all features
     python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
@@ -19,16 +18,9 @@ if errorlevel 1 (
     echo Python is installed.
 )
 
-REM Check if required modules are installed
-for /f %%i in (components\scrapedata\requirements.txt) do (
-    python -c "import %%i" 2>nul
-    if errorlevel 1 (
-        echo Installing %%i...
-        pip install %%i
-    )
-)
+REM Install dependencies
+pip install colorama logging
+cls
 
-REM Run start.vbs
-call start.vbs
-
-endlocal
+REM Run Python script
+python components\install.py
