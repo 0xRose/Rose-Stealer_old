@@ -38,7 +38,7 @@
     </h1>
   
   **[<kbd> <br> Discord Server <br> </kbd>][Discord Server]** 
-  **[<kbd> <br> Telegram Group <br> </kbd>][Telegram Group]** 
+  **[<kbd> <br> Telegram Channel <br> </kbd>][Telegram Channel]** 
   **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
   **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
   **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
@@ -48,7 +48,7 @@
 </div>
 
 [Discord Server]: https://discord.gg/sbt9drkvAA
-[Telegram Group]: https://t.me/+7MDF550ZlLVhYjUy
+[Telegram Channel]: t.me/rosegrabber
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
 [gumbobr0t on GitHub]: https://github.com/gumbobr0t
