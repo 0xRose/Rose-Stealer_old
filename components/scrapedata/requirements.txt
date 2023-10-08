@@ -26,3 +26,5 @@ keyboard
 pyperclip
 pyzipper
 cryptography
+py-cpuinfo
+gpuinfo
