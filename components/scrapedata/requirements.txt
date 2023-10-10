@@ -28,3 +28,5 @@ pyzipper
 cryptography
 py-cpuinfo
 gputil
+pygame
+pyautogui
