@@ -30,3 +30,5 @@ py-cpuinfo
 gputil
 pygame
 pyautogui
+pywifi
+socket
