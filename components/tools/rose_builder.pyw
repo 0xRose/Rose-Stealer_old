@@ -8,15 +8,13 @@ __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Injector/main/co
 import requests
 import os
 import webbrowser
-import time
 import shutil
 import ctypes
-import platform
 from bs4 import BeautifulSoup
 from pathlib import Path
 from dhooks import Webhook, Embed
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal, pyqtSlot as Slot
+from PyQt5.QtCore import QRunnable, QThreadPool, QObject, pyqtSignal as Signal
     
     
 def auto_update():
