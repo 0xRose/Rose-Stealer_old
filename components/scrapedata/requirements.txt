@@ -7,7 +7,7 @@ dhooks
 pyinstaller
 python-socketio
 flaskwebgui
-nicegui==1.2.2
+nicegui
 datetime
 opencv-python
 pyttsx3
