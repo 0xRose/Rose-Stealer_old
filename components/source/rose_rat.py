@@ -1,5 +1,5 @@
 from config import Config 
-from __webhook import _WebhookX
+from webhook import _WebhookX
 from ipinf import Info
 cc = Config()
 ii = Info()
