@@ -1,5 +1,5 @@
 import os
-from __webhook import _WebhookX
+from webhook import _WebhookX
 from datetime import datetime
 import shutil
 import requests
