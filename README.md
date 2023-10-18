@@ -121,6 +121,13 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 ## Changelog
 
 **Working on crypto miner, rose ransomware & spread malware now.**
+- **2.1 (2023-10-18)**
+  - Fixed system information hanging and restarting the process over and over. (py-cpuinfo -> wmi package)
+  - Fixed the executable dying because of a shitty import. (__webhook.py --> webhook.py)
+  - Removed unused libraries from some of the files.
+  - Ransomware Key is deleted from memory once it's used up fully.
+  - Better formating of HWID, Power, and Screen information.
+  - Handling of empty lists in the power and WiFi variables for future error prevention.
 
 - **2.0 (2023-10-02)**
   - Added hidden path to browser and more
