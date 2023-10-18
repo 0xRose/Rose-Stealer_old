@@ -1,6 +1,6 @@
 from config import Config 
 from dhooks import Embed
-from __webhook import _WebhookX
+from webhook import _WebhookX
 cc = Config()
 
 class WebhookX():

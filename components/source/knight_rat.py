@@ -7,7 +7,6 @@ import webbrowser
 import ctypes
 import subprocess
 import pygame
-import pygame.camera
 import requests
 import win32con
 import keyboard

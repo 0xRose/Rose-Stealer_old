@@ -2,7 +2,7 @@ import subprocess
 import os
 from config import Config
 from datetime import datetime
-from __webhook import _WebhookX
+from webhook import _WebhookX
 from dhooks import Embed
 from urllib.request import Request, urlopen
 from urllib.error import URLError

