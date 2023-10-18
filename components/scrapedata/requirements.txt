@@ -26,7 +26,7 @@ keyboard
 pyperclip
 pyzipper
 cryptography
-py-cpuinfo
+wmi
 gputil
 pygame
 pyautogui
