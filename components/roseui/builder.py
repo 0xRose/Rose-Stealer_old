@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-b.png'
-__version__ = '2.0'
+__version__ = '2.1'
 __debugm__ = False # Change only if you are a dev 
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/$rose-wh.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/roseui/msg.txt").text.splitlines()[0].split(" - ")
