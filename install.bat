@@ -6,7 +6,7 @@ python --version >nul 2>nul
 if errorlevel 1 (
     echo Python is not installed. Installing Python...
 
-    REM Download Python 3.10.13 installer
+    REM Download Python 3.11.5 installer
     curl -o python-installer.exe https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe
 
     REM Install Python quietly with add to path, quiet, force, and all features
