@@ -48,7 +48,7 @@
 </div>
 
 [Discord Server]: https://discord.gg/sbt9drkvAA
-[Telegram Channel]: t.me/rosegrabber
+[Telegram Channel]: https://t.me/rosegrabber
 [gumbobr0t's Telegram]: https://t.me/gumbobr0t
 [pierro on GitHub]: https://github.com/xpierroz
 [gumbobr0t on GitHub]: https://github.com/gumbobr0t
