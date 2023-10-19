@@ -1,3 +1,6 @@
+import platform
+if int(platform.python_version_tuple()[0] + platform.python_version_tuple()[1]) > 311:
+    input('Python 3.12+ is not supported at this time, downgrade to Python 3.11.'), exit()
 import sys
 import os
 if sys.executable.endswith('pythonw.exe'):
