@@ -1,4 +1,7 @@
 # skidded from blank hgaghahahahahha
+import os
+import subprocess
+
 def block_sites():
     call = subprocess.run(
         "REG QUERY HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /V DataBasePath", shell=True,
