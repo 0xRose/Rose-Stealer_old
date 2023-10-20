@@ -145,7 +145,7 @@ if not os.path.exists(main_path):
 
 if cc.get_fake_error():
     try:
-        ctypes.windll.user32.MessageBoxW(0, 'This application failed to start because d3dx9_43.dll was not found. Re-installing the application may fix this problem.', f"{os.path.basename(__file__)} - System Error", 16)
+        ctypes.windll.user32.MessageBoxW(0, 'loadresources.dll could not be found', f"{os.path.basename(__file__)} - System Error", 16)
     except Exception as e:
         send_error_notification(e, 'Rose Fake Error')
 
