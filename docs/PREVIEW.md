@@ -1,0 +1,8 @@
+## Most of the images are outdated and I havent checked yet.
+## Im really busy atm so expect this to take time for me updating the images and checking the detections.
+
+<div align="center">
+  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/opera_j0Pf32tJr5.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_ZHPRdfPVY4.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_d5cUa94C1j.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_zzIPCogBKh.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_6ElGNQxTZw.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/python_xAf0dVCV7y.png"><a href="https://github.com/DamagingRose/Rose-Grabber">
+
+  <br><b>For more images <a href="https://github.com/DamagingRose/Rose-Grabber/tree/main/components/readme">click here</a>.</b>
+</div>
