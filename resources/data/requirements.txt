@@ -31,3 +31,4 @@ gputil
 pygame
 pyautogui
 pywifi
+pywebview
