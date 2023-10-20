@@ -31,4 +31,3 @@ gputil
 pygame
 pyautogui
 pywifi
-socket
