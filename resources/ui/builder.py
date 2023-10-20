@@ -203,7 +203,7 @@ def _makebuild(q: Queue, data_builder) -> str:
         return
     
     if data_builder["icon_file"] == "Windows Exe" or "":
-        win_exe_path = os.path.join(os.getcwd(), "resources", "assets", "imageres-011.ico")
+        win_exe_path = os.path.join(os.getcwd(), "resources", "assets", "executable.ico")
         data_builder["icon_path"] = win_exe_path
     
     if data_builder["file_pumper_size"] == "":
@@ -477,14 +477,12 @@ def _home():
         choose_file_icon = ui.select(
             label='File icon',
             options=['Windows Exe', 'Use Custom'],
-            value="Windows Exe",
             on_change=lambda e: change_data("icon_file", e.value)
         ).props('inline color=pink-3').classes('w-full')
         ui.button('Set custom file icon', on_click=select_icon).props("icon=code color=purple-11").bind_visibility_from(choose_file_icon, 'value')
         ui.select(
             label='Returned file type',
             options=["Executable (.exe)", "Screensaver (.scr)"],#, "Batch (.bat)", "PowerShell (.ps1)", "Visual Basic Script (.vbs)"],
-            value="Executable (.exe)",
             on_change=lambda e: change_data('type_file', e.value)
         ).props("color=pink-3").classes('w-full')
         ui.checkbox('Obfuscation', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')
