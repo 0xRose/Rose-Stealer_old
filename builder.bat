@@ -53,7 +53,7 @@ title Starting builder...
 :: Step 10: Run builder.py
 title Rose UI Builder
 
-python resources\ui\builder.py"
+python resources\ui\builder.py
 
 :: Step 11: End local environment
 endlocal
