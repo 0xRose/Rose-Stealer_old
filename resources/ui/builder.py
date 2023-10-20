@@ -168,7 +168,7 @@ async def test_webhook(webhook_url):
                 timestamp="now"
             )
             embed.set_author(name="Success", icon_url=__icon__)
-            embed.set_footer(text="Rose-Stealer | t.me/rosegrabber | maintained by gumbobrot and something", icon_url=__icon__)
+            embed.set_footer(text="Rose-Stealer | t.me/rosegrabber", icon_url=__icon__)
             await hook.send(embed=embed, username='Rose-Builder', avatar_url="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png")
         return 0
     except Exception as e:
