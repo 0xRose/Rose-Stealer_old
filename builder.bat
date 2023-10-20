@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 :: Step 1: Check if Python is installed
-title "Looking for Python..."
+title Looking for Python...
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo "Python is not installed. Installing..."
@@ -30,25 +30,25 @@ if %errorlevel% neq 0 (
 )
 
 :: Step 3: Change console title
-title "Creating venv..."
+title Creating venv...
 
 :: Step 4: Create venv
 python -m venv myvenv
 
 :: Step 5: Change console title
-title "Entering venv..."
+title Entering venv...
 
 :: Step 6: Activate venv
 call myvenv\Scripts\activate
 
 :: Step 7: Change console title
-title "Installing packages..."
+title Installing packages...
 
 :: Step 8: Install modules from requirements.txt
 pip install -r resources\data\requirements.txt
 
 :: Step 9: Change console title
-title "Starting builder..."
+title Starting builder...
 
 :: Step 10: Run builder.py
 start cmd /c "@echo off && title Rose UI Builder && echo Press enter to start the builder... && pause && python resources\ui\builder.py"
