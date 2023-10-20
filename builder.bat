@@ -45,13 +45,15 @@ call myvenv\Scripts\activate
 title Installing packages...
 
 :: Step 8: Install modules from requirements.txt
-pip install -r resources\data\requirements.txt
+pip install --upgrade --force-reinstall --ignore-installed --requirement resources\data\requirements.txt
 
 :: Step 9: Change console title
 title Starting builder...
 
 :: Step 10: Run builder.py
-start cmd /c "@echo off && title Rose UI Builder && echo Press enter to start the builder... && pause && python resources\ui\builder.py"
+title Rose UI Builder
+
+python resources\ui\builder.py"
 
 :: Step 11: End local environment
 endlocal
