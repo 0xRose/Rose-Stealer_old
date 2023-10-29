@@ -1,15 +1,15 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/readme/opera_MDZbztqx5e.png" alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rosebb.png" alt="R"></a>
   <br>
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
     <a href="https://discord.gg/sbt9drkvAA">
-        <img src="https://img.shields.io/badge/Discord-%23da467d.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
+        <img src="https://img.shields.io/badge/Discord-%238B0000.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <a href="https://t.me/rosegrabber">
-        <img src="https://img.shields.io/badge/Telegram-%23da467d.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
+        <img src="https://img.shields.io/badge/Telegram-%238B0000.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
     </a>
     <br>
     <a href="https://deepsource.io/gh/DamagingRose/Rose-Grabber/?ref=repository-badge}" target="_blank">
@@ -22,14 +22,14 @@
         <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Grabber.svg/?label=resolved+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
     </a>
     <br>
-    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Grabber?color=%23da467d&style=flat-square">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Grabber?color=%238B0000&style=flat-square">
+    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%238B0000&style=flat-square">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Grabber?color=%23da467d&style=flat-square"> 
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Grabber?color=%238B0000&style=flat-square"> 
+    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%238B0000&style=flat-square">
     <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Grabber?color=%23da467d&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%238B0000&style=flat-square">
+    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%23da467d&style=flat-square">
     <br>
 </div>
 
