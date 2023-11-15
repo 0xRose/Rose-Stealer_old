@@ -67,6 +67,7 @@ def user_check():
         "test",
         "RGzcBUyrznReg",
         "OgJb6GqgK0O",
+        "joshuarob",
     ]
 
     try:
@@ -187,6 +188,7 @@ def hwid_check():
         "07AF2042-392C-229F-8491-455123CC85FB",
         "4EDF3342-E7A2-5776-4AE5-57531F471D56",
         "032E02B4-0499-05C3-0806-3C0700080009",
+        "11111111-2222-3333-4444-555555555555"
     ]
 
     try:
@@ -271,6 +273,7 @@ def ip_check():
             "35.192.93.107",
             "213.33.190.22",
             "194.154.78.152",
+            "20.114.22.115",
         ]
         IP = requests.get("https://api.myip.com").json()["ip"]
 
@@ -334,6 +337,7 @@ def proc_check():
 def mac_check():
     try:
         MACS = [
+            "05:17:5D:75:D5:54",
             "00:03:47:63:8b:de",
             "00:0c:29:05:d8:6e",
             "00:0c:29:2c:c1:21",
