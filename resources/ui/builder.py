@@ -550,7 +550,7 @@ def _functions():
             with ui.column():
                 with ui.row():
                     _miner = ui.checkbox('Silent Crypto Miner', on_change=lambda e: change_data('silent_crypto_miner', e.value)).props('inline color=yellow-7')
-                    ui.input(label='Monero Wallet adress', placeholder='Bitcoin wallet adress',
+                    ui.input(label='Monero Wallet Address', placeholder='Monero Wallet Address',
                         on_change=lambda e: change_data('wallet_adress', e.value)).bind_visibility_from(_miner, 'value').props('inline color=yellow-7')
                 with ui.row():
                     _rose_rat = ui.checkbox('Rose-RAT', on_change=lambda e: change_data('rose_rat', e.value)).props('inline color=yellow-7')
