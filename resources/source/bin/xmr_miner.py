@@ -1,7 +1,7 @@
 import subprocess
 import os
 import sys
-from config import Config
+from bin.config import Config
 
 cc = Config()
 
