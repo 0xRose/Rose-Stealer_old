@@ -68,7 +68,10 @@ if iface:
             # pywifi/profile.py already initializes an SSID variable, so why this happens in unknown.
 
 lang = subprocess.check_output('wmic os get MUILanguages /format:list').decode().strip().split('\r\r\n')[0].split('=')[1] if subprocess.check_output('wmic os get MUILanguages /format:list', shell=True).decode().strip() else "No Language"
-system_output = subprocess.check_output('wmic os get Caption /format:list', shell=True).decode().strip()
+try:
+    system_output = subprocess.check_output('wmic os get Caption /format:list', shell=True).decode().strip()
+except:
+    system_output = None
 system = str(system_output.split('\r\r\n')[0].split('=')[1]) if system_output else "No System Information"
 output = subprocess.check_output('wmic path softwarelicensingservice get OA3xOriginalProductKey', shell=True).decode().strip()
 product_key = str(output.split('\n', 1)[-1].strip()) if output else "No Product Key"
