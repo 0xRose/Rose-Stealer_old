@@ -1,4 +1,4 @@
-@echo off && color b
+@echo off && color 4
 setlocal EnableDelayedExpansion
 title Looking for Python...
 python --version >nul 2>nul
