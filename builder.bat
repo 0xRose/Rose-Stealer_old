@@ -4,12 +4,12 @@ title Looking for Python...
 python --version >nul 2>nul
 if errorlevel 1 (
     echo Python is not installed. Installing...
-    set "URL=https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe"
-    set "INSTALL_PATH=C:\Python310"
-    curl -o "%TEMP%\python-3.10.9-amd64.exe" %URL%
-    "%TEMP%\python-3.10.9-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 SimpleInstall=1 TargetDir=%INSTALL_PATH%
+    set "URL=https://www.python.org/ftp/python/3.11.6/python-3.11.6-amd64.exe"
+    set "INSTALL_PATH=C:\Python311"
+    curl -o "%TEMP%\python-3.11.6-amd64.exe" %URL%
+    "%TEMP%\python-3.11.6-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 SimpleInstall=1 TargetDir=%INSTALL_PATH%
     setx PATH "%INSTALL_PATH%;%PATH%"
-    del "%TEMP%\python-3.10.9-amd64.exe"
+    del "%TEMP%\python-3.11.6-amd64.exe"
     exit
 ) else (
     echo Python is installed.
