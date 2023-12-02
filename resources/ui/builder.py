@@ -1,9 +1,9 @@
 import sys
 import platform
-if int(platform.python_version_tuple()[0] + platform.python_version_tuple()[1]) > 311:
-    input('Python 3.11+ is not supported at this time, downgrade to Python 3.10.9')
-    sys.exit()
 import os
+if int(platform.python_version_tuple()[0] + platform.python_version_tuple()[1]) > 311:
+    input('Python 3.12+ is not supported at this time, downgrade to Python 3.11.')
+    os._exit(1)
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
