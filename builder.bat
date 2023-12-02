@@ -10,6 +10,7 @@ if errorlevel 1 (
     "%TEMP%\python-3.11.6-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 SimpleInstall=1 TargetDir=%INSTALL_PATH%
     setx PATH "%INSTALL_PATH%;%PATH%"
     del "%TEMP%\python-3.11.6-amd64.exe"
+    pause
     exit
 ) else (
     echo Python is installed.
@@ -25,6 +26,6 @@ echo Installing packages...
 pip install --upgrade --force-reinstall --ignore-installed --requirement resources\data\requirements.txt
 title Starting builder...
 echo Starting builder...
-title Rose UI Builder
-python resources\ui\builder.py
+start /min cmd.exe /k "python resources\ui\builder.py"
 endlocal
+pause
