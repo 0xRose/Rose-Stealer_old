@@ -310,10 +310,10 @@ def _makebuild(q: Queue, data_builder) -> str:
     def compile():
         try:
             logger.info("Entering compile process")
-            logger.info(f'Compile CMD Line: call myvenv/Scripts/activate && python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "resources", "ui", "upx-4.1.0-win64")}" --noconsole --onefile')
+            logger.info(f'Compile CMD Line: call myvenv/Scripts/activate && python -m PyInstaller "{path}\\main.py" --clean --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "resources", "ui", "upx-4.1.0-win64")}" --noconsole --onefile')
             output_file = "rosecompile.log"
             subprocess.call(
-                f'call myvenv/Scripts/activate && python -m PyInstaller "{path}\\main.py" --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "resources", "ui", "upx-4.1.0-win64")}" --noconsole --onefile',
+                f'call myvenv/Scripts/activate && python -m PyInstaller "{path}\\main.py" --clean --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "resources", "ui", "upx-4.1.0-win64")}" --noconsole --onefile',
                 shell=True,
                 stdout=open(output_file, 'w'),
                 stderr=subprocess.STDOUT
