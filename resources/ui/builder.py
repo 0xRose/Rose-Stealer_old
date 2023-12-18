@@ -746,10 +746,10 @@ def start_nicegui(**kwargs):
 if __name__ in {"__main__", "__mp_main__"}:
     auto_update()
     ui.run(
-        native=False,
+        native=True,
         dark=True,
-        reload=True,
-        show=True,
+        reload=False,
+        show=False,
         port=2009,
         window_size=(600, 660),
         title=__title__
