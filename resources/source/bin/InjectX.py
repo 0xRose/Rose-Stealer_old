@@ -1,6 +1,5 @@
-# Modified by gumbobr0t and xpierroz, but created by smug/addidix, so credits to them. :)
-# https://github.com/Smug246
-# https://github.com/addi00000
+# Entire code from https://github.com/addi00000/empyrean!
+# Go give him some love.
 
 from bin.config import Config
 cc = Config()
