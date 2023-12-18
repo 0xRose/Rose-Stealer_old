@@ -5,10 +5,11 @@ title Looking for Python...
 
 where python >nul 2>nul
 if errorlevel 1 (
-    echo Python is not installed. Installing...
-    call resources\utils\install_python.bat
+    echo Python is not installed. Please install it over this link, but also make sure to add it to PATH. Then restart this file.
+    echo https://www.python.org/ftp/python/3.11.6/python-3.11.6-amd64.exe
     
     pause
+    exit
 ) else (
     echo Python is installed.
 )
