@@ -4,8 +4,6 @@ import os
 if int(platform.python_version_tuple()[0] + platform.python_version_tuple()[1]) > 311:
     input('Python 3.12+ is not supported at this time, downgrade to Python 3.11.')
     os._exit(1)
-if not os.path.exists(os.path.join(os.getcwd(), "logs")):
-    os.mkdir(os.path.join(os.getcwd(), "logs"))
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
@@ -33,7 +31,7 @@ pool = ProcessPoolExecutor()
 
 logging.basicConfig(
     level=logging.DEBUG,
-    filename='logs\\roselog.log',
+    filename='roselog.log',
     filemode='a',
     format='[%(filename)s:%(lineno)d] - %(asctime)s - %(levelname)s - %(message)s'
 )
@@ -43,7 +41,7 @@ logger = logging.getLogger(__name__)
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png'
 __version__ = '2.3'
-__debugm__ = False # Debug mode
+__debugm__ = False
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/roseb.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
 
