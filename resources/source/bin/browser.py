@@ -1,4 +1,5 @@
-# credits to addidix
+# Entire code from https://github.com/addi00000/empyrean!
+# Go give him some love.
 
 import base64
 import datetime
