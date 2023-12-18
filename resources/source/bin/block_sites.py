@@ -1,4 +1,5 @@
-# skidded from blank hgaghahahahahha
+# credits to blank
+
 import os
 import subprocess
 
