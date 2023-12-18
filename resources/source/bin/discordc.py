@@ -6,7 +6,7 @@ from bin.ipinf import Info
 ifx = Info()
 from datetime import datetime
 
-class DiscordX(): #Updating soon
+class DiscordX():
     def __init__(self):
         self.webhook = cc.get_webhook()
         if cc.get_debug_mode:
