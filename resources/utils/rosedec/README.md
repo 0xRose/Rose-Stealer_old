@@ -1,0 +1,1 @@
+# Have you fallen victim to our Ransomware? Now don't cry. Just get your key and decrypt your files.
