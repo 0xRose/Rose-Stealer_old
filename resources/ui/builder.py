@@ -208,7 +208,7 @@ def _makebuild(q: Queue, data_builder) -> str:
     rosefub = os.path.join(path, 'obf2-rose.py')
     blankobf = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'blankobf.py')
     pycloak = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'pycloak-main')
-    rvenv = f"'{os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')}'"
+    rvenv = f"\'{os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')}\'"
     final = 'dist\\Built.exe'
     post = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'comp', 'post.py')
         
