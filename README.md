@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
-    <a href="https://discord.com/invite/KnVcxx4JUJ">
+    <a href="https://discord.gg/sMawrDqnta">
         <img src="https://img.shields.io/badge/Discord-%238B0000.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <a href="https://t.me/rosegrabber">
@@ -57,16 +57,12 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 **Make sure to disable your anti-virus before proceeding, so the important rose components dont get deleted.**
 - Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 - Extract packed contents. You can find a guide [here](https://www.top-password.com/knowledge/extract-files-from-zip-in-windows-10.html).
-- Launch UI by executing [`builder.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
+- Launch UI by executing [`build.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
 
 ### Issues? Get help!
 **You can contact us here:**
 - [Telegram](https://t.me/gumbobr0t)
-- [Discord](https://discord.com/invite/KnVcxx4JUJ)
-
-### Preview
-
-If you're still unsure you may check out our [website](https://stealer.wtf)!
+- [Discord](https://discord.gg/sMawrDqnta)
 
 ### Docs
 For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs) folder.
