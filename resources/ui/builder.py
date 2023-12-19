@@ -703,7 +703,7 @@ def superhome():
         with ui.tab_panel('Settings'):
             _github()
 
-v = ui.video('https://github.com/DamagingRose/Rose-Grabber/raw/main/resources/assets/RoseLoadingScreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
+v = ui.video('https://github.com/DamagingRose/Rose-Grabber/raw/main/resources/assets/roseloadingscreen.mp4', autoplay=True, loop=False, muted=True, controls=False).style('position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;')
 v.on('ended', lambda _: ui.open('/home'))
 app.on_shutdown(pool.shutdown)
 
