@@ -1,7 +1,7 @@
 <h1 id="top" align="center">
   <br>
   <a href="https://github.com/DamagingRose/Rose-Grabber">
-    <img src="assets/builder.png" alt="R">
+    <img src="resources/assets/builder.png" alt="R">
   </a>
   <br>
 </h1>
