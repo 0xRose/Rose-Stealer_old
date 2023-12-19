@@ -37,10 +37,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 __title__ = 'Rose UI Builder'
-__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png'
+__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png'
 __version__ = '2.3'
 __debugm__ = False
-__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/roseb.png"
+__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
 
 data_builder = {
@@ -164,7 +164,7 @@ async def test_webhook(webhook_url):
             )
             embed.set_author(name="Success", icon_url=__icon__)
             embed.set_footer(text="Rose-Stealer | t.me/rosegrabber", icon_url=__icon__)
-            await hook.send(embed=embed, username='Rose-Stealer | t.me/rosegrabber', avatar_url="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/Rose.png")
+            await hook.send(embed=embed, username='Rose-Stealer | t.me/rosegrabber', avatar_url="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png")
         return 0
     except Exception as e:
         logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
@@ -685,7 +685,7 @@ ui.colors(primary='#333')
 
 @ui.page('/home')
 def superhome():
-    ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/roseb.png').style(
+    ui.image('https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png').style(
         'position: center; width: 90px; left: 220px;'
     )
 
