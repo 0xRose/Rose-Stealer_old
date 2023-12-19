@@ -10,6 +10,7 @@
   - Fixed Knight-RAT commands
   - Fixed builder
   - Fixed Ransomware
+  - Knight RAT refactor
   - Restructured logging system
   - Restructured documentation and readme
   - Rewrote startup script
