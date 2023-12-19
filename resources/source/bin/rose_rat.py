@@ -21,7 +21,6 @@ import threading
 
 sio = socketio.Client()
 
-
 class CommandHandler():
     def __init__(self):
         self.webhook = _WebhookX().get_object()

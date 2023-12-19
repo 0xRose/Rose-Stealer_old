@@ -17,7 +17,6 @@ crypto
 tabulate
 Pillow
 WMI
-discord
 psutil
 pycryptodome
 mss
@@ -33,3 +32,6 @@ pyautogui
 pywifi
 pywebview
 getmac
+colorlog
+PyNaCl
+discord.py

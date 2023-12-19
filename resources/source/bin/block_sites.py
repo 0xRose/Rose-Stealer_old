@@ -1,4 +1,6 @@
-# skidded from blank hgaghahahahahha
+# Entire code from https://github.com/blank-c/blank-grabber!
+# Go give him some love.
+
 import os
 import subprocess
 

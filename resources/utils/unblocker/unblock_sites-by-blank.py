@@ -1,3 +1,8 @@
+# Made by blank
+# https://github.com/blank-c
+
+# This script requires python 3.11 to be installed!
+
 import os, subprocess, ctypes, sys, getpass
 
 if ctypes.windll.shell32.IsUserAnAdmin() != 1:
