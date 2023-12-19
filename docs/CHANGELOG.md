@@ -1,4 +1,4 @@
-- **2.3 (2023-12-15)**
+- **2.3 (2023-12-19)**
   - Added more browser paths
   - Added more roblox browser methods
   - Added base code for methods
