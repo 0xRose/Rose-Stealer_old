@@ -29,7 +29,7 @@ python -m pip install --upgrade --ignore-installed -r resources\data\requirement
 
 title Starting builder...
 echo Starting builder...
-start /min cmd.exe /c "python -m resources\ui\builder"
+start /min cmd.exe /c "python resources\ui\builder.py"
 
 endlocal
 pause
