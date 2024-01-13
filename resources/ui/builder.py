@@ -31,10 +31,10 @@ logging.basicConfig(level=logging.DEBUG, filename="roselog.log", filemode="a", f
 
 logger = logging.getLogger(__name__)
 
-__title__ = "Rose UI Builder"
-__avatar__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
-__version__ = "2.3"
-__debugm__ = False
+__title__ = 'Rose UI Builder'
+__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png'
+__version__ = '2.3'
+__debugm__ = True
 __icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
 __devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
 
