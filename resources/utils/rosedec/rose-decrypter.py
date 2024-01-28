@@ -76,7 +76,7 @@ def decrypter():
                                                     
                                                       
                                                            
-               github.com/voyqge      
+               github.com/gumbobr0t      
          ================================
                                                            
 Welcome to Rose Decrypter! Looks like we encrypted you?! Oops...\n\n'''

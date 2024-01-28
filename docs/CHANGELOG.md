@@ -19,7 +19,7 @@
 - **2.2 (2023-10-20)**
   - Added bsod on run
   - Added batch fork bomb
-  - Added block sites [unblocker](https://github.com/DamagingRose/Rose-Grabber/tree/main/resources/utils)
+  - Added block sites [unblocker](https://github.com/rose-dll/Rose-Stealer/tree/main/resources/utils)
   - Added block protectors (e.g. anti-viruses, firewalls etc.)
   - Fixed UAC bypass
   - Fixed system information
@@ -47,7 +47,7 @@
 
 - **1.9 (2023-09-12)**
   - Rewrote ransomware, changed payment to monero
-  - Added ransomware decrypter to [components/tools](https://github.com/DamagingRose/Rose-Grabber/tree/main/resources/utils)
+  - Added ransomware decrypter to [components/tools](https://github.com/rose-dll/Rose-Stealer/tree/main/resources/utils)
   - Fixed startup
   - Fixed builder (cleanup, upx, returnzip)
   - Rewrote/Fixed install and start script
