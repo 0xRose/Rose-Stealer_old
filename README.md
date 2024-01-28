@@ -56,14 +56,14 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 **You can contact us here:**
 - [Telegram](https://t.me/gumbobr0t)
 - [Discord](https://discord.gg/sMawrDqnta)
-- [Issues](https://github.com/DamagingRose/Rose-Grabber/issues)
+- [Issues](https://github.com/rose-dll/Rose-Stealer/issues)
 
 ### Docs
-For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs) folder.
+For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/rose-dll/Rose-Stealer/tree/main/docs) folder.
 
 ### Changelog
 
-The changelog history can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/CHANGELOG.md).
+The changelog history can be found in our [documentation](https://github.com/rose-dll/Rose-Stealer/tree/main/docs/CHANGELOG.md).
 
 ### Credits
 
@@ -81,4 +81,4 @@ The changelog history can be found in our [documentation](https://github.com/Dam
 
 ### Star Graph
 
-[![Star History Chart](https://api.star-history.com/svg?repos=DamagingRose/Rose-Grabber&type=Date)](https://star-history.com/#DamagingRose/Rose-Grabber&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rose-dll/Rose-Stealer&type=Date)](https://star-history.com/#rose-dll/Rose-Stealer&Date)
