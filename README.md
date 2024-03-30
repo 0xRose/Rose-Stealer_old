@@ -15,14 +15,14 @@
     </a>
     <br>
     <br>
-    <img src="https://img.shields.io/github/languages/top/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Top Languages">
-    <img src="https://img.shields.io/github/stars/rose-dll/Rose-Stealer?color=%23FF0060&logoColor=%23FF0060&style=for-the-badge" alt="Stars">
+    <img src="https://img.shields.io/github/languages/top/0xrose/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Top Languages">
+    <img src="https://img.shields.io/github/stars/0xrose/Rose-Stealer?color=%23FF0060&logoColor=%23FF0060&style=for-the-badge" alt="Stars">
     <br>
-    <img src="https://img.shields.io/github/commit-activity/w/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Commit Activity">
-    <img src="https://img.shields.io/github/last-commit/rose-dll/Rose-Stealer?color=%23FF0060&logoColor=%23FF0060&style=for-the-badge" alt="Last Commit">
+    <img src="https://img.shields.io/github/commit-activity/w/0xrose/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Commit Activity">
+    <img src="https://img.shields.io/github/last-commit/0xrose/Rose-Stealer?color=%23FF0060&logoColor=%23FF0060&style=for-the-badge" alt="Last Commit">
     <br>
-    <img src="https://img.shields.io/github/issues/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Open Issues">
-    <img src="https://img.shields.io/github/issues-closed/rose-dll/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Closed Issues">
+    <img src="https://img.shields.io/github/issues/0xrose/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Open Issues">
+    <img src="https://img.shields.io/github/issues-closed/0xrose/Rose-Stealer?color=%23FF0060&style=for-the-badge" alt="Closed Issues">
     <br>
 </div>
 
@@ -35,10 +35,11 @@
 </div>
 
 ### ⚠️ The development team is working on a full rewrite and an entire new version for Rose currently. This one will not receive updates anymore and a new repository is going to get created soon.
+### We are looking forward to stable release the rewritten version soon. You can check the devwork out at the [new repository](https://github.com/0xrose/Rose-Stealer).
 
 ### Features
 
-A list of features can be found in our [documentation](https://github.com/rose-dll/Rose-Stealer/tree/main/docs/FEATURES.md).
+A list of features can be found in our [documentation](https://github.com/0xrose/Rose-Stealer/tree/main/docs/FEATURES.md).
 
 ### Disclaimer
 
@@ -49,24 +50,24 @@ Please be cognizant of the fact that nestled within the intricate architecture o
 ### Setup
 
 **Before proceeding, briefly disable your antivirus to avoid accidental removal of important components. Install Python properly, ensuring it's added to PATH. Preferably, use Python 3.11 and uninstall other versions. Thanks!**
-- Download repository [here](https://github.com/rose-dll/Rose-Stealer/archive/refs/heads/main.zip).
+- Download repository [here](https://github.com/0xrose/Rose-Stealer/archive/refs/heads/main.zip).
 - Extract the zip file.
-- Launch UI by executing [`build.bat`](https://github.com/rose-dll/Rose-Stealer/blob/main/build.bat).
+- Launch UI by executing [`build.bat`](https://github.com/0xrose/Rose-Stealer/blob/main/build.bat).
 
 ### Problems? Get help!
 
 **You can contact us here:**
 - [Telegram](https://t.me/gumbobr0t)
 - [Discord](https://discord.gg/sMawrDqnta)
-- [Issues](https://github.com/rose-dll/Rose-Stealer/issues)
+- [Issues](https://github.com/0xrose/Rose-Stealer/issues)
 
 ### Docs
 
-For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/rose-dll/Rose-Stealer/tree/main/docs) folder.
+For more guidance on e.g. the rats or the builder, you should check out the [docs](https://github.com/0xrose/Rose-Stealer/tree/main/docs) folder.
 
 ### Changelog
 
-The changelog history can be found in our [documentation](https://github.com/rose-dll/Rose-Stealer/tree/main/docs/CHANGELOG.md).
+The changelog history can be found in our [documentation](https://github.com/0xrose/Rose-Stealer/tree/main/docs/CHANGELOG.md).
 
 ### Credits
 
@@ -84,4 +85,4 @@ The changelog history can be found in our [documentation](https://github.com/ros
 
 ### Thanks 💞
 
-[![Star History Chart](https://api.star-history.com/svg?repos=rose-dll/Rose-Stealer&type=Date)](https://star-history.com/#rose-dll/Rose-Stealer&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=0xrose/Rose-Stealer&type=Date)](https://star-history.com/#0xrose/Rose-Stealer&Date)
